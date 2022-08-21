@@ -7,7 +7,7 @@ SPDX-License-Identifier: Apache-2.0
 package comm
 
 import (
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/gmtls/gmcredentials"
+	"github.com/wsw365904/newcryptosm/tls/credentials"
 	"sync"
 
 	"github.com/pkg/errors"
@@ -57,7 +57,7 @@ func NewStreamConnection(ctx fabcontext.Client, chConfig fab.ChannelCfg, streamP
 	}
 
 	if peer.AuthInfo != nil {
-		tlsInfo := peer.AuthInfo.(gmcredentials.TLSInfo)
+		tlsInfo := peer.AuthInfo.(credentials.TLSInfo)
 		for _, peercert := range tlsInfo.State.PeerCertificates {
 			err := verifier.ValidateCertificateDates(peercert)
 			if err != nil {

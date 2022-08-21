@@ -12,7 +12,7 @@ import (
 	"context"
 	"encoding/hex"
 	"fmt"
-	http "github.com/hyperledger/fabric-sdk-go/third_party/github.com/hyperledger/fabric/smalgo/gmhttp"
+	"github.com/wsw365904/newcryptosm/http"
 	"io"
 	"io/ioutil"
 	"log"

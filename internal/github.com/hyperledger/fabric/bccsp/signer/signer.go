@@ -12,7 +12,7 @@ package signer
 
 import (
 	"crypto"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
+	"github.com/wsw365904/newcryptosm/x509"
 	"io"
 
 	"github.com/pkg/errors"

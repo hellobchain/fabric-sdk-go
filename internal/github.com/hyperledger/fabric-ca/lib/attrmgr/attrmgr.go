@@ -16,11 +16,11 @@ Please review third_party pinning scripts and patches for more details.
 package attrmgr
 
 import (
-	"crypto/x509/pkix"
 	"encoding/asn1"
 	"encoding/json"
 	"fmt"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
+	"github.com/wsw365904/newcryptosm/x509"
+	"github.com/wsw365904/newcryptosm/x509/pkix"
 
 	"github.com/pkg/errors"
 )

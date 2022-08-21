@@ -13,9 +13,9 @@ package lib
 import (
 	"encoding/hex"
 	"encoding/pem"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/gmhttp"
-	tls "github.com/hyperledger/fabric-sdk-go/third_party/smalgo/gmtls"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
+	"github.com/wsw365904/newcryptosm/http"
+	"github.com/wsw365904/newcryptosm/tls"
+	"github.com/wsw365904/newcryptosm/x509"
 
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkinternal/pkg/util"
 	"github.com/pkg/errors"

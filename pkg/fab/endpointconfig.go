@@ -7,8 +7,8 @@ SPDX-License-Identifier: Apache-2.0
 package fab
 
 import (
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/gmtls"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
+	"github.com/wsw365904/newcryptosm/tls"
+	"github.com/wsw365904/newcryptosm/x509"
 	"reflect"
 	"regexp"
 	"strconv"
@@ -151,7 +151,7 @@ type EndpointConfig struct {
 	ordererConfigs           []fab.OrdererConfig
 	channelPeersByChannel    map[string][]fab.ChannelPeer
 	channelOrderersByChannel map[string][]fab.OrdererConfig
-	tlsClientCerts           []gmtls.Certificate
+	tlsClientCerts           []tls.Certificate
 	peerMatchers             []matcherEntry
 	ordererMatchers          []matcherEntry
 	channelMatchers          []matcherEntry
@@ -291,23 +291,23 @@ func (c *EndpointConfig) TLSCACertPool() commtls.CertPool {
 }
 
 // TLSClientCerts loads the client's certs for mutual TLS
-func (c *EndpointConfig) TLSClientCerts() []gmtls.Certificate {
+func (c *EndpointConfig) TLSClientCerts() []tls.Certificate {
 	return c.tlsClientCerts
 }
 
-func (c *EndpointConfig) loadPrivateKeyFromConfig(clientConfig *ClientConfig, clientCerts gmtls.Certificate, cb []byte) ([]gmtls.Certificate, error) {
+func (c *EndpointConfig) loadPrivateKeyFromConfig(clientConfig *ClientConfig, clientCerts tls.Certificate, cb []byte) ([]tls.Certificate, error) {
 
 	kb := clientConfig.TLSCerts.Client.Key.Bytes()
 
 	// load the key/cert pair from []byte
-	clientCerts, err := gmtls.X509KeyPair(cb, kb)
+	clientCerts, err := tls.X509KeyPair(cb, kb)
 	if err != nil {
 		return nil, errors.Errorf("Error loading cert/key pair as TLS client credentials: %s", err)
 	}
 
 	logger.Debug("pk read from config successfully")
 
-	return []gmtls.Certificate{clientCerts}, nil
+	return []tls.Certificate{clientCerts}, nil
 }
 
 // CryptoConfigPath ...
@@ -1391,11 +1391,11 @@ func (c *EndpointConfig) loadTLSCertPool() error {
 // It checks the config for embedded pem files before looking for cert files
 func (c *EndpointConfig) loadTLSClientCerts(configEntity *endpointConfigEntity) error {
 
-	var clientCerts gmtls.Certificate
+	var clientCerts tls.Certificate
 	cb := configEntity.Client.TLSCerts.Client.Cert.Bytes()
 	if len(cb) == 0 {
 		// if no cert found in the config, empty cert chain should be used
-		c.tlsClientCerts = []gmtls.Certificate{clientCerts}
+		c.tlsClientCerts = []tls.Certificate{clientCerts}
 		return nil
 	}
 
@@ -1420,7 +1420,7 @@ func (c *EndpointConfig) loadTLSClientCerts(configEntity *endpointConfigEntity) 
 		return errors.WithMessage(err, "failed to load TLS client certs, failed to get X509KeyPair")
 	}
 
-	c.tlsClientCerts = []gmtls.Certificate{clientCerts}
+	c.tlsClientCerts = []tls.Certificate{clientCerts}
 	return nil
 }
 

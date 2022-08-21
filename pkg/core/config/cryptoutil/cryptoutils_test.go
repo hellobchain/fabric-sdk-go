@@ -7,7 +7,7 @@ SPDX-License-Identifier: Apache-2.0
 package cryptoutil
 
 import (
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/ecdsa"
+	"github.com/wsw365904/newcryptosm/ecdsa"
 	"testing"
 
 	fabricCaUtil "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkinternal/pkg/util"

@@ -6,7 +6,7 @@ package mockfab
 
 import (
 	context "context"
-	tls  "github.com/hyperledger/fabric-sdk-go/third_party/smalgo/gmtls"
+	tls  "github.com/wsw365904/newcryptosm/tls"
 	reflect "reflect"
 	time "time"
 

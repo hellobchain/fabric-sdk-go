@@ -9,8 +9,8 @@ package comm
 import (
 	"bytes"
 	"encoding/hex"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/gmtls"
-	x5092 "github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
+	"github.com/wsw365904/newcryptosm/tls"
+	x5092 "github.com/wsw365904/newcryptosm/x509"
 	"path/filepath"
 	"strconv"
 	"testing"
@@ -108,7 +108,7 @@ func TestNoTlsCertHash(t *testing.T) {
 	defer mockCtrl.Finish()
 	config := mockfab.NewMockEndpointConfig(mockCtrl)
 
-	config.EXPECT().TLSClientCerts().Return([]gmtls.Certificate{})
+	config.EXPECT().TLSClientCerts().Return([]tls.Certificate{})
 
 	tlsCertHash, err := TLSCertHash(config)
 	assert.NotNil(t, tlsCertHash)
@@ -120,8 +120,8 @@ func TestEmptyTlsCertHash(t *testing.T) {
 	defer mockCtrl.Finish()
 	config := mockfab.NewMockEndpointConfig(mockCtrl)
 
-	emptyCert := gmtls.Certificate{}
-	config.EXPECT().TLSClientCerts().Return([]gmtls.Certificate{emptyCert})
+	emptyCert := tls.Certificate{}
+	config.EXPECT().TLSClientCerts().Return([]tls.Certificate{emptyCert})
 
 	tlsCertHash, err := TLSCertHash(config)
 	assert.NotNil(t, tlsCertHash)
@@ -133,12 +133,12 @@ func TestTlsCertHash(t *testing.T) {
 	defer mockCtrl.Finish()
 	config := mockfab.NewMockEndpointConfig(mockCtrl)
 
-	cert, err := gmtls.LoadX509KeyPair(filepath.Join("testdata", "server.crt"), filepath.Join("testdata", "server.key"))
+	cert, err := tls.LoadX509KeyPair(filepath.Join("testdata", "server.crt"), filepath.Join("testdata", "server.key"))
 	if err != nil {
 		t.Fatalf("Unexpected error loading cert %s", err)
 	}
 
-	config.EXPECT().TLSClientCerts().Return([]gmtls.Certificate{cert})
+	config.EXPECT().TLSClientCerts().Return([]tls.Certificate{cert})
 	tlsCertHash, err := TLSCertHash(config)
 	assert.NotNil(t, tlsCertHash)
 	assert.Nil(t, err)

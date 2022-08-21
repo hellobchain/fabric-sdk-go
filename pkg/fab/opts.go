@@ -7,7 +7,7 @@ SPDX-License-Identifier: Apache-2.0
 package fab
 
 import (
-	tls "github.com/hyperledger/fabric-sdk-go/third_party/smalgo/gmtls"
+	"github.com/wsw365904/newcryptosm/tls"
 	"time"
 
 	"github.com/pkg/errors"

@@ -11,7 +11,8 @@ import (
 	"errors"
 	"fmt"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
-	x5092 "github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
+	"github.com/wsw365904/newcryptosm"
+	x5092 "github.com/wsw365904/newcryptosm/x509"
 )
 
 // An rsaPublicKey wraps the standard library implementation of an RSA public
@@ -45,7 +46,7 @@ func (k *rsaPublicKey) SKI() []byte {
 
 	// Marshal the public key and hash it
 	raw := x5092.MarshalPKCS1PublicKey(k.pubKey)
-	hash := x5092.SHA256.New()
+	hash := newcryptosm.SHA256.New()
 	hash.Write(raw)
 	return hash.Sum(nil)[:]
 }

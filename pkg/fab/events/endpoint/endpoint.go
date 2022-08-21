@@ -7,7 +7,7 @@ SPDX-License-Identifier: Apache-2.0
 package endpoint
 
 import (
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
+	"github.com/wsw365904/newcryptosm/x509"
 
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/options"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"

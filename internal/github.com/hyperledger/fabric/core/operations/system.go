@@ -12,8 +12,8 @@ package operations
 
 import (
 	"context"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/gmhttp"
-	tls "github.com/hyperledger/fabric-sdk-go/third_party/smalgo/gmtls"
+	"github.com/wsw365904/newcryptosm/http"
+	"github.com/wsw365904/newcryptosm/tls"
 	"net"
 	"os"
 	"strings"
@@ -28,9 +28,9 @@ import (
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/core/middleware"
 	flogging "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkpatch/logbridge"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkpatch/logbridge/httpadmin"
-	"github.com/hyperledger/fabric-sdk-go/third_party/github.com/hyperledger/fabric-lib-go/healthz"
-	kitstatsd "github.com/hyperledger/fabric-sdk-go/third_party/go-kit/kit/metrics/statsd"
-	promhttp "github.com/hyperledger/fabric-sdk-go/third_party/prometheus/client_golang/prometheus"
+	kitstatsd "github.com/wsw365904/third_party/go-kit/kit/metrics/statsd"
+	"github.com/wsw365904/third_party/hyperledger/fabric-lib-go/healthz"
+	promhttp "github.com/wsw365904/third_party/prometheus/client_golang/prometheus"
 )
 
 //go:generate counterfeiter -o fakes/logger.go -fake-name Logger . Logger

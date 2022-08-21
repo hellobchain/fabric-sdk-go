@@ -13,8 +13,8 @@ package discovery
 import (
 	"github.com/hyperledger/fabric-protos-go/discovery"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/gossip/protoext"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
 	"github.com/pkg/errors"
+	"github.com/wsw365904/newcryptosm"
 	"google.golang.org/grpc"
 )
 
@@ -27,7 +27,7 @@ var (
 // or nil and error on failure
 type Signer func(msg []byte) ([]byte, error)
 
-type Hasher func() x509.Hash
+type Hasher func() newcryptosm.Hash
 
 // Dialer connects to the server
 type Dialer func() (*grpc.ClientConn, error)

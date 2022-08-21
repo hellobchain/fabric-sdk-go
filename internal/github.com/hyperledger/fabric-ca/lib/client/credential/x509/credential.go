@@ -12,7 +12,7 @@ package x509
 
 import (
 	"encoding/hex"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/gmhttp"
+	"github.com/wsw365904/newcryptosm/http"
 
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/core"
 

@@ -10,7 +10,7 @@ import (
 	"bufio"
 	"bytes"
 	"fmt"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/gmhttp"
+	"github.com/wsw365904/newcryptosm/http"
 	"io"
 	"io/ioutil"
 	"os"

@@ -8,7 +8,7 @@ package comm
 
 import (
 	"context"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
+	"github.com/wsw365904/newcryptosm/x509"
 	"time"
 
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/options"

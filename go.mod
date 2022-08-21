@@ -5,39 +5,24 @@
 module github.com/hyperledger/fabric-sdk-go
 
 require (
-	github.com/Knetic/govaluate v3.0.0+incompatible
-	github.com/beorn7/perks v1.0.1
-	github.com/go-logfmt/logfmt v0.4.0
-	github.com/golang/mock v1.4.3
-	github.com/golang/protobuf v1.3.3
-	github.com/google/certificate-transparency-go v1.0.21
-	github.com/google/go-cmp v0.3.0 // indirect
-	github.com/hashicorp/hcl v1.0.0 // indirect
-	github.com/hyperledger/fabric-protos-go v0.0.0-20200707132912-fee30f3ccd23
-	github.com/jmhodges/clock v1.2.0
-	github.com/jmoiron/sqlx v1.3.5
-	github.com/kisielk/sqlstruct v0.0.0-20210630145711-dae28ed37023
-	github.com/kr/pretty v0.1.0 // indirect
-	github.com/magiconair/properties v1.8.1 // indirect
-	github.com/matttproud/golang_protobuf_extensions v1.0.1
-	github.com/miekg/pkcs11 v1.0.3
-	github.com/mitchellh/mapstructure v1.3.2
-	github.com/onsi/gomega v1.9.0
-	github.com/pelletier/go-toml v1.8.0 // indirect
-	github.com/pkg/errors v0.8.1
-	github.com/prometheus/client_model v0.0.0-20190812154241-14fe0d1b01d4
-	github.com/spf13/afero v1.3.1 // indirect
+	github.com/Knetic/govaluate v3.0.1-0.20171022003610-9aa49832a739+incompatible
+	github.com/golang/mock v1.6.0
+	github.com/golang/protobuf v1.5.2
+	github.com/hyperledger/fabric-protos-go v0.0.0-20220816110612-c96c610ca7b4
+	github.com/miekg/pkcs11 v1.1.1
+	github.com/mitchellh/mapstructure v1.4.1
+	github.com/pkg/errors v0.9.1
 	github.com/spf13/cast v1.3.1
-	github.com/spf13/jwalterweatherman v1.1.0 // indirect
-	github.com/spf13/pflag v1.0.5 // indirect
-	github.com/spf13/viper v1.1.1
-	github.com/stretchr/testify v1.5.1
-	golang.org/x/crypto v0.0.0-20220525230936-793ad666bf5e
-	golang.org/x/net v0.0.0-20211112202133-69e39bad7dc2
-	golang.org/x/sys v0.0.0-20210615035016-665e8c7367d1
-	google.golang.org/grpc v1.29.1
-	gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127 // indirect
-	gopkg.in/yaml.v2 v2.3.0
+	github.com/spf13/viper v1.8.1
+	github.com/stretchr/testify v1.7.1
+	github.com/wsw365904/newcryptosm v0.0.0-20220821120244-1d3c5ba2f14a
+	github.com/wsw365904/third_party v0.0.0-20220821142140-97de0c728794
+	golang.org/x/crypto v0.0.0-20220817201139-bc19a97f63c8
+	golang.org/x/net v0.0.0-20220812174116-3211cb980234
+	google.golang.org/grpc v1.48.0
+	gopkg.in/yaml.v2 v2.4.0
 )
+
+replace github.com/hyperledger/fabric-protos-go v0.0.0-20220816110612-c96c610ca7b4 => github.com/hyperledger/fabric-protos-go v0.0.0-20200707132912-fee30f3ccd23
 
 go 1.14

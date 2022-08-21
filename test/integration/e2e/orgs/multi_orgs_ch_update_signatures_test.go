@@ -1,3 +1,4 @@
+//go:build !prev
 // +build !prev
 
 /*
@@ -11,7 +12,7 @@ import (
 	"bufio"
 	"bytes"
 	"fmt"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/ecdsa"
+	"github.com/wsw365904/newcryptosm/ecdsa"
 	"io/ioutil"
 	"os"
 	"os/exec"
@@ -23,9 +24,9 @@ import (
 	"github.com/golang/protobuf/proto"
 	"github.com/hyperledger/fabric-protos-go/common"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkpatch/keyutil"
-	"github.com/hyperledger/fabric-sdk-go/third_party/github.com/hyperledger/fabric-config/protolator"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"github.com/wsw365904/third_party/hyperledger/fabric-config/protolator"
 
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp/utils"
 	"github.com/hyperledger/fabric-sdk-go/pkg/client/channel"

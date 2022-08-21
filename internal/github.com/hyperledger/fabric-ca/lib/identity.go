@@ -13,7 +13,7 @@ package lib
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/gmhttp"
+	"github.com/wsw365904/newcryptosm/http"
 	"strconv"
 
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/lib/client/credential"

@@ -11,8 +11,8 @@ Please review third_party pinning scripts and patches for more details.
 package pkcs11
 
 import (
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/ecdsa"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
+	"github.com/wsw365904/newcryptosm/ecdsa"
+	"github.com/wsw365904/newcryptosm/x509"
 	"os"
 
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"

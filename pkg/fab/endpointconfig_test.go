@@ -9,8 +9,8 @@ package fab
 import (
 	"encoding/pem"
 	"fmt"
-	tls "github.com/hyperledger/fabric-sdk-go/third_party/smalgo/gmtls"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
+	"github.com/wsw365904/newcryptosm/tls"
+	"github.com/wsw365904/newcryptosm/x509"
 	"os"
 	"path/filepath"
 	"reflect"

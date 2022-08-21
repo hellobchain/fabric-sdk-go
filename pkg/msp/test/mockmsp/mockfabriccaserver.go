@@ -7,7 +7,7 @@ SPDX-License-Identifier: Apache-2.0
 package mockmsp
 
 import (
-	http2 "github.com/hyperledger/fabric-sdk-go/third_party/smalgo/gmhttp"
+	http2 "github.com/wsw365904/newcryptosm/http"
 	"net"
 	"time"
 
@@ -16,7 +16,7 @@ import (
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkinternal/pkg/util"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/core"
-	cfsslapi "github.com/hyperledger/fabric-sdk-go/third_party/cloudflare/cfssl/api"
+	cfsslapi "github.com/wsw365904/third_party/cloudflare/cfssl/api"
 )
 
 // Matching key-cert pair. On enroll, the key will be

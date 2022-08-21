@@ -12,7 +12,7 @@ package cryptosuitebridge
 
 import (
 	"crypto"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/ecdsa"
+	"github.com/wsw365904/newcryptosm/ecdsa"
 
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
 	cspsigner "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp/signer"

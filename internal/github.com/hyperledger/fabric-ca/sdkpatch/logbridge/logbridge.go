@@ -12,7 +12,7 @@ package logbridge
 
 import (
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
-	clog "github.com/hyperledger/fabric-sdk-go/third_party/cloudflare/cfssl/log"
+	clog "github.com/wsw365904/third_party/cloudflare/cfssl/log"
 )
 
 var logger *logging.Logger

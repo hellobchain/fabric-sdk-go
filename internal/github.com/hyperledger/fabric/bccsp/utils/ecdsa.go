@@ -11,8 +11,8 @@ import (
 	"encoding/asn1"
 	"errors"
 	"fmt"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/ecdsa"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/sm2"
+	"github.com/wsw365904/newcryptosm/ecdsa"
+	"github.com/wsw365904/newcryptosm/sm2"
 	"math/big"
 )
 

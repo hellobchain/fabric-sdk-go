@@ -9,9 +9,9 @@ package mockfab
 import (
 	"github.com/golang/mock/gomock"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
-	tls "github.com/hyperledger/fabric-sdk-go/third_party/smalgo/gmtls"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
 	"github.com/pkg/errors"
+	"github.com/wsw365904/newcryptosm/tls"
+	"github.com/wsw365904/newcryptosm/x509"
 	"time"
 )
 

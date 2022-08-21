@@ -11,8 +11,8 @@ import (
 	"crypto/sha256"
 	"crypto/sha512"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/sm2"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/sm3"
+	"github.com/wsw365904/newcryptosm/sm2"
+	"github.com/wsw365904/newcryptosm/sm3"
 	"reflect"
 
 	"github.com/pkg/errors"

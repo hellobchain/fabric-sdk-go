@@ -22,8 +22,8 @@ package pkcs11
 import (
 	"errors"
 	"fmt"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/ecdsa"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
+	"github.com/wsw365904/newcryptosm/ecdsa"
+	"github.com/wsw365904/newcryptosm/x509"
 
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
 )

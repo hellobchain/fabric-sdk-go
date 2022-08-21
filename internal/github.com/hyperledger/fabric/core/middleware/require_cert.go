@@ -11,7 +11,7 @@ Please review third_party pinning scripts and patches for more details.
 package middleware
 
 import (
-	http2 "github.com/hyperledger/fabric-sdk-go/third_party/smalgo/gmhttp"
+	http2 "github.com/wsw365904/newcryptosm/http"
 )
 
 type requireCert struct {

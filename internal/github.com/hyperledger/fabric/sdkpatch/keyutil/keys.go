@@ -14,8 +14,8 @@ import (
 	"encoding/pem"
 	"errors"
 	"fmt"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/ecdsa"
-	x5092 "github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
+	"github.com/wsw365904/newcryptosm/ecdsa"
+	x5092 "github.com/wsw365904/newcryptosm/x509"
 )
 
 func derToPrivateKey(der []byte) (key interface{}, err error) {

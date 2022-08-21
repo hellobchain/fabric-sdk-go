@@ -8,8 +8,8 @@ package orderer
 
 import (
 	reqContext "context"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/gmtls/gmcredentials"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
+	"github.com/wsw365904/newcryptosm/tls/credentials"
+	"github.com/wsw365904/newcryptosm/x509"
 	"io"
 	"time"
 
@@ -85,7 +85,7 @@ func New(config fab.EndpointConfig, opts ...Option) (*Orderer, error) {
 			return verifier.VerifyPeerCertificate(rawCerts, verifiedChains)
 		}
 
-		grpcOpts = append(grpcOpts, grpc.WithTransportCredentials(gmcredentials.NewTLS(tlsConfig)))
+		grpcOpts = append(grpcOpts, grpc.WithTransportCredentials(credentials.NewTLS(tlsConfig)))
 	} else {
 		grpcOpts = append(grpcOpts, grpc.WithInsecure())
 	}

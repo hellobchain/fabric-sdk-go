@@ -22,12 +22,12 @@ package msp
 
 import (
 	"bytes"
-	"crypto/x509/pkix"
 	"encoding/asn1"
 	"encoding/pem"
 	"fmt"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/ecdsa"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
+	"github.com/wsw365904/newcryptosm/ecdsa"
+	"github.com/wsw365904/newcryptosm/x509"
+	"github.com/wsw365904/newcryptosm/x509/pkix"
 	"math/big"
 	"time"
 

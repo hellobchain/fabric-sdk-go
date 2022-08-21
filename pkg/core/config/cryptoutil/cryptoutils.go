@@ -9,9 +9,9 @@ package cryptoutil
 import (
 	"crypto"
 	"encoding/pem"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/ecdsa"
-	tls "github.com/hyperledger/fabric-sdk-go/third_party/smalgo/gmtls"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
+	"github.com/wsw365904/newcryptosm/ecdsa"
+	"github.com/wsw365904/newcryptosm/tls"
+	"github.com/wsw365904/newcryptosm/x509"
 	"io"
 
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"

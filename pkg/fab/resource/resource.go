@@ -9,7 +9,7 @@ package resource
 
 import (
 	reqContext "context"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/gmhttp"
+	"github.com/wsw365904/newcryptosm/http"
 	"sync"
 
 	"github.com/golang/protobuf/proto"

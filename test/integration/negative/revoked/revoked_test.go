@@ -9,9 +9,9 @@ package revoked
 import (
 	"bytes"
 	"crypto/rand"
-	"crypto/x509/pkix"
 	"encoding/pem"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
+	"github.com/wsw365904/newcryptosm/x509"
+	"github.com/wsw365904/newcryptosm/x509/pkix"
 	"io"
 	"io/ioutil"
 	"os"
@@ -43,7 +43,7 @@ import (
 	"github.com/hyperledger/fabric-sdk-go/pkg/fabsdk"
 	"github.com/hyperledger/fabric-sdk-go/test/integration"
 	"github.com/hyperledger/fabric-sdk-go/test/metadata"
-	"github.com/hyperledger/fabric-sdk-go/third_party/github.com/hyperledger/fabric/common/policydsl"
+	"github.com/wsw365904/third_party/hyperledger/fabric/common/policydsl"
 )
 
 const (

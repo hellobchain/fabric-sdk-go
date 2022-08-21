@@ -8,7 +8,7 @@ package peer
 
 import (
 	reqContext "context"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
+	"github.com/wsw365904/newcryptosm/x509"
 
 	"github.com/spf13/cast"
 	"google.golang.org/grpc"

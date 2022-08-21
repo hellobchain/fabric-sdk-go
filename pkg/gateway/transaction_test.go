@@ -9,7 +9,7 @@ package gateway
 import (
 	reqContext "context"
 	"errors"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/gmhttp"
+	"github.com/wsw365904/newcryptosm/http"
 	"strings"
 	"testing"
 	"time"

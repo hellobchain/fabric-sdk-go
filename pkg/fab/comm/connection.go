@@ -7,8 +7,8 @@ SPDX-License-Identifier: Apache-2.0
 package comm
 
 import (
-	credentials "github.com/hyperledger/fabric-sdk-go/third_party/smalgo/gmtls/gmcredentials"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
+	credentials "github.com/wsw365904/newcryptosm/tls/credentials"
+	"github.com/wsw365904/newcryptosm/x509"
 	"sync/atomic"
 
 	"github.com/pkg/errors"

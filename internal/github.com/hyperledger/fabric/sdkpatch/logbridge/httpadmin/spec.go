@@ -13,7 +13,7 @@ package httpadmin
 import (
 	"encoding/json"
 	"fmt"
-	http2 "github.com/hyperledger/fabric-sdk-go/third_party/smalgo/gmhttp"
+	http2 "github.com/wsw365904/newcryptosm/http"
 
 	flogging "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkpatch/logbridge"
 )

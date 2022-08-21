@@ -11,8 +11,8 @@ Please review third_party pinning scripts and patches for more details.
 package operations
 
 import (
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/gmtls"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
+	"github.com/wsw365904/newcryptosm/tls"
+	"github.com/wsw365904/newcryptosm/x509"
 	"io/ioutil"
 
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkinternal/pkg/comm"
@@ -26,11 +26,11 @@ type TLS struct {
 	ClientCACertFiles  []string
 }
 
-func (t TLS) Config() (*gmtls.Config, error) {
-	var tlsConfig *gmtls.Config
+func (t TLS) Config() (*tls.Config, error) {
+	var tlsConfig *tls.Config
 
 	if t.Enabled {
-		cert, err := gmtls.LoadX509KeyPair(t.CertFile, t.KeyFile)
+		cert, err := tls.LoadX509KeyPair(t.CertFile, t.KeyFile)
 		if err != nil {
 			return nil, err
 		}
@@ -42,15 +42,15 @@ func (t TLS) Config() (*gmtls.Config, error) {
 			}
 			caCertPool.AppendCertsFromPEM(caPem)
 		}
-		tlsConfig = &gmtls.Config{
-			Certificates: []gmtls.Certificate{cert},
+		tlsConfig = &tls.Config{
+			Certificates: []tls.Certificate{cert},
 			CipherSuites: comm.DefaultTLSCipherSuites,
 			ClientCAs:    caCertPool,
 		}
 		if t.ClientCertRequired {
-			tlsConfig.ClientAuth = gmtls.RequireAndVerifyClientCert
+			tlsConfig.ClientAuth = tls.RequireAndVerifyClientCert
 		} else {
-			tlsConfig.ClientAuth = gmtls.VerifyClientCertIfGiven
+			tlsConfig.ClientAuth = tls.VerifyClientCertIfGiven
 		}
 	}
 

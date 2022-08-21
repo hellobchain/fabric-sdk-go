@@ -12,9 +12,9 @@ package msp
 
 import (
 	"bytes"
-	"crypto/x509/pkix"
 	"encoding/asn1"
-	x5092 "github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
+	x5092 "github.com/wsw365904/newcryptosm/x509"
+	"github.com/wsw365904/newcryptosm/x509/pkix"
 	"math/big"
 	"reflect"
 	"time"

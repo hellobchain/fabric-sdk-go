@@ -13,7 +13,7 @@ package statsd
 import (
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/metrics"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/metrics/internal/namer"
-	"github.com/hyperledger/fabric-sdk-go/third_party/go-kit/kit/metrics/statsd"
+	"github.com/wsw365904/third_party/go-kit/kit/metrics/statsd"
 )
 
 const defaultFormat = "%{#fqname}"

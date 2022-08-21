@@ -9,7 +9,7 @@ package tls
 import (
 	"encoding/pem"
 	"errors"
-	x5092 "github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
+	x5092 "github.com/wsw365904/newcryptosm/x509"
 	"strconv"
 	"testing"
 	"time"

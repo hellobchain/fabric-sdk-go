@@ -6,18 +6,18 @@ SPDX-License-Identifier: Apache-2.0
 package pkcs11wrapper
 
 import (
-	"github.com/hyperledger/fabric-sdk-go/third_party/github.com/hyperledger/fabric/smalgo/ecdsa"
 	"crypto/elliptic"
 	"crypto/rand"
 	"crypto/sha1"
 	"crypto/sha256"
 	"crypto/sha512"
-	"github.com/hyperledger/fabric-sdk-go/third_party/github.com/hyperledger/fabric/smalgo/x509"
 	"encoding/asn1"
 	"encoding/hex"
 	"encoding/pem"
 	"fmt"
 	"github.com/pkg/errors"
+	"github.com/wsw365904/third_party/hyperledger/fabric/smalgo/ecdsa"
+	"github.com/wsw365904/third_party/hyperledger/fabric/smalgo/x509"
 	"io/ioutil"
 	"math/big"
 )
