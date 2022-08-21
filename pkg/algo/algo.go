@@ -15,7 +15,7 @@ func SetGMFlag() {
 
 func GetGMFlag() bool {
 	algoFlag := viper.GetBool("GMFlag")
-	logger.Info("GetGMFlag", algoFlag)
+	logger.Info("GetGMFlag:", algoFlag)
 	return algoFlag
 }
 
