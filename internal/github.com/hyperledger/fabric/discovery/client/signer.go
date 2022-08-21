@@ -13,8 +13,6 @@ package discovery
 import (
 	"encoding/hex"
 	"sync"
-
-	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/util"
 )
 
 // MemoizeSigner signs messages with the same signature
@@ -24,15 +22,17 @@ type MemoizeSigner struct {
 	sync.RWMutex
 	memory map[string][]byte
 	sign   Signer
+	hash   Hasher
 }
 
 // NewMemoizeSigner creates a new MemoizeSigner that signs
 // message with the given sign function
-func NewMemoizeSigner(signFunc Signer, maxEntries uint) *MemoizeSigner {
+func NewMemoizeSigner(signFunc Signer, maxEntries uint, hash Hasher) *MemoizeSigner {
 	return &MemoizeSigner{
 		maxEntries: maxEntries,
 		memory:     make(map[string][]byte),
 		sign:       signFunc,
+		hash:       hash,
 	}
 }
 
@@ -56,7 +56,7 @@ func (ms *MemoizeSigner) Sign(msg []byte) ([]byte, error) {
 func (ms *MemoizeSigner) lookup(msg []byte) ([]byte, bool) {
 	ms.RLock()
 	defer ms.RUnlock()
-	sig, exists := ms.memory[msgDigest(msg)]
+	sig, exists := ms.memory[msgDigest(msg, ms.hash)]
 	return sig, exists
 }
 
@@ -73,7 +73,7 @@ func (ms *MemoizeSigner) memorize(msg, signature []byte) {
 	}
 	ms.Lock()
 	defer ms.Unlock()
-	ms.memory[msgDigest(msg)] = signature
+	ms.memory[msgDigest(msg, ms.hash)] = signature
 
 }
 
@@ -96,6 +96,8 @@ func (ms *MemoizeSigner) evictFromMemory() {
 }
 
 // msgDigest returns a digest of a given message
-func msgDigest(msg []byte) string {
-	return hex.EncodeToString(util.ComputeSHA256(msg))
+func msgDigest(msg []byte, hash Hasher) string {
+	hashed := hash().New()
+	hashed.Write(msg)
+	return hex.EncodeToString(hashed.Sum(nil))
 }

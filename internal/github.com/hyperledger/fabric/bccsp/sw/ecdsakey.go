@@ -17,12 +17,10 @@ package sw
 
 import (
 	"crypto/elliptic"
-	"crypto/sha256"
 	"errors"
 	"fmt"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
 	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/ecdsa"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/sm3"
 	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
 )
 
@@ -46,9 +44,9 @@ func (k *ecdsaPrivateKey) SKI() []byte {
 	raw := elliptic.Marshal(k.privKey.Curve, k.privKey.PublicKey.X, k.privKey.PublicKey.Y)
 
 	// Hash it
-	hash := sha256.New()
+	hash := x509.SHA256.New()
 	if ecdsa.IsSM2(k.privKey.Params()) {
-		hash = sm3.New()
+		hash = x509.SM3.New()
 	}
 	hash.Write(raw)
 	return hash.Sum(nil)
@@ -96,9 +94,9 @@ func (k *ecdsaPublicKey) SKI() []byte {
 	raw := elliptic.Marshal(k.pubKey.Curve, k.pubKey.X, k.pubKey.Y)
 
 	// Hash it
-	hash := sha256.New()
+	hash := x509.SHA256.New()
 	if ecdsa.IsSM2(k.pubKey.Params()) {
-		hash = sm3.New()
+		hash = x509.SM3.New()
 	}
 	hash.Write(raw)
 	return hash.Sum(nil)

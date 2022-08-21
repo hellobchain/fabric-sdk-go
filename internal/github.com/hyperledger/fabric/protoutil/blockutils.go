@@ -12,8 +12,8 @@ package protoutil
 
 import (
 	"bytes"
-	"crypto/sha256"
 	"encoding/asn1"
+	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
 	"math/big"
 
 	"github.com/golang/protobuf/proto"
@@ -62,13 +62,15 @@ func BlockHeaderBytes(b *cb.BlockHeader) []byte {
 }
 
 func BlockHeaderHash(b *cb.BlockHeader) []byte {
-	sum := sha256.Sum256(BlockHeaderBytes(b))
-	return sum[:]
+	hasher := x509.SHA256.New()
+	hasher.Write(BlockHeaderBytes(b))
+	return hasher.Sum(nil)
 }
 
 func BlockDataHash(b *cb.BlockData) []byte {
-	sum := sha256.Sum256(bytes.Join(b.Data, nil))
-	return sum[:]
+	hasher := x509.SHA256.New()
+	hasher.Write(bytes.Join(b.Data, nil))
+	return hasher.Sum(nil)
 }
 
 // GetChannelIDFromBlockBytes returns channel ID given byte array which represents

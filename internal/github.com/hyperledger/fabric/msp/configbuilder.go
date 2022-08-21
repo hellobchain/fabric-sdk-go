@@ -295,11 +295,106 @@ func getMspConfig(dir string, ID string, sigid *msp.SigningIdentityInfo) (*msp.M
 		FabricNodeOus:                 nodeOUs,
 	}
 
+	// wsw add
+	isGm, err := JudgeIsGm(fmspconf)
+	if err != nil {
+		return nil, err
+	}
+	if isGm {
+		mspLogger.Debug("gm alg")
+		cryptoConfig = &msp.FabricCryptoConfig{
+			SignatureHashFamily:            bccsp.SM,
+			IdentityIdentifierHashFunction: bccsp.SM3,
+		}
+		fmspconf.CryptoConfig = cryptoConfig
+	}
+
 	fmpsjs, _ := proto.Marshal(fmspconf)
 
 	mspconf := &msp.MSPConfig{Config: fmpsjs, Type: int32(FABRIC)}
 
 	return mspconf, nil
+}
+func JudgeIsGm(conf *msp.FabricMSPConfig) (bool, error) {
+	// given that it's an msp of type fabric, extract the MSPConfig instance
+	// make and fill the set of CA certs - we expect them to be there
+	if len(conf.RootCerts) == 0 {
+		return false, errors.New("expected at least one CA certificate")
+	}
+	// pre-create the verify options with roots and intermediates.
+	// This is needed to make certificate sanitation working.
+	// Recall that sanitization is applied also to root CA and intermediate
+	// CA certificates. After their sanitization is done, the opts
+	// will be recreated using the sanitized certs.
+	m := &bccspmsp{}
+	var rootCertsCount int
+	var intermediateCertsCount int
+	var tlsRootCertsCount int
+	var tlsIntermediateCertsCount int
+	for _, v := range conf.RootCerts {
+		cert, err := m.getCertFromPem(v)
+		if err != nil {
+			return false, err
+		}
+		//fc 判断是否为SM2 根证书，如果是则将bccsp 改为SM2的 Bccsp  //fc 20181206
+		if isSM2SignedCert(cert) {
+			mspLogger.Debug("gm sm2 root cert subject", cert.Subject.String())
+			rootCertsCount++
+		}
+	}
+	for _, v := range conf.IntermediateCerts {
+		cert, err := m.getCertFromPem(v)
+		if err != nil {
+			return false, err
+		}
+		//fc 判断是否为SM2 根证书，如果是则将bccsp 改为SM2的 Bccsp  //fc 20181206
+		if isSM2SignedCert(cert) {
+			mspLogger.Debug("gm sm2 IntermediateCerts subject", cert.Subject.String())
+			intermediateCertsCount++
+		}
+	}
+
+	for _, v := range conf.TlsRootCerts {
+		cert, err := m.getCertFromPem(v)
+		if err != nil {
+			return false, err
+		}
+		//fc 判断是否为SM2 根证书，如果是则将bccsp 改为SM2的 Bccsp  //fc 20181206
+		if isSM2SignedCert(cert) {
+			mspLogger.Debug("gm sm2 TlsRootCerts subject", cert.Subject.String())
+			tlsRootCertsCount++
+		}
+	}
+
+	for _, v := range conf.TlsIntermediateCerts {
+		cert, err := m.getCertFromPem(v)
+		if err != nil {
+			return false, err
+		}
+		//fc 判断是否为SM2 根证书，如果是则将bccsp 改为SM2的 Bccsp  //fc 20181206
+		if isSM2SignedCert(cert) {
+			mspLogger.Info("gm sm2 TlsIntermediateCerts subject", cert.Subject.String())
+			tlsIntermediateCertsCount++
+		}
+	}
+
+	if tlsRootCertsCount == len(conf.TlsRootCerts) && tlsIntermediateCertsCount == len(conf.TlsIntermediateCerts) {
+		mspLogger.Info("tls ca alg is gm")
+	}
+
+	if tlsRootCertsCount == 0 && tlsIntermediateCertsCount == 0 {
+		mspLogger.Info("tls ca alg is gj")
+	}
+
+	if rootCertsCount == len(conf.RootCerts) && intermediateCertsCount == len(conf.IntermediateCerts) { // gm not consider tls
+		mspLogger.Info("ca alg is gm")
+		return true, nil
+	} else if rootCertsCount != 0 || intermediateCertsCount != 0 {
+		return false, errors.New("rootCerts or intermediateCerts has sm and not sm")
+	} else {
+		mspLogger.Info("ca alg is gj")
+		return false, nil
+	}
 }
 
 func loadCertificateAt(dir, certificatePath string, ouType string) []byte {

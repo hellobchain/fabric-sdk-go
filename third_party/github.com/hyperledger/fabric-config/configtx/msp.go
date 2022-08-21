@@ -13,6 +13,8 @@ import (
 	"encoding/asn1"
 	"encoding/pem"
 	"fmt"
+	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
+	mspcfg "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/msp"
 	"github.com/hyperledger/fabric-sdk-go/third_party/github.com/hyperledger/fabric-config/configtx/membership"
 	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
 	"reflect"
@@ -557,6 +559,18 @@ func getMSPConfig(configGroup *cb.ConfigGroup) (MSP, error) {
 		return MSP{}, fmt.Errorf("unmarshaling fabric msp config: %v", err)
 	}
 
+	isGm, err := mspcfg.JudgeIsGm(fabricMSPConfig)
+	if err != nil {
+		return MSP{}, err
+	}
+	if isGm {
+		cryptoConfig := &mb.FabricCryptoConfig{
+			SignatureHashFamily:            bccsp.SM,
+			IdentityIdentifierHashFunction: bccsp.SM3,
+		}
+		fabricMSPConfig.CryptoConfig = cryptoConfig
+	}
+
 	// ROOT CERTS
 	rootCerts, err := parseCertificateListFromBytes(fabricMSPConfig.RootCerts)
 	if err != nil {
@@ -779,8 +793,7 @@ func (m *MSP) toProto() (*mb.FabricMSPConfig, error) {
 			},
 		}
 	}
-
-	return &mb.FabricMSPConfig{
+	fmspConf := &mb.FabricMSPConfig{
 		Name:                          m.Name,
 		RootCerts:                     buildPemEncodedCertListFromX509(m.RootCerts),
 		IntermediateCerts:             buildPemEncodedCertListFromX509(m.IntermediateCerts),
@@ -794,7 +807,19 @@ func (m *MSP) toProto() (*mb.FabricMSPConfig, error) {
 		TlsRootCerts:         buildPemEncodedCertListFromX509(m.TLSRootCerts),
 		TlsIntermediateCerts: buildPemEncodedCertListFromX509(m.TLSIntermediateCerts),
 		FabricNodeOus:        fabricNodeOUs,
-	}, nil
+	}
+	isGm, err := mspcfg.JudgeIsGm(fmspConf)
+	if err != nil {
+		return nil, err
+	}
+	if isGm {
+		cryptoConfig := &mb.FabricCryptoConfig{
+			SignatureHashFamily:            bccsp.SM,
+			IdentityIdentifierHashFunction: bccsp.SM3,
+		}
+		fmspConf.CryptoConfig = cryptoConfig
+	}
+	return fmspConf, nil
 }
 
 func buildOUIdentifiers(identifiers []membership.OUIdentifier) []*mb.FabricOUIdentifier {

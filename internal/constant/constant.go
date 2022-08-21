@@ -1,3 +1,3 @@
 package constant
 
-const DefaultAlg = "ecdsa"
+var DefaultAlg string

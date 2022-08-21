@@ -7,7 +7,7 @@ SPDX-License-Identifier: Apache-2.0
 package mocks
 
 import (
-	"crypto/sha256"
+	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
 	"hash"
 
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/core"
@@ -40,7 +40,8 @@ func (m *MockCryptoSuite) Hash(msg []byte, opts core.HashOpts) (hash []byte, err
 
 // GetHash mock get hash
 func (m *MockCryptoSuite) GetHash(opts core.HashOpts) (hash.Hash, error) {
-	return sha256.New(), nil
+	h := x509.SHA256.New()
+	return h, nil
 }
 
 // Sign mock signing

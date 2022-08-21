@@ -17,6 +17,8 @@ import (
 	"encoding/hex"
 	"fmt"
 	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/ecdsa"
+	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/sm2"
+	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/sm3"
 	"math/big"
 	"regexp"
 	"sync"
@@ -104,6 +106,7 @@ var (
 	oidNamedCurveP256 = asn1.ObjectIdentifier{1, 2, 840, 10045, 3, 1, 7}
 	oidNamedCurveP384 = asn1.ObjectIdentifier{1, 3, 132, 0, 34}
 	oidNamedCurveP521 = asn1.ObjectIdentifier{1, 3, 132, 0, 35}
+	oidNamedCurveSM2  = asn1.ObjectIdentifier{1, 2, 156, 10197, 1, 301}
 )
 
 func namedCurveFromOID(oid asn1.ObjectIdentifier) elliptic.Curve {
@@ -116,6 +119,8 @@ func namedCurveFromOID(oid asn1.ObjectIdentifier) elliptic.Curve {
 		return elliptic.P384()
 	case oid.Equal(oidNamedCurveP521):
 		return elliptic.P521()
+	case oid.Equal(oidNamedCurveSM2):
+		return sm2.SM2()
 	}
 	return nil
 }
@@ -172,6 +177,9 @@ func (csp *impl) generateECKey(curve asn1.ObjectIdentifier, ephemeral bool) (ski
 		return nil, nil, fmt.Errorf("Error querying EC-point: [%s]", err)
 	}
 	hash := sha256.Sum256(ecpt)
+	if ecdsa.IsSM2(namedCurveFromOID(curve).Params()) {
+		hash = sm3.Sum(ecpt)
+	}
 	ski = hash[:]
 
 	// set CKA_ID of the both keys to SKI(public key) and CKA_LABEL to hex string of SKI

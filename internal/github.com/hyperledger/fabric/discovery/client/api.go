@@ -13,6 +13,7 @@ package discovery
 import (
 	"github.com/hyperledger/fabric-protos-go/discovery"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/gossip/protoext"
+	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
 	"github.com/pkg/errors"
 	"google.golang.org/grpc"
 )
@@ -25,6 +26,8 @@ var (
 // Signer signs a message and returns the signature and nil,
 // or nil and error on failure
 type Signer func(msg []byte) ([]byte, error)
+
+type Hasher func() x509.Hash
 
 // Dialer connects to the server
 type Dialer func() (*grpc.ClientConn, error)

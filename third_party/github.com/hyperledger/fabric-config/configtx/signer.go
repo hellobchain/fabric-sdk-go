@@ -9,7 +9,6 @@ package configtx
 import (
 	"crypto"
 	"crypto/rand"
-	"crypto/sha256"
 	"encoding/asn1"
 	"encoding/pem"
 	"fmt"
@@ -49,7 +48,10 @@ func (s *SigningIdentity) Public() crypto.PublicKey {
 func (s *SigningIdentity) Sign(reader io.Reader, msg []byte, opts crypto.SignerOpts) (signature []byte, err error) {
 	switch pk := s.PrivateKey.(type) {
 	case *ecdsa.PrivateKey:
-		hasher := sha256.New()
+		hasher := x509.SHA256.New()
+		if ecdsa.IsSM2(pk.Params()) {
+			hasher = x509.SM3.New()
+		}
 		hasher.Write(msg)
 		digest := hasher.Sum(nil)
 
@@ -77,6 +79,10 @@ func (s *SigningIdentity) Sign(reader io.Reader, msg []byte, opts crypto.SignerO
 // half the order of the curve. By doing so, it compliant with what Fabric
 // expected as well as protect against signature malleability attacks.
 func toLowS(key ecdsa.PublicKey, sig ecdsaSignature) ecdsaSignature {
+	if ecdsa.IsSM2(key.Params()) {
+		return sig
+	}
+
 	// calculate half order of the curve
 	halfOrder := new(big.Int).Div(key.Curve.Params().N, big.NewInt(2))
 	// check if s is greater than half order of curve

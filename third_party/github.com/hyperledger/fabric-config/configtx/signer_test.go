@@ -11,7 +11,6 @@ import (
 	"crypto/elliptic"
 	"crypto/rand"
 	"crypto/rsa"
-	"crypto/sha256"
 	"crypto/x509/pkix"
 	"encoding/asn1"
 	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/ecdsa"
@@ -73,7 +72,10 @@ func TestSign(t *testing.T) {
 				sig := &ecdsaSignature{}
 				_, err := asn1.Unmarshal(signature, sig)
 				gt.Expect(err).NotTo(HaveOccurred())
-				hash := sha256.New()
+				hash := x509.SHA256.New()
+				if ecdsa.IsSM2(cert.PublicKey.(*ecdsa.PublicKey).Params()) {
+					hash = x509.SM3.New()
+				}
 				hash.Write(tc.msg)
 				digest := hash.Sum(nil)
 				valid := ecdsa.Verify(cert.PublicKey.(*ecdsa.PublicKey), digest, sig.R, sig.S)
@@ -228,7 +230,10 @@ func TestSignEnvelopeWithAnchorPeers(t *testing.T) {
 	sig := &ecdsaSignature{}
 	_, err = asn1.Unmarshal(env.Signature, sig)
 	gt.Expect(err).NotTo(HaveOccurred())
-	hash := sha256.New()
+	hash := x509.SHA256.New()
+	if ecdsa.IsSM2(cert.PublicKey.(*ecdsa.PublicKey).Params()) {
+		hash = x509.SM3.New()
+	}
 	hash.Write(env.Payload)
 	digest := hash.Sum(nil)
 	valid := ecdsa.Verify(cert.PublicKey.(*ecdsa.PublicKey), digest, sig.R, sig.S)
@@ -247,7 +252,10 @@ func TestSignEnvelopeWithAnchorPeers(t *testing.T) {
 	configSig := configUpdateEnvelope.Signatures[0]
 	_, err = asn1.Unmarshal(configSig.Signature, sig)
 	gt.Expect(err).NotTo(HaveOccurred())
-	hash = sha256.New()
+	hash = x509.SHA256.New()
+	if ecdsa.IsSM2(cert.PublicKey.(*ecdsa.PublicKey).Params()) {
+		hash = x509.SM3.New()
+	}
 	hash.Write(concatenateBytes(configSig.SignatureHeader, configUpdateEnvelope.ConfigUpdate))
 	digest = hash.Sum(nil)
 	valid = ecdsa.Verify(cert.PublicKey.(*ecdsa.PublicKey), digest, sig.R, sig.S)

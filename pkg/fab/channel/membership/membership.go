@@ -8,6 +8,7 @@ package membership
 
 import (
 	"encoding/pem"
+	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
 	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
 
 	"strings"
@@ -209,6 +210,17 @@ func getFabricConfig(config *mb.MSPConfig) (*mb.FabricMSPConfig, error) {
 	// required
 	if len(fabricConfig.RootCerts) == 0 {
 		return nil, errors.New("MSP Configuration missing root certificates required for validating signing certificates")
+	}
+	isGm, err := msp.JudgeIsGm(fabricConfig)
+	if err != nil {
+		return nil, err
+	}
+	if isGm {
+		cryptoConfig := &mb.FabricCryptoConfig{
+			SignatureHashFamily:            bccsp.SM,
+			IdentityIdentifierHashFunction: bccsp.SM3,
+		}
+		fabricConfig.CryptoConfig = cryptoConfig
 	}
 
 	return fabricConfig, nil

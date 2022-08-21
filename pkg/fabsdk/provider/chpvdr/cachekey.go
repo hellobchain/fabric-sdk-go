@@ -7,7 +7,7 @@ SPDX-License-Identifier: Apache-2.0
 package chpvdr
 
 import (
-	"crypto/sha256"
+	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
 	"strconv"
 
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/options"
@@ -26,8 +26,7 @@ func newCtxtCacheKey(ctx fab.ClientContext) (*ctxtCacheKey, error) {
 	if err != nil {
 		return nil, err
 	}
-
-	h := sha256.New()
+	h := x509.SHA256.New()
 	if _, err := h.Write(identity); err != nil {
 		return nil, err
 	}
@@ -74,7 +73,7 @@ func newEventCacheKey(chConfig fab.ChannelCfg, opts ...options.Opt) (*eventCache
 	params := defaultParams()
 	options.Apply(params, opts)
 
-	h := sha256.New()
+	h := x509.SHA256.New()
 	if _, err := h.Write([]byte(params.getOptKey())); err != nil {
 		return nil, err
 	}

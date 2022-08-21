@@ -11,8 +11,11 @@ Please review third_party pinning scripts and patches for more details.
 package protoutil
 
 import (
-	"crypto/sha256"
+	"bytes"
 	"encoding/hex"
+	"encoding/pem"
+	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/ecdsa"
+	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
 	"time"
 
 	"github.com/golang/protobuf/proto"
@@ -355,13 +358,35 @@ func createProposalFromCDS(channelID string, msg proto.Message, creator []byte, 
 	// ...and get the proposal for it
 	return CreateProposalFromCIS(common.HeaderType_ENDORSER_TRANSACTION, channelID, lsccSpec, creator)
 }
+func decodeSerializedIdentity(identity []byte) (x509.Hash, error) {
+	certStart := bytes.Index(identity, []byte("-----BEGIN"))
+	if certStart == -1 {
+		return x509.SHA256, errors.Errorf("no certificate found")
+	}
+	certText := identity[certStart:]
+	bl, _ := pem.Decode(certText)
+	if bl == nil {
+		return x509.SHA256, errors.Errorf("could not decode the PEM structure")
+	}
+	cert, err := x509.ParseCertificate(bl.Bytes)
+	if err != nil {
+		return x509.SHA256, err
+	}
+	switch puk := cert.PublicKey.(type) {
+	case *ecdsa.PublicKey:
+		if ecdsa.IsSM2(puk.Params()) {
+			return x509.SM3, nil
+		}
+	}
+	return x509.SHA256, nil
+}
 
 // ComputeTxID computes TxID as the Hash computed
 // over the concatenation of nonce and creator.
 func ComputeTxID(nonce, creator []byte) string {
 	// TODO: Get the Hash function to be used from
 	// channel configuration
-	hasher := sha256.New()
+	hasher := x509.SHA256.New()
 	hasher.Write(nonce)
 	hasher.Write(creator)
 	return hex.EncodeToString(hasher.Sum(nil))

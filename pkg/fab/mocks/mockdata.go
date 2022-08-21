@@ -7,7 +7,7 @@ SPDX-License-Identifier: Apache-2.0
 package mocks
 
 import (
-	"crypto/sha256"
+	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
 
 	"github.com/golang/protobuf/proto"
 	"github.com/golang/protobuf/ptypes/timestamp"
@@ -545,7 +545,7 @@ func CreateBlockWithCCEventAndTxStatus(events *pp.ChaincodeEvent, txID string,
 	block.Data.Data = append(block.Data.Data, ebytes)
 
 	blockbytes := cutil.ConcatenateBytes(block.Data.Data...)
-	block.Header.DataHash = computeSHA256(blockbytes)
+	block.Header.DataHash = computeHash(blockbytes)
 
 	txsfltr := txflags.New(len(block.Data.Data))
 	for i := 0; i < len(block.Data.Data); i++ {
@@ -574,8 +574,8 @@ func newBlock(seqNum uint64, previousHash []byte) *common.Block {
 	return block
 }
 
-func computeSHA256(data []byte) (hash []byte) {
-	h := sha256.New()
+func computeHash(data []byte) (hash []byte) {
+	h := x509.SHA256.New()
 	_, err := h.Write(data)
 	if err != nil {
 		panic("unable to create digest")
