@@ -9,6 +9,7 @@ package resource
 import (
 	"fmt"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
+	"github.com/hyperledger/fabric-sdk-go/pkg/algo"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -42,11 +43,7 @@ func GenerateMspDir(mspDir string, config *msp.MSPConfig) error {
 	if err != nil {
 		return err
 	}
-	isGm, err := mspcfg.JudgeIsGm(cfg)
-	if err != nil {
-		return err
-	}
-	if isGm {
+	if algo.GetGMFlag() {
 		cryptoConfig := &msp.FabricCryptoConfig{
 			SignatureHashFamily:            bccsp.SM,
 			IdentityIdentifierHashFunction: bccsp.SM3,

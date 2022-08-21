@@ -12,6 +12,7 @@ package msp
 
 import (
 	"encoding/pem"
+	"github.com/hyperledger/fabric-sdk-go/pkg/algo"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -296,11 +297,7 @@ func getMspConfig(dir string, ID string, sigid *msp.SigningIdentityInfo) (*msp.M
 	}
 
 	// wsw add
-	isGm, err := JudgeIsGm(fmspconf)
-	if err != nil {
-		return nil, err
-	}
-	if isGm {
+	if algo.GetGMFlag() {
 		mspLogger.Debug("gm alg")
 		cryptoConfig = &msp.FabricCryptoConfig{
 			SignatureHashFamily:            bccsp.SM,

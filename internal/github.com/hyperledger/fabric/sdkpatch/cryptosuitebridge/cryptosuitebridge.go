@@ -42,6 +42,7 @@ const (
 	X509Certificate  = bccsp.X509Certificate
 	SM2              = bccsp.SM2
 	SM3              = bccsp.SM3
+	SM               = bccsp.SM
 )
 
 // NewCspSigner is a bridge for bccsp signer.New call
@@ -77,6 +78,10 @@ func GetSHA256Opts() core.HashOpts {
 //GetSM3Opts returns options relating to SM3.
 func GetSM3Opts() core.HashOpts {
 	return &bccsp.SM3Opts{}
+}
+
+func GetHashOpts() core.HashOpts {
+	return cryptosuite.GetHashOpts()
 }
 
 //GetSHA3256Opts returns options relating to SHA-256.

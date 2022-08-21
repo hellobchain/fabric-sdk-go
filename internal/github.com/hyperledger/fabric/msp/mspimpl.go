@@ -16,6 +16,7 @@ import (
 	"encoding/hex"
 	"encoding/pem"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
+	"github.com/hyperledger/fabric-sdk-go/pkg/algo"
 	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
 
 	"github.com/golang/protobuf/proto"
@@ -239,11 +240,7 @@ func (msp *bccspmsp) Setup(conf1 *m.MSPConfig) error {
 	if err != nil {
 		return errors.Wrap(err, "failed unmarshalling fabric msp config")
 	}
-	isGm, err := JudgeIsGm(conf)
-	if err != nil {
-		return err
-	}
-	if isGm {
+	if algo.GetGMFlag() {
 		mspLogger.Debug("gm alg")
 		cryptoConfig := &m.FabricCryptoConfig{
 			SignatureHashFamily:            bccsp.SM,

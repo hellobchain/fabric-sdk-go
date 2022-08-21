@@ -7,11 +7,7 @@ SPDX-License-Identifier: Apache-2.0
 package discovery
 
 import (
-	"bytes"
 	"context"
-	"encoding/pem"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/ecdsa"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
 	"strings"
 	"sync"
 
@@ -130,44 +126,8 @@ func (c *client) send(reqCtx context.Context, req *discclient.Request, target fa
 			return c.ctx.SigningManager().Sign(msg, c.ctx.PrivateKey())
 		},
 		signerCacheSize,
-		func() x509.Hash {
-			serialize, err := c.ctx.Serialize()
-			if err != nil {
-				logger.Error(err)
-				return x509.SHA256
-			}
-			serializedIdentity, err := decodeSerializedIdentity(serialize)
-			if err != nil {
-				logger.Error(err)
-				return serializedIdentity
-			}
-			return serializedIdentity
-		},
 	)
 	return discClient.Send(reqCtx, req, c.authInfo)
-}
-
-func decodeSerializedIdentity(identity []byte) (x509.Hash, error) {
-	certStart := bytes.Index(identity, []byte("-----BEGIN"))
-	if certStart == -1 {
-		return x509.SHA256, errors.Errorf("no certificate found")
-	}
-	certText := identity[certStart:]
-	bl, _ := pem.Decode(certText)
-	if bl == nil {
-		return x509.SHA256, errors.Errorf("could not decode the PEM structure")
-	}
-	cert, err := x509.ParseCertificate(bl.Bytes)
-	if err != nil {
-		return x509.SHA256, err
-	}
-	switch puk := cert.PublicKey.(type) {
-	case *ecdsa.PublicKey:
-		if ecdsa.IsSM2(puk.Params()) {
-			return x509.SM3, nil
-		}
-	}
-	return x509.SHA256, nil
 }
 
 type response struct {

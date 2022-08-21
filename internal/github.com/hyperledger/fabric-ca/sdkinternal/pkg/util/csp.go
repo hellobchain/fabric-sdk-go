@@ -25,7 +25,7 @@ import (
 	"encoding/hex"
 	"encoding/pem"
 	"fmt"
-	"github.com/hyperledger/fabric-sdk-go/internal/constant"
+	"github.com/hyperledger/fabric-sdk-go/pkg/algo"
 	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/ecdsa"
 	tls "github.com/hyperledger/fabric-sdk-go/third_party/smalgo/gmtls"
 	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
@@ -45,7 +45,7 @@ import (
 // This supports ECDSA.
 func getBCCSPKeyOpts(kr csr.KeyRequest, ephemeral bool) (opts core.KeyGenOpts, err error) {
 	if kr == nil {
-		if constant.DefaultAlg == "sm2" {
+		if algo.GetGMFlag() {
 			return factory.GetSM2KeyGenOpts(ephemeral), nil
 		} else {
 			return factory.GetECDSAKeyGenOpts(ephemeral), nil

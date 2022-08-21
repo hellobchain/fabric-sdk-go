@@ -11,7 +11,7 @@ Please review third_party pinning scripts and patches for more details.
 package api
 
 import (
-	"github.com/hyperledger/fabric-sdk-go/internal/constant"
+	"github.com/hyperledger/fabric-sdk-go/pkg/algo"
 	"time"
 
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkinternal/pkg/util"
@@ -354,6 +354,6 @@ func (ar *AttributeRequest) IsRequired() bool {
 // NewKeyRequest returns the KeyRequest object that is constructed
 // from the object returned by the csr.NewKeyRequest() function
 func NewKeyRequest() *KeyRequest {
-	bkr := csr.NewBasicKeyRequest(constant.DefaultAlg)
+	bkr := csr.NewBasicKeyRequest(algo.GetAlgo())
 	return &KeyRequest{Algo: bkr.A, Size: bkr.S}
 }

@@ -32,6 +32,15 @@ func ComputeSHA256(data []byte) (hash []byte) {
 	return
 }
 
+// ComputeHash returns SHA2-256 on data
+func ComputeHash(data []byte) (hash []byte) {
+	hash, err := cryptosuitebridge.GetDefault().Hash(data, cryptosuitebridge.GetHashOpts())
+	if err != nil {
+		panic(fmt.Errorf("Failed computing hash on [% x]", data))
+	}
+	return
+}
+
 // ComputeSM3 returns SM3 on data
 func ComputeSM3(data []byte) (hash []byte) {
 	hash, err := cryptosuitebridge.GetDefault().Hash(data, cryptosuitebridge.GetSM3Opts())

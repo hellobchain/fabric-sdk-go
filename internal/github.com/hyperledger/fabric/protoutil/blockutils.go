@@ -13,7 +13,7 @@ package protoutil
 import (
 	"bytes"
 	"encoding/asn1"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
+	"github.com/hyperledger/fabric-sdk-go/pkg/algo"
 	"math/big"
 
 	"github.com/golang/protobuf/proto"
@@ -62,13 +62,13 @@ func BlockHeaderBytes(b *cb.BlockHeader) []byte {
 }
 
 func BlockHeaderHash(b *cb.BlockHeader) []byte {
-	hasher := x509.SHA256.New()
+	hasher := algo.GetDefaultHash().New()
 	hasher.Write(BlockHeaderBytes(b))
 	return hasher.Sum(nil)
 }
 
 func BlockDataHash(b *cb.BlockData) []byte {
-	hasher := x509.SHA256.New()
+	hasher := algo.GetDefaultHash().New()
 	hasher.Write(bytes.Join(b.Data, nil))
 	return hasher.Sum(nil)
 }

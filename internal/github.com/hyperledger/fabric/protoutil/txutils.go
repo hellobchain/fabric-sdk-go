@@ -12,11 +12,10 @@ package protoutil
 
 import (
 	"bytes"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
-
 	"github.com/golang/protobuf/proto"
 	"github.com/hyperledger/fabric-protos-go/common"
 	"github.com/hyperledger/fabric-protos-go/peer"
+	"github.com/hyperledger/fabric-sdk-go/pkg/algo"
 	"github.com/pkg/errors"
 )
 
@@ -441,7 +440,7 @@ func GetProposalHash2(header *common.Header, ccPropPayl []byte) ([]byte, error) 
 		return nil, errors.New("nil arguments")
 	}
 
-	hash := x509.SHA256.New()
+	hash := algo.GetDefaultHash().New()
 	// hash the serialized Channel Header object
 	hash.Write(header.ChannelHeader)
 	// hash the serialized Signature Header object
@@ -472,7 +471,7 @@ func GetProposalHash1(header *common.Header, ccPropPayl []byte) ([]byte, error) 
 	if err != nil {
 		return nil, err
 	}
-	hash2 := x509.SHA256.New()
+	hash2 := algo.GetDefaultHash().New()
 	// hash the serialized Channel Header object
 	hash2.Write(header.ChannelHeader)
 	// hash the serialized Signature Header object

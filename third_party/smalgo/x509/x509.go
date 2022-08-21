@@ -135,11 +135,11 @@ type tbsCertificate struct {
 	Version            int `asn1:"optional,explicit,default:0,tag:0"`
 	SerialNumber       *big.Int
 	SignatureAlgorithm pkix.AlgorithmIdentifier
-	Issuer    asn1.RawValue
-	Validity  validity
-	Subject   asn1.RawValue
-	PublicKey publicKeyInfo
-	UniqueId  asn1.BitString   `asn1:"optional,tag:1"`
+	Issuer             asn1.RawValue
+	Validity           validity
+	Subject            asn1.RawValue
+	PublicKey          publicKeyInfo
+	UniqueId           asn1.BitString   `asn1:"optional,tag:1"`
 	SubjectUniqueId    asn1.BitString   `asn1:"optional,tag:2"`
 	Extensions         []pkix.Extension `asn1:"optional,explicit,tag:3"`
 }
@@ -682,7 +682,7 @@ type Certificate struct {
 	Issuer              pkix.Name
 	Subject             pkix.Name
 	NotBefore, NotAfter time.Time // Validity bounds.
-	KeyUsage KeyUsage
+	KeyUsage            KeyUsage
 
 	// Extensions contains raw X.509 extensions. When parsing certificates,
 	// this can be used to extract non-critical extensions that are not
@@ -972,7 +972,16 @@ func checkSignature(algo SignatureAlgorithm, signed, signature []byte, publicKey
 			return errors.New("x509: ECDSA SM2 signature contained zero or negative values")
 		}
 		if !ecdsa.Verify(pub, digest, ecdsaSig.R, ecdsaSig.S) {
-			return errors.New("x509: ECDSA SM2 verification failure")
+			if pubKeyAlgo == SM2 {
+				h := hashType.New()
+				h.Write(digest)
+				secondDigest := h.Sum(nil)
+				if !ecdsa.Verify(pub, secondDigest, ecdsaSig.R, ecdsaSig.S) {
+					return errors.New("x509: second SM2 verification failure")
+				}
+			} else {
+				return errors.New("x509: ECDSA SM2 verification failure")
+			}
 		}
 		return
 	}

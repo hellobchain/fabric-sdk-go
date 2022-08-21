@@ -7,6 +7,7 @@ SPDX-License-Identifier: Apache-2.0
 package cryptosuite
 
 import (
+	"github.com/hyperledger/fabric-sdk-go/pkg/algo"
 	"sync/atomic"
 
 	"errors"
@@ -78,9 +79,22 @@ func GetSHA256Opts() core.HashOpts {
 	return &bccsp.SHA256Opts{}
 }
 
+//GetSM3Opts returns options relating to SHA-256.
+func getSM3Opts() core.HashOpts {
+	return &bccsp.SM3Opts{}
+}
+
 //GetSHAOpts returns options for computing SHA.
-func GetSHAOpts() core.HashOpts {
+func getSHAOpts() core.HashOpts {
 	return &bccsp.SHAOpts{}
+}
+
+func GetHashOpts() core.HashOpts {
+	if algo.GetGMFlag() {
+		return getSM3Opts()
+	} else {
+		return getSHAOpts()
+	}
 }
 
 //GetECDSAP256KeyGenOpts returns options for ECDSA key generation with curve P-256.

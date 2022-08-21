@@ -20,7 +20,7 @@ import (
 	"encoding/hex"
 	"errors"
 	"fmt"
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
+	"github.com/hyperledger/fabric-sdk-go/pkg/algo"
 	"strconv"
 	"strings"
 
@@ -628,7 +628,7 @@ func newBlock(seqNum uint64, previousHash []byte) *cb.Block {
 // computeTxID computes TxID as the Hash computed
 // over the concatenation of nonce and creator.
 func computeTxID(nonce, creator []byte) string {
-	hasher := x509.SHA256.New()
+	hasher := algo.GetDefaultHash().New()
 	hasher.Write(nonce)
 	hasher.Write(creator)
 	return hex.EncodeToString(hasher.Sum(nil))
@@ -636,7 +636,7 @@ func computeTxID(nonce, creator []byte) string {
 
 // blockDataHash computes block data as the Hash
 func blockDataHash(b *cb.BlockData) []byte {
-	hasher := x509.SHA256.New()
+	hasher := algo.GetDefaultHash().New()
 	hasher.Write(bytes.Join(b.Data, nil))
 	sum := hasher.Sum(nil)
 	return sum[:]

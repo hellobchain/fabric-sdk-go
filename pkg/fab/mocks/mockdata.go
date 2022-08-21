@@ -7,10 +7,9 @@ SPDX-License-Identifier: Apache-2.0
 package mocks
 
 import (
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
-
 	"github.com/golang/protobuf/proto"
 	"github.com/golang/protobuf/ptypes/timestamp"
+	"github.com/hyperledger/fabric-sdk-go/pkg/algo"
 
 	"github.com/hyperledger/fabric-protos-go/common"
 	mb "github.com/hyperledger/fabric-protos-go/msp"
@@ -575,7 +574,7 @@ func newBlock(seqNum uint64, previousHash []byte) *common.Block {
 }
 
 func computeHash(data []byte) (hash []byte) {
-	h := x509.SHA256.New()
+	h := algo.GetDefaultHash().New()
 	_, err := h.Write(data)
 	if err != nil {
 		panic("unable to create digest")

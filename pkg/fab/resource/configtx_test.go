@@ -7,7 +7,6 @@ SPDX-License-Identifier: Apache-2.0
 package resource
 
 import (
-	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
 	"path/filepath"
 	"testing"
 	"time"
@@ -220,7 +219,7 @@ func TestMissingOrdererSection(t *testing.T) {
 	config := sampleSingleMSPSolo()
 	config.Orderer = nil
 
-	_, err := CreateGenesisBlock(config, "mychannel", x509.SHA256)
+	_, err := CreateGenesisBlock(config, "mychannel")
 	require.Error(t, err, "Missing orderer section")
 }
 
@@ -228,7 +227,7 @@ func TestMissingConsortiumSection(t *testing.T) {
 	config := sampleSingleMSPSolo()
 	config.Consortiums = nil
 
-	_, err := CreateGenesisBlock(config, "mychannel", x509.SHA256)
+	_, err := CreateGenesisBlock(config, "mychannel")
 	require.NoError(t, err, "Missing consortiums section")
 }
 
@@ -236,13 +235,13 @@ func TestForOrdererMissingConsortiumSection(t *testing.T) {
 	config := sampleSingleMSPSolo()
 	config.Consortiums = nil
 
-	_, err := CreateGenesisBlockForOrderer(config, "mychannel", x509.SHA256)
+	_, err := CreateGenesisBlockForOrderer(config, "mychannel")
 	require.Error(t, err, "Missing consortiums section")
 }
 
 func TestCreateAndInspectGenesiBlock(t *testing.T) {
 
-	b, err := CreateGenesisBlock(sampleSingleMSPSolo(), "mychannel", x509.SHA256)
+	b, err := CreateGenesisBlock(sampleSingleMSPSolo(), "mychannel")
 	require.NoError(t, err, "Failed to create genesis block")
 	require.NotNil(t, b, "Failed to create genesis block")
 
@@ -253,7 +252,7 @@ func TestCreateAndInspectGenesiBlock(t *testing.T) {
 
 func TestCreateAndInspectGenesiBlockForOrderer(t *testing.T) {
 
-	b, err := CreateGenesisBlockForOrderer(sampleSingleMSPSolo(), "mychannel", x509.SHA256)
+	b, err := CreateGenesisBlockForOrderer(sampleSingleMSPSolo(), "mychannel")
 	require.NoError(t, err, "Failed to create genesis block")
 	require.NotNil(t, b, "Failed to create genesis block")
 

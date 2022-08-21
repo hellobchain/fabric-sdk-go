@@ -14,7 +14,7 @@ import (
 	"encoding/pem"
 	"fmt"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
-	mspcfg "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/msp"
+	"github.com/hyperledger/fabric-sdk-go/pkg/algo"
 	"github.com/hyperledger/fabric-sdk-go/third_party/github.com/hyperledger/fabric-config/configtx/membership"
 	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
 	"reflect"
@@ -559,11 +559,7 @@ func getMSPConfig(configGroup *cb.ConfigGroup) (MSP, error) {
 		return MSP{}, fmt.Errorf("unmarshaling fabric msp config: %v", err)
 	}
 
-	isGm, err := mspcfg.JudgeIsGm(fabricMSPConfig)
-	if err != nil {
-		return MSP{}, err
-	}
-	if isGm {
+	if algo.GetGMFlag() {
 		cryptoConfig := &mb.FabricCryptoConfig{
 			SignatureHashFamily:            bccsp.SM,
 			IdentityIdentifierHashFunction: bccsp.SM3,
@@ -808,11 +804,7 @@ func (m *MSP) toProto() (*mb.FabricMSPConfig, error) {
 		TlsIntermediateCerts: buildPemEncodedCertListFromX509(m.TLSIntermediateCerts),
 		FabricNodeOus:        fabricNodeOUs,
 	}
-	isGm, err := mspcfg.JudgeIsGm(fmspConf)
-	if err != nil {
-		return nil, err
-	}
-	if isGm {
+	if algo.GetGMFlag() {
 		cryptoConfig := &mb.FabricCryptoConfig{
 			SignatureHashFamily:            bccsp.SM,
 			IdentityIdentifierHashFunction: bccsp.SM3,

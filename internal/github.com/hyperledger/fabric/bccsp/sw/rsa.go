@@ -8,7 +8,6 @@ package sw
 
 import (
 	"crypto/rsa"
-	"crypto/sha256"
 	"errors"
 	"fmt"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
@@ -46,6 +45,7 @@ func (k *rsaPublicKey) SKI() []byte {
 
 	// Marshal the public key and hash it
 	raw := x5092.MarshalPKCS1PublicKey(k.pubKey)
-	hash := sha256.Sum256(raw)
-	return hash[:]
+	hash := x5092.SHA256.New()
+	hash.Write(raw)
+	return hash.Sum(nil)[:]
 }

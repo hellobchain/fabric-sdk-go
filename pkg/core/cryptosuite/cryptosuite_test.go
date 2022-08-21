@@ -34,7 +34,7 @@ func TestGetDefault(t *testing.T) {
 	assert.NotEmpty(t, defaultCryptoSuite, "default suite should have been initialized")
 	assert.True(t, atomic.LoadInt32(&initialized) > 0, "'initialized' flag supposed to be set to 1")
 
-	hashbytes, err := defSuite.Hash([]byte("Sample message"), GetSHAOpts())
+	hashbytes, err := defSuite.Hash([]byte("Sample message"), getSHAOpts())
 	assert.Empty(t, err, "Not supposed to get error on defaultCryptSuite.Hash() call : %s", err)
 	assert.NotEmpty(t, hashbytes, "Supposed to get valid hash from defaultCryptSuite.Hash()")
 
@@ -44,7 +44,7 @@ func TestGetDefault(t *testing.T) {
 	assert.NotEmpty(t, defaultCryptoSuite, "default suite should have been initialized")
 	assert.True(t, atomic.LoadInt32(&initialized) > 0, "'initialized' flag supposed to be set to 1")
 
-	hashbytes, err = defSuite.Hash([]byte("Sample message"), GetSHAOpts())
+	hashbytes, err = defSuite.Hash([]byte("Sample message"), getSHAOpts())
 	assert.Empty(t, err, "Not supposed to get error on defaultCryptSuite.Hash() call : %s", err)
 	assert.NotEmpty(t, hashbytes, "Supposed to get valid hash from defaultCryptSuite.Hash()")
 
@@ -75,7 +75,7 @@ func TestGetDefault(t *testing.T) {
 func TestHashOpts(t *testing.T) {
 
 	//Get CryptoSuite SHA Opts
-	hashOpts := GetSHAOpts()
+	hashOpts := getSHAOpts()
 	assert.NotZero(t, hashOpts, "Not supposed to be empty shaHashOpts")
 	assert.True(t, hashOpts.Algorithm() == shaHashOptsAlgorithm, "Unexpected SHA hash opts, expected [%s], got [%s]", shaHashOptsAlgorithm, hashOpts.Algorithm())
 

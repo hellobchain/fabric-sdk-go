@@ -16,9 +16,9 @@ limitations under the License.
 package sw
 
 import (
-	"crypto/sha256"
 	"errors"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
+	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
 )
 
 type symmetryPrivateKey struct {
@@ -38,7 +38,7 @@ func (k *symmetryPrivateKey) Bytes() (raw []byte, err error) {
 
 // SKI returns the subject key identifier of this key.
 func (k *symmetryPrivateKey) SKI() (ski []byte) {
-	hash := sha256.New()
+	hash := x509.SHA256.New()
 	hash.Write([]byte{0x01})
 	hash.Write(k.privKey)
 	return hash.Sum(nil)

@@ -14,6 +14,7 @@ import (
 	"bytes"
 	"encoding/hex"
 	"encoding/pem"
+	"github.com/hyperledger/fabric-sdk-go/pkg/algo"
 	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/ecdsa"
 	"github.com/hyperledger/fabric-sdk-go/third_party/smalgo/x509"
 	"time"
@@ -386,7 +387,7 @@ func decodeSerializedIdentity(identity []byte) (x509.Hash, error) {
 func ComputeTxID(nonce, creator []byte) string {
 	// TODO: Get the Hash function to be used from
 	// channel configuration
-	hasher := x509.SHA256.New()
+	hasher := algo.GetDefaultHash().New()
 	hasher.Write(nonce)
 	hasher.Write(creator)
 	return hex.EncodeToString(hasher.Sum(nil))

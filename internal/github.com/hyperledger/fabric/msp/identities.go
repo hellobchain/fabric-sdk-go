@@ -160,7 +160,7 @@ func (id *identity) Anonymous() bool {
 // signature; it returns nil if so or an error otherwise
 func (id *identity) Verify(msg []byte, sig []byte) error {
 	// mspIdentityLogger.Infof("Verifying signature")
-
+	mspIdentityLogger.Info("verify hash", id.msp.cryptoConfig.SignatureHashFamily)
 	// Compute Hash
 	hashOpt, err := id.getHashOpt(id.msp.cryptoConfig.SignatureHashFamily)
 	if err != nil {
@@ -211,7 +211,7 @@ func (id *identity) getHashOpt(hashFamily string) (core.HashOpts, error) {
 		return bccsp.GetHashOpt(bccsp.SHA256)
 	case bccsp.SHA3:
 		return bccsp.GetHashOpt(bccsp.SHA3_256)
-	case bccsp.SM3:
+	case bccsp.SM:
 		return bccsp.GetHashOpt(bccsp.SM3)
 	}
 	return nil, errors.Errorf("hash familiy not recognized [%s]", hashFamily)
@@ -245,7 +245,7 @@ func newSigningIdentity(cert *x509.Certificate, pk core.Key, signer crypto.Signe
 // Sign produces a signature over msg, signed by this instance
 func (id *signingidentity) Sign(msg []byte) ([]byte, error) {
 	//mspIdentityLogger.Infof("Signing message")
-
+	mspIdentityLogger.Info("sign hash", id.msp.cryptoConfig.SignatureHashFamily)
 	// Compute Hash
 	hashOpt, err := id.getHashOpt(id.msp.cryptoConfig.SignatureHashFamily)
 	if err != nil {
