@@ -9,6 +9,7 @@ package resmgmt
 import (
 	reqContext "context"
 	"io"
+	"math/rand"
 	"time"
 
 	"github.com/hyperledger/fabric-protos-go/common"
@@ -104,6 +105,36 @@ func WithOrdererEndpoint(key string) RequestOption {
 		}
 
 		return WithOrderer(orderer)(ctx, opts)
+	}
+}
+
+// WithRandomOrdererEndpoints allows an orderer to be specified for the request.
+// The orderer will be looked-up based on the key argument.
+// key argument can be a name or url
+func WithRandomOrdererEndpoints(keys ...string) RequestOption {
+	return func(ctx context.Client, opts *requestOptions) error {
+		if len(keys) == 0 {
+			return WithOrderer(nil)(ctx, opts)
+		}
+		var orderers []fab.Orderer
+		for _, key := range keys {
+			ordererCfg, found, ignoreOrderer := ctx.EndpointConfig().OrdererConfig(key)
+			if ignoreOrderer {
+				return errors.Errorf("orderer url : %s is explicitly ignored by EntityMatchers config - can't add orderer", key)
+			}
+
+			if !found {
+				return errors.Errorf("orderer not found for url : %s", key)
+			}
+
+			orderer, err := ctx.InfraProvider().CreateOrdererFromConfig(ordererCfg)
+			if err != nil {
+				return errors.WithMessage(err, "creating orderer from config failed")
+			}
+			orderers = append(orderers, orderer)
+		}
+		rand.Seed(time.Now().UnixNano())
+		return WithOrderer(orderers[rand.Intn(len(orderers))])(ctx, opts)
 	}
 }
 
