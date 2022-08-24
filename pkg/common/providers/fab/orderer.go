@@ -18,6 +18,12 @@ type Orderer interface {
 	URL() string
 	SendBroadcast(ctx reqContext.Context, envelope *SignedEnvelope) (*common.Status, error)
 	SendDeliver(ctx reqContext.Context, envelope *SignedEnvelope) (chan *common.Block, chan error)
+	SetSensitiveWords(ctx reqContext.Context, in *SensitiveWord) error
+	QuerySensitiveWords(ctx reqContext.Context) ([]string, error)
+	AddSensitiveWords(ctx reqContext.Context, in *SensitiveWord) error
+	SetExcludeWords(ctx reqContext.Context, in *ExcludedSymbol) error
+	QueryExcludeWords(ctx reqContext.Context) ([]string, error)
+	AddExcludeWords(ctx reqContext.Context, in *ExcludedSymbol) error
 }
 
 // A SignedEnvelope can can be sent to an orderer for broadcasting

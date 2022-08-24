@@ -11,6 +11,7 @@ import (
 	"github.com/wsw365904/newcryptosm/tls/credentials"
 	"github.com/wsw365904/newcryptosm/x509"
 	"io"
+	"strings"
 	"time"
 
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/multi"
@@ -30,6 +31,8 @@ import (
 	"github.com/hyperledger/fabric-sdk-go/pkg/core/config/comm"
 	"github.com/hyperledger/fabric-sdk-go/pkg/core/config/endpoint"
 )
+
+var _ fab.Orderer = (*Orderer)(nil)
 
 var logger = logging.NewLogger("fabsdk/fab")
 
@@ -51,6 +54,138 @@ type Orderer struct {
 	failFast       bool
 	allowInsecure  bool
 	commManager    fab.CommManager
+}
+
+func (o *Orderer) SetSensitiveWords(ctx reqContext.Context, in *fab.SensitiveWord) error {
+	conn, err := o.conn(ctx)
+	if err != nil {
+		rpcStatus, ok := grpcstatus.FromError(err)
+		if ok {
+			return errors.WithMessage(status.NewFromGRPCStatus(rpcStatus), "connection failed")
+		}
+
+		return status.New(status.OrdererClientStatus, status.ConnectionFailed.ToInt32(), err.Error(), nil)
+	}
+	defer o.releaseConn(ctx, conn)
+	_, err = fab.NewSensitiveWordClient(conn).SetSensitiveWord(ctx, in)
+	if err != nil {
+		rpcStatus, ok := grpcstatus.FromError(err)
+		if ok {
+			err = status.NewFromGRPCStatus(rpcStatus)
+		}
+		return errors.Wrap(err, "NewSensitiveWordClient failed")
+	}
+	return nil
+}
+
+func (o *Orderer) QuerySensitiveWords(ctx reqContext.Context) ([]string, error) {
+	conn, err := o.conn(ctx)
+	if err != nil {
+		rpcStatus, ok := grpcstatus.FromError(err)
+		if ok {
+			return nil, errors.WithMessage(status.NewFromGRPCStatus(rpcStatus), "connection failed")
+		}
+
+		return nil, status.New(status.OrdererClientStatus, status.ConnectionFailed.ToInt32(), err.Error(), nil)
+	}
+	defer o.releaseConn(ctx, conn)
+	words, err := fab.NewSensitiveWordClient(conn).QuerySensitiveWord(ctx, nil)
+	if err != nil {
+		rpcStatus, ok := grpcstatus.FromError(err)
+		if ok {
+			err = status.NewFromGRPCStatus(rpcStatus)
+		}
+		return nil, errors.Wrap(err, "NewSensitiveWordClient failed")
+	}
+	return strings.Split(string(words.SensitiveWords), "|"), nil
+}
+
+func (o *Orderer) AddSensitiveWords(ctx reqContext.Context, in *fab.SensitiveWord) error {
+	conn, err := o.conn(ctx)
+	if err != nil {
+		rpcStatus, ok := grpcstatus.FromError(err)
+		if ok {
+			return errors.WithMessage(status.NewFromGRPCStatus(rpcStatus), "connection failed")
+		}
+
+		return status.New(status.OrdererClientStatus, status.ConnectionFailed.ToInt32(), err.Error(), nil)
+	}
+	defer o.releaseConn(ctx, conn)
+	_, err = fab.NewSensitiveWordClient(conn).AddSensitiveWord(ctx, in)
+	if err != nil {
+		rpcStatus, ok := grpcstatus.FromError(err)
+		if ok {
+			err = status.NewFromGRPCStatus(rpcStatus)
+		}
+		return errors.Wrap(err, "NewSensitiveWordClient failed")
+	}
+	return nil
+}
+
+func (o *Orderer) SetExcludeWords(ctx reqContext.Context, in *fab.ExcludedSymbol) error {
+	conn, err := o.conn(ctx)
+	if err != nil {
+		rpcStatus, ok := grpcstatus.FromError(err)
+		if ok {
+			return errors.WithMessage(status.NewFromGRPCStatus(rpcStatus), "connection failed")
+		}
+
+		return status.New(status.OrdererClientStatus, status.ConnectionFailed.ToInt32(), err.Error(), nil)
+	}
+	defer o.releaseConn(ctx, conn)
+	_, err = fab.NewSensitiveWordClient(conn).SetExcludedSymbol(ctx, in)
+	if err != nil {
+		rpcStatus, ok := grpcstatus.FromError(err)
+		if ok {
+			err = status.NewFromGRPCStatus(rpcStatus)
+		}
+		return errors.Wrap(err, "NewSensitiveWordClient failed")
+	}
+	return nil
+}
+
+func (o *Orderer) QueryExcludeWords(ctx reqContext.Context) ([]string, error) {
+	conn, err := o.conn(ctx)
+	if err != nil {
+		rpcStatus, ok := grpcstatus.FromError(err)
+		if ok {
+			return nil, errors.WithMessage(status.NewFromGRPCStatus(rpcStatus), "connection failed")
+		}
+
+		return nil, status.New(status.OrdererClientStatus, status.ConnectionFailed.ToInt32(), err.Error(), nil)
+	}
+	defer o.releaseConn(ctx, conn)
+	words, err := fab.NewSensitiveWordClient(conn).QueryExcludedSymbol(ctx, nil)
+	if err != nil {
+		rpcStatus, ok := grpcstatus.FromError(err)
+		if ok {
+			err = status.NewFromGRPCStatus(rpcStatus)
+		}
+		return nil, errors.Wrap(err, "NewSensitiveWordClient failed")
+	}
+	return strings.Split(string(words.ExcludedSymbols), "|"), nil
+}
+
+func (o *Orderer) AddExcludeWords(ctx reqContext.Context, in *fab.ExcludedSymbol) error {
+	conn, err := o.conn(ctx)
+	if err != nil {
+		rpcStatus, ok := grpcstatus.FromError(err)
+		if ok {
+			return errors.WithMessage(status.NewFromGRPCStatus(rpcStatus), "connection failed")
+		}
+
+		return status.New(status.OrdererClientStatus, status.ConnectionFailed.ToInt32(), err.Error(), nil)
+	}
+	defer o.releaseConn(ctx, conn)
+	_, err = fab.NewSensitiveWordClient(conn).AddExcludedSymbol(ctx, in)
+	if err != nil {
+		rpcStatus, ok := grpcstatus.FromError(err)
+		if ok {
+			err = status.NewFromGRPCStatus(rpcStatus)
+		}
+		return errors.Wrap(err, "NewSensitiveWordClient failed")
+	}
+	return nil
 }
 
 // Option describes a functional parameter for the New constructor

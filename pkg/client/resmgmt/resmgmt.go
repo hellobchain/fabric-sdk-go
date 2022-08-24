@@ -1265,6 +1265,28 @@ func (rc *Client) QueryConfigBlockFromOrderer(channelID string, options ...Reque
 
 }
 
+func (rc *Client) QuerySensitiveWordsFromOrderer(channelID string, options ...RequestOption) ([]string, []string, error) {
+	opts, err := rc.prepareRequestOpts(options...)
+	if err != nil {
+		return nil, nil, err
+	}
+	orderer, err := rc.requestOrderer(&opts, channelID)
+	if err != nil {
+		return nil, nil, errors.WithMessage(err, "failed to find orderer for request")
+	}
+	reqCtx, cancel := rc.createRequestContext(opts, fab.OrdererResponse)
+	defer cancel()
+	sensitiveWords, err := orderer.QuerySensitiveWords(reqCtx)
+	if err != nil {
+		return nil, nil, errors.WithMessage(err, "failed to QuerySensitiveWords for request")
+	}
+	excludeWords, err := orderer.QueryExcludeWords(reqCtx)
+	if err != nil {
+		return nil, nil, errors.WithMessage(err, "failed to QueryExcludeWords for request")
+	}
+	return sensitiveWords, excludeWords, nil
+}
+
 // QueryConfigFromOrderer config returns channel configuration from orderer. If orderer is not provided using options it will be defaulted to channel orderer (if configured) or random orderer from configuration.
 //  Parameters:
 //  channelID is mandatory channel ID

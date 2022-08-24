@@ -20,6 +20,10 @@ import (
 	"google.golang.org/grpc/credentials"
 )
 
+var _ fab.Orderer = (*MockOrderer)(nil)
+
+var _ fab.Orderer = (*MockGrpcOrderer)(nil)
+
 // DeliverySession enables simulation of multiple calls to the orderer
 // Each call is internally represented by a DeliverySession
 // Note that SDK's orderer.SendDeliver function returns only upon
@@ -48,6 +52,36 @@ type MockOrderer struct {
 	BroadcastQueue        chan *fab.SignedEnvelope
 	DeliverySessions      chan *DeliverySession
 	DeliverySessionsQueue chan *DeliverySession
+}
+
+func (o *MockOrderer) SetSensitiveWords(ctx reqContext.Context, in *fab.SensitiveWord) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (o *MockOrderer) QuerySensitiveWords(ctx reqContext.Context) ([]string, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (o *MockOrderer) AddSensitiveWords(ctx reqContext.Context, in *fab.SensitiveWord) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (o *MockOrderer) SetExcludeWords(ctx reqContext.Context, in *fab.ExcludedSymbol) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (o *MockOrderer) QueryExcludeWords(ctx reqContext.Context) ([]string, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (o *MockOrderer) AddExcludeWords(ctx reqContext.Context, in *fab.ExcludedSymbol) error {
+	//TODO implement me
+	panic("implement me")
 }
 
 // NewMockOrderer ...
@@ -182,6 +216,36 @@ type MockGrpcOrderer struct {
 	srv        *grpc.Server
 	wg         sync.WaitGroup
 	OrdererURL string
+}
+
+func (o *MockGrpcOrderer) SetSensitiveWords(ctx reqContext.Context, in *fab.SensitiveWord) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (o *MockGrpcOrderer) QuerySensitiveWords(ctx reqContext.Context) ([]string, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (o *MockGrpcOrderer) AddSensitiveWords(ctx reqContext.Context, in *fab.SensitiveWord) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (o *MockGrpcOrderer) SetExcludeWords(ctx reqContext.Context, in *fab.ExcludedSymbol) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (o *MockGrpcOrderer) QueryExcludeWords(ctx reqContext.Context) ([]string, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (o *MockGrpcOrderer) AddExcludeWords(ctx reqContext.Context, in *fab.ExcludedSymbol) error {
+	//TODO implement me
+	panic("implement me")
 }
 
 // NewMockGrpcOrderer will create a new instance for the given url and TLS credentials (optional)
