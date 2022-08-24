@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option java_package = "com.wsw.fabric.orderer.orderer";
+option go_package = "github.com/hyperledger/fabric/common/sensitiveword/orderer";
+
+package protos;
+
+message sensitiveWord{
+    // sensitiveWord
+    bytes          sensitiveWords = 1;
+    // sensitiveWord delm
+    string         delm = 2;
+}
+
+message excludedSymbol{
+    // excludedSymbol
+    bytes          excludedSymbols = 1;
+}
+message empty{
+
+}
+
+service SensitiveWord {
+    rpc QuerySensitiveWord(empty) returns (sensitiveWord) {}
+    rpc AddSensitiveWord(sensitiveWord) returns (sensitiveWord) {}
+	  rpc SetSensitiveWord(sensitiveWord) returns (sensitiveWord) {}
+    rpc QueryExcludedSymbol(empty) returns (excludedSymbol) {}
+    rpc AddExcludedSymbol(excludedSymbol) returns (excludedSymbol) {}
+    rpc SetExcludedSymbol(excludedSymbol) returns (excludedSymbol) {}
+}

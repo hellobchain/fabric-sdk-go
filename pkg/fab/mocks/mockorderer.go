@@ -9,6 +9,7 @@ package mocks
 import (
 	reqContext "context"
 	"fmt"
+	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab/orderer"
 	"net"
 	"sync"
 
@@ -54,7 +55,7 @@ type MockOrderer struct {
 	DeliverySessionsQueue chan *DeliverySession
 }
 
-func (o *MockOrderer) SetSensitiveWords(ctx reqContext.Context, in *fab.SensitiveWord) error {
+func (o *MockOrderer) SetSensitiveWords(ctx reqContext.Context, in *orderer.SensitiveWord) error {
 	//TODO implement me
 	panic("implement me")
 }
@@ -64,12 +65,12 @@ func (o *MockOrderer) QuerySensitiveWords(ctx reqContext.Context) ([]string, err
 	panic("implement me")
 }
 
-func (o *MockOrderer) AddSensitiveWords(ctx reqContext.Context, in *fab.SensitiveWord) error {
+func (o *MockOrderer) AddSensitiveWords(ctx reqContext.Context, in *orderer.SensitiveWord) error {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (o *MockOrderer) SetExcludeWords(ctx reqContext.Context, in *fab.ExcludedSymbol) error {
+func (o *MockOrderer) SetExcludeWords(ctx reqContext.Context, in *orderer.ExcludedSymbol) error {
 	//TODO implement me
 	panic("implement me")
 }
@@ -79,7 +80,7 @@ func (o *MockOrderer) QueryExcludeWords(ctx reqContext.Context) ([]string, error
 	panic("implement me")
 }
 
-func (o *MockOrderer) AddExcludeWords(ctx reqContext.Context, in *fab.ExcludedSymbol) error {
+func (o *MockOrderer) AddExcludeWords(ctx reqContext.Context, in *orderer.ExcludedSymbol) error {
 	//TODO implement me
 	panic("implement me")
 }
@@ -218,7 +219,7 @@ type MockGrpcOrderer struct {
 	OrdererURL string
 }
 
-func (o *MockGrpcOrderer) SetSensitiveWords(ctx reqContext.Context, in *fab.SensitiveWord) error {
+func (o *MockGrpcOrderer) SetSensitiveWords(ctx reqContext.Context, in *orderer.SensitiveWord) error {
 	//TODO implement me
 	panic("implement me")
 }
@@ -228,12 +229,12 @@ func (o *MockGrpcOrderer) QuerySensitiveWords(ctx reqContext.Context) ([]string,
 	panic("implement me")
 }
 
-func (o *MockGrpcOrderer) AddSensitiveWords(ctx reqContext.Context, in *fab.SensitiveWord) error {
+func (o *MockGrpcOrderer) AddSensitiveWords(ctx reqContext.Context, in *orderer.SensitiveWord) error {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (o *MockGrpcOrderer) SetExcludeWords(ctx reqContext.Context, in *fab.ExcludedSymbol) error {
+func (o *MockGrpcOrderer) SetExcludeWords(ctx reqContext.Context, in *orderer.ExcludedSymbol) error {
 	//TODO implement me
 	panic("implement me")
 }
@@ -243,7 +244,7 @@ func (o *MockGrpcOrderer) QueryExcludeWords(ctx reqContext.Context) ([]string, e
 	panic("implement me")
 }
 
-func (o *MockGrpcOrderer) AddExcludeWords(ctx reqContext.Context, in *fab.ExcludedSymbol) error {
+func (o *MockGrpcOrderer) AddExcludeWords(ctx reqContext.Context, in *orderer.ExcludedSymbol) error {
 	//TODO implement me
 	panic("implement me")
 }

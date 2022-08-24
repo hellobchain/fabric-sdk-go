@@ -8,6 +8,7 @@ package orderer
 
 import (
 	reqContext "context"
+	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
 	"github.com/wsw365904/newcryptosm/tls/credentials"
 	"github.com/wsw365904/newcryptosm/x509"
 	"io"
@@ -26,7 +27,7 @@ import (
 	"github.com/hyperledger/fabric-sdk-go/pkg/client/common/verifier"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/status"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab/orderer"
 	"github.com/hyperledger/fabric-sdk-go/pkg/context"
 	"github.com/hyperledger/fabric-sdk-go/pkg/core/config/comm"
 	"github.com/hyperledger/fabric-sdk-go/pkg/core/config/endpoint"
@@ -56,7 +57,7 @@ type Orderer struct {
 	commManager    fab.CommManager
 }
 
-func (o *Orderer) SetSensitiveWords(ctx reqContext.Context, in *fab.SensitiveWord) error {
+func (o *Orderer) SetSensitiveWords(ctx reqContext.Context, in *orderer.SensitiveWord) error {
 	conn, err := o.conn(ctx)
 	if err != nil {
 		rpcStatus, ok := grpcstatus.FromError(err)
@@ -67,7 +68,7 @@ func (o *Orderer) SetSensitiveWords(ctx reqContext.Context, in *fab.SensitiveWor
 		return status.New(status.OrdererClientStatus, status.ConnectionFailed.ToInt32(), err.Error(), nil)
 	}
 	defer o.releaseConn(ctx, conn)
-	_, err = fab.NewSensitiveWordClient(conn).SetSensitiveWord(ctx, in)
+	_, err = orderer.NewSensitiveWordClient(conn).SetSensitiveWord(ctx, in)
 	if err != nil {
 		rpcStatus, ok := grpcstatus.FromError(err)
 		if ok {
@@ -81,6 +82,7 @@ func (o *Orderer) SetSensitiveWords(ctx reqContext.Context, in *fab.SensitiveWor
 func (o *Orderer) QuerySensitiveWords(ctx reqContext.Context) ([]string, error) {
 	conn, err := o.conn(ctx)
 	if err != nil {
+		logger.Error("conn err", err)
 		rpcStatus, ok := grpcstatus.FromError(err)
 		if ok {
 			return nil, errors.WithMessage(status.NewFromGRPCStatus(rpcStatus), "connection failed")
@@ -89,8 +91,9 @@ func (o *Orderer) QuerySensitiveWords(ctx reqContext.Context) ([]string, error) 
 		return nil, status.New(status.OrdererClientStatus, status.ConnectionFailed.ToInt32(), err.Error(), nil)
 	}
 	defer o.releaseConn(ctx, conn)
-	words, err := fab.NewSensitiveWordClient(conn).QuerySensitiveWord(ctx, nil)
+	words, err := orderer.NewSensitiveWordClient(conn).QuerySensitiveWord(ctx, &orderer.Empty{})
 	if err != nil {
+		logger.Error("QuerySensitiveWord err", err)
 		rpcStatus, ok := grpcstatus.FromError(err)
 		if ok {
 			err = status.NewFromGRPCStatus(rpcStatus)
@@ -100,7 +103,7 @@ func (o *Orderer) QuerySensitiveWords(ctx reqContext.Context) ([]string, error) 
 	return strings.Split(string(words.SensitiveWords), "|"), nil
 }
 
-func (o *Orderer) AddSensitiveWords(ctx reqContext.Context, in *fab.SensitiveWord) error {
+func (o *Orderer) AddSensitiveWords(ctx reqContext.Context, in *orderer.SensitiveWord) error {
 	conn, err := o.conn(ctx)
 	if err != nil {
 		rpcStatus, ok := grpcstatus.FromError(err)
@@ -111,7 +114,7 @@ func (o *Orderer) AddSensitiveWords(ctx reqContext.Context, in *fab.SensitiveWor
 		return status.New(status.OrdererClientStatus, status.ConnectionFailed.ToInt32(), err.Error(), nil)
 	}
 	defer o.releaseConn(ctx, conn)
-	_, err = fab.NewSensitiveWordClient(conn).AddSensitiveWord(ctx, in)
+	_, err = orderer.NewSensitiveWordClient(conn).AddSensitiveWord(ctx, in)
 	if err != nil {
 		rpcStatus, ok := grpcstatus.FromError(err)
 		if ok {
@@ -122,7 +125,7 @@ func (o *Orderer) AddSensitiveWords(ctx reqContext.Context, in *fab.SensitiveWor
 	return nil
 }
 
-func (o *Orderer) SetExcludeWords(ctx reqContext.Context, in *fab.ExcludedSymbol) error {
+func (o *Orderer) SetExcludeWords(ctx reqContext.Context, in *orderer.ExcludedSymbol) error {
 	conn, err := o.conn(ctx)
 	if err != nil {
 		rpcStatus, ok := grpcstatus.FromError(err)
@@ -133,7 +136,7 @@ func (o *Orderer) SetExcludeWords(ctx reqContext.Context, in *fab.ExcludedSymbol
 		return status.New(status.OrdererClientStatus, status.ConnectionFailed.ToInt32(), err.Error(), nil)
 	}
 	defer o.releaseConn(ctx, conn)
-	_, err = fab.NewSensitiveWordClient(conn).SetExcludedSymbol(ctx, in)
+	_, err = orderer.NewSensitiveWordClient(conn).SetExcludedSymbol(ctx, in)
 	if err != nil {
 		rpcStatus, ok := grpcstatus.FromError(err)
 		if ok {
@@ -155,7 +158,7 @@ func (o *Orderer) QueryExcludeWords(ctx reqContext.Context) ([]string, error) {
 		return nil, status.New(status.OrdererClientStatus, status.ConnectionFailed.ToInt32(), err.Error(), nil)
 	}
 	defer o.releaseConn(ctx, conn)
-	words, err := fab.NewSensitiveWordClient(conn).QueryExcludedSymbol(ctx, nil)
+	words, err := orderer.NewSensitiveWordClient(conn).QueryExcludedSymbol(ctx, &orderer.Empty{})
 	if err != nil {
 		rpcStatus, ok := grpcstatus.FromError(err)
 		if ok {
@@ -166,7 +169,7 @@ func (o *Orderer) QueryExcludeWords(ctx reqContext.Context) ([]string, error) {
 	return strings.Split(string(words.ExcludedSymbols), "|"), nil
 }
 
-func (o *Orderer) AddExcludeWords(ctx reqContext.Context, in *fab.ExcludedSymbol) error {
+func (o *Orderer) AddExcludeWords(ctx reqContext.Context, in *orderer.ExcludedSymbol) error {
 	conn, err := o.conn(ctx)
 	if err != nil {
 		rpcStatus, ok := grpcstatus.FromError(err)
@@ -177,7 +180,7 @@ func (o *Orderer) AddExcludeWords(ctx reqContext.Context, in *fab.ExcludedSymbol
 		return status.New(status.OrdererClientStatus, status.ConnectionFailed.ToInt32(), err.Error(), nil)
 	}
 	defer o.releaseConn(ctx, conn)
-	_, err = fab.NewSensitiveWordClient(conn).AddExcludedSymbol(ctx, in)
+	_, err = orderer.NewSensitiveWordClient(conn).AddExcludedSymbol(ctx, in)
 	if err != nil {
 		rpcStatus, ok := grpcstatus.FromError(err)
 		if ok {
