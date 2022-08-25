@@ -1,9 +1,15 @@
 package algo
 
 import (
+	"encoding/pem"
+	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/wsw365904/newcryptosm"
+	"github.com/wsw365904/newcryptosm/x509"
 	"github.com/wsw365904/third_party/algo"
+	"sync"
 )
+
+var logger = logging.NewLogger("fabsdk/fab")
 
 func SetGMFlag() {
 	algo.SetGMFlag()
@@ -19,4 +25,20 @@ func GetDefaultHash() newcryptosm.Hash {
 
 func GetAlgo() string {
 	return algo.GetAlgo()
+}
+
+var once sync.Once
+
+func JudgeAlgo(pemBytes []byte) {
+	once.Do(func() {
+		p, _ := pem.Decode(pemBytes)
+		parseCertificate, err := x509.ParseCertificate(p.Bytes)
+		if err != nil {
+			logger.Error("parse cert failed", err)
+			return
+		}
+		if parseCertificate.SignatureAlgorithm == x509.SM2WithSM3 {
+			SetGMFlag()
+		}
+	})
 }

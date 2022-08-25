@@ -43,6 +43,7 @@ func (mgr *IdentityManager) NewUser(userData *msp.UserData) (*User, error) {
 
 func (mgr *IdentityManager) loadUserFromStore(username string) (*User, error) {
 	if mgr.userStore == nil {
+		logger.Error("loadUserFromStore err", "mgr.userStore == nil")
 		return nil, msp.ErrUserNotFound
 	}
 	var user *User
@@ -122,6 +123,7 @@ func (mgr *IdentityManager) GetUser(username string) (*User, error) { //nolint
 			}
 		}
 		if certBytes == nil {
+			logger.Error("GetUser err", "certBytes == nil")
 			return nil, msp.ErrUserNotFound
 		}
 		privateKey, err := mgr.getEmbeddedPrivateKey(username)
@@ -196,6 +198,7 @@ func (mgr *IdentityManager) getPrivateKeyPemFromKeyStore(username string, ski []
 
 func (mgr *IdentityManager) getCertBytesFromCertStore(username string) ([]byte, error) {
 	if mgr.mspCertStore == nil {
+		logger.Error("getCertBytesFromCertStore", "mgr.mspCertStore == nil")
 		return nil, msp.ErrUserNotFound
 	}
 	cert, err := mgr.mspCertStore.Load(&msp.IdentityIdentifier{
@@ -204,6 +207,7 @@ func (mgr *IdentityManager) getCertBytesFromCertStore(username string) ([]byte, 
 	})
 	if err != nil {
 		if err == core.ErrKeyValueNotFound {
+			logger.Error("getCertBytesFromCertStore", err)
 			return nil, msp.ErrUserNotFound
 		}
 		return nil, err

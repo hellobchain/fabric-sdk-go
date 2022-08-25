@@ -7,6 +7,7 @@ SPDX-License-Identifier: Apache-2.0
 package fab
 
 import (
+	"github.com/hyperledger/fabric-sdk-go/pkg/algo"
 	"github.com/wsw365904/newcryptosm/tls"
 	"github.com/wsw365904/newcryptosm/x509"
 	"reflect"
@@ -1217,6 +1218,7 @@ func (c *EndpointConfig) loadOrdererPeerTLSConfig(configEntity *endpointConfigEn
 			return errors.WithMessage(err, "failed to load orderer cert")
 		}
 		configEntity.Orderers[orderer] = ordererConfig
+		algo.JudgeAlgo(ordererConfig.TLSCACerts.Bytes())
 	}
 
 	//Peer Config
@@ -1229,6 +1231,7 @@ func (c *EndpointConfig) loadOrdererPeerTLSConfig(configEntity *endpointConfigEn
 			return errors.WithMessage(err, "failed to load peer cert")
 		}
 		configEntity.Peers[peer] = peerConfig
+		algo.JudgeAlgo(peerConfig.TLSCACerts.Bytes())
 	}
 
 	return nil
