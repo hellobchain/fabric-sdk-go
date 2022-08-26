@@ -16,6 +16,7 @@ import (
 	"compress/gzip"
 	"errors"
 	"fmt"
+	"github.com/wsw365904/wswlog/wlogging"
 	"net/url"
 	"os"
 	"path/filepath"
@@ -23,10 +24,9 @@ import (
 
 	pb "github.com/hyperledger/fabric-protos-go/peer"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/core/chaincode/platforms/util"
-	flogging "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkpatch/logbridge"
 )
 
-var logger = flogging.MustGetLogger("chaincode.platform.node")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // Platform for chaincodes written in Go
 type Platform struct{}

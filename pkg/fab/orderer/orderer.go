@@ -11,6 +11,7 @@ import (
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
 	"github.com/wsw365904/newcryptosm/tls/credentials"
 	"github.com/wsw365904/newcryptosm/x509"
+	"github.com/wsw365904/wswlog/wlogging"
 	"io"
 	"strings"
 	"time"
@@ -26,7 +27,6 @@ import (
 	ab "github.com/hyperledger/fabric-protos-go/orderer"
 	"github.com/hyperledger/fabric-sdk-go/pkg/client/common/verifier"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/status"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab/orderer"
 	"github.com/hyperledger/fabric-sdk-go/pkg/context"
 	"github.com/hyperledger/fabric-sdk-go/pkg/core/config/comm"
@@ -35,7 +35,7 @@ import (
 
 var _ fab.Orderer = (*Orderer)(nil)
 
-var logger = logging.NewLogger("fabsdk/fab")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 const (
 	// GRPC max message size (same as Fabric)

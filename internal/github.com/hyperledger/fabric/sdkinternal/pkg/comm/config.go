@@ -16,7 +16,7 @@ import (
 	"time"
 
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/metrics"
-	flogging "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkpatch/logbridge"
+	flogging "github.com/wsw365904/wswlog/wlogging"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/keepalive"
 )
@@ -67,7 +67,7 @@ type ServerConfig struct {
 	// RPCs.  They are executed in order.
 	UnaryInterceptors []grpc.UnaryServerInterceptor
 	// Logger specifies the logger the server will use
-	Logger *flogging.Logger
+	Logger *flogging.WswLogger
 	// Metrics Provider
 	MetricsProvider metrics.Provider
 	// HealthCheckEnabled enables the gRPC Health Checking Protocol for the server

@@ -8,19 +8,17 @@ package pgresolver
 
 import (
 	"fmt"
+	"github.com/wsw365904/wswlog/wlogging"
 	"reflect"
 
 	"github.com/golang/protobuf/proto"
-	common "github.com/hyperledger/fabric-protos-go/common"
+	"github.com/hyperledger/fabric-protos-go/common"
 	mb "github.com/hyperledger/fabric-protos-go/msp"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
 	"github.com/pkg/errors"
 )
 
-const loggerModule = "fabsdk/client"
-
-var logger = logging.NewLogger(loggerModule)
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // GroupRetriever is a function that returns groups of peers
 type GroupRetriever func(peerRetriever MSPPeerRetriever) (GroupOfGroups, error)
@@ -72,7 +70,7 @@ func (c *peerGroupResolver) Resolve(peers []fab.Peer) (PeerGroup, error) {
 		return nil, err
 	}
 
-	if logging.IsEnabledFor(loggerModule, logging.DEBUG) {
+	if logger.IsEnabledFor(wlogging.PayloadLevel + 1) {
 		var s string
 		if len(peerGroups) == 0 {
 			s = "  ***** No Available Peer Groups "
@@ -102,7 +100,7 @@ func (c *peerGroupResolver) getPeerGroups(peerRetriever MSPPeerRetriever) ([]Pee
 
 	mspGroups := groupHierarchy.Reduce()
 
-	if logging.IsEnabledFor(loggerModule, logging.DEBUG) {
+	if logger.IsEnabledFor(wlogging.PayloadLevel + 1) {
 		s := " ***** Org Groups: "
 		for i, g := range mspGroups {
 			s += fmt.Sprintf("%+v", g)

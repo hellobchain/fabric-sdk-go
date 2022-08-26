@@ -7,6 +7,7 @@ SPDX-License-Identifier: Apache-2.0
 package keyvaluestore
 
 import (
+	"github.com/wsw365904/wswlog/wlogging"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -19,6 +20,8 @@ const (
 	newDirMode  = 0700
 	newFileMode = 0600
 )
+
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // KeySerializer converts a key to a unique fila path
 type KeySerializer func(key interface{}) (string, error)
@@ -114,14 +117,16 @@ func (fkvs *FileKeyValueStore) Load(key interface{}) (interface{}, error) {
 		return nil, err
 	}
 	if _, err1 := os.Stat(file); os.IsNotExist(err1) {
-		return nil, core.ErrKeyValueNotFound
+		logger.Warn(err1)
+		return nil, core.ErrKeyValueNotFound // wsw add
 	}
 	bytes, err := ioutil.ReadFile(file) // nolint: gas
 	if err != nil {
 		return nil, err
 	}
 	if bytes == nil {
-		return nil, core.ErrKeyValueNotFound
+		logger.Warnf("read file(%v) success but content is nil", file)
+		return nil, core.ErrKeyValueNotFound // wsw add
 	}
 	return fkvs.unmarshaller(bytes)
 }

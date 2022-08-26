@@ -10,6 +10,7 @@ package resource
 import (
 	reqContext "context"
 	"github.com/wsw365904/newcryptosm/http"
+	"github.com/wsw365904/wswlog/wlogging"
 	"sync"
 
 	"github.com/golang/protobuf/proto"
@@ -19,7 +20,6 @@ import (
 	pb "github.com/hyperledger/fabric-protos-go/peer"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/multi"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/retry"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/context"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/msp"
@@ -28,7 +28,7 @@ import (
 	"github.com/hyperledger/fabric-sdk-go/pkg/fab/txn"
 )
 
-var logger = logging.NewLogger("fabsdk/fab")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 type fabCtx struct {
 	context.Providers

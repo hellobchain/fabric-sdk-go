@@ -8,11 +8,11 @@ SPDX-License-Identifier: Apache-2.0
 package fabsdk
 
 import (
+	"github.com/wsw365904/wswlog/wlogging"
 	"math/rand"
 	"time"
 
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/core/operations"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	coptions "github.com/hyperledger/fabric-sdk-go/pkg/common/options"
 	contextApi "github.com/hyperledger/fabric-sdk-go/pkg/common/providers/context"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/core"
@@ -30,7 +30,7 @@ import (
 	"github.com/pkg/errors"
 )
 
-var logger = logging.NewLogger("fabsdk")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // FabricSDK provides access (and context) to clients being managed by the SDK.
 type FabricSDK struct {
@@ -240,7 +240,6 @@ func initSDK(sdk *FabricSDK, configProvider core.ConfigProvider, opts []Option) 
 	if sdk.opts.Logger == nil {
 		return errors.New("Missing logger from pkg suite")
 	}
-	logging.Initialize(sdk.opts.Logger)
 
 	//Initialize configs if not passed through options
 	cfg, err := sdk.loadConfigs(configProvider)

@@ -14,6 +14,7 @@ import (
 	"archive/tar"
 	"bufio"
 	"fmt"
+	"github.com/wsw365904/wswlog/wlogging"
 	"io"
 	"io/ioutil"
 	"os"
@@ -23,11 +24,10 @@ import (
 	"time"
 
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkinternal/ccmetadata"
-	flogging "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkpatch/logbridge"
 	"github.com/pkg/errors"
 )
 
-var logger = flogging.MustGetLogger("chaincode.platform.util")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // WriteFolderToTarPackage writes source files to a tarball.
 // This utility is used for node js chaincode packaging, but not golang chaincode.

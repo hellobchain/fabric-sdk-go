@@ -9,6 +9,7 @@ package txn
 
 import (
 	reqContext "context"
+	"github.com/wsw365904/wswlog/wlogging"
 	"math/rand"
 
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/multi"
@@ -17,13 +18,12 @@ import (
 	"github.com/hyperledger/fabric-protos-go/common"
 	pb "github.com/hyperledger/fabric-protos-go/peer"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/protoutil"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	ctxprovider "github.com/hyperledger/fabric-sdk-go/pkg/common/providers/context"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
 	"github.com/hyperledger/fabric-sdk-go/pkg/context"
 )
 
-var logger = logging.NewLogger("fabsdk/fab")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // CCProposalType reflects transitions in the chaincode lifecycle
 type CCProposalType int

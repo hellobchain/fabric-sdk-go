@@ -7,14 +7,14 @@ SPDX-License-Identifier: Apache-2.0
 package dynamicdiscovery
 
 import (
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	coptions "github.com/hyperledger/fabric-sdk-go/pkg/common/options"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
 	"github.com/hyperledger/fabric-sdk-go/pkg/util/concurrent/lazycache"
 	"github.com/pkg/errors"
+	"github.com/wsw365904/wswlog/wlogging"
 )
 
-var logger = logging.NewLogger("fabsdk/client")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // LocalProvider implements a local Dynamic Discovery LocalProvider that queries
 // Fabric's Discovery service for information about the peers that

@@ -17,7 +17,6 @@ package msp
 
 import (
 	"fmt"
-
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
 
 	"strings"

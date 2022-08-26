@@ -28,14 +28,16 @@ package streamer
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/wsw365904/wswlog/wlogging"
 	"os"
 	"reflect"
 	"strings"
 
-	log "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkpatch/logbridge"
-	"github.com/wsw365904/third_party/cloudflare/cfssl/api"
 	"github.com/pkg/errors"
+	"github.com/wsw365904/third_party/cloudflare/cfssl/api"
 )
+
+var log = wlogging.MustGetLoggerWithoutName()
 
 // SearchElement defines the JSON arrays for which to search
 type SearchElement struct {

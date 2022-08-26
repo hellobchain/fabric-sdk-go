@@ -8,10 +8,10 @@ package retry
 
 import (
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/multi"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
+	"github.com/wsw365904/wswlog/wlogging"
 )
 
-var logger = logging.NewLogger("fabsdk/common")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // Invocation is the function to be invoked.
 type Invocation func() (interface{}, error)

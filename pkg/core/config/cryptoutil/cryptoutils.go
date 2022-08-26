@@ -12,16 +12,16 @@ import (
 	"github.com/wsw365904/newcryptosm/ecdsa"
 	"github.com/wsw365904/newcryptosm/tls"
 	"github.com/wsw365904/newcryptosm/x509"
+	"github.com/wsw365904/wswlog/wlogging"
 	"io"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/core"
 	"github.com/pkg/errors"
 
 	factory "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkpatch/cryptosuitebridge"
 )
 
-var logger = logging.NewLogger("fabsdk/core")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // GetPrivateKeyFromCert will return private key represented by SKI in cert's public key
 func GetPrivateKeyFromCert(cert []byte, cs core.CryptoSuite) (core.Key, error) {

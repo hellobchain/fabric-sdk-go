@@ -7,13 +7,13 @@ SPDX-License-Identifier: Apache-2.0
 package lbp
 
 import (
+	"github.com/wsw365904/wswlog/wlogging"
 	"math/rand"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
 )
 
-var logger = logging.NewLogger("fabsdk/fab")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // Random implements a random load-balance policy
 type Random struct {

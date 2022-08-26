@@ -7,10 +7,10 @@ SPDX-License-Identifier: Apache-2.0
 package dispatcher
 
 import (
+	"github.com/wsw365904/wswlog/wlogging"
 	"sync"
 	"time"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/options"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/context"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
@@ -20,7 +20,7 @@ import (
 	"github.com/pkg/errors"
 )
 
-var logger = logging.NewLogger("fabsdk/fab")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // Dispatcher is responsible for handling all events, including connection and registration events originating from the client,
 // and events originating from the event server. All events are processed in a single Go routine

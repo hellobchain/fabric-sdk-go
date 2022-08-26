@@ -9,7 +9,6 @@ import (
 	"fmt"
 
 	fabricCaUtil "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkinternal/pkg/util"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/context"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/msp"
 	"github.com/wsw365904/third_party/cloudflare/cfssl/log"
@@ -521,6 +520,5 @@ func mockClientProvider() context.ClientProvider {
 	log.SetLogger(nil)
 	f := testFixture{}
 	sdk := f.setup()
-	logging.SetLevel("fabsdk/fab", logging.ERROR)
 	return sdk.Context()
 }

@@ -8,17 +8,17 @@ package lazycache
 
 import (
 	"fmt"
+	"github.com/wsw365904/wswlog/wlogging"
 	"sync"
 	"sync/atomic"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/options"
 	"github.com/hyperledger/fabric-sdk-go/pkg/util/concurrent/futurevalue"
 	"github.com/hyperledger/fabric-sdk-go/pkg/util/concurrent/lazyref"
 	"github.com/pkg/errors"
 )
 
-var logger = logging.NewLogger("fabsdk/util")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // Key holds the string key for the cache entry
 type Key interface {

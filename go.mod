@@ -17,6 +17,7 @@ require (
 	github.com/stretchr/testify v1.7.1
 	github.com/wsw365904/newcryptosm v0.0.0-20220822153922-8852ae7b6d34
 	github.com/wsw365904/third_party v0.0.0-20220822153856-449e7dccc2bc
+	github.com/wsw365904/wswlog v0.0.0-20220826082513-787d040d761f
 	golang.org/x/crypto v0.0.0-20220817201139-bc19a97f63c8
 	golang.org/x/net v0.0.0-20220812174116-3211cb980234
 	google.golang.org/grpc v1.48.0

@@ -7,13 +7,12 @@ SPDX-License-Identifier: Apache-2.0
 package rollingcounter
 
 import (
+	"github.com/wsw365904/wswlog/wlogging"
 	"math/rand"
 	"sync/atomic"
-
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 )
 
-var logger = logging.NewLogger("fabsdk/util")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // Counter is a rolling counter that increments an index up to a maximum value. If the counter reaches
 // the maximum then the counter resets to 0. A single counter instance may be used by multiple Go routines.

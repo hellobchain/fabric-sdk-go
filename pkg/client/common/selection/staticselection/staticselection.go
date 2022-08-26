@@ -8,14 +8,12 @@ package staticselection
 
 import (
 	"github.com/hyperledger/fabric-sdk-go/pkg/client/common/selection/options"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	copts "github.com/hyperledger/fabric-sdk-go/pkg/common/options"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/wsw365904/wswlog/wlogging"
 )
 
-const loggerModule = "fabsdk/client"
-
-var logger = logging.NewLogger(loggerModule)
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // SelectionService implements static selection service
 type SelectionService struct {
@@ -54,7 +52,7 @@ func (s *SelectionService) GetEndorsersForChaincode(chaincodes []*fab.ChaincodeC
 		channelPeers = params.PeerSorter(peers)
 	}
 
-	if logging.IsEnabledFor(loggerModule, logging.DEBUG) {
+	if logger.IsEnabledFor(wlogging.PayloadLevel + 1) {
 		str := ""
 		for i, peer := range channelPeers {
 			str += peer.URL()

@@ -14,14 +14,11 @@ import (
 	"github.com/hyperledger/fabric-sdk-go/pkg/client/resmgmt"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/core"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/msp"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fabsdk"
-	"google.golang.org/grpc/grpclog"
-
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/core/config"
 	"github.com/hyperledger/fabric-sdk-go/pkg/core/config/lookup"
 	"github.com/hyperledger/fabric-sdk-go/pkg/core/mocks"
 	fabImpl "github.com/hyperledger/fabric-sdk-go/pkg/fab"
+	"github.com/hyperledger/fabric-sdk-go/pkg/fabsdk"
 	"github.com/hyperledger/fabric-sdk-go/test/integration"
 	"github.com/stretchr/testify/assert"
 )
@@ -37,14 +34,11 @@ const (
 	expiredCertPath  = "${FABRIC_SDK_GO_PROJECT_PATH}/test/integration/negative/testdata/ordererOrganizations/example.com/expiredtlsca/expired.pem"
 )
 
-var logger = logging.NewLogger("test-logger")
-
 // TestExpiredCert
 func TestExpiredCert(t *testing.T) {
 	os.Setenv("GRPC_TRACE", "all")
 	os.Setenv("GRPC_VERBOSITY", "DEBUG")
 	os.Setenv("GRPC_GO_LOG_SEVERITY_LEVEL", "INFO")
-	grpclog.SetLogger(logger)
 
 	// Create SDK setup for the integration tests
 	sdk, err := fabsdk.New(getConfigBackend(t))

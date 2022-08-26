@@ -14,6 +14,7 @@ import (
 	"context"
 	"github.com/wsw365904/newcryptosm/http"
 	"github.com/wsw365904/newcryptosm/tls"
+	"github.com/wsw365904/wswlog/wlogging"
 	"net"
 	"os"
 	"strings"
@@ -26,11 +27,10 @@ import (
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/metrics/statsd/goruntime"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/util"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/core/middleware"
-	flogging "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkpatch/logbridge"
-	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkpatch/logbridge/httpadmin"
 	kitstatsd "github.com/wsw365904/third_party/go-kit/kit/metrics/statsd"
 	"github.com/wsw365904/third_party/hyperledger/fabric-lib-go/healthz"
 	promhttp "github.com/wsw365904/third_party/prometheus/client_golang/prometheus"
+	"github.com/wsw365904/wswlog/wlogging/httpadmin"
 )
 
 //go:generate counterfeiter -o fakes/logger.go -fake-name Logger . Logger
@@ -78,7 +78,7 @@ type System struct {
 func NewSystem(o Options) *System {
 	logger := o.Logger
 	if logger == nil {
-		logger = flogging.MustGetLogger("operations.runner")
+		logger = wlogging.MustGetLoggerWithoutName()
 	}
 
 	system := &System{

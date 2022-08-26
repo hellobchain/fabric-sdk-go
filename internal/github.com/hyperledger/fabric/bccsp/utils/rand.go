@@ -1,13 +1,13 @@
 package utils
 
 import (
-	flogging "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkpatch/logbridge"
+	"github.com/wsw365904/wswlog/wlogging"
 	"sync"
 
 	"io"
 )
 
-var randlogger = flogging.MustGetLogger("randcache")
+var randlogger = wlogging.MustGetLoggerWithoutName()
 var randReader *pipelineRandReader
 
 var randRDPool *sync.Pool

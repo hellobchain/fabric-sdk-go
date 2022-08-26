@@ -15,6 +15,7 @@ import (
 	"encoding/json"
 	"fmt"
 	http2 "github.com/wsw365904/newcryptosm/http"
+	"github.com/wsw365904/wswlog/wlogging"
 	"io/ioutil"
 	"net"
 	"net/url"
@@ -32,12 +33,13 @@ import (
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/lib/tls"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkinternal/pkg/api"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkinternal/pkg/util"
-	log "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkpatch/logbridge"
 	"github.com/mitchellh/mapstructure"
 	"github.com/pkg/errors"
 	cfsslapi "github.com/wsw365904/third_party/cloudflare/cfssl/api"
 	"github.com/wsw365904/third_party/cloudflare/cfssl/csr"
 )
+
+var log = wlogging.MustGetLoggerWithoutName()
 
 // Client is the fabric-ca client object
 type Client struct {

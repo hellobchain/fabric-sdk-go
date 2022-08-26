@@ -11,6 +11,7 @@ import (
 	"bytes"
 	"compress/gzip"
 	"fmt"
+	"github.com/wsw365904/wswlog/wlogging"
 	"io"
 	"os"
 	"path/filepath"
@@ -18,7 +19,6 @@ import (
 	"time"
 
 	pb "github.com/hyperledger/fabric-protos-go/peer"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/fab/resource"
 	"github.com/pkg/errors"
 )
@@ -31,7 +31,7 @@ type Descriptor struct {
 
 var keep = []string{".js", ".yaml", ".yml", ".json"}
 
-var logger = logging.NewLogger("fabsdk/fab")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // NewCCPackage creates new go lang chaincode package
 func NewCCPackage(chaincodePath string) (*resource.CCPackage, error) {

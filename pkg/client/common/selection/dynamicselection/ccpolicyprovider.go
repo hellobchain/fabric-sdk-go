@@ -8,6 +8,7 @@ package dynamicselection
 
 import (
 	"fmt"
+	"github.com/wsw365904/wswlog/wlogging"
 	"sort"
 	"strings"
 	"sync"
@@ -19,15 +20,12 @@ import (
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/core/common/ccprovider"
 	"github.com/hyperledger/fabric-sdk-go/pkg/client/channel"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/status"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/context"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
 	contextImpl "github.com/hyperledger/fabric-sdk-go/pkg/context"
 )
 
-const loggerModule = "fabsdk/client"
-
-var logger = logging.NewLogger(loggerModule)
+var logger = wlogging.MustGetLoggerWithoutName()
 
 const (
 	ccDataProviderSCC      = "lscc"

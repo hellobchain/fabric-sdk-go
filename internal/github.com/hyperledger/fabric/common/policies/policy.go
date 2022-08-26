@@ -15,7 +15,6 @@ import (
 	cb "github.com/hyperledger/fabric-protos-go/common"
 	"github.com/hyperledger/fabric-protos-go/msp"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/protoutil"
-	flogging "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkpatch/logbridge"
 )
 
 const (
@@ -58,8 +57,6 @@ const (
 	// ChannelOrdererReaders is the label for the channel's orderer readers policy
 	ChannelOrdererReaders = PathSeparator + ChannelPrefix + PathSeparator + OrdererPrefix + PathSeparator + "Readers"
 )
-
-var logger = flogging.MustGetLogger("policies")
 
 // PrincipalSet is a collection of MSPPrincipals
 type PrincipalSet []*msp.MSPPrincipal

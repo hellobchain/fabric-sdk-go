@@ -12,11 +12,11 @@ package packaging
 
 import (
 	"fmt"
+	"github.com/wsw365904/wswlog/wlogging"
 
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/core/chaincode/platforms/golang"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/core/chaincode/platforms/java"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/core/chaincode/platforms/node"
-	flogging "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkpatch/logbridge"
 )
 
 // SupportedPlatforms is the canonical list of platforms Fabric supports
@@ -45,7 +45,7 @@ type Registry struct {
 	Platforms map[string]Platform
 }
 
-var logger = flogging.MustGetLogger("chaincode.platform")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 func NewRegistry(platformTypes ...Platform) *Registry {
 	platforms := make(map[string]Platform)

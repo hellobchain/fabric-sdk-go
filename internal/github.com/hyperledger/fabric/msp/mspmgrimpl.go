@@ -13,11 +13,11 @@ package msp
 import (
 	"github.com/golang/protobuf/proto"
 	"github.com/hyperledger/fabric-protos-go/msp"
-	flogging "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkpatch/logbridge"
 	"github.com/pkg/errors"
+	"github.com/wsw365904/wswlog/wlogging"
 )
 
-var mspLogger = flogging.MustGetLogger("msp")
+var mspLogger = wlogging.MustGetLoggerWithoutName()
 
 type mspManagerImpl struct {
 	// map that contains all MSPs that we have setup or otherwise added

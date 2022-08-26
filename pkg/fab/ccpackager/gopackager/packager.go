@@ -10,13 +10,13 @@ import (
 	"archive/tar"
 	"bytes"
 	"compress/gzip"
+	"github.com/wsw365904/wswlog/wlogging"
 	"go/build"
 	"io"
 	"os"
 	"path/filepath"
 	"time"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/fab/resource"
 	"github.com/pkg/errors"
 
@@ -38,7 +38,7 @@ type Descriptor struct {
 // of the install payload.
 var keep = []string{".c", ".h", ".s", ".go", ".yaml", ".json"}
 
-var logger = logging.NewLogger("fabsdk/fab")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // NewCCPackage creates new go lang chaincode package
 func NewCCPackage(chaincodePath string, goPath string) (*resource.CCPackage, error) {

@@ -8,12 +8,12 @@ package discovery
 
 import (
 	"context"
+	"github.com/wsw365904/wswlog/wlogging"
 	"strings"
 	"sync"
 
 	"github.com/hyperledger/fabric-protos-go/discovery"
 	discclient "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/discovery/client"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	fabcontext "github.com/hyperledger/fabric-sdk-go/pkg/common/providers/context"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
 	corecomm "github.com/hyperledger/fabric-sdk-go/pkg/core/config/comm"
@@ -22,7 +22,7 @@ import (
 	"google.golang.org/grpc"
 )
 
-var logger = logging.NewLogger("fabsdk/fab")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 const (
 	signerCacheSize = 10 // TODO: set an appropriate value (and perhaps make configurable)

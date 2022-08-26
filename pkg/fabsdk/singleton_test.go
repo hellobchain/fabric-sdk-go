@@ -30,7 +30,7 @@ func TestDefLoggerFactory(t *testing.T) {
 	}
 
 	const moduleName = "mymodule"
-	l1 := logging.NewLogger(moduleName)
+	l1 := wlogging.MustGetLoggerWithoutName()
 
 	// output a log message to force initializatin
 	l1.Info("message")
@@ -40,7 +40,7 @@ func TestDefLoggerFactory(t *testing.T) {
 	lf := NewMockLoggerFactory()
 	logging.Initialize(lf)
 
-	l2 := logging.NewLogger(moduleName)
+	l2 := wlogging.MustGetLoggerWithoutName()
 
 	// output a log message to force initializatin
 	l2.Info("message")
@@ -64,7 +64,7 @@ func TestOptLoggerFactory(t *testing.T) {
 	}
 
 	const moduleName = "mymodule"
-	l := logging.NewLogger(moduleName)
+	l := wlogging.MustGetLoggerWithoutName()
 
 	// output a log message to force initializatin
 	l.Info("message")

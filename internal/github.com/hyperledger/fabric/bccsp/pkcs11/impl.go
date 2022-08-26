@@ -13,17 +13,17 @@ package pkcs11
 import (
 	"github.com/wsw365904/newcryptosm/ecdsa"
 	"github.com/wsw365904/newcryptosm/x509"
+	"github.com/wsw365904/wswlog/wlogging"
 	"os"
 
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp/sw"
-	flogging "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkpatch/logbridge"
 	sdkp11 "github.com/hyperledger/fabric-sdk-go/pkg/core/cryptosuite/common/pkcs11"
 	"github.com/pkg/errors"
 )
 
 var (
-	logger           = flogging.MustGetLogger("bccsp_p11")
+	logger           = wlogging.MustGetLoggerWithoutName()
 	sessionCacheSize = 10
 )
 

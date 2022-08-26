@@ -8,6 +8,7 @@ package cryptosuite
 
 import (
 	"github.com/hyperledger/fabric-sdk-go/pkg/algo"
+	"github.com/wsw365904/wswlog/wlogging"
 	"sync/atomic"
 
 	"errors"
@@ -15,12 +16,11 @@ import (
 	"sync"
 
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/core"
 	"github.com/hyperledger/fabric-sdk-go/pkg/core/cryptosuite/bccsp/sw"
 )
 
-var logger = logging.NewLogger("fabsdk/core")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 var initOnce sync.Once
 var defaultCryptoSuite core.CryptoSuite

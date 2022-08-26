@@ -9,12 +9,12 @@ package comm
 import (
 	credentials "github.com/wsw365904/newcryptosm/tls/credentials"
 	"github.com/wsw365904/newcryptosm/x509"
+	"github.com/wsw365904/wswlog/wlogging"
 	"sync/atomic"
 
 	"github.com/pkg/errors"
 
 	"github.com/hyperledger/fabric-sdk-go/pkg/client/common/verifier"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/options"
 	fabcontext "github.com/hyperledger/fabric-sdk-go/pkg/common/providers/context"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
@@ -24,7 +24,7 @@ import (
 	"google.golang.org/grpc"
 )
 
-var logger = logging.NewLogger("fabsdk/fab")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 const (
 	// GRPC max message size (same as Fabric)

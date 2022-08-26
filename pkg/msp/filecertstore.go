@@ -34,7 +34,7 @@ func NewFileCertStore(cryptoConfigMSPPath string) (core.KVStore, error) {
 			// TODO: refactor to case insensitive or remove eventually.
 			r := strings.NewReplacer("{userName}", ck.ID, "{username}", ck.ID)
 			certDir := filepath.Join(r.Replace(cryptoConfigMSPPath), "signcerts")
-			return filepath.Join(certDir, fmt.Sprintf("%s@%s-cert.pem", ck.ID, orgName)), nil
+			return filepath.Join(certDir, fmt.Sprintf("%s@%s-cert.pem", ck.ID, orgName)), nil // wsw add
 		},
 	}
 	return keyvaluestore.New(opts)

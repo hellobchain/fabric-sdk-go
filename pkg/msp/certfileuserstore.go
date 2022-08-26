@@ -50,7 +50,7 @@ func (s *CertFileUserStore) Load(key msp.IdentityIdentifier) (*msp.UserData, err
 	cert, err := s.store.Load(storeKeyFromUserIdentifier(key))
 	if err != nil {
 		if err == core.ErrKeyValueNotFound {
-			logger.Error("Load err", err)
+			logger.Warn("Load err ", err, storeKeyFromUserIdentifier(key))
 			return nil, msp.ErrUserNotFound
 		}
 		return nil, err

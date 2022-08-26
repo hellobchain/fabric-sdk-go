@@ -123,7 +123,7 @@ func (mgr *IdentityManager) GetUser(username string) (*User, error) { //nolint
 			}
 		}
 		if certBytes == nil {
-			logger.Error("GetUser err", "certBytes == nil")
+			logger.Warn("GetUser err", "certBytes == nil")
 			return nil, msp.ErrUserNotFound
 		}
 		privateKey, err := mgr.getEmbeddedPrivateKey(username)
@@ -198,7 +198,7 @@ func (mgr *IdentityManager) getPrivateKeyPemFromKeyStore(username string, ski []
 
 func (mgr *IdentityManager) getCertBytesFromCertStore(username string) ([]byte, error) {
 	if mgr.mspCertStore == nil {
-		logger.Error("getCertBytesFromCertStore", "mgr.mspCertStore == nil")
+		logger.Error("getCertBytesFromCertStore ", "mgr.mspCertStore == nil")
 		return nil, msp.ErrUserNotFound
 	}
 	cert, err := mgr.mspCertStore.Load(&msp.IdentityIdentifier{
@@ -207,7 +207,7 @@ func (mgr *IdentityManager) getCertBytesFromCertStore(username string) ([]byte, 
 	})
 	if err != nil {
 		if err == core.ErrKeyValueNotFound {
-			logger.Error("getCertBytesFromCertStore", err)
+			logger.Warn("getCertBytesFromCertStore ", err)
 			return nil, msp.ErrUserNotFound
 		}
 		return nil, err
@@ -232,6 +232,7 @@ func (mgr *IdentityManager) getPrivateKeyFromCert(username string, cert []byte) 
 		return privKey, nil
 	}
 	if err != core.ErrKeyValueNotFound {
+		logger.Warn("fetching private key from key store failed", err)
 		return nil, errors.WithMessage(err, "fetching private key from key store failed")
 	}
 	return mgr.cryptoSuite.GetKey(pubKey.SKI())
@@ -245,5 +246,6 @@ func (mgr *IdentityManager) getPrivateKeyFromKeyStore(username string, ski []byt
 	if pemBytes != nil {
 		return fabricCaUtil.ImportBCCSPKeyFromPEMBytes(pemBytes, mgr.cryptoSuite, true)
 	}
+	logger.Warn("getPrivateKeyPemFromKeyStore success but content is nil")
 	return nil, core.ErrKeyValueNotFound
 }

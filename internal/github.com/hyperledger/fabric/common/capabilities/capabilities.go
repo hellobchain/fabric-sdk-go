@@ -12,11 +12,11 @@ package capabilities
 
 import (
 	cb "github.com/hyperledger/fabric-protos-go/common"
-	flogging "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkpatch/logbridge"
 	"github.com/pkg/errors"
+	"github.com/wsw365904/wswlog/wlogging"
 )
 
-var logger = flogging.MustGetLogger("common.capabilities")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // provider is the 'plugin' parameter for registry.
 type provider interface {

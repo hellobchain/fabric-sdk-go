@@ -21,6 +21,7 @@ package resmgmt
 
 import (
 	reqContext "context"
+	"github.com/wsw365904/wswlog/wlogging"
 	"io"
 	"io/ioutil"
 	"math/rand"
@@ -37,7 +38,6 @@ import (
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/multi"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/retry"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/status"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/context"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/msp"
@@ -128,7 +128,7 @@ type SaveChannelResponse struct {
 //RequestOption func for each Opts argument
 type RequestOption func(ctx context.Client, opts *requestOptions) error
 
-var logger = logging.NewLogger("fabsdk/client")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // Client enables managing resources in Fabric network.
 type Client struct {

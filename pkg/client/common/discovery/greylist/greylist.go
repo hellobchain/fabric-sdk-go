@@ -7,16 +7,16 @@ SPDX-License-Identifier: Apache-2.0
 package greylist
 
 import (
+	"github.com/wsw365904/wswlog/wlogging"
 	"sync"
 	"time"
 
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/status"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
 	"github.com/hyperledger/fabric-sdk-go/pkg/core/config/endpoint"
 )
 
-var logger = logging.NewLogger("fabsdk/client")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // Filter is a discovery filter that greylists certain peers that are
 // known to be down for the configured amount of time

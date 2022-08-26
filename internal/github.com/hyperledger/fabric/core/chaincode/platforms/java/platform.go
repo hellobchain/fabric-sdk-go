@@ -16,16 +16,16 @@ import (
 	"compress/gzip"
 	"errors"
 	"fmt"
+	"github.com/wsw365904/wswlog/wlogging"
 	"io"
 	"net/url"
 	"regexp"
 
 	pb "github.com/hyperledger/fabric-protos-go/peer"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/core/chaincode/platforms/util"
-	flogging "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkpatch/logbridge"
 )
 
-var logger = flogging.MustGetLogger("chaincode.platform.java")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // Platform for java chaincodes in java
 type Platform struct{}

@@ -8,9 +8,9 @@ package msp
 
 import (
 	"fmt"
+	"github.com/wsw365904/wswlog/wlogging"
 	"strings"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	contextApi "github.com/hyperledger/fabric-sdk-go/pkg/common/providers/context"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/core"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/msp"
@@ -18,7 +18,7 @@ import (
 	"github.com/pkg/errors"
 )
 
-var logger = logging.NewLogger("fabsdk/msp")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // CAClientImpl implements api/msp/CAClient
 type CAClientImpl struct {

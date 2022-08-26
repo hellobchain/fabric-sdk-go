@@ -10,6 +10,7 @@ import (
 	"github.com/hyperledger/fabric-sdk-go/pkg/algo"
 	"github.com/wsw365904/newcryptosm/tls"
 	"github.com/wsw365904/newcryptosm/x509"
+	"github.com/wsw365904/wswlog/wlogging"
 	"reflect"
 	"regexp"
 	"strconv"
@@ -19,7 +20,6 @@ import (
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/multi"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/retry"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/status"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/core"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
 	commtls "github.com/hyperledger/fabric-sdk-go/pkg/core/config/comm/tls"
@@ -33,7 +33,7 @@ import (
 	grpcCodes "google.golang.org/grpc/codes"
 )
 
-var logger = logging.NewLogger("fabsdk/fab")
+var logger = wlogging.MustGetLoggerWithoutName()
 var defaultOrdererListenPort = 7050
 var defaultPeerListenPort = 7051
 

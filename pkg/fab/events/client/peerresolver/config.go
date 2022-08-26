@@ -7,12 +7,12 @@ SPDX-License-Identifier: Apache-2.0
 package peerresolver
 
 import (
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
 	"github.com/hyperledger/fabric-sdk-go/pkg/fab/events/client/lbp"
+	"github.com/wsw365904/wswlog/wlogging"
 )
 
-var logger = logging.NewLogger("fabsdk/fab")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // GetBalancer returns the configured load balancer
 func GetBalancer(policy fab.EventServicePolicy) lbp.LoadBalancePolicy {

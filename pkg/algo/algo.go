@@ -2,14 +2,14 @@ package algo
 
 import (
 	"encoding/pem"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/wsw365904/newcryptosm"
 	"github.com/wsw365904/newcryptosm/x509"
 	"github.com/wsw365904/third_party/algo"
+	"github.com/wsw365904/wswlog/wlogging"
 	"sync"
 )
 
-var logger = logging.NewLogger("fabsdk/fab")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 func SetGMFlag() {
 	algo.SetGMFlag()

@@ -7,10 +7,10 @@ SPDX-License-Identifier: Apache-2.0
 package service
 
 import (
+	"github.com/wsw365904/wswlog/wlogging"
 	"runtime/debug"
 	"time"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/options"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
 	"github.com/hyperledger/fabric-sdk-go/pkg/fab/events/service/blockfilter"
@@ -25,7 +25,7 @@ const (
 	stopTimeout = 5 * time.Second
 )
 
-var logger = logging.NewLogger("fabsdk/fab")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // EventProducer produces events which are dispatched to clients
 type EventProducer interface {

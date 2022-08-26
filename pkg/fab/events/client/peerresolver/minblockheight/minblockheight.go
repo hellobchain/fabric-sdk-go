@@ -7,9 +7,9 @@ SPDX-License-Identifier: Apache-2.0
 package minblockheight
 
 import (
+	"github.com/wsw365904/wswlog/wlogging"
 	"math"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/options"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/context"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
@@ -17,7 +17,7 @@ import (
 	"github.com/hyperledger/fabric-sdk-go/pkg/fab/events/service"
 )
 
-var logger = logging.NewLogger("fabsdk/fab")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // PeerResolver is a peer resolver that chooses the best peer according to a block height lag threshold.
 // The maximum block height of all peers is determined and the peers whose block heights are under

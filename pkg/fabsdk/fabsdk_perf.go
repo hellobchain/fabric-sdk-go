@@ -10,8 +10,8 @@ package fabsdk
 
 import (
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/core/operations"
-	flogging "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkpatch/logbridge"
 	"github.com/hyperledger/fabric-sdk-go/pkg/fabsdk/metrics"
+	"github.com/wsw365904/wswlog/wlogging"
 )
 
 // initMetrics will initialize the Go SDK's metric's system instance to allow capturing metrics data by the SDK clients.
@@ -36,7 +36,7 @@ func newOperationsSystem(configs *configs) *operations.System {
 	opsConfig := configs.metricsConfig.OperationCfg()
 	metricsConfig := configs.metricsConfig.MetricCfg()
 	return operations.NewSystem(operations.Options{
-		Logger:        flogging.MustGetLogger("operations.runner"),
+		Logger:        wlogging.MustGetLoggerWithoutName(),
 		ListenAddress: opsConfig.ListenAddress,
 		Metrics: operations.MetricsOptions{
 			Provider: metricsConfig.Provider,

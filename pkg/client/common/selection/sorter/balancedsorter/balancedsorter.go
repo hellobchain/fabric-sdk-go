@@ -8,12 +8,12 @@ package balancedsorter
 
 import (
 	"github.com/hyperledger/fabric-sdk-go/pkg/client/common/selection/options"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	coptions "github.com/hyperledger/fabric-sdk-go/pkg/common/options"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/wsw365904/wswlog/wlogging"
 )
 
-var logger = logging.NewLogger("fabsdk/client")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // New returns a peer sorter that chooses a peer according to a provided balancer.
 func New(opts ...coptions.Opt) options.PeerSorter {

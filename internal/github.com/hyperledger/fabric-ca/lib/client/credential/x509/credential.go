@@ -13,15 +13,14 @@ package x509
 import (
 	"encoding/hex"
 	"github.com/wsw365904/newcryptosm/http"
+	"github.com/wsw365904/wswlog/wlogging"
 
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/core"
-
-	factory "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkpatch/cryptosuitebridge"
-	log "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkpatch/logbridge"
 
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/lib/client/credential"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkinternal/pkg/api"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkinternal/pkg/util"
+	factory "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkpatch/cryptosuitebridge"
 	"github.com/pkg/errors"
 )
 
@@ -29,6 +28,8 @@ const (
 	// CredType is the string that represents X509 credential type
 	CredType = "X509"
 )
+
+var log = wlogging.MustGetLoggerWithoutName()
 
 // Client represents a client that will load/store an Idemix credential
 type Client interface {

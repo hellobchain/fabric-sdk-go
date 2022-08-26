@@ -17,7 +17,7 @@ package sw
 
 import (
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
-	flogging "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkpatch/logbridge"
+	"github.com/wsw365904/wswlog/wlogging"
 	"hash"
 	"reflect"
 
@@ -26,7 +26,7 @@ import (
 
 var _ bccsp.BCCSP = (*CSP)(nil)
 
-var logger = flogging.MustGetLogger("bccsp_sw")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // CSP provides a generic implementation of the BCCSP interface based
 // on wrappers. It can be customized by providing implementations for the

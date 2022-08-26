@@ -8,11 +8,11 @@ package config
 
 import (
 	"bytes"
+	"github.com/wsw365904/wswlog/wlogging"
 	"os"
 	"path/filepath"
 	"testing"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/core"
 	"github.com/hyperledger/fabric-sdk-go/pkg/core/cryptosuite"
 	"github.com/hyperledger/fabric-sdk-go/pkg/util/test"
@@ -103,7 +103,7 @@ func TestInitConfigWithCmdRoot(t *testing.T) {
 	TestInitConfigSuccess(t)
 	fileLoc := configTestFilePath
 	cmdRoot := "fabric_sdk"
-	var logger = logging.NewLogger("fabsdk/core")
+	var logger = wlogging.MustGetLoggerWithoutName()
 	logger.Infof("fileLoc is %s", fileLoc)
 
 	logger.Infof("fileLoc right before calling InitConfigWithCmdRoot is %s", fileLoc)

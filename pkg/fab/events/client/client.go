@@ -7,11 +7,11 @@ SPDX-License-Identifier: Apache-2.0
 package client
 
 import (
+	"github.com/wsw365904/wswlog/wlogging"
 	"sync"
 	"sync/atomic"
 	"time"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/options"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
 	"github.com/hyperledger/fabric-sdk-go/pkg/fab/events/client/dispatcher"
@@ -20,7 +20,7 @@ import (
 	"github.com/pkg/errors"
 )
 
-var logger = logging.NewLogger("fabsdk/fab")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // ConnectionState is the state of the client connection
 type ConnectionState int32
@@ -369,7 +369,7 @@ func (c *Client) monitorConnection() {
 	logger.Debug("Monitoring connection")
 	for event := range c.connEvent {
 		if c.Stopped() {
-			logger.Debugln("Event client has been stopped.")
+			logger.Debug("Event client has been stopped.")
 			break
 		}
 
@@ -436,7 +436,7 @@ func (c *Client) notifyConnectEventChan(event *dispatcher.ConnectionEvent) {
 	c.RLock()
 	defer c.RUnlock()
 	if c.connEventCh != nil {
-		logger.Debugln("Sending connection event to subscriber.")
+		logger.Debug("Sending connection event to subscriber.")
 		c.connEventCh <- event
 	}
 }

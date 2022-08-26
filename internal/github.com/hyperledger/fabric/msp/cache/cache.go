@@ -12,8 +12,8 @@ package cache
 
 import (
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/msp"
-	flogging "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkpatch/logbridge"
 	"github.com/pkg/errors"
+	"github.com/wsw365904/wswlog/wlogging"
 )
 
 const (
@@ -22,7 +22,7 @@ const (
 	satisfiesPrincipalCacheSize  = 100
 )
 
-var mspLogger = flogging.MustGetLogger("msp")
+var mspLogger = wlogging.MustGetLoggerWithoutName()
 
 func New(o msp.MSP) (msp.MSP, error) {
 	mspLogger.Debugf("Creating Cache-MSP instance")

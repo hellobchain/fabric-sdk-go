@@ -9,16 +9,16 @@ package lazyref
 import (
 	"errors"
 	"fmt"
+	"github.com/wsw365904/wswlog/wlogging"
 	"sync"
 	"sync/atomic"
 	"time"
 	"unsafe"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/options"
 )
 
-var logger = logging.NewLogger("fabsdk/util")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // Initializer is a function that initializes the value
 type Initializer func() (interface{}, error)

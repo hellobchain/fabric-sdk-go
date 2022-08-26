@@ -7,16 +7,16 @@ SPDX-License-Identifier: Apache-2.0
 package preferorg
 
 import (
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/options"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/context"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
 	"github.com/hyperledger/fabric-sdk-go/pkg/fab/events/client/peerresolver"
 	"github.com/hyperledger/fabric-sdk-go/pkg/fab/events/client/peerresolver/minblockheight"
 	"github.com/hyperledger/fabric-sdk-go/pkg/fab/events/service"
+	"github.com/wsw365904/wswlog/wlogging"
 )
 
-var logger = logging.NewLogger("fabsdk/fab")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // PeerResolver is a peer resolver that determines which peers are suitable based on block height, although
 // will prefer the peers in the current org (as long as their block height is above a configured threshold).

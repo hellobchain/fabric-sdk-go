@@ -10,6 +10,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/wsw365904/wswlog/wlogging"
 	"strings"
 	"time"
 
@@ -20,7 +21,6 @@ import (
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/multi"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/retry"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/status"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	coptions "github.com/hyperledger/fabric-sdk-go/pkg/common/options"
 	contextAPI "github.com/hyperledger/fabric-sdk-go/pkg/common/providers/context"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
@@ -32,13 +32,12 @@ import (
 )
 
 const (
-	moduleName = "fabsdk/client"
 
 	// AccessDenied indicates that the user does not have permission to perform the operation
 	AccessDenied = "access denied"
 )
 
-var logger = logging.NewLogger(moduleName)
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // DiscoveryClient is the client to the discovery service
 type DiscoveryClient interface {
@@ -102,7 +101,7 @@ func New(ctx contextAPI.Client, channelID string, discovery fab.DiscoveryService
 		"Fabric_Selection_Cache",
 		func(key lazycache.Key, data interface{}) (interface{}, error) {
 			invocationChain := key.(*cacheKey).chaincodes
-			if logging.IsEnabledFor(moduleName, logging.DEBUG) {
+			if logger.IsEnabledFor(wlogging.PayloadLevel + 1) {
 				key, err := json.Marshal(invocationChain)
 				if err != nil {
 					panic(fmt.Sprintf("marshal of chaincodes failed: %s", err))

@@ -8,14 +8,14 @@ package endpoint
 
 import (
 	"github.com/pkg/errors"
+	"github.com/wsw365904/wswlog/wlogging"
 
 	"github.com/hyperledger/fabric-sdk-go/pkg/client/common/discovery"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/context"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
 )
 
-var logger = logging.NewLogger("fabsdk/fab")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // DiscoveryWrapper wraps a target discovery service and adds endpoint data to each
 // of the discovered peers.

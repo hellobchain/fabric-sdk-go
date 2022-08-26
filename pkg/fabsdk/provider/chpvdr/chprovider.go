@@ -8,8 +8,8 @@ package chpvdr
 
 import (
 	reqContext "context"
+	"github.com/wsw365904/wswlog/wlogging"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/options"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/context"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
@@ -18,7 +18,7 @@ import (
 	"github.com/hyperledger/fabric-sdk-go/pkg/util/concurrent/lazycache"
 )
 
-var logger = logging.NewLogger("fabsdk")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // ChannelProvider keeps context across ChannelService instances.
 //

@@ -24,8 +24,8 @@ import (
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkinternal/configtxgen/genesisconfig"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkinternal/configtxlator/update"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkinternal/pkg/identity"
-	flogging "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkpatch/logbridge"
 	"github.com/pkg/errors"
+	"github.com/wsw365904/wswlog/wlogging"
 )
 
 const (
@@ -35,7 +35,7 @@ const (
 	epoch      = 0
 )
 
-var logger = flogging.MustGetLogger("common.tools.configtxgen.encoder")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 const (
 	// ConsensusTypeSolo identifies the solo consensus implementation.

@@ -26,12 +26,11 @@ import (
 	"github.com/golang/protobuf/proto"
 	"github.com/hyperledger/fabric-protos-go/msp"
 	bccsp "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkpatch/cryptosuitebridge"
-	flogging "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkpatch/logbridge"
-	logging "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkpatch/logbridge"
 	"github.com/pkg/errors"
+	"github.com/wsw365904/wswlog/wlogging"
 )
 
-var mspIdentityLogger = flogging.MustGetLogger("msp.identity")
+var mspIdentityLogger = wlogging.MustGetLoggerWithoutName()
 
 type identity struct {
 	// id contains the identifier (MSPID and identity identifier) for this instance
@@ -60,7 +59,7 @@ type identity struct {
 }
 
 func newIdentity(cert *x509.Certificate, pk core.Key, msp *bccspmsp) (Identity, error) {
-	if mspIdentityLogger.IsEnabledFor(logging.DEBUG) {
+	if mspIdentityLogger.IsEnabledFor(wlogging.PayloadLevel + 1) {
 		mspIdentityLogger.Debugf("Creating identity instance for cert %s", certToPEM(cert))
 	}
 
@@ -172,7 +171,7 @@ func (id *identity) Verify(msg []byte, sig []byte) error {
 		return errors.WithMessage(err, "failed computing digest")
 	}
 
-	if mspIdentityLogger.IsEnabledFor(logging.DEBUG) {
+	if mspIdentityLogger.IsEnabledFor(wlogging.PayloadLevel + 1) {
 		mspIdentityLogger.Debugf("Verify: digest = %s", hex.Dump(digest))
 		mspIdentityLogger.Debugf("Verify: sig = %s", hex.Dump(sig))
 	}

@@ -8,13 +8,13 @@ package mockmsp
 
 import (
 	http2 "github.com/wsw365904/newcryptosm/http"
+	"github.com/wsw365904/wswlog/wlogging"
 	"net"
 	"time"
 
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/lib"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkinternal/pkg/api"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkinternal/pkg/util"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/core"
 	cfsslapi "github.com/wsw365904/third_party/cloudflare/cfssl/api"
 )
@@ -43,7 +43,7 @@ AiaiI2BjxnL3/TetJ8iFJYZyWvK//an13WV/AiARBJd/pI5A7KZgQxJhXmmR8bie
 XdsmTcdRvJ3TS/6HCA==
 -----END CERTIFICATE-----`
 
-var logger = logging.NewLogger("fabsdk/msp")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // The enrollment response from the server
 type enrollmentResponseNet struct {

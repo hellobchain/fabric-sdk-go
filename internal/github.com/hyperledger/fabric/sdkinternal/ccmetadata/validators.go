@@ -13,15 +13,14 @@ package ccmetadata
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/wsw365904/wswlog/wlogging"
 	"path/filepath"
 	"reflect"
 	"regexp"
 	"strings"
-
-	flogging "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkpatch/logbridge"
 )
 
-var logger = flogging.MustGetLogger("chaincode.platform.metadata")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // fileValidators are used as handlers to validate specific metadata directories
 type fileValidator func(fileName string, fileBytes []byte) error

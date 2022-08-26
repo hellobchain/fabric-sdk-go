@@ -9,11 +9,11 @@ package headertypefilter
 import (
 	cb "github.com/hyperledger/fabric-protos-go/common"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/protoutil"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/wsw365904/wswlog/wlogging"
 )
 
-var logger = logging.NewLogger("eventservice/blockfilter")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // New returns a block filter that filters out blocks that
 // don't contain envelopes of the given type(s)

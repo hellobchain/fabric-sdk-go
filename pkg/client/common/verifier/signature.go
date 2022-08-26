@@ -9,18 +9,16 @@ package verifier
 
 import (
 	"github.com/wsw365904/newcryptosm/x509"
+	"github.com/wsw365904/wswlog/wlogging"
 	"time"
 
 	"github.com/hyperledger/fabric-protos-go/common"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/status"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
 	"github.com/pkg/errors"
 )
 
-const loggerModule = "fabsdk/client"
-
-var logger = logging.NewLogger(loggerModule)
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // Signature verifies response signature
 type Signature struct {

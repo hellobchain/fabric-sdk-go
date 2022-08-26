@@ -11,15 +11,14 @@ import (
 	"time"
 
 	"github.com/golang/protobuf/proto"
+	"github.com/hyperledger/fabric-protos-go/common"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/core/common/ccprovider"
 	"github.com/hyperledger/fabric-sdk-go/pkg/client/common/selection/dynamicselection/pgresolver"
 	"github.com/hyperledger/fabric-sdk-go/pkg/client/common/selection/options"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	coptions "github.com/hyperledger/fabric-sdk-go/pkg/common/options"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
 	"github.com/hyperledger/fabric-sdk-go/pkg/fab/mocks"
 	mspmocks "github.com/hyperledger/fabric-sdk-go/pkg/msp/test/mockmsp"
-	"github.com/hyperledger/fabric-protos-go/common"
 )
 
 const (
@@ -212,10 +211,6 @@ func TestGetEndorsersForChaincodeTwoCCsTwoChannels(t *testing.T) {
 
 func verify(t *testing.T, service fab.SelectionService, expectedPeerGroups []pgresolver.PeerGroup, channelID string, getEndorsersOpts []coptions.Opt, chaincodeIDs ...string) {
 	// Set the log level to WARNING since the following spits out too much info in DEBUG
-	module := "pg-resolver"
-	level := logging.GetLevel(module)
-	logging.SetLevel(module, logging.WARNING)
-	defer logging.SetLevel(module, level)
 
 	var chaincodes []*fab.ChaincodeCall
 	for _, ccID := range chaincodeIDs {

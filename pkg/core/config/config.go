@@ -8,19 +8,16 @@ package config
 
 import (
 	"bytes"
+	"github.com/wsw365904/wswlog/wlogging"
 	"io"
 	"strings"
 
 	"github.com/spf13/viper"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/pkg/errors"
 
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/core"
 )
-
-var logModules = [...]string{"fabsdk", "fabsdk/client", "fabsdk/core", "fabsdk/fab", "fabsdk/common",
-	"fabsdk/msp", "fabsdk/util", "fabsdk/context"}
 
 type options struct {
 	envPrefix    string
@@ -148,17 +145,8 @@ func newViper(cmdRootPrefix string) *viper.Viper {
 // setLogLevel will set the log level of the client
 func setLogLevel(backend core.ConfigBackend) {
 	loggingLevelString, _ := backend.Lookup("client.logging.level")
-	logLevel := logging.INFO
 	if loggingLevelString != nil {
-		var err error
-		logLevel, err = logging.LogLevel(loggingLevelString.(string))
-		if err != nil {
-			panic(err)
-		}
+		wlogging.ActivateSpec(loggingLevelString.(string))
 	}
 
-	// TODO: allow separate settings for each
-	for _, logModule := range logModules {
-		logging.SetLevel(logModule, logLevel)
-	}
 }

@@ -7,15 +7,15 @@ SPDX-License-Identifier: Apache-2.0
 package options
 
 import (
+	"github.com/wsw365904/wswlog/wlogging"
 	"sort"
 
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/retry"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	copts "github.com/hyperledger/fabric-sdk-go/pkg/common/options"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
 )
 
-var logger = logging.NewLogger("fabsdk/client")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // PeerFilter filters out unwanted peers
 type PeerFilter func(peer fab.Peer) bool

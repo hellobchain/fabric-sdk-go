@@ -29,17 +29,19 @@ import (
 	"github.com/wsw365904/newcryptosm/ecdsa"
 	"github.com/wsw365904/newcryptosm/tls"
 	"github.com/wsw365904/newcryptosm/x509"
+	"github.com/wsw365904/wswlog/wlogging"
 	"io/ioutil"
 	"strings"
 
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/core"
 
 	factory "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkpatch/cryptosuitebridge"
-	log "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkpatch/logbridge"
 	"github.com/pkg/errors"
 	"github.com/wsw365904/third_party/cloudflare/cfssl/csr"
 	"github.com/wsw365904/third_party/cloudflare/cfssl/helpers"
 )
+
+var log = wlogging.MustGetLoggerWithoutName()
 
 // getBCCSPKeyOpts generates a key as specified in the request.
 // This supports ECDSA.

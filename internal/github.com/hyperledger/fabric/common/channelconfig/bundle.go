@@ -10,11 +10,9 @@ Please review third_party pinning scripts and patches for more details.
 
 package channelconfig
 
-import (
-	flogging "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkpatch/logbridge"
-)
+import "github.com/wsw365904/wswlog/wlogging"
 
-var logger = flogging.MustGetLogger("common.channelconfig")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // RootGroupKey is the key for namespacing the channel config, especially for
 // policy evaluation.

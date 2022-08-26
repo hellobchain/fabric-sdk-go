@@ -13,14 +13,14 @@ import (
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
 	"github.com/hyperledger/fabric-sdk-go/pkg/fab/peer"
 	"github.com/pkg/errors"
+	"github.com/wsw365904/wswlog/wlogging"
 
 	"github.com/golang/protobuf/proto"
 	pb "github.com/hyperledger/fabric-protos-go/peer"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/rwsetutil"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 )
 
-var logger = logging.NewLogger("fabsdk/client")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 var lsccFilter = func(ccID string) bool {
 	return ccID != "lscc" && ccID != "_lifecycle"

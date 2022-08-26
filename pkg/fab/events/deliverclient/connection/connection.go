@@ -9,6 +9,7 @@ package connection
 import (
 	"context"
 	"fmt"
+	"github.com/wsw365904/wswlog/wlogging"
 	"io"
 
 	"github.com/golang/protobuf/proto"
@@ -17,7 +18,6 @@ import (
 	pb "github.com/hyperledger/fabric-protos-go/peer"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/crypto"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/protoutil"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/options"
 	fabcontext "github.com/hyperledger/fabric-sdk-go/pkg/common/providers/context"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
@@ -27,7 +27,7 @@ import (
 	"google.golang.org/grpc"
 )
 
-var logger = logging.NewLogger("fabsdk/fab")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 type deliverStream interface {
 	grpc.ClientStream

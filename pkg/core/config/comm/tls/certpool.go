@@ -8,13 +8,12 @@ package tls
 
 import (
 	x5092 "github.com/wsw365904/newcryptosm/x509"
+	"github.com/wsw365904/wswlog/wlogging"
 	"sync"
 	"sync/atomic"
-
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 )
 
-var logger = logging.NewLogger("fabsdk/core")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // CertPool is a thread safe wrapper around the x509 standard library
 // cert pool implementation.

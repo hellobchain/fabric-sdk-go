@@ -7,10 +7,10 @@ SPDX-License-Identifier: Apache-2.0
 package defcore
 
 import (
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/core"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
 	"github.com/hyperledger/fabric-sdk-go/pkg/core/logging/api"
+	"github.com/wsw365904/wswlog/wlogging"
 
 	cryptosuiteimpl "github.com/hyperledger/fabric-sdk-go/pkg/core/cryptosuite/bccsp/sw"
 	signingMgr "github.com/hyperledger/fabric-sdk-go/pkg/fab/signingmgr"
@@ -19,7 +19,7 @@ import (
 	"github.com/hyperledger/fabric-sdk-go/pkg/core/logging/modlog"
 )
 
-var logger = logging.NewLogger("fabsdk")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // ProviderFactory represents the default SDK provider factory.
 type ProviderFactory struct {

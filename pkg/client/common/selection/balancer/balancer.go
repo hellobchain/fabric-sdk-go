@@ -7,14 +7,14 @@ SPDX-License-Identifier: Apache-2.0
 package balancer
 
 import (
+	"github.com/wsw365904/wswlog/wlogging"
 	"math/rand"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
 	"github.com/hyperledger/fabric-sdk-go/pkg/util/concurrent/rollingcounter"
 )
 
-var logger = logging.NewLogger("fabsdk/client")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // Balancer is a load-balancing function for peers
 type Balancer func(peers []fab.Peer) []fab.Peer

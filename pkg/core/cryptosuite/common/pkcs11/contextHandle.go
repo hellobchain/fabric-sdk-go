@@ -8,18 +8,18 @@ package pkcs11
 
 import (
 	"fmt"
+	"github.com/wsw365904/wswlog/wlogging"
 	"strings"
 	"sync"
 
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkpatch/cachebridge"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	"github.com/hyperledger/fabric-sdk-go/pkg/util/concurrent/lazycache"
 	"github.com/hyperledger/fabric-sdk-go/pkg/util/concurrent/lazyref"
 	mPkcs11 "github.com/miekg/pkcs11"
 	"github.com/pkg/errors"
 )
 
-var logger = logging.NewLogger("fabsdk/core")
+var logger = wlogging.MustGetLoggerWithoutName()
 var ctxCache *lazycache.Cache
 var once sync.Once
 var errSlotIDChanged = fmt.Errorf("slot id changed")

@@ -7,15 +7,15 @@ SPDX-License-Identifier: Apache-2.0
 package blockheightsorter
 
 import (
+	"github.com/wsw365904/wswlog/wlogging"
 	"sort"
 
 	"github.com/hyperledger/fabric-sdk-go/pkg/client/common/selection/options"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	coptions "github.com/hyperledger/fabric-sdk-go/pkg/common/options"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
 )
 
-var logger = logging.NewLogger("fabsdk/client")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 // New returns a peer sorter that uses block height and the provided balancer to sort the peers.
 // This sorter uses a block-height-lag-threshold property which is the number of blocks from

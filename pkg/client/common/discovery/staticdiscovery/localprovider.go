@@ -7,14 +7,14 @@ SPDX-License-Identifier: Apache-2.0
 package staticdiscovery
 
 import (
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/logging"
 	contextAPI "github.com/hyperledger/fabric-sdk-go/pkg/common/providers/context"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/wsw365904/wswlog/wlogging"
 
 	"github.com/pkg/errors"
 )
 
-var logger = logging.NewLogger("fabsdk/client")
+var logger = wlogging.MustGetLoggerWithoutName()
 
 type peerCreator interface {
 	CreatePeerFromConfig(peerCfg *fab.NetworkPeer) (fab.Peer, error)

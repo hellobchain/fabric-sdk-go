@@ -4,20 +4,20 @@ import (
 	"encoding/pem"
 	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
 	internalmsp "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/msp"
-	flogging "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkpatch/logbridge"
 	"github.com/hyperledger/fabric-sdk-go/pkg/algo"
 	"github.com/pkg/errors"
 	"github.com/wsw365904/newcryptosm/x509"
 	"github.com/wsw365904/newcryptosm/x509/pkix"
 	"github.com/wsw365904/third_party/hyperledger/fabric-config/configtx"
 	"github.com/wsw365904/third_party/hyperledger/fabric-config/configtx/membership"
+	"github.com/wsw365904/wswlog/wlogging"
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 )
 
-var mspLogger = flogging.MustGetLogger("pkg.util")
+var mspLogger = wlogging.MustGetLoggerWithoutName()
 
 const (
 	cacerts              = "cacerts"

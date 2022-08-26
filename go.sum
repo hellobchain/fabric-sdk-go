@@ -830,8 +830,9 @@ github.com/wsw365904/newcryptosm v0.0.0-20220822153922-8852ae7b6d34 h1:DgZxuAUio
 github.com/wsw365904/newcryptosm v0.0.0-20220822153922-8852ae7b6d34/go.mod h1:7L+vDLXwSCoeV2GxiYMx/nAHuCUAnKja3Dgr7QBj53Q=
 github.com/wsw365904/third_party v0.0.0-20220822153856-449e7dccc2bc h1:xIAP46o9I607ETw8DmO76XzAupfyDvmtYJxF+WpEPWU=
 github.com/wsw365904/third_party v0.0.0-20220822153856-449e7dccc2bc/go.mod h1:vz+Sdbe3lradHBk710788wgW5+pypVIlULobOW++Xoc=
-github.com/wsw365904/wswlog v0.0.0-20220708094655-a4c554b01c1b h1:rYAR0/BZErJp1917eZwm/1Hjtl582Si9h5KhSCPXVUc=
 github.com/wsw365904/wswlog v0.0.0-20220708094655-a4c554b01c1b/go.mod h1:pZwqrFkJ8TGEpDKU0v8o84mBowUd8+DLciQ2nY0VMzQ=
+github.com/wsw365904/wswlog v0.0.0-20220826082513-787d040d761f h1:Cs0nfj8GPlqpXSWUMP7k8/4/ea1PraTLopPmFOMi1Lk=
+github.com/wsw365904/wswlog v0.0.0-20220826082513-787d040d761f/go.mod h1:YUIhX9nApfRkOUF+Hv207zEsGLd5RC+HAlsqS43joY4=
 github.com/xanzy/go-gitlab v0.31.0/go.mod h1:sPLojNBn68fMUWSxIJtdVVIP8uSBYqesTfDUseX11Ug=
 github.com/xanzy/ssh-agent v0.2.1/go.mod h1:mLlQY/MoOhWBj+gOGMQkOeiEvkx+8pJSI+0Bx9h2kr4=
 github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8/go.mod h1:HUYIGzjTL3rfEspMxjDjgmT5uz5wzYJKVo23qUhYTos=
