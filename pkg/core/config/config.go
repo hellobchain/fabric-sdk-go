@@ -8,7 +8,6 @@ package config
 
 import (
 	"bytes"
-	"github.com/wsw365904/wswlog/wlogging"
 	"io"
 	"strings"
 
@@ -144,9 +143,9 @@ func newViper(cmdRootPrefix string) *viper.Viper {
 
 // setLogLevel will set the log level of the client
 func setLogLevel(backend core.ConfigBackend) {
-	loggingLevelString, _ := backend.Lookup("client.logging.level")
-	if loggingLevelString != nil {
-		wlogging.ActivateSpec(loggingLevelString.(string))
-	}
-
+	//loggingLevelString, _ := backend.Lookup("client.logging.level")
+	//if loggingLevelString != nil {
+	//	wlogging.SetGlobalLogLevel(loggingLevelString.(string))
+	//}
+	// wsw add
 }

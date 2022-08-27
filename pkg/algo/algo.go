@@ -32,6 +32,9 @@ var once sync.Once
 func JudgeAlgo(pemBytes []byte) {
 	once.Do(func() {
 		p, _ := pem.Decode(pemBytes)
+		if p == nil {
+			logger.Error("pemBytes is invalid")
+		}
 		parseCertificate, err := x509.ParseCertificate(p.Bytes)
 		if err != nil {
 			logger.Error("parse cert failed", err)
