@@ -8,6 +8,8 @@ package msp
 
 import (
 	"fmt"
+	"io/ioutil"
+	"os"
 	"path/filepath"
 	"strings"
 
@@ -34,7 +36,20 @@ func NewFileCertStore(cryptoConfigMSPPath string) (core.KVStore, error) {
 			// TODO: refactor to case insensitive or remove eventually.
 			r := strings.NewReplacer("{userName}", ck.ID, "{username}", ck.ID)
 			certDir := filepath.Join(r.Replace(cryptoConfigMSPPath), "signcerts")
-			return filepath.Join(certDir, fmt.Sprintf("%s@%s-cert.pem", ck.ID, orgName)), nil // wsw add
+			certPath := filepath.Join(certDir, fmt.Sprintf("%s@%s-cert.pem", ck.ID, orgName))
+			_, err := os.Stat(certPath)
+			if os.IsNotExist(err) {
+				rd, err := ioutil.ReadDir(certDir)
+				if err != nil {
+					return "", err
+				}
+				for _, fi := range rd {
+					if !fi.IsDir() {
+						return filepath.Join(certDir, fi.Name()), nil
+					}
+				}
+			}
+			return certPath, nil // wsw add
 		},
 	}
 	return keyvaluestore.New(opts)
