@@ -7,14 +7,15 @@ module github.com/wsw365904/fabric-sdk-go/test/performance
 replace github.com/wsw365904/fabric-sdk-go => ../../
 
 require (
-	github.com/golang/protobuf v1.3.3
-	github.com/hyperledger/fabric-protos-go v0.0.0-20200707132912-fee30f3ccd23
-	github.com/wsw365904/fabric-sdk-go main
-	github.com/wsw365904/fabric-sdk-go/test/integration v0.0.0-20200909154308-842c4b3ea51e // indirect
-	github.com/pkg/errors v0.8.1
-	github.com/stretchr/testify v1.5.1
-	golang.org/x/net v0.0.0-20190613194153-d28f0bde5980
-	google.golang.org/grpc v1.29.1
+	github.com/golang/protobuf v1.5.2
+	github.com/hyperledger/fabric-protos-go v0.0.0-20220816110612-c96c610ca7b4
+	github.com/pkg/errors v0.9.1
+	github.com/stretchr/testify v1.7.1
+	github.com/wsw365904/fabric-sdk-go v0.0.0-20220827110349-d15b2aaae095
+	github.com/wsw365904/newcryptosm v0.0.0-20220822153922-8852ae7b6d34
+	github.com/wsw365904/third_party v0.0.0-20220822153856-449e7dccc2bc
+	golang.org/x/net v0.0.0-20220812174116-3211cb980234
+	google.golang.org/grpc v1.48.0
 )
 
 go 1.14
