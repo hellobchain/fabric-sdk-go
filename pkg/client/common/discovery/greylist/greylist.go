@@ -11,9 +11,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/status"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/hyperledger/fabric-sdk-go/pkg/core/config/endpoint"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/errors/status"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/wsw365904/fabric-sdk-go/pkg/core/config/endpoint"
 )
 
 var logger = wlogging.MustGetLoggerWithoutName()

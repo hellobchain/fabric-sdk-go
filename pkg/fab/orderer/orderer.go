@@ -8,7 +8,7 @@ package orderer
 
 import (
 	reqContext "context"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
 	"github.com/wsw365904/newcryptosm/tls/credentials"
 	"github.com/wsw365904/newcryptosm/x509"
 	"github.com/wsw365904/wswlog/wlogging"
@@ -16,21 +16,21 @@ import (
 	"strings"
 	"time"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/multi"
 	"github.com/pkg/errors"
 	"github.com/spf13/cast"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/errors/multi"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/keepalive"
 	grpcstatus "google.golang.org/grpc/status"
 
 	"github.com/hyperledger/fabric-protos-go/common"
 	ab "github.com/hyperledger/fabric-protos-go/orderer"
-	"github.com/hyperledger/fabric-sdk-go/pkg/client/common/verifier"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/status"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab/orderer"
-	"github.com/hyperledger/fabric-sdk-go/pkg/context"
-	"github.com/hyperledger/fabric-sdk-go/pkg/core/config/comm"
-	"github.com/hyperledger/fabric-sdk-go/pkg/core/config/endpoint"
+	"github.com/wsw365904/fabric-sdk-go/pkg/client/common/verifier"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/errors/status"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab/orderer"
+	"github.com/wsw365904/fabric-sdk-go/pkg/context"
+	"github.com/wsw365904/fabric-sdk-go/pkg/core/config/comm"
+	"github.com/wsw365904/fabric-sdk-go/pkg/core/config/endpoint"
 )
 
 var _ fab.Orderer = (*Orderer)(nil)

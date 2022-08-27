@@ -9,9 +9,9 @@ package membership
 import (
 	"time"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/hyperledger/fabric-sdk-go/pkg/util/concurrent/lazyref"
 	"github.com/pkg/errors"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/wsw365904/fabric-sdk-go/pkg/util/concurrent/lazyref"
 )
 
 // Ref membership reference that refreshes to load the given channel config reference

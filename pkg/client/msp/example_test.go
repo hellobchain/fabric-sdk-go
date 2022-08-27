@@ -8,9 +8,9 @@ package msp
 import (
 	"fmt"
 
-	fabricCaUtil "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkinternal/pkg/util"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/context"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/msp"
+	fabricCaUtil "github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkinternal/pkg/util"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/msp"
 	"github.com/wsw365904/third_party/cloudflare/cfssl/log"
 )
 

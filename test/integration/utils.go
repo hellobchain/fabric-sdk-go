@@ -14,16 +14,16 @@ import (
 	"testing"
 	"time"
 
-	mspclient "github.com/hyperledger/fabric-sdk-go/pkg/client/msp"
-	"github.com/hyperledger/fabric-sdk-go/pkg/client/resmgmt"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/retry"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/core"
-	fabApi "github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/hyperledger/fabric-sdk-go/pkg/core/config/lookup"
-	"github.com/hyperledger/fabric-sdk-go/pkg/core/cryptosuite"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fabsdk"
-	"github.com/hyperledger/fabric-sdk-go/pkg/msp"
 	"github.com/pkg/errors"
+	mspclient "github.com/wsw365904/fabric-sdk-go/pkg/client/msp"
+	"github.com/wsw365904/fabric-sdk-go/pkg/client/resmgmt"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/errors/retry"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
+	fabApi "github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/wsw365904/fabric-sdk-go/pkg/core/config/lookup"
+	"github.com/wsw365904/fabric-sdk-go/pkg/core/cryptosuite"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk"
+	"github.com/wsw365904/fabric-sdk-go/pkg/msp"
 )
 
 const (

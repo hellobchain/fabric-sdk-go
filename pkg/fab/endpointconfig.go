@@ -7,7 +7,7 @@ SPDX-License-Identifier: Apache-2.0
 package fab
 
 import (
-	"github.com/hyperledger/fabric-sdk-go/pkg/algo"
+	"github.com/wsw365904/fabric-sdk-go/pkg/algo"
 	"github.com/wsw365904/newcryptosm/tls"
 	"github.com/wsw365904/newcryptosm/x509"
 	"github.com/wsw365904/wswlog/wlogging"
@@ -17,19 +17,19 @@ import (
 	"strings"
 	"time"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/multi"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/retry"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/status"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/core"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
-	commtls "github.com/hyperledger/fabric-sdk-go/pkg/core/config/comm/tls"
-	"github.com/hyperledger/fabric-sdk-go/pkg/core/config/cryptoutil"
-	"github.com/hyperledger/fabric-sdk-go/pkg/core/config/endpoint"
-	"github.com/hyperledger/fabric-sdk-go/pkg/core/config/lookup"
-	"github.com/hyperledger/fabric-sdk-go/pkg/core/cryptosuite"
-	"github.com/hyperledger/fabric-sdk-go/pkg/util/pathvar"
 	"github.com/mitchellh/mapstructure"
 	"github.com/pkg/errors"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/errors/multi"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/errors/retry"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/errors/status"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
+	commtls "github.com/wsw365904/fabric-sdk-go/pkg/core/config/comm/tls"
+	"github.com/wsw365904/fabric-sdk-go/pkg/core/config/cryptoutil"
+	"github.com/wsw365904/fabric-sdk-go/pkg/core/config/endpoint"
+	"github.com/wsw365904/fabric-sdk-go/pkg/core/config/lookup"
+	"github.com/wsw365904/fabric-sdk-go/pkg/core/cryptosuite"
+	"github.com/wsw365904/fabric-sdk-go/pkg/util/pathvar"
 	grpcCodes "google.golang.org/grpc/codes"
 )
 
@@ -1848,7 +1848,7 @@ func detectDeprecatedNetworkConfig(endpointConfig *EndpointConfig) {
 	for _, v := range endpointConfig.networkConfig.Channels {
 		if len(v.Orderers) > 0 {
 			logger.Warn("Getting orderers from endpoint config channels.orderer is deprecated, use entity matchers to override orderer configuration")
-			logger.Warn("visit https://github.com/hyperledger/fabric-sdk-go/blob/master/test/fixtures/config/overrides/local_entity_matchers.yaml for samples")
+			logger.Warn("visit https://github.com/wsw365904/fabric-sdk-go/blob/master/test/fixtures/config/overrides/local_entity_matchers.yaml for samples")
 			break
 		}
 	}

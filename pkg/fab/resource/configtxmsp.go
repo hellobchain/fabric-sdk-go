@@ -8,8 +8,8 @@ package resource
 
 import (
 	"fmt"
-	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
-	"github.com/hyperledger/fabric-sdk-go/pkg/algo"
+	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
+	"github.com/wsw365904/fabric-sdk-go/pkg/algo"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -17,7 +17,7 @@ import (
 	"github.com/golang/protobuf/proto"
 
 	"github.com/hyperledger/fabric-protos-go/msp"
-	mspcfg "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/msp"
+	mspcfg "github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/msp"
 )
 
 const (

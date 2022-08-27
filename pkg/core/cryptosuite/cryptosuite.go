@@ -7,7 +7,7 @@ SPDX-License-Identifier: Apache-2.0
 package cryptosuite
 
 import (
-	"github.com/hyperledger/fabric-sdk-go/pkg/algo"
+	"github.com/wsw365904/fabric-sdk-go/pkg/algo"
 	"github.com/wsw365904/wswlog/wlogging"
 	"sync/atomic"
 
@@ -15,9 +15,9 @@ import (
 
 	"sync"
 
-	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/core"
-	"github.com/hyperledger/fabric-sdk-go/pkg/core/cryptosuite/bccsp/sw"
+	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
+	"github.com/wsw365904/fabric-sdk-go/pkg/core/cryptosuite/bccsp/sw"
 )
 
 var logger = wlogging.MustGetLoggerWithoutName()

@@ -11,10 +11,10 @@ import (
 	"github.com/wsw365904/newcryptosm/x509"
 	"testing"
 
-	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/lib/attrmgr"
-	"github.com/hyperledger/fabric-sdk-go/pkg/client/msp"
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/require"
+	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/lib/attrmgr"
+	"github.com/wsw365904/fabric-sdk-go/pkg/client/msp"
 )
 
 // nolint: deadcode

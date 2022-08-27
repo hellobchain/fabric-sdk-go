@@ -16,10 +16,10 @@ import (
 	"github.com/wsw365904/wswlog/wlogging"
 	"os"
 
-	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
-	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp/sw"
-	sdkp11 "github.com/hyperledger/fabric-sdk-go/pkg/core/cryptosuite/common/pkcs11"
 	"github.com/pkg/errors"
+	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
+	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp/sw"
+	sdkp11 "github.com/wsw365904/fabric-sdk-go/pkg/core/cryptosuite/common/pkcs11"
 )
 
 var (

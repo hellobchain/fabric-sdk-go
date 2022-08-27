@@ -1,3 +1,4 @@
+//go:build testing
 // +build testing
 
 /*
@@ -14,16 +15,16 @@ import (
 	"testing"
 	"time"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/client/common/discovery"
-	contextAPI "github.com/hyperledger/fabric-sdk-go/pkg/common/providers/context"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
-	pfab "github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
-	fabDiscovery "github.com/hyperledger/fabric-sdk-go/pkg/fab/discovery"
-	discmocks "github.com/hyperledger/fabric-sdk-go/pkg/fab/discovery/mocks"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fab/mocks"
-	mspmocks "github.com/hyperledger/fabric-sdk-go/pkg/msp/test/mockmsp"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"github.com/wsw365904/fabric-sdk-go/pkg/client/common/discovery"
+	contextAPI "github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
+	pfab "github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
+	fabDiscovery "github.com/wsw365904/fabric-sdk-go/pkg/fab/discovery"
+	discmocks "github.com/wsw365904/fabric-sdk-go/pkg/fab/discovery/mocks"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fab/mocks"
+	mspmocks "github.com/wsw365904/fabric-sdk-go/pkg/msp/test/mockmsp"
 )
 
 func TestDiscoveryService(t *testing.T) {

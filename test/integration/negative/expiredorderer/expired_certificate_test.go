@@ -10,17 +10,17 @@ import (
 	"os"
 	"testing"
 
-	mspclient "github.com/hyperledger/fabric-sdk-go/pkg/client/msp"
-	"github.com/hyperledger/fabric-sdk-go/pkg/client/resmgmt"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/core"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/msp"
-	"github.com/hyperledger/fabric-sdk-go/pkg/core/config"
-	"github.com/hyperledger/fabric-sdk-go/pkg/core/config/lookup"
-	"github.com/hyperledger/fabric-sdk-go/pkg/core/mocks"
-	fabImpl "github.com/hyperledger/fabric-sdk-go/pkg/fab"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fabsdk"
-	"github.com/hyperledger/fabric-sdk-go/test/integration"
 	"github.com/stretchr/testify/assert"
+	mspclient "github.com/wsw365904/fabric-sdk-go/pkg/client/msp"
+	"github.com/wsw365904/fabric-sdk-go/pkg/client/resmgmt"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/msp"
+	"github.com/wsw365904/fabric-sdk-go/pkg/core/config"
+	"github.com/wsw365904/fabric-sdk-go/pkg/core/config/lookup"
+	"github.com/wsw365904/fabric-sdk-go/pkg/core/mocks"
+	fabImpl "github.com/wsw365904/fabric-sdk-go/pkg/fab"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk"
+	"github.com/wsw365904/fabric-sdk-go/test/integration"
 )
 
 const (

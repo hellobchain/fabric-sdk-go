@@ -12,10 +12,10 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/options"
-	"github.com/hyperledger/fabric-sdk-go/pkg/util/concurrent/futurevalue"
-	"github.com/hyperledger/fabric-sdk-go/pkg/util/concurrent/lazyref"
 	"github.com/pkg/errors"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/options"
+	"github.com/wsw365904/fabric-sdk-go/pkg/util/concurrent/futurevalue"
+	"github.com/wsw365904/fabric-sdk-go/pkg/util/concurrent/lazyref"
 )
 
 var logger = wlogging.MustGetLoggerWithoutName()

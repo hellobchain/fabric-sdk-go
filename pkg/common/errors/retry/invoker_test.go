@@ -10,8 +10,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/status"
 	"github.com/stretchr/testify/assert"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/errors/status"
 )
 
 func TestInvokeSuccess(t *testing.T) {

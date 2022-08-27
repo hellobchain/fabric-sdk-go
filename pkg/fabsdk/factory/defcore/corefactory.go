@@ -7,16 +7,16 @@ SPDX-License-Identifier: Apache-2.0
 package defcore
 
 import (
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/core"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/hyperledger/fabric-sdk-go/pkg/core/logging/api"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/wsw365904/fabric-sdk-go/pkg/core/logging/api"
 	"github.com/wsw365904/wswlog/wlogging"
 
-	cryptosuiteimpl "github.com/hyperledger/fabric-sdk-go/pkg/core/cryptosuite/bccsp/sw"
-	signingMgr "github.com/hyperledger/fabric-sdk-go/pkg/fab/signingmgr"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fabsdk/provider/fabpvdr"
+	cryptosuiteimpl "github.com/wsw365904/fabric-sdk-go/pkg/core/cryptosuite/bccsp/sw"
+	signingMgr "github.com/wsw365904/fabric-sdk-go/pkg/fab/signingmgr"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk/provider/fabpvdr"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/core/logging/modlog"
+	"github.com/wsw365904/fabric-sdk-go/pkg/core/logging/modlog"
 )
 
 var logger = wlogging.MustGetLoggerWithoutName()

@@ -10,9 +10,9 @@ import (
 	"github.com/pkg/errors"
 	"github.com/wsw365904/wswlog/wlogging"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/client/common/discovery"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/context"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/wsw365904/fabric-sdk-go/pkg/client/common/discovery"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
 )
 
 var logger = wlogging.MustGetLoggerWithoutName()

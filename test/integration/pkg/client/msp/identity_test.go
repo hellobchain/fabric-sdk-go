@@ -13,12 +13,12 @@ import (
 
 	"fmt"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/client/msp"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/core"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fabsdk"
-	"github.com/hyperledger/fabric-sdk-go/pkg/gateway"
-	"github.com/hyperledger/fabric-sdk-go/test/integration"
 	"github.com/stretchr/testify/assert"
+	"github.com/wsw365904/fabric-sdk-go/pkg/client/msp"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk"
+	"github.com/wsw365904/fabric-sdk-go/pkg/gateway"
+	"github.com/wsw365904/fabric-sdk-go/test/integration"
 )
 
 func TestIdentity(t *testing.T) {

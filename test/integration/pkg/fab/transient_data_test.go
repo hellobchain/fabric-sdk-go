@@ -12,18 +12,18 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/retry"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/status"
-	contextAPI "github.com/hyperledger/fabric-sdk-go/pkg/common/providers/context"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/hyperledger/fabric-sdk-go/pkg/context"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fab/channel"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fab/comm"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fab/txn"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fabsdk"
-	"github.com/hyperledger/fabric-sdk-go/test/integration"
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/require"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/errors/retry"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/errors/status"
+	contextAPI "github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/wsw365904/fabric-sdk-go/pkg/context"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fab/channel"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fab/comm"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fab/txn"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk"
+	"github.com/wsw365904/fabric-sdk-go/test/integration"
 )
 
 // TestTransient ...

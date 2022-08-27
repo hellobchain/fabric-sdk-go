@@ -1,3 +1,4 @@
+//go:build disabled
 // +build disabled
 
 // TODO fix java integration tests
@@ -14,11 +15,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/client/channel"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/retry"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fabsdk"
-	"github.com/hyperledger/fabric-sdk-go/test/integration"
 	"github.com/stretchr/testify/require"
+	"github.com/wsw365904/fabric-sdk-go/pkg/client/channel"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/errors/retry"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk"
+	"github.com/wsw365904/fabric-sdk-go/test/integration"
 )
 
 // TestJavaChaincodeInstallInstantiateAndUpgrade tests install java chaincode,

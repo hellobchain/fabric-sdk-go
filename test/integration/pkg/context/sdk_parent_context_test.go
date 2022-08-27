@@ -13,14 +13,14 @@ import (
 	"testing"
 	"time"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/client/channel"
-	"github.com/hyperledger/fabric-sdk-go/pkg/client/ledger"
-	"github.com/hyperledger/fabric-sdk-go/pkg/client/resmgmt"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/retry"
-	contextApi "github.com/hyperledger/fabric-sdk-go/pkg/common/providers/context"
-	"github.com/hyperledger/fabric-sdk-go/pkg/context"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fabsdk"
-	"github.com/hyperledger/fabric-sdk-go/test/integration"
+	"github.com/wsw365904/fabric-sdk-go/pkg/client/channel"
+	"github.com/wsw365904/fabric-sdk-go/pkg/client/ledger"
+	"github.com/wsw365904/fabric-sdk-go/pkg/client/resmgmt"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/errors/retry"
+	contextApi "github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
+	"github.com/wsw365904/fabric-sdk-go/pkg/context"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk"
+	"github.com/wsw365904/fabric-sdk-go/test/integration"
 )
 
 //TestParentContext tests to make sure external grpc context can be passed as a parent context to highlevel functions

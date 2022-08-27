@@ -8,8 +8,8 @@ package headertypefilter
 
 import (
 	cb "github.com/hyperledger/fabric-protos-go/common"
-	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/protoutil"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/protoutil"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
 	"github.com/wsw365904/wswlog/wlogging"
 )
 

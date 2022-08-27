@@ -20,8 +20,8 @@ import (
 	"reflect"
 
 	"github.com/golang/mock/gomock"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/test/mockfab"
 	"github.com/stretchr/testify/assert"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/test/mockfab"
 )
 
 func TestTLSConfigErrorAddingCertificate(t *testing.T) {

@@ -1,3 +1,4 @@
+//go:build !prev
 // +build !prev
 
 /*
@@ -11,15 +12,15 @@ package provider
 import (
 	"testing"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/client/common/discovery/dynamicdiscovery"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/options"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
-	contextImpl "github.com/hyperledger/fabric-sdk-go/pkg/context"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fabsdk"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fabsdk/factory/defsvc"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fabsdk/provider/chpvdr"
-	"github.com/hyperledger/fabric-sdk-go/test/integration"
 	"github.com/stretchr/testify/require"
+	"github.com/wsw365904/fabric-sdk-go/pkg/client/common/discovery/dynamicdiscovery"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/options"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
+	contextImpl "github.com/wsw365904/fabric-sdk-go/pkg/context"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk/factory/defsvc"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk/provider/chpvdr"
+	"github.com/wsw365904/fabric-sdk-go/test/integration"
 )
 
 func TestDynamicDiscovery(t *testing.T) {

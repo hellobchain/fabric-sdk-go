@@ -12,16 +12,16 @@ import (
 	"time"
 
 	ab "github.com/hyperledger/fabric-protos-go/orderer"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/options"
-	fabcontext "github.com/hyperledger/fabric-sdk-go/pkg/common/providers/context"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fab/events/api"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fab/events/client"
-	deliverconn "github.com/hyperledger/fabric-sdk-go/pkg/fab/events/deliverclient/connection"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fab/events/deliverclient/dispatcher"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fab/events/deliverclient/seek"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fab/events/endpoint"
 	"github.com/pkg/errors"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/options"
+	fabcontext "github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fab/events/api"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fab/events/client"
+	deliverconn "github.com/wsw365904/fabric-sdk-go/pkg/fab/events/deliverclient/connection"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fab/events/deliverclient/dispatcher"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fab/events/deliverclient/seek"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fab/events/endpoint"
 )
 
 var logger = wlogging.MustGetLoggerWithoutName()

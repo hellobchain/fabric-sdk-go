@@ -10,7 +10,7 @@ import (
 	"github.com/wsw365904/wswlog/wlogging"
 	"math/rand"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
 )
 
 var logger = wlogging.MustGetLoggerWithoutName()

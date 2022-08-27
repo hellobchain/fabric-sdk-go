@@ -11,8 +11,8 @@ Please review third_party pinning scripts and patches for more details.
 package cache
 
 import (
-	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/msp"
 	"github.com/pkg/errors"
+	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/msp"
 	"github.com/wsw365904/wswlog/wlogging"
 )
 

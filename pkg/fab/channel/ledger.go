@@ -16,10 +16,10 @@ import (
 
 	"github.com/hyperledger/fabric-protos-go/common"
 	pb "github.com/hyperledger/fabric-protos-go/peer"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/multi"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
-	contextImpl "github.com/hyperledger/fabric-sdk-go/pkg/context"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fab/txn"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/errors/multi"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
+	contextImpl "github.com/wsw365904/fabric-sdk-go/pkg/context"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fab/txn"
 )
 
 var logger = wlogging.MustGetLoggerWithoutName()

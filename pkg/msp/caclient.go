@@ -11,10 +11,10 @@ import (
 	"github.com/wsw365904/wswlog/wlogging"
 	"strings"
 
-	contextApi "github.com/hyperledger/fabric-sdk-go/pkg/common/providers/context"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/core"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/msp"
-	"github.com/hyperledger/fabric-sdk-go/pkg/msp/api"
+	contextApi "github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/msp"
+	"github.com/wsw365904/fabric-sdk-go/pkg/msp/api"
 	"github.com/pkg/errors"
 )
 

@@ -11,12 +11,12 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/hyperledger/fabric-sdk-go/test/metadata"
 	"github.com/stretchr/testify/assert"
+	"github.com/wsw365904/fabric-sdk-go/test/metadata"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/core"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/hyperledger/fabric-sdk-go/pkg/core/config"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/wsw365904/fabric-sdk-go/pkg/core/config"
 )
 
 const (
@@ -605,7 +605,7 @@ func testIgnoreEndpointOrdererSearch(t *testing.T, config fab.EndpointConfig) {
 
 	//Test if orderer excluded in orderer search by name
 
-	ordererConfig, ok, ignoreOrderer:= config.OrdererConfig("orderer.exclude.example.com")
+	ordererConfig, ok, ignoreOrderer := config.OrdererConfig("orderer.exclude.example.com")
 	assert.False(t, ok)
 	assert.True(t, ignoreOrderer, "orderer must be excluded")
 	assert.Nil(t, ordererConfig)

@@ -7,8 +7,8 @@ SPDX-License-Identifier: Apache-2.0
 package modlog
 
 import (
-	"github.com/hyperledger/fabric-sdk-go/pkg/core/logging/api"
-	"github.com/hyperledger/fabric-sdk-go/pkg/core/logging/metadata"
+	"github.com/wsw365904/fabric-sdk-go/pkg/core/logging/api"
+	"github.com/wsw365904/fabric-sdk-go/pkg/core/logging/metadata"
 	"github.com/wsw365904/wswlog/wlogging"
 	"sync"
 )

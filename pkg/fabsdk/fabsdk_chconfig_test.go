@@ -1,3 +1,4 @@
+//go:build testing
 // +build testing
 
 /*
@@ -12,17 +13,17 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/client/channel"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/core"
-	"github.com/hyperledger/fabric-sdk-go/pkg/core/config"
-	"github.com/hyperledger/fabric-sdk-go/pkg/core/config/endpoint"
-	"github.com/hyperledger/fabric-sdk-go/pkg/core/config/lookup"
-	mockCore "github.com/hyperledger/fabric-sdk-go/pkg/core/mocks"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fab/mocks"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fabsdk/provider/chpvdr"
-	"github.com/hyperledger/fabric-sdk-go/pkg/msp"
-	"github.com/hyperledger/fabric-sdk-go/test/metadata"
 	"github.com/pkg/errors"
+	"github.com/wsw365904/fabric-sdk-go/pkg/client/channel"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
+	"github.com/wsw365904/fabric-sdk-go/pkg/core/config"
+	"github.com/wsw365904/fabric-sdk-go/pkg/core/config/endpoint"
+	"github.com/wsw365904/fabric-sdk-go/pkg/core/config/lookup"
+	mockCore "github.com/wsw365904/fabric-sdk-go/pkg/core/mocks"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fab/mocks"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk/provider/chpvdr"
+	"github.com/wsw365904/fabric-sdk-go/pkg/msp"
+	"github.com/wsw365904/fabric-sdk-go/test/metadata"
 )
 
 const (

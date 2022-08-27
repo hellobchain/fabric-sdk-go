@@ -1,3 +1,4 @@
+//go:build testing
 // +build testing
 
 /*
@@ -17,25 +18,25 @@ import (
 	"time"
 
 	"github.com/golang/mock/gomock"
-	"github.com/hyperledger/fabric-sdk-go/pkg/client/common/discovery/dynamicdiscovery"
-	"github.com/hyperledger/fabric-sdk-go/pkg/client/common/selection/fabricselection"
-	"github.com/hyperledger/fabric-sdk-go/pkg/client/resmgmt"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/context"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
-	context2 "github.com/hyperledger/fabric-sdk-go/pkg/context"
-	contextImpl "github.com/hyperledger/fabric-sdk-go/pkg/context"
-	configImpl "github.com/hyperledger/fabric-sdk-go/pkg/core/config"
-	fabDiscovery "github.com/hyperledger/fabric-sdk-go/pkg/fab/discovery"
-	discmocks "github.com/hyperledger/fabric-sdk-go/pkg/fab/discovery/mocks"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fab/mocks"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fabsdk/factory/defsvc"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fabsdk/provider/chpvdr"
-	mockapisdk "github.com/hyperledger/fabric-sdk-go/pkg/fabsdk/test/mocksdkapi"
-	"github.com/hyperledger/fabric-sdk-go/pkg/msp"
-	"github.com/hyperledger/fabric-sdk-go/test/metadata"
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"github.com/wsw365904/fabric-sdk-go/pkg/client/common/discovery/dynamicdiscovery"
+	"github.com/wsw365904/fabric-sdk-go/pkg/client/common/selection/fabricselection"
+	"github.com/wsw365904/fabric-sdk-go/pkg/client/resmgmt"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
+	context2 "github.com/wsw365904/fabric-sdk-go/pkg/context"
+	contextImpl "github.com/wsw365904/fabric-sdk-go/pkg/context"
+	configImpl "github.com/wsw365904/fabric-sdk-go/pkg/core/config"
+	fabDiscovery "github.com/wsw365904/fabric-sdk-go/pkg/fab/discovery"
+	discmocks "github.com/wsw365904/fabric-sdk-go/pkg/fab/discovery/mocks"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fab/mocks"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk/factory/defsvc"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk/provider/chpvdr"
+	mockapisdk "github.com/wsw365904/fabric-sdk-go/pkg/fabsdk/test/mocksdkapi"
+	"github.com/wsw365904/fabric-sdk-go/pkg/msp"
+	"github.com/wsw365904/fabric-sdk-go/test/metadata"
 )
 
 const (
@@ -487,7 +488,7 @@ func TestErrorHandler(t *testing.T) {
 
 	errHandler := func(ctxt fab.ClientContext, channelID string, err error) {
 		//todo this misunderstanding with DiscoveryError will be removed once fabricselection is fixed
-		//https://github.com/hyperledger/fabric-sdk-go/pull/62#issuecomment-605343770
+		//https://github.com/wsw365904/fabric-sdk-go/pull/62#issuecomment-605343770
 		selectionDiscoveryErr, selectionOk := errors.Cause(err).(fabricselection.DiscoveryError)
 		dynamicDiscoveryErr, discoveryOk := errors.Cause(err).(dynamicdiscovery.DiscoveryError)
 

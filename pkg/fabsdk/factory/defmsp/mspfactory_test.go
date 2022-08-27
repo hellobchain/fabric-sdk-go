@@ -13,16 +13,16 @@ import (
 	"reflect"
 
 	"github.com/golang/mock/gomock"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/msp"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/test/mockmsp"
-	"github.com/hyperledger/fabric-sdk-go/pkg/core/config"
-	cryptosuiteImpl "github.com/hyperledger/fabric-sdk-go/pkg/core/cryptosuite"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fab"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fab/mocks"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fabsdk/factory/defcore"
-	mspimpl "github.com/hyperledger/fabric-sdk-go/pkg/msp"
-	"github.com/hyperledger/fabric-sdk-go/test/metadata"
 	"github.com/stretchr/testify/assert"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/msp"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/test/mockmsp"
+	"github.com/wsw365904/fabric-sdk-go/pkg/core/config"
+	cryptosuiteImpl "github.com/wsw365904/fabric-sdk-go/pkg/core/cryptosuite"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fab"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fab/mocks"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk/factory/defcore"
+	mspimpl "github.com/wsw365904/fabric-sdk-go/pkg/msp"
+	"github.com/wsw365904/fabric-sdk-go/test/metadata"
 )
 
 func TestCreateUserStore(t *testing.T) {

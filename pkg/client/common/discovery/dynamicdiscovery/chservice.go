@@ -7,15 +7,15 @@ SPDX-License-Identifier: Apache-2.0
 package dynamicdiscovery
 
 import (
-	discclient "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/discovery/client"
-	"github.com/hyperledger/fabric-sdk-go/pkg/client/common/random"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/multi"
-	coptions "github.com/hyperledger/fabric-sdk-go/pkg/common/options"
-	contextAPI "github.com/hyperledger/fabric-sdk-go/pkg/common/providers/context"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
-	reqContext "github.com/hyperledger/fabric-sdk-go/pkg/context"
-	fabdiscovery "github.com/hyperledger/fabric-sdk-go/pkg/fab/discovery"
 	"github.com/pkg/errors"
+	discclient "github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/discovery/client"
+	"github.com/wsw365904/fabric-sdk-go/pkg/client/common/random"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/errors/multi"
+	coptions "github.com/wsw365904/fabric-sdk-go/pkg/common/options"
+	contextAPI "github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
+	reqContext "github.com/wsw365904/fabric-sdk-go/pkg/context"
+	fabdiscovery "github.com/wsw365904/fabric-sdk-go/pkg/fab/discovery"
 )
 
 // ChannelService implements a dynamic Discovery Service that queries

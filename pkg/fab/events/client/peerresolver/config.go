@@ -7,8 +7,8 @@ SPDX-License-Identifier: Apache-2.0
 package peerresolver
 
 import (
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fab/events/client/lbp"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fab/events/client/lbp"
 	"github.com/wsw365904/wswlog/wlogging"
 )
 

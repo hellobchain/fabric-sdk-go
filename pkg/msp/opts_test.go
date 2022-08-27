@@ -9,13 +9,13 @@ package msp
 import (
 	"testing"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/test/mockfab"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/test/mockfab"
 
-	commtls "github.com/hyperledger/fabric-sdk-go/pkg/core/config/comm/tls"
+	commtls "github.com/wsw365904/fabric-sdk-go/pkg/core/config/comm/tls"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/msp"
-	logApi "github.com/hyperledger/fabric-sdk-go/pkg/core/logging/api"
 	"github.com/stretchr/testify/require"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/msp"
+	logApi "github.com/wsw365904/fabric-sdk-go/pkg/core/logging/api"
 )
 
 var (

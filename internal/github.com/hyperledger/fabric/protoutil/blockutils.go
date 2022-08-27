@@ -13,7 +13,7 @@ package protoutil
 import (
 	"bytes"
 	"encoding/asn1"
-	"github.com/hyperledger/fabric-sdk-go/pkg/algo"
+	"github.com/wsw365904/fabric-sdk-go/pkg/algo"
 	"math/big"
 
 	"github.com/golang/protobuf/proto"

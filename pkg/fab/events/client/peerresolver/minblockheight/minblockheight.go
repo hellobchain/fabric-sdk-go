@@ -10,11 +10,11 @@ import (
 	"github.com/wsw365904/wswlog/wlogging"
 	"math"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/options"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/context"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fab/events/client/peerresolver"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fab/events/service"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/options"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fab/events/client/peerresolver"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fab/events/service"
 )
 
 var logger = wlogging.MustGetLoggerWithoutName()

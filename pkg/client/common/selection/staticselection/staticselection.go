@@ -7,9 +7,9 @@ SPDX-License-Identifier: Apache-2.0
 package staticselection
 
 import (
-	"github.com/hyperledger/fabric-sdk-go/pkg/client/common/selection/options"
-	copts "github.com/hyperledger/fabric-sdk-go/pkg/common/options"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/wsw365904/fabric-sdk-go/pkg/client/common/selection/options"
+	copts "github.com/wsw365904/fabric-sdk-go/pkg/common/options"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
 	"github.com/wsw365904/wswlog/wlogging"
 )
 

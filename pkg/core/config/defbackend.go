@@ -7,9 +7,9 @@ SPDX-License-Identifier: Apache-2.0
 package config
 
 import (
-	"github.com/hyperledger/fabric-sdk-go/pkg/util/pathvar"
 	"github.com/pkg/errors"
 	"github.com/spf13/viper"
+	"github.com/wsw365904/fabric-sdk-go/pkg/util/pathvar"
 )
 
 // defConfigBackend represents the default config backend

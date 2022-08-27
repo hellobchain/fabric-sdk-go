@@ -10,7 +10,7 @@ import (
 	"crypto/elliptic"
 	"crypto/sha256"
 	"crypto/sha512"
-	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
+	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
 	"github.com/wsw365904/newcryptosm/sm2"
 	"github.com/wsw365904/newcryptosm/sm3"
 	"reflect"

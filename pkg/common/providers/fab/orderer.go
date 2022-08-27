@@ -8,7 +8,7 @@ package fab
 
 import (
 	reqContext "context"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab/orderer"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab/orderer"
 
 	"github.com/hyperledger/fabric-protos-go/common"
 )

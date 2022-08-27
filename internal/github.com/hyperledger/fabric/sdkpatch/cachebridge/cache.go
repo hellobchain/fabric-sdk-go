@@ -17,8 +17,8 @@ import (
 
 	"encoding/hex"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/util/concurrent/lazycache"
 	"github.com/miekg/pkcs11"
+	"github.com/wsw365904/fabric-sdk-go/pkg/util/concurrent/lazycache"
 )
 
 var logger = wlogging.MustGetLoggerWithoutName()

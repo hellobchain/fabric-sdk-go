@@ -1,3 +1,4 @@
+//go:build testing
 // +build testing
 
 /*
@@ -17,22 +18,22 @@ import (
 
 	cb "github.com/hyperledger/fabric-protos-go/common"
 	pb "github.com/hyperledger/fabric-protos-go/peer"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/options"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/context"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fab/events/api"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fab/events/client/dispatcher"
-	clientmocks "github.com/hyperledger/fabric-sdk-go/pkg/fab/events/client/mocks"
-	mockconn "github.com/hyperledger/fabric-sdk-go/pkg/fab/events/client/mocks"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fab/events/client/peerresolver/preferpeer"
-	esdispatcher "github.com/hyperledger/fabric-sdk-go/pkg/fab/events/service/dispatcher"
-	servicemocks "github.com/hyperledger/fabric-sdk-go/pkg/fab/events/service/mocks"
-	fabmocks "github.com/hyperledger/fabric-sdk-go/pkg/fab/mocks"
-	mspmocks "github.com/hyperledger/fabric-sdk-go/pkg/msp/test/mockmsp"
-	"github.com/hyperledger/fabric-sdk-go/pkg/util/test"
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/options"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fab/events/api"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fab/events/client/dispatcher"
+	clientmocks "github.com/wsw365904/fabric-sdk-go/pkg/fab/events/client/mocks"
+	mockconn "github.com/wsw365904/fabric-sdk-go/pkg/fab/events/client/mocks"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fab/events/client/peerresolver/preferpeer"
+	esdispatcher "github.com/wsw365904/fabric-sdk-go/pkg/fab/events/service/dispatcher"
+	servicemocks "github.com/wsw365904/fabric-sdk-go/pkg/fab/events/service/mocks"
+	fabmocks "github.com/wsw365904/fabric-sdk-go/pkg/fab/mocks"
+	mspmocks "github.com/wsw365904/fabric-sdk-go/pkg/msp/test/mockmsp"
+	"github.com/wsw365904/fabric-sdk-go/pkg/util/test"
 )
 
 const (

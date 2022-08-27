@@ -7,7 +7,7 @@ SPDX-License-Identifier: Apache-2.0
 package retry
 
 import (
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/multi"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/errors/multi"
 	"github.com/wsw365904/wswlog/wlogging"
 )
 

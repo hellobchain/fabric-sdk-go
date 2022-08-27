@@ -1,3 +1,4 @@
+//go:build disabled
 // +build disabled
 
 // TODO fix node integration tests
@@ -15,9 +16,9 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/client/channel"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fabsdk"
-	"github.com/hyperledger/fabric-sdk-go/test/integration"
+	"github.com/wsw365904/fabric-sdk-go/pkg/client/channel"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk"
+	"github.com/wsw365904/fabric-sdk-go/test/integration"
 )
 
 // TestNodeChaincodeInstallInstantiateAndUpgrade tests install node chaincode,

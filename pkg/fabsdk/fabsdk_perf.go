@@ -1,3 +1,4 @@
+//go:build pprof
 // +build pprof
 
 /*
@@ -9,8 +10,8 @@ SPDX-License-Identifier: Apache-2.0
 package fabsdk
 
 import (
-	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/core/operations"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fabsdk/metrics"
+	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/core/operations"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk/metrics"
 	"github.com/wsw365904/wswlog/wlogging"
 )
 

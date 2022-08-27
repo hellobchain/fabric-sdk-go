@@ -7,7 +7,7 @@ SPDX-License-Identifier: Apache-2.0
 package metadata
 
 import (
-	"github.com/hyperledger/fabric-sdk-go/pkg/core/logging/api"
+	"github.com/wsw365904/fabric-sdk-go/pkg/core/logging/api"
 )
 
 //Log level names in string

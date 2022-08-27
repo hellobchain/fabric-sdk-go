@@ -15,8 +15,8 @@ import (
 	"github.com/golang/protobuf/proto"
 	"github.com/hyperledger/fabric-protos-go/common"
 	"github.com/hyperledger/fabric-protos-go/peer"
-	"github.com/hyperledger/fabric-sdk-go/pkg/algo"
 	"github.com/pkg/errors"
+	"github.com/wsw365904/fabric-sdk-go/pkg/algo"
 )
 
 // GetPayloads gets the underlying payload objects in a TransactionAction

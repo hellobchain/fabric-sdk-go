@@ -13,7 +13,7 @@ import (
 	"strconv"
 	"strings"
 
-	commtls "github.com/hyperledger/fabric-sdk-go/pkg/core/config/comm/tls"
+	commtls "github.com/wsw365904/fabric-sdk-go/pkg/core/config/comm/tls"
 
 	"github.com/pkg/errors"
 
@@ -21,13 +21,13 @@ import (
 
 	"io/ioutil"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/core"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/msp"
-	"github.com/hyperledger/fabric-sdk-go/pkg/core/config/endpoint"
-	"github.com/hyperledger/fabric-sdk-go/pkg/core/config/lookup"
-	logApi "github.com/hyperledger/fabric-sdk-go/pkg/core/logging/api"
-	fabImpl "github.com/hyperledger/fabric-sdk-go/pkg/fab"
-	"github.com/hyperledger/fabric-sdk-go/pkg/util/pathvar"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/msp"
+	"github.com/wsw365904/fabric-sdk-go/pkg/core/config/endpoint"
+	"github.com/wsw365904/fabric-sdk-go/pkg/core/config/lookup"
+	logApi "github.com/wsw365904/fabric-sdk-go/pkg/core/logging/api"
+	fabImpl "github.com/wsw365904/fabric-sdk-go/pkg/fab"
+	"github.com/wsw365904/fabric-sdk-go/pkg/util/pathvar"
 )
 
 var defaultCAServerSchema = "https"

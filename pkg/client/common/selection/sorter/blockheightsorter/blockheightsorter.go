@@ -10,9 +10,9 @@ import (
 	"github.com/wsw365904/wswlog/wlogging"
 	"sort"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/client/common/selection/options"
-	coptions "github.com/hyperledger/fabric-sdk-go/pkg/common/options"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/wsw365904/fabric-sdk-go/pkg/client/common/selection/options"
+	coptions "github.com/wsw365904/fabric-sdk-go/pkg/common/options"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
 )
 
 var logger = wlogging.MustGetLoggerWithoutName()

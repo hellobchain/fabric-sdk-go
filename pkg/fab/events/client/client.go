@@ -12,12 +12,12 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/options"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fab/events/client/dispatcher"
-	eventservice "github.com/hyperledger/fabric-sdk-go/pkg/fab/events/service"
-	esdispatcher "github.com/hyperledger/fabric-sdk-go/pkg/fab/events/service/dispatcher"
 	"github.com/pkg/errors"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/options"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fab/events/client/dispatcher"
+	eventservice "github.com/wsw365904/fabric-sdk-go/pkg/fab/events/service"
+	esdispatcher "github.com/wsw365904/fabric-sdk-go/pkg/fab/events/service/dispatcher"
 )
 
 var logger = wlogging.MustGetLoggerWithoutName()

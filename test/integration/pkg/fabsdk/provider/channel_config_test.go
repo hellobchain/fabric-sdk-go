@@ -12,22 +12,22 @@ import (
 
 	"github.com/hyperledger/fabric-protos-go/common"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/fab/resource"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fab/resource"
 
-	contextAPI "github.com/hyperledger/fabric-sdk-go/pkg/common/providers/context"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/hyperledger/fabric-sdk-go/pkg/context"
-	"github.com/hyperledger/fabric-sdk-go/pkg/core/cryptosuite"
-	fabImpl "github.com/hyperledger/fabric-sdk-go/pkg/fab"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fab/chconfig"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fab/orderer"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fabsdk"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fabsdk/api"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fabsdk/factory/defcore"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fabsdk/provider/fabpvdr"
-	"github.com/hyperledger/fabric-sdk-go/pkg/msp"
-	"github.com/hyperledger/fabric-sdk-go/test/integration"
 	"github.com/stretchr/testify/require"
+	contextAPI "github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/wsw365904/fabric-sdk-go/pkg/context"
+	"github.com/wsw365904/fabric-sdk-go/pkg/core/cryptosuite"
+	fabImpl "github.com/wsw365904/fabric-sdk-go/pkg/fab"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fab/chconfig"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fab/orderer"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk/api"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk/factory/defcore"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk/provider/fabpvdr"
+	"github.com/wsw365904/fabric-sdk-go/pkg/msp"
+	"github.com/wsw365904/fabric-sdk-go/test/integration"
 )
 
 func TestChannelConfig(t *testing.T) {

@@ -20,9 +20,9 @@ import (
 	"github.com/golang/protobuf/proto"
 	"github.com/hyperledger/fabric-protos-go/discovery"
 	"github.com/hyperledger/fabric-protos-go/msp"
-	"github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/discovery/protoext"
-	gprotoext "github.com/hyperledger/fabric-sdk-go/internal/github.com/hyperledger/fabric/gossip/protoext"
 	"github.com/pkg/errors"
+	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/discovery/protoext"
+	gprotoext "github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/gossip/protoext"
 )
 
 var configTypes = []protoext.QueryType{

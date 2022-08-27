@@ -10,11 +10,11 @@ import (
 	"strings"
 	"testing"
 
-	txnmocks "github.com/hyperledger/fabric-sdk-go/pkg/client/common/mocks"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/status"
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
-	fcmocks "github.com/hyperledger/fabric-sdk-go/pkg/fab/mocks"
 	"github.com/stretchr/testify/assert"
+	txnmocks "github.com/wsw365904/fabric-sdk-go/pkg/client/common/mocks"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/errors/status"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
+	fcmocks "github.com/wsw365904/fabric-sdk-go/pkg/fab/mocks"
 )
 
 func TestSignatureValidationHandlerSuccess(t *testing.T) {

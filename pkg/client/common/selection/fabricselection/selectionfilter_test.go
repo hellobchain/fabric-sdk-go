@@ -9,8 +9,8 @@ package fabricselection
 import (
 	"testing"
 
-	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/fab"
 	"github.com/stretchr/testify/require"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
 )
 
 func TestPeerEndpointValue(t *testing.T) {
