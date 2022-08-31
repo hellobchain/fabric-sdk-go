@@ -735,14 +735,13 @@ func (rc *Client) getCCProposalTargets(channelID string, opts requestOptions) ([
 		return nil, errors.WithMessage(err, "failed to create channel context")
 	}
 
-	// per channel discovery service
-	discovery, err := chCtx.ChannelService().Discovery()
-	if err != nil {
-		return nil, errors.WithMessage(err, "failed to get discovery service")
-	}
-
 	//Default targets when targets are not provided in options
 	if len(opts.Targets) == 0 {
+		// per channel discovery service
+		discovery, err := chCtx.ChannelService().Discovery()
+		if err != nil {
+			return nil, errors.WithMessage(err, "failed to get discovery service")
+		}
 		opts.Targets, err = rc.getDefaultTargets(discovery)
 		if err != nil {
 			return nil, errors.WithMessage(err, "failed to get default targets for cc proposal")

@@ -402,20 +402,32 @@ func (c *IdentityConfig) getServerCerts(caConfig *CAConfig) ([][]byte, error) {
 
 	var serverCerts [][]byte
 
-	if c.backend.GetBool("client.tlsCerts.systemCertPool") &&
-		len(caConfig.TLSCACerts.Pem) == 0 && len(caConfig.TLSCACerts.Path) == 0 {
-		logger.Debugf("switching to system certpool")
-		return [][]byte{}, nil
-	}
-
-	// check for pems first
-	pems := caConfig.TLSCACerts.Pem
-	if len(pems) > 0 {
-		serverCerts = make([][]byte, len(pems))
-		for i, p := range pems {
-			serverCerts[i] = []byte(p)
+	switch pems := caConfig.TLSCACerts.Pem.(type) {
+	case []string:
+		if c.backend.GetBool("client.tlsCerts.systemCertPool") &&
+			len(pems) == 0 && len(caConfig.TLSCACerts.Path) == 0 {
+			logger.Debugf("switching to system certpool")
+			return [][]byte{}, nil
 		}
-		return serverCerts, nil
+		// check for pems first
+		if len(pems) > 0 {
+			serverCerts = make([][]byte, len(pems))
+			for i, p := range pems {
+				serverCerts[i] = []byte(p)
+			}
+			return serverCerts, nil
+		}
+	case string:
+		if c.backend.GetBool("client.tlsCerts.systemCertPool") &&
+			pems == "" && len(caConfig.TLSCACerts.Path) == 0 {
+			logger.Debugf("switching to system certpool")
+			return [][]byte{}, nil
+		}
+		if pems != "" {
+			serverCerts = make([][]byte, 1)
+			serverCerts[0] = []byte(pems)
+			return serverCerts, nil
+		}
 	}
 
 	// check for files if pems not found

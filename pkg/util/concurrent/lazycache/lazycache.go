@@ -7,6 +7,7 @@ SPDX-License-Identifier: Apache-2.0
 package lazycache
 
 import (
+	"encoding/hex"
 	"fmt"
 	"github.com/wsw365904/wswlog/wlogging"
 	"sync"
@@ -194,7 +195,7 @@ func (c *Cache) DeleteAll() {
 // - calls Close on all values that implement a Close() function
 // - deletes key from the cache
 func (c *Cache) Delete(key Key) {
-	logger.Debugf("%s - Deleting cache key", key.String())
+	logger.Debugf("%s - Deleting cache key", hex.EncodeToString([]byte(key.String())))
 	value, ok := c.m.Load(key.String())
 	if ok {
 		c.close(key.String(), value.(future))

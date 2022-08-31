@@ -56,7 +56,7 @@ func AttemptSecured(url string, allowInSecure bool) bool {
 
 // MutualTLSConfig Mutual TLS configurations
 type MutualTLSConfig struct {
-	Pem []string
+	Pem interface{}
 	// Certfiles root certificates for TLS validation (Comma separated path list)
 	Path string
 
@@ -106,6 +106,108 @@ func (cfg *TLSConfig) LoadBytes() error {
 
 // TLSCert returns the tls certificate as a *x509.Certificate by loading it either from the embedded Pem or Path
 func (cfg *TLSConfig) TLSCert() (*x509.Certificate, bool, error) {
+
+	block, _ := pem.Decode(cfg.bytes)
+
+	if block != nil {
+		pub, err := x509.ParseCertificate(block.Bytes)
+		if err != nil {
+			return nil, false, errors.Wrap(err, "certificate parsing failed")
+		}
+
+		return pub, true, nil
+	}
+
+	//no cert found and there is no error
+	return nil, false, nil
+}
+
+type AdminCertInfo struct {
+	// the following two fields are interchangeable.
+	// If Path is available, then it will be used to load the cert
+	// if Pem is available, then it has the raw data of the cert it will be used as-is
+	// Certificate root certificate path
+	// If both Path and Pem are available, pem takes the precedence
+	Path string
+	// Certificate actual content
+	Pem string
+	//bytes from Pem/Path
+	bytes []byte
+}
+
+// Bytes returns the tls certificate as a byte array
+func (cfg *AdminCertInfo) Bytes() []byte {
+	return cfg.bytes
+}
+
+//LoadBytes preloads bytes from Pem/Path
+//Pem takes precedence over Path
+func (cfg *AdminCertInfo) LoadBytes() error {
+	var err error
+	if cfg.Pem != "" {
+		cfg.bytes = []byte(cfg.Pem)
+	} else if cfg.Path != "" {
+		cfg.bytes, err = ioutil.ReadFile(cfg.Path)
+		if err != nil {
+			return errors.Wrapf(err, "failed to load pem bytes from path %s", cfg.Path)
+		}
+	}
+	return nil
+}
+
+// TLSCert returns the tls certificate as a *x509.Certificate by loading it either from the embedded Pem or Path
+func (cfg *AdminCertInfo) TLSCert() (*x509.Certificate, bool, error) {
+
+	block, _ := pem.Decode(cfg.bytes)
+
+	if block != nil {
+		pub, err := x509.ParseCertificate(block.Bytes)
+		if err != nil {
+			return nil, false, errors.Wrap(err, "certificate parsing failed")
+		}
+
+		return pub, true, nil
+	}
+
+	//no cert found and there is no error
+	return nil, false, nil
+}
+
+type AdminPriKeyInfo struct {
+	// the following two fields are interchangeable.
+	// If Path is available, then it will be used to load the cert
+	// if Pem is available, then it has the raw data of the cert it will be used as-is
+	// Certificate root certificate path
+	// If both Path and Pem are available, pem takes the precedence
+	Path string
+	// Certificate actual content
+	Pem string
+	//bytes from Pem/Path
+	bytes []byte
+}
+
+// Bytes returns the tls certificate as a byte array
+func (cfg *AdminPriKeyInfo) Bytes() []byte {
+	return cfg.bytes
+}
+
+//LoadBytes preloads bytes from Pem/Path
+//Pem takes precedence over Path
+func (cfg *AdminPriKeyInfo) LoadBytes() error {
+	var err error
+	if cfg.Pem != "" {
+		cfg.bytes = []byte(cfg.Pem)
+	} else if cfg.Path != "" {
+		cfg.bytes, err = ioutil.ReadFile(cfg.Path)
+		if err != nil {
+			return errors.Wrapf(err, "failed to load pem bytes from path %s", cfg.Path)
+		}
+	}
+	return nil
+}
+
+// TLSCert returns the tls certificate as a *x509.Certificate by loading it either from the embedded Pem or Path
+func (cfg *AdminPriKeyInfo) TLSCert() (*x509.Certificate, bool, error) {
 
 	block, _ := pem.Decode(cfg.bytes)
 

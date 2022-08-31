@@ -43,6 +43,8 @@ type PeerConfig struct {
 type OrganizationConfig struct {
 	MSPID                  string
 	CryptoPath             string
+	AdminPrivateKey        endpoint.AdminPriKeyInfo
+	SignedCert             endpoint.AdminCertInfo
 	Users                  map[string]endpoint.TLSKeyPair
 	Peers                  []string
 	CertificateAuthorities []string

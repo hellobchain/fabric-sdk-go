@@ -86,14 +86,22 @@ func getServerCerts(caConfig *caConfig) ([][]byte, error) {
 
 	var serverCerts [][]byte
 
-	//check for pems first
-	pems := caConfig.TLSCACerts.Pem
-	if len(pems) > 0 {
-		serverCerts = make([][]byte, len(pems))
-		for i, pem := range pems {
-			serverCerts[i] = []byte(pem)
+	switch pems := caConfig.TLSCACerts.Pem.(type) {
+	case []string:
+		// check for pems first
+		if len(pems) > 0 {
+			serverCerts = make([][]byte, len(pems))
+			for i, p := range pems {
+				serverCerts[i] = []byte(p)
+			}
+			return serverCerts, nil
 		}
-		return serverCerts, nil
+	case string:
+		if pems != "" {
+			serverCerts = make([][]byte, 1)
+			serverCerts[0] = []byte(pems)
+			return serverCerts, nil
+		}
 	}
 
 	//check for files if pems not found

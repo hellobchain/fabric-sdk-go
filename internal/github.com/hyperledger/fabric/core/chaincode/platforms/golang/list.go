@@ -57,12 +57,12 @@ func gopathDependencyPackageInfo(goos, goarch, pkg string) ([]PackageInfo, error
 	ctx, cancel := context.WithTimeout(context.Background(), listTimeout)
 	defer cancel()
 
-	cmd := exec.CommandContext(ctx, "go", "list", "-deps", "-json", pkg)
+	cmd := exec.CommandContext(ctx, "go", "list", "-deps", "-json", "-mod=vendor", pkg)
 	cmd.Env = append(os.Environ(), "GOOS="+goos, "GOARCH="+goarch)
 
 	stdout, err := cmd.StdoutPipe()
 	if err != nil {
-		return nil, wrapExitErr(err, "'go list -deps' failed")
+		return nil, wrapExitErr(err, "'go list -deps -mod=vendor' failed")
 	}
 	decoder := json.NewDecoder(stdout)
 
@@ -118,7 +118,7 @@ func listModuleInfo(extraEnv ...string) (*ModuleInfo, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), listTimeout)
 	defer cancel()
 
-	cmd := exec.CommandContext(ctx, "go", "list", "-json", ".")
+	cmd := exec.CommandContext(ctx, "go", "list", "-json", "-mod=vendor", ".")
 	cmd.Env = append(os.Environ(), "GO111MODULE=on")
 	cmd.Env = append(cmd.Env, extraEnv...)
 

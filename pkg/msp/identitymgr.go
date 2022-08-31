@@ -7,6 +7,8 @@ SPDX-License-Identifier: Apache-2.0
 package msp
 
 import (
+	"encoding/hex"
+	"github.com/wsw365904/fabric-sdk-go/pkg/algo"
 	"path/filepath"
 	"strings"
 
@@ -39,14 +41,16 @@ func NewIdentityManager(orgName string, userStore msp.UserStore, cryptoSuite cor
 		return nil, errors.New("org config retrieval failed")
 	}
 
-	if orgConfig.CryptoPath == "" && len(orgConfig.Users) == 0 {
-		return nil, errors.New("Either a cryptopath or an embedded list of users is required")
+	if orgConfig.CryptoPath == "" && len(orgConfig.Users) == 0 && (len(orgConfig.SignedCert) == 0 || len(orgConfig.AdminPrivateKey) == 0) {
+		return nil, errors.New("Either a cryptopath or an embedded list of users or admin key and admin sign cert is required")
 	}
 
 	var mspPrivKeyStore core.KVStore
 	var mspCertStore core.KVStore
 
 	orgCryptoPathTemplate := orgConfig.CryptoPath
+	signedCert := orgConfig.SignedCert
+	adminPrivateKey := orgConfig.AdminPrivateKey
 	if orgCryptoPathTemplate != "" {
 		var err error
 		if !filepath.IsAbs(orgCryptoPathTemplate) {
@@ -60,8 +64,26 @@ func NewIdentityManager(orgName string, userStore msp.UserStore, cryptoSuite cor
 		if err != nil {
 			return nil, errors.Wrap(err, "creating a cert store failed")
 		}
+	} else if len(signedCert) != 0 && len(adminPrivateKey) != 0 {
+		var err error
+		hasher := algo.GetDefaultHash().New()
+		hasher.Write(adminPrivateKey)
+		keyHash := hex.EncodeToString(hasher.Sum(nil))
+		mspPrivKeyStore, err = NewCacheKeyStore(keyHash, adminPrivateKey)
+		if err != nil {
+			return nil, errors.Wrap(err, "creating a admin private key store failed")
+		}
+		logger.Debug("admin key", "store key", keyHash, "value", string(adminPrivateKey))
+		hasher = algo.GetDefaultHash().New()
+		hasher.Write(signedCert)
+		keyHash = hex.EncodeToString(hasher.Sum(nil))
+		mspCertStore, err = NewCacheCertStore(keyHash, signedCert)
+		if err != nil {
+			return nil, errors.Wrap(err, "creating a admin signed cert store failed")
+		}
+		logger.Debug("admin signed cert", "store key", keyHash, "value", string(signedCert))
 	} else {
-		logger.Warnf("Cryptopath not provided for organization [%s], MSP stores not created", orgName)
+		logger.Warnf("Cryptopath not provided for organization [%s], admin not provided for organization [%s] MSP stores not created", orgName, orgName)
 	}
 
 	mgr := &IdentityManager{

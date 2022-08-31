@@ -475,6 +475,11 @@ func (c *EndpointConfig) loadEndpointConfigEntities(configEntity *endpointConfig
 		return errors.WithMessage(err, "failed to load network TLSConfig")
 	}
 
+	err = c.loadOrgAdminConfig(configEntity)
+	if err != nil {
+		return errors.WithMessage(err, "failed to load network OrgAdminConfig")
+	}
+
 	//load default configs
 	err = c.loadDefaultConfigItems(configEntity)
 	if err != nil {
@@ -590,6 +595,8 @@ func (c *EndpointConfig) loadNetworkConfig(configEntity *endpointConfigEntity) e
 		networkConfig.Organizations[orgName] = fab.OrganizationConfig{
 			MSPID:                  orgConfig.MSPID,
 			CryptoPath:             orgConfig.CryptoPath,
+			AdminPrivateKey:        orgConfig.AdminPrivateKey.Bytes(),
+			SignedCert:             orgConfig.SignedCert.Bytes(),
 			Peers:                  orgConfig.Peers,
 			CertificateAuthorities: orgConfig.CertificateAuthorities,
 			Users:                  tlsKeyCertPairs,
@@ -1178,11 +1185,32 @@ func (c *EndpointConfig) loadClientTLSConfig(configEntity *endpointConfigEntity)
 	return nil
 }
 
+func (c *EndpointConfig) loadOrgAdminConfig(configEntity *endpointConfigEntity) error {
+	//Organizations Config
+	for org, orgConfig := range configEntity.Organizations {
+		orgConfig.AdminPrivateKey.Path = pathvar.Subst(orgConfig.AdminPrivateKey.Path)
+		orgConfig.SignedCert.Path = pathvar.Subst(orgConfig.SignedCert.Path)
+		//pre load key and cert bytes
+		err := orgConfig.AdminPrivateKey.LoadBytes()
+		if err != nil {
+			return errors.WithMessage(err, "failed to load org admin key")
+		}
+
+		err = orgConfig.SignedCert.LoadBytes()
+		if err != nil {
+			return errors.WithMessage(err, "failed to load org admin cert")
+		}
+		configEntity.Organizations[org] = orgConfig
+	}
+	return nil
+}
+
 //loadOrgTLSConfig pre-loads all TLSConfig bytes in organizations
 func (c *EndpointConfig) loadOrgTLSConfig(configEntity *endpointConfigEntity) error {
 
 	//Organizations Config
 	for org, orgConfig := range configEntity.Organizations {
+
 		for user, userConfig := range orgConfig.Users {
 			//resolve paths
 			userConfig.Key.Path = pathvar.Subst(userConfig.Key.Path)

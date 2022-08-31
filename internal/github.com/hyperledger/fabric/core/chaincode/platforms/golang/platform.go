@@ -235,9 +235,9 @@ func DescribeCode(path string) (*CodeDescriptor, error) {
 }
 
 func describeGopath(importPath string) (*CodeDescriptor, error) {
-	output, err := exec.Command("go", "list", "-f", "{{.Dir}}", importPath).Output()
+	output, err := exec.Command("go", "list", "-mod=vendor", "-f", "{{.Dir}}", importPath).Output()
 	if err != nil {
-		return nil, wrapExitErr(err, "'go list' failed")
+		return nil, wrapExitErr(err, "'go list -mod=vendor' failed")
 	}
 	sourcePath := filepath.Clean(strings.TrimSpace(string(output)))
 

@@ -119,6 +119,8 @@ type NetworkPeer struct {
 type OrganizationConfig struct {
 	MSPID                  string
 	CryptoPath             string
+	AdminPrivateKey        []byte
+	SignedCert             []byte
 	Users                  map[string]CertKeyPair
 	Peers                  []string
 	CertificateAuthorities []string
