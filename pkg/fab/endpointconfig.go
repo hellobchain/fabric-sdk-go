@@ -7,7 +7,8 @@ SPDX-License-Identifier: Apache-2.0
 package fab
 
 import (
-	"github.com/wsw365904/fabric-sdk-go/pkg/algo"
+	"github.com/wsw365904/fabric-sdk-go/pkg/util/algo"
+	"github.com/wsw365904/fabric-sdk-go/pkg/util/defaultcache"
 	"github.com/wsw365904/newcryptosm/tls"
 	"github.com/wsw365904/newcryptosm/x509"
 	"github.com/wsw365904/wswlog/wlogging"
@@ -36,6 +37,8 @@ import (
 var logger = wlogging.MustGetLoggerWithoutName()
 var defaultOrdererListenPort = 7050
 var defaultPeerListenPort = 7051
+
+var _ fab.EndpointConfig = (*EndpointConfig)(nil)
 
 const (
 	defaultPeerConnectionTimeout          = time.Second * 10
@@ -264,6 +267,14 @@ func (c *EndpointConfig) ChannelConfig(name string) *fab.ChannelEndpointConfig {
 		return c.defaultChannel
 	}
 	return &ch
+}
+
+func (c *EndpointConfig) ChannelPeersFromCache(name string) ([]fab.ChannelPeer, error) {
+	cps, err := defaultcache.DefaultCache().Get(name)
+	if err != nil {
+		return nil, err
+	}
+	return cps.([]fab.ChannelPeer), nil
 }
 
 // ChannelPeers returns the channel peers configuration

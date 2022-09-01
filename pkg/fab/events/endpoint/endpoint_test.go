@@ -115,6 +115,8 @@ func TestDiscoveryProviderWithEventSource(t *testing.T) {
 	}
 }
 
+var _ fab.EndpointConfig = (*mockConfig)(nil)
+
 type mockConfig struct {
 	fab.EndpointConfig
 	channelPeers []fab.ChannelPeer
@@ -126,7 +128,9 @@ func newMockConfig(channelPeers ...fab.ChannelPeer) *mockConfig {
 		channelPeers:   channelPeers,
 	}
 }
-
+func (c *mockConfig) ChannelPeersFromCache(name string) ([]fab.ChannelPeer, error) {
+	return nil, nil
+}
 func (c *mockConfig) ChannelPeers(name string) []fab.ChannelPeer {
 	test.Logf("mockConfig.ChannelPeers [%#v]", c.channelPeers)
 	return c.channelPeers

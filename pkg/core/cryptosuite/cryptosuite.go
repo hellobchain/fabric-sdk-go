@@ -7,7 +7,7 @@ SPDX-License-Identifier: Apache-2.0
 package cryptosuite
 
 import (
-	"github.com/wsw365904/fabric-sdk-go/pkg/algo"
+	"github.com/wsw365904/fabric-sdk-go/pkg/util/algo"
 	"github.com/wsw365904/wswlog/wlogging"
 	"sync/atomic"
 

@@ -12,7 +12,7 @@ package msp
 
 import (
 	"encoding/pem"
-	"github.com/wsw365904/fabric-sdk-go/pkg/algo"
+	"github.com/wsw365904/fabric-sdk-go/pkg/util/algo"
 	"io/ioutil"
 	"os"
 	"path/filepath"

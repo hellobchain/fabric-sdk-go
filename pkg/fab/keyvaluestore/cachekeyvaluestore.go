@@ -8,17 +8,16 @@ package keyvaluestore
 
 import (
 	"github.com/pkg/errors"
-	"github.com/wsw365904/fabric-sdk-go/pkg/cache"
 	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
+	"github.com/wsw365904/fabric-sdk-go/pkg/util/cache"
 )
 
-var globalCache = cache.NewCache() // 使用cache存放nonce值 key是账户地址 value是
-func SetGlobalCache(key string, value []byte) {
-	globalCache.Set(key, value, -1)
-}
+var orgAdminKeyCertCache = cache.NewCache()
 
-func IsExist(key string) bool {
-	return globalCache.IsExist(key)
+func SetKeyValueToOrgAdminKeyCertCache(key string, value []byte) {
+	if !orgAdminKeyCertCache.IsExist(key) {
+		orgAdminKeyCertCache.Set(key, value, -1)
+	}
 }
 
 // CacheKeyValueStore stores each value into a separate file.
@@ -96,10 +95,10 @@ func (ckvs *CacheKeyValueStore) Load(key interface{}) (interface{}, error) {
 		// errNotFound is the error of key not found.
 		errNotFound = errors.New("cachego: key not found")
 	)
-	bytes, err := globalCache.Get(hash) // nolint: gas
+	bytes, err := orgAdminKeyCertCache.Get(hash) // nolint: gas
 	if err != nil {
 		if err == errNotFound {
-			logger.Warn("globalCache.Get", err)
+			logger.Warn("orgAdminKeyCertCache.Get", err)
 			return nil, core.ErrKeyValueNotFound // wsw add
 		}
 		return nil, err
@@ -127,7 +126,7 @@ func (ckvs *CacheKeyValueStore) Store(key interface{}, value interface{}) error 
 	if err != nil {
 		return err
 	}
-	globalCache.Set(hash, valueBytes, -1)
+	orgAdminKeyCertCache.Set(hash, valueBytes, -1)
 	return nil
 }
 
@@ -140,6 +139,6 @@ func (ckvs *CacheKeyValueStore) Delete(key interface{}) error {
 	if err != nil {
 		return err
 	}
-	globalCache.Del(hash)
+	orgAdminKeyCertCache.Del(hash)
 	return nil
 }

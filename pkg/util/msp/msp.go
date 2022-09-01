@@ -5,7 +5,7 @@ import (
 	"github.com/pkg/errors"
 	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
 	internalmsp "github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/msp"
-	"github.com/wsw365904/fabric-sdk-go/pkg/algo"
+	"github.com/wsw365904/fabric-sdk-go/pkg/util/algo"
 	"github.com/wsw365904/newcryptosm/x509"
 	"github.com/wsw365904/newcryptosm/x509/pkix"
 	"github.com/wsw365904/third_party/hyperledger/fabric-config/configtx"

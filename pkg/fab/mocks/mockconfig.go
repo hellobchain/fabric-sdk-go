@@ -23,6 +23,8 @@ import (
 	commtls "github.com/wsw365904/fabric-sdk-go/pkg/core/config/comm/tls"
 )
 
+var _ fab.EndpointConfig = (*MockConfig)(nil)
+
 // MockConfig ...
 type MockConfig struct {
 	tlsEnabled             bool
@@ -270,6 +272,9 @@ func (c *MockConfig) SetCustomChannelConfig(channelID string, config *fab.Channe
 		c.chConfig = make(map[string]*fab.ChannelEndpointConfig)
 	}
 	c.chConfig[channelID] = config
+}
+func (c *MockConfig) ChannelPeersFromCache(name string) ([]fab.ChannelPeer, error) {
+	return nil, nil
 }
 
 // ChannelPeers returns the channel peers configuration

@@ -7,7 +7,7 @@ SPDX-License-Identifier: Apache-2.0
 package membership
 
 import (
-	"github.com/wsw365904/fabric-sdk-go/pkg/algo"
+	"github.com/wsw365904/fabric-sdk-go/pkg/util/algo"
 	"time"
 
 	"github.com/wsw365904/fabric-sdk-go/pkg/util/concurrent/lazycache"

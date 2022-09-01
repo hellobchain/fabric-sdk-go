@@ -401,6 +401,8 @@ func (pp *mockProposalProcessor) ProcessTransactionProposal(reqCtx reqContext.Co
 	return nil, errors.New("not implemented, just mock")
 }
 
+var _ fab.EndpointConfig = (*customMockConfig)(nil)
+
 //customMockConfig to mock config to override channel configuration options
 type customMockConfig struct {
 	*mocks.MockConfig

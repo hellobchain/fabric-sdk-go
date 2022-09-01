@@ -16,9 +16,7 @@ func NewCacheCertStore(certHash string, certByte []byte) (core.KVStore, error) {
 	opts := &keyvaluestore.CacheKeyValueStoreOptions{
 		Hash: certHash,
 		KeySerializer: func(key interface{}) (string, error) {
-			if !keyvaluestore.IsExist(certHash) {
-				keyvaluestore.SetGlobalCache(certHash, certByte)
-			}
+			keyvaluestore.SetKeyValueToOrgAdminKeyCertCache(certHash, certByte)
 			return certHash, nil
 		},
 	}

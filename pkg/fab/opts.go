@@ -16,6 +16,8 @@ import (
 	commtls "github.com/wsw365904/fabric-sdk-go/pkg/core/config/comm/tls"
 )
 
+var _ fab.EndpointConfig = (*EndpointConfigOptions)(nil)
+
 // EndpointConfigOptions represents EndpointConfig interface with overridable interface functions
 // if a function is not overridden, the default EndpointConfig implementation will be used.
 type EndpointConfigOptions struct {
@@ -32,6 +34,7 @@ type EndpointConfigOptions struct {
 	tlsCACertPool
 	tlsClientCerts
 	cryptoConfigPath
+	channelCachePeers
 }
 
 type applier func()
@@ -76,6 +79,10 @@ type networkPeers interface {
 // channelConfig interface allows to uniquely override EndpointConfig interface's ChannelConfig() function
 type channelConfig interface {
 	ChannelConfig(name string) *fab.ChannelEndpointConfig
+}
+
+type channelCachePeers interface {
+	ChannelPeersFromCache(name string) ([]fab.ChannelPeer, error)
 }
 
 // channelPeers interface allows to uniquely override EndpointConfig interface's ChannelPeers() function

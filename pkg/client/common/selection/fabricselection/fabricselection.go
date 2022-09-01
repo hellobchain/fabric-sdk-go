@@ -289,7 +289,14 @@ func (s *Service) getTargets(ctx contextAPI.Client) ([]fab.PeerConfig, error) {
 
 	chpeers := ctx.EndpointConfig().ChannelPeers(s.channelID)
 	if len(chpeers) == 0 {
-		return nil, errors.Errorf("no channel peers configured for channel [%s]", s.channelID)
+		peersFromCache, err := ctx.EndpointConfig().ChannelPeersFromCache(s.channelID)
+		if err != nil {
+			return nil, errors.Wrapf(err, "channel cache peers configured failed for channel [%s]", s.channelID)
+		}
+		chpeers = peersFromCache
+		if len(chpeers) == 0 {
+			return nil, errors.Errorf("no channel peers configured for channel [%s]", s.channelID)
+		}
 	}
 
 	chConfig := ctx.EndpointConfig().ChannelConfig(s.channelID)

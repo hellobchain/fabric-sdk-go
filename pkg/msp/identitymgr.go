@@ -8,7 +8,7 @@ package msp
 
 import (
 	"encoding/hex"
-	"github.com/wsw365904/fabric-sdk-go/pkg/algo"
+	"github.com/wsw365904/fabric-sdk-go/pkg/util/algo"
 	"path/filepath"
 	"strings"
 

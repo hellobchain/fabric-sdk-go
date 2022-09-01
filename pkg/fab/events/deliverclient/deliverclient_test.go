@@ -602,6 +602,8 @@ func listenEvents(blockch <-chan *fab.BlockEvent, ccch <-chan *fab.CCEvent, wait
 	}
 }
 
+var _ fab.EndpointConfig = (*mockConfig)(nil)
+
 type mockConfig struct {
 	fab.EndpointConfig
 }

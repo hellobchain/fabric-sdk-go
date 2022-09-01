@@ -15,7 +15,7 @@ import (
 	"encoding/hex"
 	"encoding/pem"
 	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
-	"github.com/wsw365904/fabric-sdk-go/pkg/algo"
+	"github.com/wsw365904/fabric-sdk-go/pkg/util/algo"
 	"github.com/wsw365904/newcryptosm/x509"
 	"github.com/wsw365904/newcryptosm/x509/pkix"
 

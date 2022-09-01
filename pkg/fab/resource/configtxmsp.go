@@ -9,7 +9,7 @@ package resource
 import (
 	"fmt"
 	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
-	"github.com/wsw365904/fabric-sdk-go/pkg/algo"
+	"github.com/wsw365904/fabric-sdk-go/pkg/util/algo"
 	"io/ioutil"
 	"os"
 	"path/filepath"

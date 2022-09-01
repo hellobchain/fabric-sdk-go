@@ -100,6 +100,7 @@ type EndpointConfig interface {
 	NetworkPeers() []NetworkPeer
 	ChannelConfig(name string) *ChannelEndpointConfig
 	ChannelPeers(name string) []ChannelPeer
+	ChannelPeersFromCache(name string) ([]ChannelPeer, error)
 	ChannelOrderers(name string) []OrdererConfig
 	TLSCACertPool() commtls.CertPool
 	TLSClientCerts() []tls.Certificate

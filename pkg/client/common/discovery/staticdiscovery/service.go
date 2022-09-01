@@ -25,7 +25,14 @@ func NewService(config fab.EndpointConfig, peerCreator peerCreator, channelID st
 	// Use configured channel peers
 	chPeers := config.ChannelPeers(channelID)
 	if len(chPeers) == 0 {
-		return nil, errors.Errorf("no channel peers configured for channel [%s]", channelID)
+		peersFromCache, err := config.ChannelPeersFromCache(channelID)
+		if err != nil {
+			return nil, errors.Wrapf(err, "channel cache peers configured failed for channel [%s]", channelID)
+		}
+		chPeers = peersFromCache
+		if len(chPeers) == 0 {
+			return nil, errors.Errorf("no channel peers configured for channel [%s]", channelID)
+		}
 	}
 
 	peers := []fab.Peer{}

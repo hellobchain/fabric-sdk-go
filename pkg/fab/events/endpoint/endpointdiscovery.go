@@ -42,7 +42,14 @@ func WithTargetFilter(filter fab.TargetFilter) Opt {
 func NewEndpointDiscoveryWrapper(ctx context.Client, channelID string, target fab.DiscoveryService, opts ...Opt) (*DiscoveryWrapper, error) {
 	chpeers := ctx.EndpointConfig().ChannelPeers(channelID)
 	if len(chpeers) == 0 {
-		return nil, errors.Errorf("no channel peers for channel [%s]", channelID)
+		peersFromCache, err := ctx.EndpointConfig().ChannelPeersFromCache(channelID)
+		if err != nil {
+			return nil, errors.Wrapf(err, "channel cache peers configured failed for channel [%s]", channelID)
+		}
+		chpeers = peersFromCache
+		if len(chpeers) == 0 {
+			return nil, errors.Errorf("no channel peers configured for channel [%s]", channelID)
+		}
 	}
 
 	s := &DiscoveryWrapper{

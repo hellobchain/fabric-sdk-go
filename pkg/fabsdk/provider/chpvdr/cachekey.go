@@ -7,7 +7,7 @@ SPDX-License-Identifier: Apache-2.0
 package chpvdr
 
 import (
-	"github.com/wsw365904/fabric-sdk-go/pkg/algo"
+	"github.com/wsw365904/fabric-sdk-go/pkg/util/algo"
 	"strconv"
 
 	"github.com/wsw365904/fabric-sdk-go/pkg/common/options"

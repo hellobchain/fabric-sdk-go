@@ -216,7 +216,14 @@ func (c *ChannelConfig) calculateTargetsFromConfig(ctx context.Client) ([]fab.Pr
 	targets := []fab.ProposalProcessor{}
 	chPeers := ctx.EndpointConfig().ChannelPeers(c.channelID)
 	if len(chPeers) == 0 {
-		return nil, errors.Errorf("no channel peers configured for channel [%s]", c.channelID)
+		peersFromCache, err := ctx.EndpointConfig().ChannelPeersFromCache(c.channelID)
+		if err != nil {
+			return nil, errors.Wrapf(err, "channel cache peers configured failed for channel [%s]", c.channelID)
+		}
+		chPeers = peersFromCache
+		if len(chPeers) == 0 {
+			return nil, errors.Errorf("no channel peers configured for channel [%s]", c.channelID)
+		}
 	}
 
 	for _, p := range chPeers {

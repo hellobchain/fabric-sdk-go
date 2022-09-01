@@ -25,7 +25,7 @@ import (
 	"encoding/hex"
 	"encoding/pem"
 	"fmt"
-	"github.com/wsw365904/fabric-sdk-go/pkg/algo"
+	"github.com/wsw365904/fabric-sdk-go/pkg/util/algo"
 	"github.com/wsw365904/newcryptosm/ecdsa"
 	"github.com/wsw365904/newcryptosm/tls"
 	"github.com/wsw365904/newcryptosm/x509"

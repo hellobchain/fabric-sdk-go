@@ -15,7 +15,7 @@ import (
 	tls0 "github.com/wsw365904/fabric-sdk-go/pkg/core/config/comm/tls"
 	metrics "github.com/wsw365904/fabric-sdk-go/pkg/fabsdk/metrics"
 )
-
+var _ fab.EndpointConfig = (*MockEndpointConfig)(nil)
 // MockEndpointConfig is a mock of EndpointConfig interface
 type MockEndpointConfig struct {
 	ctrl     *gomock.Controller
@@ -66,7 +66,9 @@ func (mr *MockEndpointConfigMockRecorder) ChannelOrderers(arg0 interface{}) *gom
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ChannelOrderers", reflect.TypeOf((*MockEndpointConfig)(nil).ChannelOrderers), arg0)
 }
-
+func (c *MockEndpointConfig) ChannelPeersFromCache(name string) ([]fab.ChannelPeer, error) {
+	return nil, nil
+}
 // ChannelPeers mocks base method
 func (m *MockEndpointConfig) ChannelPeers(arg0 string) []fab.ChannelPeer {
 	m.ctrl.T.Helper()
