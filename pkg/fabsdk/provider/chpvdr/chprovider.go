@@ -94,6 +94,10 @@ type ChannelService struct {
 	ctxtCache *contextCache
 }
 
+func (cs *ChannelService) SetChannelPeers(peers []fab.CompletePeer) {
+	cs.ctxtCache.SetPeers(peers)
+}
+
 // Config returns the Config for the named channel
 func (cs *ChannelService) Config() (fab.ChannelConfig, error) {
 	return chconfig.New(cs.channelID)

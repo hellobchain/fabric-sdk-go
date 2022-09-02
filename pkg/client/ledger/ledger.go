@@ -33,18 +33,20 @@ import (
 	pb "github.com/hyperledger/fabric-protos-go/peer"
 	"github.com/wsw365904/fabric-sdk-go/pkg/fab/chconfig"
 
+	"github.com/pkg/errors"
 	contextImpl "github.com/wsw365904/fabric-sdk-go/pkg/context"
 	"github.com/wsw365904/fabric-sdk-go/pkg/fab/channel"
-	"github.com/pkg/errors"
 )
 
 // Client enables ledger queries on a Fabric network.
 type Client struct {
-	ctx       context.Channel
-	filter    fab.TargetFilter
-	ledger    *channel.Ledger
-	verifier  channel.ResponseVerifier
-	discovery fab.DiscoveryService
+	ctx             context.Channel
+	targets         []fab.Peer
+	completeTargets []fab.CompletePeer
+	filter          fab.TargetFilter
+	ledger          *channel.Ledger
+	verifier        channel.ResponseVerifier
+	discovery       fab.DiscoveryService
 }
 
 // mspFilter is default filter
@@ -67,9 +69,22 @@ func New(channelProvider context.ChannelProvider, opts ...ClientOption) (*Client
 		return nil, err
 	}
 
+	ledgerClient := Client{
+		ctx: channelContext,
+	}
+
+	for _, opt := range opts {
+		err := opt(&ledgerClient)
+		if err != nil {
+			return nil, err
+		}
+	}
+
 	if channelContext.ChannelService() == nil {
 		return nil, errors.New("channel service not initialized")
 	}
+
+	channelContext.ChannelService().SetChannelPeers(ledgerClient.completeTargets)
 
 	membership, err := channelContext.ChannelService().Membership()
 	if err != nil {
@@ -91,18 +106,11 @@ func New(channelProvider context.ChannelProvider, opts ...ClientOption) (*Client
 	// Apply filter to discovery service
 	discovery := discovery.NewDiscoveryFilterService(discoveryService, ledgerFilter)
 
-	ledgerClient := Client{
+	ledgerClient = Client{
 		ctx:       channelContext,
 		ledger:    ledger,
 		verifier:  &verifier.Signature{Membership: membership},
 		discovery: discovery,
-	}
-
-	for _, opt := range opts {
-		err := opt(&ledgerClient)
-		if err != nil {
-			return nil, err
-		}
 	}
 
 	// check if target filter was set - if not set the default

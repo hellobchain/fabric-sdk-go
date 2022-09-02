@@ -30,6 +30,11 @@ type Client struct {
 	permitBlockEvents bool
 	fromBlock         uint64
 	seekType          seek.Type
+	peers             []fab.CompletePeer
+}
+
+func (c *Client) SetChannelPeers(peers []fab.CompletePeer) {
+	c.peers = peers
 }
 
 // New returns a Client instance. Client receives events such as block, filtered block,

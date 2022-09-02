@@ -64,7 +64,7 @@ func TestDiscoveryProvider(t *testing.T) {
 
 	expectedNumPeers := len(peers)
 
-	discoveryService, err := NewEndpointDiscoveryWrapper(ctx, "testchannel", clientmocks.NewDiscoveryService(peers...))
+	discoveryService, err := NewEndpointDiscoveryWrapper(ctx, "testchannel", nil, clientmocks.NewDiscoveryService(peers...))
 	require.NoError(t, err, "error creating discovery wrapper")
 
 	peers, err = discoveryService.GetPeers()
@@ -81,7 +81,7 @@ func TestDiscoveryProviderWithTargetFilter(t *testing.T) {
 
 	expectedNumPeers := len(peers) - 1
 
-	discoveryService, err := NewEndpointDiscoveryWrapper(ctx, "testchannel", clientmocks.NewDiscoveryService(peers...), WithTargetFilter(newMockFilter(p3)))
+	discoveryService, err := NewEndpointDiscoveryWrapper(ctx, "testchannel", nil, clientmocks.NewDiscoveryService(peers...), WithTargetFilter(newMockFilter(p3)))
 	assert.NoError(t, err, "error creating discovery wrapper")
 
 	peers, err = discoveryService.GetPeers()
@@ -103,7 +103,7 @@ func TestDiscoveryProviderWithEventSource(t *testing.T) {
 
 	expectedNumPeers := len(peers) - 1
 
-	discoveryService, err := NewEndpointDiscoveryWrapper(ctx, "testchannel", clientmocks.NewDiscoveryService(peers...))
+	discoveryService, err := NewEndpointDiscoveryWrapper(ctx, "testchannel", nil, clientmocks.NewDiscoveryService(peers...))
 	assert.NoError(t, err, "error creating discovery wrapper")
 
 	peers, err = discoveryService.GetPeers()

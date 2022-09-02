@@ -99,6 +99,10 @@ type channelService struct {
 	discovery fab.DiscoveryService
 }
 
+func (cs *channelService) SetChannelPeers(peers []fab.CompletePeer) {
+
+}
+
 // CreateChannelProvider returns a new default implementation of channel provider
 func (f *dynamicDiscoveryProviderFactory) CreateChannelProvider(config fab.EndpointConfig, opts ...options.Opt) (fab.ChannelProvider, error) {
 	chProvider, err := chpvdr.New(config, opts...)

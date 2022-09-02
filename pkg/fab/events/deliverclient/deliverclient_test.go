@@ -47,6 +47,7 @@ func TestOptionsInNewClient(t *testing.T) {
 	client, err := New(
 		newMockContext(),
 		fabmocks.NewMockChannelCfg(channelID),
+		nil,
 		clientmocks.NewDiscoveryService(peer1, peer2),
 		client.WithBlockEvents(),
 	)
@@ -61,6 +62,7 @@ func TestClientConnect(t *testing.T) {
 	eventClient, err := New(
 		newMockContext(),
 		fabmocks.NewMockChannelCfg(channelID),
+		nil,
 		clientmocks.NewDiscoveryService(peer1, peer2),
 		client.WithBlockEvents(),
 		withConnectionProvider(
@@ -103,6 +105,7 @@ func TestClientConnect_ImmediateTimeout(t *testing.T) {
 	eventClient, err := New(
 		newMockContext(),
 		fabmocks.NewMockChannelCfg(channelID),
+		nil,
 		clientmocks.NewDiscoveryService(peer1, peer2),
 		client.WithBlockEvents(),
 		withConnectionProvider(
@@ -263,6 +266,7 @@ func testTransferRegistrations(t *testing.T, transferFunc transferFunc) {
 	eventClient1, err := New(
 		newMockContext(),
 		fabmocks.NewMockChannelCfg(channelID),
+		nil,
 		clientmocks.NewDiscoveryService(peer1, peer2),
 		client.WithBlockEvents(),
 		WithSeekType(seek.Newest),
@@ -314,6 +318,7 @@ func testTransferRegistrations(t *testing.T, transferFunc transferFunc) {
 	eventClient2, err := New(
 		newMockContext(),
 		fabmocks.NewMockChannelCfg(channelID),
+		nil,
 		clientmocks.NewDiscoveryService(peer1, peer2),
 		client.WithBlockEvents(),
 		esdispatcher.WithSnapshot(snapshot),
@@ -354,6 +359,7 @@ func testConnect(t *testing.T, maxConnectAttempts uint, expectedOutcome clientmo
 	eventClient, err := New(
 		newMockContext(),
 		fabmocks.NewMockChannelCfg(channelID),
+		nil,
 		clientmocks.NewDiscoveryService(peer1, peer2),
 		client.WithBlockEvents(),
 		withConnectionProvider(
@@ -392,6 +398,7 @@ func testReconnect(t *testing.T, reconnect bool, maxReconnectAttempts uint, expe
 	eventClient, err := New(
 		newMockContext(),
 		fabmocks.NewMockChannelCfg(channelID),
+		nil,
 		clientmocks.NewDiscoveryService(peer1, peer2),
 		client.WithBlockEvents(),
 		withConnectionProvider(
@@ -460,6 +467,7 @@ func testReconnectRegistration(t *testing.T, connectResults clientmocks.ConnectA
 	eventClient, err := New(
 		newMockContext(),
 		fabmocks.NewMockChannelCfg(channelID),
+		nil,
 		clientmocks.NewDiscoveryService(peer1, peer2),
 		client.WithBlockEvents(),
 		withConnectionProvider(

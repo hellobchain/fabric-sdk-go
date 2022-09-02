@@ -43,7 +43,7 @@ func TestDiscoveryFilter(t *testing.T) {
 		t.Fatalf(err.Error())
 	}
 
-	discoveryService, err := staticdiscovery.NewService(config1, mocks.NewMockContext(mockmsp.NewMockSigningIdentity("user1", "Org1MSP")).InfraProvider(), "mychannel")
+	discoveryService, err := staticdiscovery.NewService(config1, nil, mocks.NewMockContext(mockmsp.NewMockSigningIdentity("user1", "Org1MSP")).InfraProvider(), "mychannel")
 	if err != nil {
 		t.Fatalf("Failed to setup discovery service: %s", err)
 	}

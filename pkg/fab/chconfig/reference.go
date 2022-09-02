@@ -21,6 +21,7 @@ type Ref struct {
 	ctx        fab.ClientContext
 	channelID  string
 	errHandler fab.ErrorHandler
+	peers      []fab.CompletePeer
 }
 
 // ChannelConfigError is returned when the channel config could not be refreshed
@@ -63,7 +64,7 @@ func (ref *Ref) getConfig() (fab.ChannelCfg, error) {
 		return nil, errors.WithMessage(err, "error creating channel config provider")
 	}
 
-	reqCtx, cancel := contextImpl.NewRequest(ref.ctx, contextImpl.WithTimeoutType(fab.PeerResponse))
+	reqCtx, cancel := contextImpl.NewRequest(ref.ctx, contextImpl.WithTimeoutType(fab.PeerResponse), contextImpl.WithPeers(ref.peers))
 	defer cancel()
 
 	chConfig, err := chConfigProvider.Query(reqCtx)
@@ -72,4 +73,8 @@ func (ref *Ref) getConfig() (fab.ChannelCfg, error) {
 	}
 
 	return chConfig, nil
+}
+
+func (ref *Ref) SetPeers(peers []fab.CompletePeer) {
+	ref.peers = peers
 }

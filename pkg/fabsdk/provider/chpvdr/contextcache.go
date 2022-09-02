@@ -32,10 +32,15 @@ type contextCache struct {
 	selectionServiceCache cache
 	chCfgCache            cache
 	membershipCache       cache
+	peers                 []fab.CompletePeer
 }
 
 var cfgCacheProvider = func(opts ...options.Opt) cache {
 	return chconfig.NewRefCache(opts...)
+}
+
+func (c *contextCache) SetPeers(peers []fab.CompletePeer) {
+	c.peers = peers
 }
 
 func newContextCache(ctx fab.ClientContext, opts []options.Opt) *contextCache {
@@ -106,7 +111,7 @@ func (c *contextCache) createEventClient(chConfig fab.ChannelCfg, opts ...option
 	}
 
 	logger.Debugf("Using deliver events for channel [%s]", chConfig.ID())
-	return deliverclient.New(c.ctx, chConfig, discovery, opts...)
+	return deliverclient.New(c.ctx, chConfig, c.peers, discovery, opts...)
 }
 
 func (c *contextCache) createDiscoveryService(chConfig fab.ChannelCfg, opts ...options.Opt) (fab.DiscoveryService, error) {
@@ -118,7 +123,7 @@ func (c *contextCache) createDiscoveryService(chConfig fab.ChannelCfg, opts ...o
 		}
 		return dynamicdiscovery.NewChannelService(c.ctx, membership, chConfig.ID(), opts...)
 	}
-	return staticdiscovery.NewService(c.ctx.EndpointConfig(), c.ctx.InfraProvider(), chConfig.ID())
+	return staticdiscovery.NewService(c.ctx.EndpointConfig(), c.peers, c.ctx.InfraProvider(), chConfig.ID())
 }
 
 func (c *contextCache) GetDiscoveryService(channelID string) (fab.DiscoveryService, error) {
@@ -187,6 +192,7 @@ func (c *contextCache) GetChannelConfig(channelID string) (fab.ChannelCfg, error
 	if err != nil {
 		return nil, err
 	}
+	chCfgRef.SetPeers(c.peers)
 	chCfg, err := chCfgRef.Get()
 	if err != nil {
 		return nil, errors.WithMessage(err, "could not get chConfig cache reference")

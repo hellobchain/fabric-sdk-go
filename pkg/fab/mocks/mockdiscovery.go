@@ -27,6 +27,9 @@ type MockStaticDiscoveryService struct {
 	Peers []fab.Peer
 }
 
+func (ds *MockStaticDiscoveryService) SetPeers(peers []fab.CompletePeer) {
+}
+
 // NewMockDiscoveryProvider returns mock discovery provider
 func NewMockDiscoveryProvider(err error, peers []fab.Peer) *MockStaticDiscoveryProvider {
 	return &MockStaticDiscoveryProvider{Error: err, Peers: peers}

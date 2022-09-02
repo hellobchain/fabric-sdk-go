@@ -107,7 +107,8 @@ type requestOptions struct {
 	ParentContext reqContext.Context                //parent grpc context for resmgmt operations
 	Retry         retry.Opts
 	// signatures for channel configurations, if set, this option will take precedence over signatures of SaveChannelRequest.SigningIdentities
-	Signatures []*common.ConfigSignature
+	Signatures      []*common.ConfigSignature
+	CompleteTargets []fab.CompletePeer
 }
 
 //SaveChannelRequest holds parameters for save channel request
@@ -806,6 +807,8 @@ func (rc *Client) sendCCProposal(reqCtx reqContext.Context, ccProposalType chain
 	if err != nil {
 		return fab.EmptyTransactionID, errors.WithMessage(err, "Unable to get channel service")
 	}
+
+	channelService.SetChannelPeers(opts.CompleteTargets)
 
 	transactor, err := channelService.Transactor(reqCtx)
 	if err != nil {

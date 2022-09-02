@@ -102,14 +102,19 @@ func (s *ChannelService) doQueryPeers() ([]fab.Peer, error) {
 	return nil, errors.Wrap(multi.New(respErrors...), "no successful response received from any peer")
 }
 
+func completePeersToChannelPeers(completePeers []fab.CompletePeer) []fab.ChannelPeer {
+	cpeers := make([]fab.ChannelPeer, len(completePeers))
+
+	for i, peer := range completePeers {
+		cpeers[i] = peer.ChannelPeer
+	}
+	return cpeers
+}
+
 func (s *ChannelService) getTargets(ctx contextAPI.Client) ([]fab.PeerConfig, error) {
 	chPeers := ctx.EndpointConfig().ChannelPeers(s.channelID)
 	if len(chPeers) == 0 {
-		peersFromCache, err := ctx.EndpointConfig().ChannelPeersFromCache(s.channelID)
-		if err != nil {
-			return nil, errors.Wrapf(err, "channel cache peers configured failed for channel [%s]", s.channelID)
-		}
-		chPeers = peersFromCache
+		chPeers = completePeersToChannelPeers(s.peers)
 		if len(chPeers) == 0 {
 			return nil, errors.Errorf("no channel peers configured for channel [%s]", s.channelID)
 		}

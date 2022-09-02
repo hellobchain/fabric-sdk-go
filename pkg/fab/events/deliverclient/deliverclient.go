@@ -56,16 +56,21 @@ var deliverFilteredProvider = func(context fabcontext.Client, chConfig fab.Chann
 type Client struct {
 	*client.Client
 	params
+	peers []fab.CompletePeer
+}
+
+func (c *Client) SetChannelPeers(peers []fab.CompletePeer) {
+	c.peers = peers
 }
 
 // New returns a new deliver event client
-func New(context fabcontext.Client, chConfig fab.ChannelCfg, discoveryService fab.DiscoveryService, opts ...options.Opt) (*Client, error) {
+func New(context fabcontext.Client, chConfig fab.ChannelCfg, cpeers []fab.CompletePeer, discoveryService fab.DiscoveryService, opts ...options.Opt) (*Client, error) {
 	params := defaultParams()
 	options.Apply(params, opts)
 
 	// Use a custom Discovery Service which wraps the given discovery service
 	// and produces event endpoints containing additional GRPC options.
-	discoveryWrapper, err := endpoint.NewEndpointDiscoveryWrapper(context, chConfig.ID(), discoveryService)
+	discoveryWrapper, err := endpoint.NewEndpointDiscoveryWrapper(context, chConfig.ID(), cpeers, discoveryService)
 	if err != nil {
 		return nil, err
 	}

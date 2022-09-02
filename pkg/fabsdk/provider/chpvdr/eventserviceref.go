@@ -31,6 +31,11 @@ type EventClientRef struct {
 	provider    eventClientProvider
 	eventClient fab.EventClient
 	closed      int32
+	peers       []fab.CompletePeer
+}
+
+func (ref *EventClientRef) SetChannelPeers(peers []fab.CompletePeer) {
+	ref.peers = peers
 }
 
 // NewEventClientRef returns a new EventClientRef

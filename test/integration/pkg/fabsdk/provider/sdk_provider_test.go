@@ -201,6 +201,10 @@ func (cs *dynamicSelectionChannelService) Selection() (fab.SelectionService, err
 	return cs.selection, nil
 }
 
+func (cs *dynamicSelectionChannelService) SetChannelPeers(peers []fab.CompletePeer) {
+
+}
+
 type closable interface {
 	Close()
 }

@@ -191,6 +191,10 @@ type channelService struct {
 	discovery fab.DiscoveryService
 }
 
+func (cs *channelService) SetChannelPeers(peers []fab.CompletePeer) {
+
+}
+
 type closable interface {
 	Close()
 }

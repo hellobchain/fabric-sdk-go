@@ -12,20 +12,13 @@ import (
 	"github.com/wsw365904/fabric-sdk-go/pkg/util/cache"
 )
 
-var orgAdminKeyCertCache = cache.NewCache()
-
-func SetKeyValueToOrgAdminKeyCertCache(key string, value []byte) {
-	if !orgAdminKeyCertCache.IsExist(key) {
-		orgAdminKeyCertCache.Set(key, value, -1)
-	}
-}
-
 // CacheKeyValueStore stores each value into a separate file.
 // KeySerializer maps a key to a unique file path (raletive to the store path)
 // ValueSerializer and ValueDeserializer serializes/de-serializes a value
 // to and from a byte array that is stored in the path derived from the key.
 type CacheKeyValueStore struct {
 	hash          string
+	keyValueCache *cache.Cache
 	keySerializer KeySerializer
 	marshaller    Marshaller
 	unmarshaller  Unmarshaller
@@ -34,7 +27,8 @@ type CacheKeyValueStore struct {
 // CacheKeyValueStoreOptions allow overriding store defaults
 type CacheKeyValueStoreOptions struct {
 	// Store path, mandatory
-	Hash string
+	Hash          string
+	KeyValueCache *cache.Cache
 	// Optional. If not provided, default key serializer is used.
 	KeySerializer KeySerializer
 	// Optional. If not provided, default Marshaller is used.
@@ -43,7 +37,7 @@ type CacheKeyValueStoreOptions struct {
 	Unmarshaller Unmarshaller
 }
 
-// GetPath returns the store path
+// GetHash returns the store path
 func (ckvs *CacheKeyValueStore) GetHash() string {
 	return ckvs.hash
 }
@@ -72,11 +66,15 @@ func NewCache(opts *CacheKeyValueStoreOptions) (*CacheKeyValueStore, error) {
 	if opts.Unmarshaller == nil {
 		opts.Unmarshaller = defaultUnmarshaller
 	}
+	if opts.KeyValueCache == nil {
+		opts.KeyValueCache = cache.NewCache()
+	}
 	return &CacheKeyValueStore{
 		hash:          opts.Hash,
 		keySerializer: opts.KeySerializer,
 		marshaller:    opts.Marshaller,
 		unmarshaller:  opts.Unmarshaller,
+		keyValueCache: opts.KeyValueCache,
 	}, nil
 }
 
@@ -95,7 +93,7 @@ func (ckvs *CacheKeyValueStore) Load(key interface{}) (interface{}, error) {
 		// errNotFound is the error of key not found.
 		errNotFound = errors.New("cachego: key not found")
 	)
-	bytes, err := orgAdminKeyCertCache.Get(hash) // nolint: gas
+	bytes, err := ckvs.keyValueCache.Get(hash) // nolint: gas
 	if err != nil {
 		if err == errNotFound {
 			logger.Warn("orgAdminKeyCertCache.Get", err)
@@ -126,7 +124,7 @@ func (ckvs *CacheKeyValueStore) Store(key interface{}, value interface{}) error 
 	if err != nil {
 		return err
 	}
-	orgAdminKeyCertCache.Set(hash, valueBytes, -1)
+	ckvs.keyValueCache.Set(hash, valueBytes, -1)
 	return nil
 }
 
@@ -139,6 +137,6 @@ func (ckvs *CacheKeyValueStore) Delete(key interface{}) error {
 	if err != nil {
 		return err
 	}
-	orgAdminKeyCertCache.Del(hash)
+	ckvs.keyValueCache.Del(hash)
 	return nil
 }

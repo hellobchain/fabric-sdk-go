@@ -31,6 +31,11 @@ type MockChannelService struct {
 	membership   fab.ChannelMembership
 }
 
+func (cs *MockChannelService) SetChannelPeers(peers []fab.CompletePeer) {
+	//TODO implement me
+	panic("implement me")
+}
+
 // NewMockChannelProvider returns a mock ChannelProvider
 func NewMockChannelProvider(ctx core.Providers) (*MockChannelProvider, error) {
 	// Create a mock client with the mock channel

@@ -26,6 +26,10 @@ func NewMockSelectionService(err error, peers ...fab.Peer) *MockSelectionService
 	return &MockSelectionService{Error: err, Peers: peers}
 }
 
+func (m *MockSelectionService) SetPeers(peers []fab.CompletePeer) {
+
+}
+
 // GetEndorsersForChaincode mockcore retrieving endorsing peers
 func (ds *MockSelectionService) GetEndorsersForChaincode(chaincodes []*fab.ChaincodeCall, opts ...options.Opt) ([]fab.Peer, error) {
 

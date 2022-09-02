@@ -24,6 +24,11 @@ type DiscoveryWrapper struct {
 	ctx     context.Client
 	chPeers []fab.ChannelPeer
 	filter  fab.TargetFilter
+	peers   []fab.CompletePeer
+}
+
+func (ds *DiscoveryWrapper) SetPeers(peers []fab.CompletePeer) {
+	ds.peers = peers
 }
 
 // Opt is a discoveryProvider option
@@ -35,18 +40,22 @@ func WithTargetFilter(filter fab.TargetFilter) Opt {
 		p.filter = filter
 	}
 }
+func completePeersToChannelPeers(completePeers []fab.CompletePeer) []fab.ChannelPeer {
+	cpeers := make([]fab.ChannelPeer, len(completePeers))
+
+	for i, peer := range completePeers {
+		cpeers[i] = peer.ChannelPeer
+	}
+	return cpeers
+}
 
 // NewEndpointDiscoveryWrapper returns a new event endpoint discovery service
 // that wraps a given target discovery service and adds endpoint data to each
 // of the discovered peers.
-func NewEndpointDiscoveryWrapper(ctx context.Client, channelID string, target fab.DiscoveryService, opts ...Opt) (*DiscoveryWrapper, error) {
+func NewEndpointDiscoveryWrapper(ctx context.Client, channelID string, cpeers []fab.CompletePeer, target fab.DiscoveryService, opts ...Opt) (*DiscoveryWrapper, error) {
 	chpeers := ctx.EndpointConfig().ChannelPeers(channelID)
 	if len(chpeers) == 0 {
-		peersFromCache, err := ctx.EndpointConfig().ChannelPeersFromCache(channelID)
-		if err != nil {
-			return nil, errors.Wrapf(err, "channel cache peers configured failed for channel [%s]", channelID)
-		}
-		chpeers = peersFromCache
+		chpeers = completePeersToChannelPeers(cpeers)
 		if len(chpeers) == 0 {
 			return nil, errors.Errorf("no channel peers configured for channel [%s]", channelID)
 		}

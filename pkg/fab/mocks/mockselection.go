@@ -17,6 +17,9 @@ type MockSelectionService struct {
 	Peers []fab.Peer
 }
 
+func (m *MockSelectionService) SetPeers(peers []fab.CompletePeer) {
+}
+
 // NewMockSelectionService returns mock selection service
 func NewMockSelectionService(err error, peers ...fab.Peer) *MockSelectionService {
 	return &MockSelectionService{Error: err, Peers: peers}

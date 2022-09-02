@@ -47,6 +47,11 @@ type Client struct {
 	registerOnce    sync.Once
 	afterConnect    handler
 	beforeReconnect handler
+	peers           []fab.CompletePeer
+}
+
+func (c *Client) SetChannelPeers(peers []fab.CompletePeer) {
+	c.peers = peers
 }
 
 type handler func() error

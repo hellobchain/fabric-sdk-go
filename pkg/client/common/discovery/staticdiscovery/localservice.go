@@ -19,3 +19,12 @@ type localDiscoveryService struct {
 func (ds *localDiscoveryService) GetPeers() ([]fab.Peer, error) {
 	return ds.peers, nil
 }
+
+func (ds *localDiscoveryService) SetPeers(peers []fab.CompletePeer) {
+	fpeers := make([]fab.Peer, len(peers))
+
+	for i, peer := range peers {
+		fpeers[i] = peer.Peer
+	}
+	ds.peers = fpeers
+}

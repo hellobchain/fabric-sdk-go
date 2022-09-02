@@ -108,6 +108,11 @@ type ChannelPeer struct {
 	NetworkPeer
 }
 
+type CompletePeer struct {
+	ChannelPeer
+	Peer
+}
+
 // NetworkPeer combines peer info with MSP info
 type NetworkPeer struct {
 	PeerConfig

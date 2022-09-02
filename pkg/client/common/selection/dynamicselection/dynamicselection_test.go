@@ -383,6 +383,9 @@ type mockDiscoveryService struct {
 	peers []fab.Peer
 }
 
+func (s *mockDiscoveryService) SetPeers(peers []fab.CompletePeer) {
+}
+
 func newMockDiscoveryService(peers ...fab.Peer) fab.DiscoveryService {
 	return &mockDiscoveryService{peers: peers}
 }

@@ -34,6 +34,11 @@ type service struct {
 	discClient      fabdiscovery.Client
 	peersRef        *lazyref.Reference
 	ErrHandler      fab.ErrorHandler
+	peers           []fab.CompletePeer
+}
+
+func (s *service) SetPeers(peers []fab.CompletePeer) {
+	s.peers = peers
 }
 
 type queryPeers func() ([]fab.Peer, error)

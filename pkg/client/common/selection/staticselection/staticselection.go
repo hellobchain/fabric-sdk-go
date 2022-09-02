@@ -18,6 +18,11 @@ var logger = wlogging.MustGetLoggerWithoutName()
 // SelectionService implements static selection service
 type SelectionService struct {
 	discoveryService fab.DiscoveryService
+	peers            []fab.CompletePeer
+}
+
+func (s *SelectionService) SetPeers(peers []fab.CompletePeer) {
+	s.peers = peers
 }
 
 // NewService creates a static selection service

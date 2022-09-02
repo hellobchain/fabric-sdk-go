@@ -378,6 +378,10 @@ func (cs *fabricSelectionChannelService) Selection() (fab.SelectionService, erro
 	return cs.selection, nil
 }
 
+func (cs *fabricSelectionChannelService) SetChannelPeers(peers []fab.CompletePeer) {
+
+}
+
 func expecting(groups ...[]string) [][]string {
 	return groups
 }

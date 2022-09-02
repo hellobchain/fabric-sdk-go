@@ -94,7 +94,9 @@ type MockChannelService struct {
 	invocations      map[string][][]interface{}
 	invocationsMutex sync.RWMutex
 }
+func (fake *MockChannelService) SetChannelPeers(peers []fab.CompletePeer) {
 
+}
 func (fake *MockChannelService) Config() (fab.ChannelConfig, error) {
 	fake.configMutex.Lock()
 	ret, specificReturn := fake.configReturnsOnCall[len(fake.configArgsForCall)]

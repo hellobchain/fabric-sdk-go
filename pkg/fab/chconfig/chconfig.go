@@ -186,7 +186,14 @@ func (c *ChannelConfig) queryBlockFromPeers(reqCtx reqContext.Context) (*common.
 		// Calculate targets from config
 		targets, err = c.calculateTargetsFromConfig(ctx)
 		if err != nil {
-			return nil, err
+			peers, ok := contextImpl.RequestPeers(reqCtx)
+			if !ok {
+				return nil, errors.New("failed get fab peer context from reqContext")
+			}
+			if len(peers) == 0 {
+				return nil, errors.New("num of get fab peer is nil")
+			}
+			targets = peersToTxnProcessors(completePeersToPeers(peers))
 		}
 	} else {
 		targets = peersToTxnProcessors(c.opts.Targets)
@@ -216,14 +223,7 @@ func (c *ChannelConfig) calculateTargetsFromConfig(ctx context.Client) ([]fab.Pr
 	targets := []fab.ProposalProcessor{}
 	chPeers := ctx.EndpointConfig().ChannelPeers(c.channelID)
 	if len(chPeers) == 0 {
-		peersFromCache, err := ctx.EndpointConfig().ChannelPeersFromCache(c.channelID)
-		if err != nil {
-			return nil, errors.Wrapf(err, "channel cache peers configured failed for channel [%s]", c.channelID)
-		}
-		chPeers = peersFromCache
-		if len(chPeers) == 0 {
-			return nil, errors.Errorf("no channel peers configured for channel [%s]", c.channelID)
-		}
+		return nil, errors.Errorf("no channel peers configured for channel [%s]", c.channelID)
 	}
 
 	for _, p := range chPeers {
@@ -615,6 +615,15 @@ func peersToTxnProcessors(peers []fab.Peer) []fab.ProposalProcessor {
 		tpp[i] = peers[i]
 	}
 	return tpp
+}
+
+func completePeersToPeers(cpeers []fab.CompletePeer) []fab.Peer {
+	fpeer := make([]fab.Peer, len(cpeers))
+
+	for i, peer := range cpeers {
+		fpeer[i] = peer.Peer
+	}
+	return fpeer
 }
 
 //randomMaxTargets returns random sub set of max length targets

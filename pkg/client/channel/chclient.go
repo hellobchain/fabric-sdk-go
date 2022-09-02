@@ -17,6 +17,8 @@ package channel
 
 import (
 	reqContext "context"
+	"github.com/wsw365904/fabric-sdk-go/pkg/fab/comm"
+	"github.com/wsw365904/fabric-sdk-go/pkg/util/defaultcache"
 	"time"
 
 	"github.com/pkg/errors"
@@ -38,15 +40,140 @@ import (
 // An application that requires interaction with multiple channels should create a separate
 // instance of the channel client for each channel. Channel client supports non-admin functions only.
 type Client struct {
-	context      context.Channel
-	membership   fab.ChannelMembership
-	eventService fab.EventService
-	greylist     *greylist.Filter
-	metrics      *metrics.ClientMetrics
+	context         context.Channel
+	membership      fab.ChannelMembership
+	eventService    fab.EventService
+	greylist        *greylist.Filter
+	metrics         *metrics.ClientMetrics
+	completeTargets []fab.CompletePeer
+	targets         []fab.Peer
 }
 
 // ClientOption describes a functional parameter for the New constructor
 type ClientOption func(*Client) error
+
+// WithChannelClientTargets allows overriding of the target peers for the request.
+func WithChannelClientTargets(channelID string, channelTargets []fab.ChannelPeer) ClientOption {
+	return func(rmc *Client) error {
+		if channelID != "" {
+			defaultcache.DefaultCache().Set(channelID, channelTargets)
+		}
+		return nil
+	}
+}
+
+// WithChannelClientTargetEndpoints option to configure new
+func WithChannelClientTargetEndpoints(channelId string, keys ...string) ClientOption {
+	return func(rmc *Client) error {
+		var channelTargets []fab.ChannelPeer
+		var defaultPeerChannelConfig fab.PeerChannelConfig
+		if channelId != "" {
+			defaultPeerChannelConfig = fab.PeerChannelConfig{
+				EndorsingPeer:  true,
+				ChaincodeQuery: true,
+				LedgerQuery:    true,
+				EventSource:    true,
+			}
+		}
+		for _, url := range keys {
+			peerCfg, err := comm.NetworkPeerConfig(rmc.context.EndpointConfig(), url)
+			if err != nil {
+				return err
+			}
+			if channelId != "" {
+				channelPeer := fab.ChannelPeer{
+					NetworkPeer:       *peerCfg,
+					PeerChannelConfig: defaultPeerChannelConfig,
+				}
+				channelTargets = append(channelTargets, channelPeer)
+			}
+		}
+		return WithChannelClientTargets(channelId, channelTargets)(rmc)
+	}
+}
+
+// WithClientTargets allows overriding of the target peers for the request.
+func WithClientTargets(targets ...fab.Peer) ClientOption {
+	return func(rmc *Client) error {
+		// Validate targets
+		for _, t := range targets {
+			if t == nil {
+				return errors.New("target is nil")
+			}
+		}
+
+		rmc.targets = targets
+		return nil
+	}
+}
+
+// WithClientTargetEndpoints option to configure new
+func WithClientTargetEndpoints(keys ...string) ClientOption {
+	return func(rmc *Client) error {
+		var targets []fab.Peer
+
+		for _, url := range keys {
+
+			peerCfg, err := comm.NetworkPeerConfig(rmc.context.EndpointConfig(), url)
+			if err != nil {
+				return err
+			}
+
+			peer, err := rmc.context.InfraProvider().CreatePeerFromConfig(peerCfg)
+			if err != nil {
+				return errors.WithMessage(err, "creating peer from config failed")
+			}
+
+			targets = append(targets, peer)
+		}
+
+		return WithClientTargets(targets...)(rmc)
+	}
+}
+
+// WithClientCompleteTargets allows overriding of the target peers for the request.
+func WithClientCompleteTargets(targets ...fab.CompletePeer) ClientOption {
+	return func(rmc *Client) error {
+		rmc.completeTargets = targets
+		return nil
+	}
+}
+
+// WithClientCompleteTargetEndpoints option to configure new
+func WithClientCompleteTargetEndpoints(keys ...string) ClientOption {
+	return func(rmc *Client) error {
+		var targets []fab.CompletePeer
+		defaultPeerChannelConfig := fab.PeerChannelConfig{
+			EndorsingPeer:  true,
+			ChaincodeQuery: true,
+			LedgerQuery:    true,
+			EventSource:    true,
+		}
+		for _, url := range keys {
+			peerCfg, err := comm.NetworkPeerConfig(rmc.context.EndpointConfig(), url)
+			if err != nil {
+				return err
+			}
+
+			peer, err := rmc.context.InfraProvider().CreatePeerFromConfig(peerCfg)
+			if err != nil {
+				return errors.WithMessage(err, "creating peer from config failed")
+			}
+
+			channelPeer := fab.ChannelPeer{
+				NetworkPeer:       *peerCfg,
+				PeerChannelConfig: defaultPeerChannelConfig,
+			}
+
+			completePeer := fab.CompletePeer{
+				Peer:        peer,
+				ChannelPeer: channelPeer,
+			}
+			targets = append(targets, completePeer)
+		}
+		return WithClientCompleteTargets(targets...)(rmc)
+	}
+}
 
 // New returns a Client instance. Channel client can query chaincode, execute chaincode and register/unregister for chaincode events on specific channel.
 func New(channelProvider context.ChannelProvider, opts ...ClientOption) (*Client, error) {
@@ -56,11 +183,21 @@ func New(channelProvider context.ChannelProvider, opts ...ClientOption) (*Client
 		return nil, errors.WithMessage(err, "failed to create channel context")
 	}
 
+	channelClient := newClient(channelContext, nil, nil, nil)
+	for _, param := range opts {
+		err := param(&channelClient)
+		if err != nil {
+			return nil, errors.WithMessage(err, "option failed")
+		}
+	}
+
 	greylistProvider := greylist.New(channelContext.EndpointConfig().Timeout(fab.DiscoveryGreylistExpiry))
 
 	if channelContext.ChannelService() == nil {
 		return nil, errors.New("channel service not initialized")
 	}
+
+	channelContext.ChannelService().SetChannelPeers(channelClient.completeTargets)
 
 	eventService, err := channelContext.ChannelService().EventService()
 	if err != nil {
@@ -72,14 +209,7 @@ func New(channelProvider context.ChannelProvider, opts ...ClientOption) (*Client
 		return nil, errors.WithMessage(err, "membership creation failed")
 	}
 
-	channelClient := newClient(channelContext, membership, eventService, greylistProvider)
-
-	for _, param := range opts {
-		err := param(&channelClient)
-		if err != nil {
-			return nil, errors.WithMessage(err, "option failed")
-		}
-	}
+	channelClient = newClient(channelContext, membership, eventService, greylistProvider)
 
 	return &channelClient, nil
 }

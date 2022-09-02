@@ -16,8 +16,17 @@ type DiscoveryService struct {
 	peers []fab.Peer
 }
 
+func completePeersToChannelPeers(completePeers []fab.CompletePeer) []fab.ChannelPeer {
+	cpeers := make([]fab.ChannelPeer, len(completePeers))
+
+	for i, peer := range completePeers {
+		cpeers[i] = peer.ChannelPeer
+	}
+	return cpeers
+}
+
 // NewService creates a static discovery service
-func NewService(config fab.EndpointConfig, peerCreator peerCreator, channelID string) (*DiscoveryService, error) {
+func NewService(config fab.EndpointConfig, cpeers []fab.CompletePeer, peerCreator peerCreator, channelID string) (*DiscoveryService, error) {
 	if channelID == "" {
 		return nil, errors.New("channel ID must be provided")
 	}
@@ -25,11 +34,7 @@ func NewService(config fab.EndpointConfig, peerCreator peerCreator, channelID st
 	// Use configured channel peers
 	chPeers := config.ChannelPeers(channelID)
 	if len(chPeers) == 0 {
-		peersFromCache, err := config.ChannelPeersFromCache(channelID)
-		if err != nil {
-			return nil, errors.Wrapf(err, "channel cache peers configured failed for channel [%s]", channelID)
-		}
-		chPeers = peersFromCache
+		chPeers = completePeersToChannelPeers(cpeers)
 		if len(chPeers) == 0 {
 			return nil, errors.Errorf("no channel peers configured for channel [%s]", channelID)
 		}
@@ -53,4 +58,12 @@ func NewService(config fab.EndpointConfig, peerCreator peerCreator, channelID st
 // GetPeers is used to get peers
 func (ds *DiscoveryService) GetPeers() ([]fab.Peer, error) {
 	return ds.peers, nil
+}
+
+func (ds *DiscoveryService) SetPeers(peers []fab.CompletePeer) {
+	fpeers := make([]fab.Peer, len(peers))
+	for i, cpeer := range peers {
+		fpeers[i] = cpeer.Peer
+	}
+	ds.peers = fpeers
 }

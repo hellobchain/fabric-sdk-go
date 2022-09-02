@@ -21,6 +21,7 @@ type ChannelService interface {
 	Transactor(reqCtx reqContext.Context) (Transactor, error)
 	Discovery() (DiscoveryService, error)
 	Selection() (SelectionService, error)
+	SetChannelPeers(peers []CompletePeer)
 }
 
 // Transactor supplies methods for sending transaction proposals and transactions.
