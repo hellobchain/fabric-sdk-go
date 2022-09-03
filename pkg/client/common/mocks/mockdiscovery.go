@@ -32,12 +32,8 @@ func NewMockDiscoveryProvider(err error, peers []fab.Peer) (*MockStaticDiscovery
 	return &MockStaticDiscoveryProvider{Error: err, Peers: peers}, nil
 }
 
-func (s *MockStaticDiscoveryService) SetPeers(peers []fab.CompletePeer) {
-	fpeers := make([]fab.Peer, len(peers))
-	for i, peer := range peers {
-		fpeers[i] = peer.Peer
-	}
-	s.Peers = fpeers
+func (s *MockStaticDiscoveryService) SetPeers(peers fab.CompletePeer) {
+	s.Peers = peers.Peers
 }
 
 // CreateLocalDiscoveryService return discovery service for specific channel

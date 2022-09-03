@@ -56,15 +56,15 @@ var deliverFilteredProvider = func(context fabcontext.Client, chConfig fab.Chann
 type Client struct {
 	*client.Client
 	params
-	peers []fab.CompletePeer
+	peers fab.CompletePeer
 }
 
-func (c *Client) SetChannelPeers(peers []fab.CompletePeer) {
+func (c *Client) SetChannelPeers(peers fab.CompletePeer) {
 	c.peers = peers
 }
 
 // New returns a new deliver event client
-func New(context fabcontext.Client, chConfig fab.ChannelCfg, cpeers []fab.CompletePeer, discoveryService fab.DiscoveryService, opts ...options.Opt) (*Client, error) {
+func New(context fabcontext.Client, chConfig fab.ChannelCfg, cpeers fab.CompletePeer, discoveryService fab.DiscoveryService, opts ...options.Opt) (*Client, error) {
 	params := defaultParams()
 	options.Apply(params, opts)
 

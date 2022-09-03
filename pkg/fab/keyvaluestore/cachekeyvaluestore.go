@@ -9,12 +9,11 @@ package keyvaluestore
 import (
 	"github.com/pkg/errors"
 	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
-	"github.com/wsw365904/fabric-sdk-go/pkg/util/cache"
 )
 
 type CacheKeyValueStore struct {
 	hash          string
-	keyValueCache *cache.Cache
+	keyValueCache map[string]interface{}
 	keySerializer KeySerializer
 	marshaller    Marshaller
 	unmarshaller  Unmarshaller
@@ -24,7 +23,7 @@ type CacheKeyValueStore struct {
 type CacheKeyValueStoreOptions struct {
 	// Store hash, mandatory
 	Hash          string
-	KeyValueCache *cache.Cache
+	KeyValueCache map[string]interface{}
 	// Optional. If not provided, default key serializer is used.
 	KeySerializer KeySerializer
 	// Optional. If not provided, default Marshaller is used.
@@ -63,7 +62,7 @@ func NewCache(opts *CacheKeyValueStoreOptions) (*CacheKeyValueStore, error) {
 		opts.Unmarshaller = defaultUnmarshaller
 	}
 	if opts.KeyValueCache == nil {
-		opts.KeyValueCache = cache.NewCache()
+		opts.KeyValueCache = make(map[string]interface{})
 	}
 	return &CacheKeyValueStore{
 		hash:          opts.Hash,
@@ -85,17 +84,10 @@ func (ckvs *CacheKeyValueStore) Load(key interface{}) (interface{}, error) {
 		logger.Warn("hash == \"\"")
 		return nil, core.ErrKeyValueNotFound // wsw add
 	}
-	var (
-		// errNotFound is the error of key not found.
-		errNotFound = errors.New("cachego: key not found")
-	)
-	bytes, err := ckvs.keyValueCache.Get(hash) // nolint: gas
-	if err != nil {
-		if err == errNotFound {
-			logger.Warn("orgAdminKeyCertCache.Get", err)
-			return nil, core.ErrKeyValueNotFound // wsw add
-		}
-		return nil, err
+	bytes, ok := ckvs.keyValueCache[hash] // nolint: gas
+	if !ok {
+		logger.Warn("orgAdminKeyCertCache.Get", err)
+		return nil, core.ErrKeyValueNotFound // wsw add
 	}
 	if bytes == nil {
 		logger.Warnf("read value (%v) success but content is nil", hash)
@@ -120,7 +112,7 @@ func (ckvs *CacheKeyValueStore) Store(key interface{}, value interface{}) error 
 	if err != nil {
 		return err
 	}
-	ckvs.keyValueCache.Set(hash, valueBytes, -1)
+	ckvs.keyValueCache[hash] = valueBytes
 	return nil
 }
 
@@ -133,6 +125,6 @@ func (ckvs *CacheKeyValueStore) Delete(key interface{}) error {
 	if err != nil {
 		return err
 	}
-	ckvs.keyValueCache.Del(hash)
+	delete(ckvs.keyValueCache, hash)
 	return nil
 }

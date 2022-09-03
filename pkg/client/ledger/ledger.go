@@ -42,7 +42,7 @@ import (
 type Client struct {
 	ctx             context.Channel
 	targets         []fab.Peer
-	completeTargets []fab.CompletePeer
+	completeTargets fab.CompletePeer
 	filter          fab.TargetFilter
 	ledger          *channel.Ledger
 	verifier        channel.ResponseVerifier

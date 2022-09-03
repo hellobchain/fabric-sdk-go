@@ -32,14 +32,14 @@ type contextCache struct {
 	selectionServiceCache cache
 	chCfgCache            cache
 	membershipCache       cache
-	peers                 []fab.CompletePeer
+	peers                 fab.CompletePeer
 }
 
 var cfgCacheProvider = func(opts ...options.Opt) cache {
 	return chconfig.NewRefCache(opts...)
 }
 
-func (c *contextCache) SetPeers(peers []fab.CompletePeer) {
+func (c *contextCache) SetPeers(peers fab.CompletePeer) {
 	c.peers = peers
 }
 

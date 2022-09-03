@@ -50,13 +50,13 @@ type SelectionService interface {
 	// A set of options may be provided to the selection service. Note that the type of options
 	// may vary depending on the specific selection service implementation.
 	GetEndorsersForChaincode(chaincodes []*ChaincodeCall, opts ...options.Opt) ([]Peer, error)
-	SetPeers(peers []CompletePeer)
+	SetPeers(peers CompletePeer)
 }
 
 // DiscoveryService is used to discover eligible peers on specific channel
 type DiscoveryService interface {
 	GetPeers() ([]Peer, error)
-	SetPeers(peers []CompletePeer)
+	SetPeers(peers CompletePeer)
 }
 
 // LocalDiscoveryProvider is used to discover peers in the local MSP

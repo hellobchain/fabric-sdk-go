@@ -14,7 +14,7 @@ import (
 type filterService struct {
 	discoveryService fab.DiscoveryService
 	targetFilter     fab.TargetFilter
-	peers            []fab.CompletePeer
+	peers            fab.CompletePeer
 }
 
 // NewDiscoveryFilterService return discovery service with filter
@@ -22,7 +22,7 @@ func NewDiscoveryFilterService(discoveryService fab.DiscoveryService, targetFilt
 	return &filterService{discoveryService: discoveryService, targetFilter: targetFilter}
 }
 
-func (fs *filterService) SetPeers(peers []fab.CompletePeer) {
+func (fs *filterService) SetPeers(peers fab.CompletePeer) {
 	fs.peers = peers
 }
 

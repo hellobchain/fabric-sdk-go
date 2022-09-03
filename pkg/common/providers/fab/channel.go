@@ -28,6 +28,8 @@ type ChannelConfig interface {
 
 	// QueryBlock queries channel configuration block
 	QueryBlock(reqCtx reqContext.Context) (*common.Block, error)
+
+	SetPeers(peers CompletePeer)
 }
 
 // ConfigGroupKey is the config group key

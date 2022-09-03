@@ -48,10 +48,10 @@ type SelectionService struct {
 	ccPolicyProvider CCPolicyProvider
 	discoveryService fab.DiscoveryService
 	cacheTimeout     time.Duration
-	peers            []fab.CompletePeer
+	peers            fab.CompletePeer
 }
 
-func (s *SelectionService) SetPeers(peers []fab.CompletePeer) {
+func (s *SelectionService) SetPeers(peers fab.CompletePeer) {
 	s.peers = peers
 }
 

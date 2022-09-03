@@ -99,7 +99,7 @@ type channelService struct {
 	discovery fab.DiscoveryService
 }
 
-func (cs *channelService) SetChannelPeers(peers []fab.CompletePeer) {
+func (cs *channelService) SetChannelPeers(peers fab.CompletePeer) {
 
 }
 

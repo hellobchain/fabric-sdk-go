@@ -61,10 +61,10 @@ type Service struct {
 	retryOpts       retry.Opts
 	errHandler      fab.ErrorHandler
 	peerSorter      soptions.PeerSorter
-	peers           []fab.CompletePeer
+	peers           fab.CompletePeer
 }
 
-func (s *Service) SetPeers(peers []fab.CompletePeer) {
+func (s *Service) SetPeers(peers fab.CompletePeer) {
 	s.peers = peers
 }
 
@@ -290,25 +290,14 @@ func (s *Service) query(req *fabdiscovery.Request, chaincodes []*fab.ChaincodeCa
 	return nil, errors.Wrap(multi.New(respErrors...), "no successful response received from any peer")
 }
 
-func completePeersToChannelPeers(completePeers []fab.CompletePeer) []fab.ChannelPeer {
-	cpeers := make([]fab.ChannelPeer, len(completePeers))
-
-	for i, peer := range completePeers {
-		cpeers[i] = peer.ChannelPeer
-	}
-	return cpeers
-}
-
 func (s *Service) getTargets(ctx contextAPI.Client) ([]fab.PeerConfig, error) {
-
-	chpeers := ctx.EndpointConfig().ChannelPeers(s.channelID)
+	chpeers := s.peers.CPeers
 	if len(chpeers) == 0 {
-		chpeers = completePeersToChannelPeers(s.peers)
+		chpeers = ctx.EndpointConfig().ChannelPeers(s.channelID)
 		if len(chpeers) == 0 {
 			return nil, errors.Errorf("no channel peers configured for channel [%s]", s.channelID)
 		}
 	}
-
 	chConfig := ctx.EndpointConfig().ChannelConfig(s.channelID)
 
 	//pick number of peers based on channel policy

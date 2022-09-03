@@ -108,7 +108,7 @@ type requestOptions struct {
 	Retry         retry.Opts
 	// signatures for channel configurations, if set, this option will take precedence over signatures of SaveChannelRequest.SigningIdentities
 	Signatures      []*common.ConfigSignature
-	CompleteTargets []fab.CompletePeer
+	CompleteTargets fab.CompletePeer
 }
 
 //SaveChannelRequest holds parameters for save channel request

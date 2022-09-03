@@ -94,7 +94,7 @@ type ChannelService struct {
 	ctxtCache *contextCache
 }
 
-func (cs *ChannelService) SetChannelPeers(peers []fab.CompletePeer) {
+func (cs *ChannelService) SetChannelPeers(peers fab.CompletePeer) {
 	cs.ctxtCache.SetPeers(peers)
 }
 

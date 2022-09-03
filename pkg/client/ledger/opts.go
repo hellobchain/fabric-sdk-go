@@ -33,7 +33,7 @@ func WithDefaultTargetFilter(filter fab.TargetFilter) ClientOption {
 }
 
 // WithCompleteClientTargets allows overriding of the target peers for the request.
-func WithCompleteClientTargets(completeTargets []fab.CompletePeer, targets []fab.Peer) ClientOption {
+func WithCompleteClientTargets(completeTargets fab.CompletePeer, targets []fab.Peer) ClientOption {
 	return func(rmc *Client) error {
 		// Validate targets
 		for _, t := range targets {
@@ -50,7 +50,7 @@ func WithCompleteClientTargets(completeTargets []fab.CompletePeer, targets []fab
 // WithCompleteClientTargetEndpoints option to configure new
 func WithCompleteClientTargetEndpoints(keys ...string) ClientOption {
 	return func(rmc *Client) error {
-		var completeTargets []fab.CompletePeer
+		var channelPeers []fab.ChannelPeer
 		var targets []fab.Peer
 
 		defaultPeerChannelConfig := fab.PeerChannelConfig{
@@ -73,13 +73,13 @@ func WithCompleteClientTargetEndpoints(keys ...string) ClientOption {
 			if err != nil {
 				return errors.WithMessage(err, "creating peer from config failed")
 			}
-			completePeer := fab.CompletePeer{
-				Peer:        peer,
-				ChannelPeer: channelPeer,
-			}
-			completeTargets = append(completeTargets, completePeer)
+			channelPeers = append(channelPeers, channelPeer)
 			targets = append(targets, peer)
 
+		}
+		completeTargets := fab.CompletePeer{
+			Peers:  targets,
+			CPeers: channelPeers,
 		}
 		return WithCompleteClientTargets(completeTargets, targets)(rmc)
 	}
@@ -135,7 +135,7 @@ type requestOptions struct {
 	MinTargets      int                               // min number of targets that have to respond with no error (or agree on result)
 	Timeouts        map[fab.TimeoutType]time.Duration //timeout options for ledger query operations
 	ParentContext   reqContext.Context                //parent grpc context for ledger operations
-	CompleteTargets []fab.CompletePeer
+	CompleteTargets fab.CompletePeer
 }
 
 //WithTargets allows for overriding of the target peers per request.
@@ -181,9 +181,17 @@ func WithTargetEndpoints(keys ...string) RequestOption {
 }
 
 // WithCompleteTargets allows overriding of the target peers for the request.
-func WithCompleteTargets(channelTargets ...fab.CompletePeer) RequestOption {
+func WithCompleteTargets(completePeers fab.CompletePeer, targets []fab.Peer) RequestOption {
 	return func(ctx context.Client, opts *requestOptions) error {
-		opts.CompleteTargets = channelTargets
+
+		// Validate targets
+		for _, t := range targets {
+			if t == nil {
+				return errors.New("target is nil")
+			}
+		}
+		opts.Targets = targets
+		opts.CompleteTargets = completePeers
 		return nil
 	}
 }
@@ -193,7 +201,8 @@ func WithCompleteTargets(channelTargets ...fab.CompletePeer) RequestOption {
 // objects.
 func WithCompleteTargetEndpoints(keys ...string) RequestOption {
 	return func(ctx context.Client, opts *requestOptions) error {
-		var targets []fab.CompletePeer
+		var channelPeers []fab.ChannelPeer
+		var peers []fab.Peer
 		defaultPeerChannelConfig := fab.PeerChannelConfig{
 			EndorsingPeer:  true,
 			ChaincodeQuery: true,
@@ -215,14 +224,14 @@ func WithCompleteTargetEndpoints(keys ...string) RequestOption {
 			if err != nil {
 				return errors.WithMessage(err, "creating peer from config failed")
 			}
-			completePeer := fab.CompletePeer{
-				Peer:        peer,
-				ChannelPeer: channelPeer,
-			}
-			targets = append(targets, completePeer)
+			peers = append(peers, peer)
+			channelPeers = append(channelPeers, channelPeer)
 		}
-
-		return WithCompleteTargets(targets...)(ctx, opts)
+		completePeer := fab.CompletePeer{
+			Peers:  peers,
+			CPeers: channelPeers,
+		}
+		return WithCompleteTargets(completePeer, peers)(ctx, opts)
 	}
 }
 

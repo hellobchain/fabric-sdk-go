@@ -30,10 +30,10 @@ type Client struct {
 	permitBlockEvents bool
 	fromBlock         uint64
 	seekType          seek.Type
-	peers             []fab.CompletePeer
+	peers             fab.CompletePeer
 }
 
-func (c *Client) SetChannelPeers(peers []fab.CompletePeer) {
+func (c *Client) SetChannelPeers(peers fab.CompletePeer) {
 	c.peers = peers
 }
 

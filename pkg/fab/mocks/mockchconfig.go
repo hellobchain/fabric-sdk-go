@@ -91,6 +91,10 @@ func NewMockChannelConfig(ctx context.Client, channelID string) (*MockChannelCon
 	return &MockChannelConfig{channelID: channelID, ctx: ctx}, nil
 }
 
+func (c *MockChannelConfig) SetPeers(peers fab.CompletePeer) {
+
+}
+
 // Query mockcore query for channel configuration
 func (c *MockChannelConfig) Query(reqCtx reqContext.Context) (fab.ChannelCfg, error) {
 	return NewMockChannelCfg(c.channelID), nil

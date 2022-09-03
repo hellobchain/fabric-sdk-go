@@ -15,13 +15,8 @@ type MockDiscoveryService struct {
 	peers []fab.Peer
 }
 
-func (s *MockDiscoveryService) SetPeers(peers []fab.CompletePeer) {
-	fpeer := make([]fab.Peer, len(peers))
-
-	for i, peer := range peers {
-		fpeer[i] = peer.Peer
-	}
-	s.peers = fpeer
+func (s *MockDiscoveryService) SetPeers(peers fab.CompletePeer) {
+	s.peers = peers.Peers
 }
 
 // NewDiscoveryService returns a new MockDiscoveryService

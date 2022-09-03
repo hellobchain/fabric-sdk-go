@@ -44,7 +44,7 @@ type Client struct {
 	eventService    fab.EventService
 	greylist        *greylist.Filter
 	metrics         *metrics.ClientMetrics
-	completeTargets []fab.CompletePeer
+	completeTargets fab.CompletePeer
 	targets         []fab.Peer
 }
 
@@ -91,9 +91,17 @@ func WithClientTargetEndpoints(keys ...string) ClientOption {
 }
 
 // WithClientCompleteTargets allows overriding of the target peers for the request.
-func WithClientCompleteTargets(targets ...fab.CompletePeer) ClientOption {
+func WithClientCompleteTargets(completePeer fab.CompletePeer, targets []fab.Peer) ClientOption {
 	return func(rmc *Client) error {
-		rmc.completeTargets = targets
+		// Validate targets
+		for _, t := range targets {
+			if t == nil {
+				return errors.New("target is nil")
+			}
+		}
+
+		rmc.targets = targets
+		rmc.completeTargets = completePeer
 		return nil
 	}
 }
@@ -101,7 +109,9 @@ func WithClientCompleteTargets(targets ...fab.CompletePeer) ClientOption {
 // WithClientCompleteTargetEndpoints option to configure new
 func WithClientCompleteTargetEndpoints(keys ...string) ClientOption {
 	return func(rmc *Client) error {
-		var targets []fab.CompletePeer
+		var channelPeers []fab.ChannelPeer
+		var peers []fab.Peer
+
 		defaultPeerChannelConfig := fab.PeerChannelConfig{
 			EndorsingPeer:  true,
 			ChaincodeQuery: true,
@@ -124,13 +134,14 @@ func WithClientCompleteTargetEndpoints(keys ...string) ClientOption {
 				PeerChannelConfig: defaultPeerChannelConfig,
 			}
 
-			completePeer := fab.CompletePeer{
-				Peer:        peer,
-				ChannelPeer: channelPeer,
-			}
-			targets = append(targets, completePeer)
+			peers = append(peers, peer)
+			channelPeers = append(channelPeers, channelPeer)
 		}
-		return WithClientCompleteTargets(targets...)(rmc)
+		completePeer := fab.CompletePeer{
+			Peers:  peers,
+			CPeers: channelPeers,
+		}
+		return WithClientCompleteTargets(completePeer, peers)(rmc)
 	}
 }
 

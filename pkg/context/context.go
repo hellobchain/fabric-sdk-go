@@ -313,7 +313,7 @@ func WithParent(context reqContext.Context) ReqContextOptions {
 }
 
 //WithPeers sets existing reqContext as a parent ReqContext
-func WithPeers(peers []fab.CompletePeer) ReqContextOptions {
+func WithPeers(peers fab.CompletePeer) ReqContextOptions {
 	return func(ctx *requestContextOpts) {
 		ctx.peers = peers
 	}
@@ -326,7 +326,7 @@ type requestContextOpts struct {
 	timeoutType   fab.TimeoutType
 	timeout       time.Duration
 	parentContext reqContext.Context
-	peers         []fab.CompletePeer
+	peers         fab.CompletePeer
 }
 
 // NewRequest creates a request-scoped context.
@@ -383,7 +383,7 @@ func requestTimeoutOverride(ctx reqContext.Context, timeoutType fab.TimeoutType)
 }
 
 // RequestPeers extracts the timeout from timeout override map from the request-scoped context.
-func RequestPeers(ctx reqContext.Context) ([]fab.CompletePeer, bool) {
-	peers, ok := ctx.Value(reqPeers).([]fab.CompletePeer)
+func RequestPeers(ctx reqContext.Context) (fab.CompletePeer, bool) {
+	peers, ok := ctx.Value(reqPeers).(fab.CompletePeer)
 	return peers, ok
 }

@@ -5,7 +5,6 @@
 module github.com/wsw365904/fabric-sdk-go
 
 require (
-	github.com/FishGoddess/cachego v0.3.6
 	github.com/Knetic/govaluate v3.0.1-0.20171022003610-9aa49832a739+incompatible
 	github.com/golang/mock v1.6.0
 	github.com/golang/protobuf v1.5.2

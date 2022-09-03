@@ -29,7 +29,7 @@ type requestOptions struct {
 	Timeouts      map[fab.TimeoutType]time.Duration //timeout options for channel client operations
 	ParentContext reqContext.Context                //parent grpc context for channel client operations (query, execute, invokehandler)
 	CCFilter      invoke.CCFilter
-	CompletePeers []fab.CompletePeer
+	CompletePeers fab.CompletePeer
 }
 
 // RequestOption func for each Opts argument
@@ -108,7 +108,7 @@ func WithTargetEndpoints(keys ...string) RequestOption {
 }
 
 // WithCompleteTargets allows overriding of the target peers for the request.
-func WithCompleteTargets(completeTargets []fab.CompletePeer, targets []fab.Peer) RequestOption {
+func WithCompleteTargets(completeTargets fab.CompletePeer, targets []fab.Peer) RequestOption {
 	return func(ctx context.Client, opts *requestOptions) error {
 		// Validate targets
 		for _, t := range targets {
@@ -128,8 +128,8 @@ func WithCompleteTargets(completeTargets []fab.CompletePeer, targets []fab.Peer)
 // objects.
 func WithCompleteTargetEndpoints(keys ...string) RequestOption {
 	return func(ctx context.Client, opts *requestOptions) error {
-		var completeTargets []fab.CompletePeer
-		var targets []fab.Peer
+		var peers []fab.Peer
+		var channelPeers []fab.ChannelPeer
 
 		defaultPeerChannelConfig := fab.PeerChannelConfig{
 			EndorsingPeer:  true,
@@ -152,15 +152,16 @@ func WithCompleteTargetEndpoints(keys ...string) RequestOption {
 			if err != nil {
 				return errors.WithMessage(err, "creating peer from config failed")
 			}
-			completePeer := fab.CompletePeer{
-				Peer:        peer,
-				ChannelPeer: channelPeer,
-			}
-			completeTargets = append(completeTargets, completePeer)
-			targets = append(targets, peer)
+			channelPeers = append(channelPeers, channelPeer)
+			peers = append(peers, peer)
 		}
 
-		return WithCompleteTargets(completeTargets, targets)(ctx, opts)
+		completePeer := fab.CompletePeer{
+			Peers:  peers,
+			CPeers: channelPeers,
+		}
+
+		return WithCompleteTargets(completePeer, peers)(ctx, opts)
 	}
 }
 

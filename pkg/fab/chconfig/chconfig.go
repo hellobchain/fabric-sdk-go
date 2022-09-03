@@ -56,6 +56,7 @@ type Context struct {
 type ChannelConfig struct {
 	channelID string
 	opts      Opts
+	peers     fab.CompletePeer
 }
 
 // ChannelCfg contains channel configuration
@@ -138,6 +139,10 @@ func New(channelID string, options ...Option) (*ChannelConfig, error) {
 	return &ChannelConfig{channelID: channelID, opts: opts}, nil
 }
 
+func (c *ChannelConfig) SetPeers(peers fab.CompletePeer) {
+	c.peers = peers
+}
+
 // QueryBlock returns channel configuration
 func (c *ChannelConfig) QueryBlock(reqCtx reqContext.Context) (*common.Block, error) {
 
@@ -184,16 +189,12 @@ func (c *ChannelConfig) queryBlockFromPeers(reqCtx reqContext.Context) (*common.
 	targets := []fab.ProposalProcessor{}
 	if c.opts.Targets == nil {
 		// Calculate targets from config
-		targets, err = c.calculateTargetsFromConfig(ctx)
-		if err != nil {
-			peers, ok := contextImpl.RequestPeers(reqCtx)
-			if !ok {
-				return nil, errors.New("failed get fab peer context from reqContext")
+		targets = peersToTxnProcessors(c.peers.Peers)
+		if len(targets) == 0 {
+			targets, err = c.calculateTargetsFromConfig(ctx)
+			if err != nil {
+				return nil, errors.Wrapf(err, "failed get fab peer context from reqContext")
 			}
-			if len(peers) == 0 {
-				return nil, errors.New("num of get fab peer is nil")
-			}
-			targets = peersToTxnProcessors(completePeersToPeers(peers))
 		}
 	} else {
 		targets = peersToTxnProcessors(c.opts.Targets)
@@ -615,15 +616,6 @@ func peersToTxnProcessors(peers []fab.Peer) []fab.ProposalProcessor {
 		tpp[i] = peers[i]
 	}
 	return tpp
-}
-
-func completePeersToPeers(cpeers []fab.CompletePeer) []fab.Peer {
-	fpeer := make([]fab.Peer, len(cpeers))
-
-	for i, peer := range cpeers {
-		fpeer[i] = peer.Peer
-	}
-	return fpeer
 }
 
 //randomMaxTargets returns random sub set of max length targets

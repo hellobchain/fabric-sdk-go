@@ -9,16 +9,15 @@ package msp
 import (
 	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
 	"github.com/wsw365904/fabric-sdk-go/pkg/fab/keyvaluestore"
-	"github.com/wsw365904/fabric-sdk-go/pkg/util/cache"
 )
 
 // NewCacheCertStore ...
 func NewCacheCertStore(certHash string, certByte []byte) (core.KVStore, error) {
-	keyValueCache := cache.NewCache()
+	keyValueCache := make(map[string]interface{})
 	opts := &keyvaluestore.CacheKeyValueStoreOptions{
 		Hash: certHash,
 		KeySerializer: func(key interface{}) (string, error) {
-			keyValueCache.Set(certHash, certByte, -1)
+			keyValueCache[certHash] = certByte
 			return certHash, nil
 		},
 		KeyValueCache: keyValueCache,

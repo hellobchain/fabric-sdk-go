@@ -50,7 +50,7 @@ type Dispatcher interface {
 type Service struct {
 	params
 	dispatcher Dispatcher
-	peers      []fab.CompletePeer
+	peers      fab.CompletePeer
 }
 
 // New returns a new event service initialized with the given Dispatcher
@@ -64,7 +64,7 @@ func New(dispatcher Dispatcher, opts ...options.Opt) *Service {
 	}
 }
 
-func (s *Service) SetChannelPeers(peers []fab.CompletePeer) {
+func (s *Service) SetChannelPeers(peers fab.CompletePeer) {
 	s.peers = peers
 }
 

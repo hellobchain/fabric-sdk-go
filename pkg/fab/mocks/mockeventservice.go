@@ -22,12 +22,8 @@ type MockEventService struct {
 	Peers            []fab.Peer
 }
 
-func (m *MockEventService) SetChannelPeers(peers []fab.CompletePeer) {
-	fpeers := make([]fab.Peer, len(peers))
-	for i, peer := range peers {
-		fpeers[i] = peer.Peer
-	}
-	m.Peers = fpeers
+func (m *MockEventService) SetChannelPeers(peers fab.CompletePeer) {
+	m.Peers = peers.Peers
 }
 
 // NewMockEventService returns a new mock event service
