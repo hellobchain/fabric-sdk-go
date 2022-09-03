@@ -79,14 +79,14 @@ func New(channelProvider context.ChannelProvider, opts ...ClientOption) (*Client
 			return nil, err
 		}
 	}
-
-	if channelContext.ChannelService() == nil {
+	cs := channelContext.ChannelService()
+	if cs == nil {
 		return nil, errors.New("channel service not initialized")
 	}
 
-	channelContext.ChannelService().SetChannelPeers(ledgerClient.completeTargets)
+	cs.SetChannelPeers(ledgerClient.completeTargets)
 
-	membership, err := channelContext.ChannelService().Membership()
+	membership, err := cs.Membership()
 	if err != nil {
 		return nil, errors.WithMessage(err, "membership creation failed")
 	}

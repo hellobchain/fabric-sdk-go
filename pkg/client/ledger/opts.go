@@ -8,7 +8,6 @@ package ledger
 
 import (
 	reqContext "context"
-	"github.com/wsw365904/fabric-sdk-go/pkg/util/defaultcache"
 	"time"
 
 	"github.com/pkg/errors"
@@ -30,46 +29,6 @@ func WithDefaultTargetFilter(filter fab.TargetFilter) ClientOption {
 	return func(rmc *Client) error {
 		rmc.filter = filter
 		return nil
-	}
-}
-
-// WithChannelClientTargets allows overriding of the target peers for the request.
-func WithChannelClientTargets(channelID string, channelTargets []fab.ChannelPeer) ClientOption {
-	return func(rmc *Client) error {
-		if channelID != "" {
-			defaultcache.DefaultCache().Set(channelID, channelTargets)
-		}
-		return nil
-	}
-}
-
-// WithChannelClientTargetEndpoints option to configure new
-func WithChannelClientTargetEndpoints(channelId string, keys ...string) ClientOption {
-	return func(rmc *Client) error {
-		var channelTargets []fab.ChannelPeer
-		var defaultPeerChannelConfig fab.PeerChannelConfig
-		if channelId != "" {
-			defaultPeerChannelConfig = fab.PeerChannelConfig{
-				EndorsingPeer:  true,
-				ChaincodeQuery: true,
-				LedgerQuery:    true,
-				EventSource:    true,
-			}
-		}
-		for _, url := range keys {
-			peerCfg, err := comm.NetworkPeerConfig(rmc.ctx.EndpointConfig(), url)
-			if err != nil {
-				return err
-			}
-			if channelId != "" {
-				channelPeer := fab.ChannelPeer{
-					NetworkPeer:       *peerCfg,
-					PeerChannelConfig: defaultPeerChannelConfig,
-				}
-				channelTargets = append(channelTargets, channelPeer)
-			}
-		}
-		return WithChannelClientTargets(channelId, channelTargets)(rmc)
 	}
 }
 
@@ -218,63 +177,6 @@ func WithTargetEndpoints(keys ...string) RequestOption {
 		}
 
 		return WithTargets(targets...)(ctx, opts)
-	}
-}
-
-// WithChannelTargets allows overriding of the target peers for the request.
-func WithChannelTargets(channelID string, channelTargets []fab.ChannelPeer, targets []fab.Peer) RequestOption {
-	return func(ctx context.Client, opts *requestOptions) error {
-		if channelID != "" {
-			defaultcache.DefaultCache().Set(channelID, channelTargets)
-		}
-		// Validate targets
-		for _, t := range targets {
-			if t == nil {
-				return errors.New("target is nil")
-			}
-		}
-
-		opts.Targets = targets
-		return nil
-	}
-}
-
-// WithChannelTargetEndpoints allows overriding of the target peers for the request.
-// Targets are specified by name or URL, and the SDK will create the underlying peer
-// objects.
-func WithChannelTargetEndpoints(channelId string, keys ...string) RequestOption {
-	return func(ctx context.Client, opts *requestOptions) error {
-		var channelTargets []fab.ChannelPeer
-		var defaultPeerChannelConfig fab.PeerChannelConfig
-		if channelId != "" {
-			defaultPeerChannelConfig = fab.PeerChannelConfig{
-				EndorsingPeer:  true,
-				ChaincodeQuery: true,
-				LedgerQuery:    true,
-				EventSource:    true,
-			}
-		}
-		var targets []fab.Peer
-		for _, url := range keys {
-			peerCfg, err := comm.NetworkPeerConfig(ctx.EndpointConfig(), url)
-			if err != nil {
-				return err
-			}
-			if channelId != "" {
-				channelPeer := fab.ChannelPeer{
-					NetworkPeer:       *peerCfg,
-					PeerChannelConfig: defaultPeerChannelConfig,
-				}
-				channelTargets = append(channelTargets, channelPeer)
-			}
-			peer, err := ctx.InfraProvider().CreatePeerFromConfig(peerCfg)
-			if err != nil {
-				return errors.WithMessage(err, "creating peer from config failed")
-			}
-			targets = append(targets, peer)
-		}
-
-		return WithChannelTargets(channelId, channelTargets, targets)(ctx, opts)
 	}
 }
 

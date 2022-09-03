@@ -18,7 +18,6 @@ package channel
 import (
 	reqContext "context"
 	"github.com/wsw365904/fabric-sdk-go/pkg/fab/comm"
-	"github.com/wsw365904/fabric-sdk-go/pkg/util/defaultcache"
 	"time"
 
 	"github.com/pkg/errors"
@@ -51,46 +50,6 @@ type Client struct {
 
 // ClientOption describes a functional parameter for the New constructor
 type ClientOption func(*Client) error
-
-// WithChannelClientTargets allows overriding of the target peers for the request.
-func WithChannelClientTargets(channelID string, channelTargets []fab.ChannelPeer) ClientOption {
-	return func(rmc *Client) error {
-		if channelID != "" {
-			defaultcache.DefaultCache().Set(channelID, channelTargets)
-		}
-		return nil
-	}
-}
-
-// WithChannelClientTargetEndpoints option to configure new
-func WithChannelClientTargetEndpoints(channelId string, keys ...string) ClientOption {
-	return func(rmc *Client) error {
-		var channelTargets []fab.ChannelPeer
-		var defaultPeerChannelConfig fab.PeerChannelConfig
-		if channelId != "" {
-			defaultPeerChannelConfig = fab.PeerChannelConfig{
-				EndorsingPeer:  true,
-				ChaincodeQuery: true,
-				LedgerQuery:    true,
-				EventSource:    true,
-			}
-		}
-		for _, url := range keys {
-			peerCfg, err := comm.NetworkPeerConfig(rmc.context.EndpointConfig(), url)
-			if err != nil {
-				return err
-			}
-			if channelId != "" {
-				channelPeer := fab.ChannelPeer{
-					NetworkPeer:       *peerCfg,
-					PeerChannelConfig: defaultPeerChannelConfig,
-				}
-				channelTargets = append(channelTargets, channelPeer)
-			}
-		}
-		return WithChannelClientTargets(channelId, channelTargets)(rmc)
-	}
-}
 
 // WithClientTargets allows overriding of the target peers for the request.
 func WithClientTargets(targets ...fab.Peer) ClientOption {
@@ -193,18 +152,19 @@ func New(channelProvider context.ChannelProvider, opts ...ClientOption) (*Client
 
 	greylistProvider := greylist.New(channelContext.EndpointConfig().Timeout(fab.DiscoveryGreylistExpiry))
 
-	if channelContext.ChannelService() == nil {
+	cs := channelContext.ChannelService()
+	if cs == nil {
 		return nil, errors.New("channel service not initialized")
 	}
 
-	channelContext.ChannelService().SetChannelPeers(channelClient.completeTargets)
+	cs.SetChannelPeers(channelClient.completeTargets)
 
-	eventService, err := channelContext.ChannelService().EventService()
+	eventService, err := cs.EventService()
 	if err != nil {
 		return nil, errors.WithMessage(err, "event service creation failed")
 	}
 
-	membership, err := channelContext.ChannelService().Membership()
+	membership, err := cs.Membership()
 	if err != nil {
 		return nil, errors.WithMessage(err, "membership creation failed")
 	}

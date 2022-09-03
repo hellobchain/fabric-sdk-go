@@ -12,10 +12,6 @@ import (
 	"github.com/wsw365904/fabric-sdk-go/pkg/util/cache"
 )
 
-// CacheKeyValueStore stores each value into a separate file.
-// KeySerializer maps a key to a unique file path (raletive to the store path)
-// ValueSerializer and ValueDeserializer serializes/de-serializes a value
-// to and from a byte array that is stored in the path derived from the key.
 type CacheKeyValueStore struct {
 	hash          string
 	keyValueCache *cache.Cache
@@ -26,7 +22,7 @@ type CacheKeyValueStore struct {
 
 // CacheKeyValueStoreOptions allow overriding store defaults
 type CacheKeyValueStoreOptions struct {
-	// Store path, mandatory
+	// Store hash, mandatory
 	Hash          string
 	KeyValueCache *cache.Cache
 	// Optional. If not provided, default key serializer is used.
@@ -37,7 +33,7 @@ type CacheKeyValueStoreOptions struct {
 	Unmarshaller Unmarshaller
 }
 
-// GetHash returns the store path
+// GetHash returns the store hash
 func (ckvs *CacheKeyValueStore) GetHash() string {
 	return ckvs.hash
 }

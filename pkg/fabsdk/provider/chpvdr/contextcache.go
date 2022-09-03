@@ -136,7 +136,9 @@ func (c *contextCache) GetDiscoveryService(channelID string) (fab.DiscoveryServi
 	if err != nil {
 		return nil, err
 	}
-	return discoveryService.(fab.DiscoveryService), nil
+	ds := discoveryService.(fab.DiscoveryService)
+	ds.SetPeers(c.peers)
+	return ds, nil
 }
 
 func (c *contextCache) createSelectionService(chConfig fab.ChannelCfg, opts ...options.Opt) (fab.SelectionService, error) {
@@ -162,7 +164,9 @@ func (c *contextCache) GetSelectionService(channelID string) (fab.SelectionServi
 	if err != nil {
 		return nil, err
 	}
-	return selectionService.(fab.SelectionService), nil
+	ss := selectionService.(fab.SelectionService)
+	ss.SetPeers(c.peers)
+	return ss, nil
 }
 
 // GetEventService returns the EventService.
@@ -179,8 +183,9 @@ func (c *contextCache) GetEventService(channelID string, opts ...options.Opt) (f
 	if err != nil {
 		return nil, err
 	}
-
-	return eventService.(fab.EventService), nil
+	es := eventService.(fab.EventService)
+	es.SetChannelPeers(c.peers)
+	return es, nil
 }
 
 func (c *contextCache) GetChannelConfig(channelID string) (fab.ChannelCfg, error) {
@@ -192,7 +197,6 @@ func (c *contextCache) GetChannelConfig(channelID string) (fab.ChannelCfg, error
 	if err != nil {
 		return nil, err
 	}
-	chCfgRef.SetPeers(c.peers)
 	chCfg, err := chCfgRef.Get()
 	if err != nil {
 		return nil, errors.WithMessage(err, "could not get chConfig cache reference")
@@ -209,8 +213,9 @@ func (c *contextCache) loadChannelCfgRef(channelID string) (*chconfig.Ref, error
 	if err != nil {
 		return nil, err
 	}
-
-	return cfg.(*chconfig.Ref), nil
+	chCfgRef := cfg.(*chconfig.Ref)
+	chCfgRef.SetPeers(c.peers)
+	return chCfgRef, nil
 }
 
 func (c *contextCache) GetMembership(channelID string) (fab.ChannelMembership, error) {
