@@ -39,7 +39,7 @@ var cfgCacheProvider = func(opts ...options.Opt) cache {
 	return chconfig.NewRefCache(opts...)
 }
 
-func (c *contextCache) SetPeers(peers fab.CompletePeer) {
+func (c *contextCache) SetPeersOfChannel(peers fab.CompletePeer) {
 	c.peers = peers
 }
 
@@ -137,7 +137,7 @@ func (c *contextCache) GetDiscoveryService(channelID string) (fab.DiscoveryServi
 		return nil, err
 	}
 	ds := discoveryService.(fab.DiscoveryService)
-	ds.SetPeers(c.peers)
+	ds.SetPeersOfChannel(c.peers)
 	return ds, nil
 }
 
@@ -165,7 +165,7 @@ func (c *contextCache) GetSelectionService(channelID string) (fab.SelectionServi
 		return nil, err
 	}
 	ss := selectionService.(fab.SelectionService)
-	ss.SetPeers(c.peers)
+	ss.SetPeersOfChannel(c.peers)
 	return ss, nil
 }
 
@@ -184,7 +184,7 @@ func (c *contextCache) GetEventService(channelID string, opts ...options.Opt) (f
 		return nil, err
 	}
 	es := eventService.(fab.EventService)
-	es.SetChannelPeers(c.peers)
+	es.SetPeersOfChannel(c.peers)
 	return es, nil
 }
 
@@ -214,7 +214,7 @@ func (c *contextCache) loadChannelCfgRef(channelID string) (*chconfig.Ref, error
 		return nil, err
 	}
 	chCfgRef := cfg.(*chconfig.Ref)
-	chCfgRef.SetPeers(c.peers)
+	chCfgRef.SetPeersOfChannel(c.peers)
 	return chCfgRef, nil
 }
 

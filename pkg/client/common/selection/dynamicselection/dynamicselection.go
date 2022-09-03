@@ -51,7 +51,7 @@ type SelectionService struct {
 	peers            fab.CompletePeer
 }
 
-func (s *SelectionService) SetPeers(peers fab.CompletePeer) {
+func (s *SelectionService) SetPeersOfChannel(peers fab.CompletePeer) {
 	s.peers = peers
 }
 

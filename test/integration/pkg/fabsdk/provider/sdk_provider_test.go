@@ -201,7 +201,7 @@ func (cs *dynamicSelectionChannelService) Selection() (fab.SelectionService, err
 	return cs.selection, nil
 }
 
-func (cs *dynamicSelectionChannelService) SetChannelPeers(peers fab.CompletePeer) {
+func (cs *dynamicSelectionChannelService) SetPeersOfChannel(peers fab.CompletePeer) {
 
 }
 

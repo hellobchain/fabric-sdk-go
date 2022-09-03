@@ -15,7 +15,7 @@ type MockDiscoveryService struct {
 	peers []fab.Peer
 }
 
-func (s *MockDiscoveryService) SetPeers(peers fab.CompletePeer) {
+func (s *MockDiscoveryService) SetPeersOfChannel(peers fab.CompletePeer) {
 	s.peers = peers.Peers
 }
 

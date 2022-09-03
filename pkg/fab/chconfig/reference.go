@@ -64,7 +64,7 @@ func (ref *Ref) getConfig() (fab.ChannelCfg, error) {
 		return nil, errors.WithMessage(err, "error creating channel config provider")
 	}
 
-	chConfigProvider.SetPeers(ref.peers)
+	chConfigProvider.SetPeersOfChannel(ref.peers)
 
 	reqCtx, cancel := contextImpl.NewRequest(ref.ctx, contextImpl.WithTimeoutType(fab.PeerResponse))
 	defer cancel()
@@ -77,6 +77,6 @@ func (ref *Ref) getConfig() (fab.ChannelCfg, error) {
 	return chConfig, nil
 }
 
-func (ref *Ref) SetPeers(peers fab.CompletePeer) {
+func (ref *Ref) SetPeersOfChannel(peers fab.CompletePeer) {
 	ref.peers = peers
 }

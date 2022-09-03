@@ -20,7 +20,7 @@ func (ds *localDiscoveryService) GetPeers() ([]fab.Peer, error) {
 	return ds.peers, nil
 }
 
-func (ds *localDiscoveryService) SetPeers(peers fab.CompletePeer) {
+func (ds *localDiscoveryService) SetPeersOfChannel(peers fab.CompletePeer) {
 
 	ds.peers = peers.Peers
 }

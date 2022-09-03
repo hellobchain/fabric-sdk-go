@@ -84,7 +84,7 @@ func New(channelProvider context.ChannelProvider, opts ...ClientOption) (*Client
 		return nil, errors.New("channel service not initialized")
 	}
 
-	cs.SetChannelPeers(ledgerClient.completeTargets)
+	cs.SetPeersOfChannel(ledgerClient.completeTargets)
 
 	membership, err := cs.Membership()
 	if err != nil {

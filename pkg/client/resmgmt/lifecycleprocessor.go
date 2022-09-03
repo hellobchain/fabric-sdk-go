@@ -313,7 +313,7 @@ func (p *lifecycleProcessor) prepare(reqCtx reqContext.Context, channelID string
 		return nil, nil, nil, nil, errors.WithMessage(err, "Unable to get channel service")
 	}
 
-	channelService.SetChannelPeers(opts.CompleteTargets)
+	channelService.SetPeersOfChannel(opts.CompleteTargets)
 
 	transactor, err := channelService.Transactor(reqCtx)
 	if err != nil {

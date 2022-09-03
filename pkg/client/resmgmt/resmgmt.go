@@ -808,7 +808,7 @@ func (rc *Client) sendCCProposal(reqCtx reqContext.Context, ccProposalType chain
 		return fab.EmptyTransactionID, errors.WithMessage(err, "Unable to get channel service")
 	}
 
-	channelService.SetChannelPeers(opts.CompleteTargets)
+	channelService.SetPeersOfChannel(opts.CompleteTargets)
 
 	transactor, err := channelService.Transactor(reqCtx)
 	if err != nil {

@@ -50,6 +50,6 @@ func (ds *DiscoveryService) GetPeers() ([]fab.Peer, error) {
 	return ds.peers, nil
 }
 
-func (ds *DiscoveryService) SetPeers(peers fab.CompletePeer) {
+func (ds *DiscoveryService) SetPeersOfChannel(peers fab.CompletePeer) {
 	ds.peers = peers.Peers
 }

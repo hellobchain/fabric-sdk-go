@@ -37,7 +37,7 @@ type service struct {
 	peers           fab.CompletePeer
 }
 
-func (s *service) SetPeers(peers fab.CompletePeer) {
+func (s *service) SetPeersOfChannel(peers fab.CompletePeer) {
 	s.peers = peers
 }
 

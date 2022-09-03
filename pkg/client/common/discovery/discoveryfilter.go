@@ -22,7 +22,7 @@ func NewDiscoveryFilterService(discoveryService fab.DiscoveryService, targetFilt
 	return &filterService{discoveryService: discoveryService, targetFilter: targetFilter}
 }
 
-func (fs *filterService) SetPeers(peers fab.CompletePeer) {
+func (fs *filterService) SetPeersOfChannel(peers fab.CompletePeer) {
 	fs.peers = peers
 }
 

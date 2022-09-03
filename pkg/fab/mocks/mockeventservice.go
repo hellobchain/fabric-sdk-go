@@ -22,7 +22,7 @@ type MockEventService struct {
 	Peers            []fab.Peer
 }
 
-func (m *MockEventService) SetChannelPeers(peers fab.CompletePeer) {
+func (m *MockEventService) SetPeersOfChannel(peers fab.CompletePeer) {
 	m.Peers = peers.Peers
 }
 

@@ -27,7 +27,7 @@ type DiscoveryWrapper struct {
 	peers   fab.CompletePeer
 }
 
-func (ds *DiscoveryWrapper) SetPeers(peers fab.CompletePeer) {
+func (ds *DiscoveryWrapper) SetPeersOfChannel(peers fab.CompletePeer) {
 	ds.peers = peers
 }
 

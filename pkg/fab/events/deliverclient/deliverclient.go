@@ -59,7 +59,7 @@ type Client struct {
 	peers fab.CompletePeer
 }
 
-func (c *Client) SetChannelPeers(peers fab.CompletePeer) {
+func (c *Client) SetPeersOfChannel(peers fab.CompletePeer) {
 	c.peers = peers
 }
 

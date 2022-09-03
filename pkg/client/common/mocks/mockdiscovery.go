@@ -32,7 +32,7 @@ func NewMockDiscoveryProvider(err error, peers []fab.Peer) (*MockStaticDiscovery
 	return &MockStaticDiscoveryProvider{Error: err, Peers: peers}, nil
 }
 
-func (s *MockStaticDiscoveryService) SetPeers(peers fab.CompletePeer) {
+func (s *MockStaticDiscoveryService) SetPeersOfChannel(peers fab.CompletePeer) {
 	s.Peers = peers.Peers
 }
 

@@ -378,7 +378,7 @@ func (cs *fabricSelectionChannelService) Selection() (fab.SelectionService, erro
 	return cs.selection, nil
 }
 
-func (cs *fabricSelectionChannelService) SetChannelPeers(peers fab.CompletePeer) {
+func (cs *fabricSelectionChannelService) SetPeersOfChannel(peers fab.CompletePeer) {
 
 }
 

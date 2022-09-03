@@ -64,7 +64,7 @@ func New(dispatcher Dispatcher, opts ...options.Opt) *Service {
 	}
 }
 
-func (s *Service) SetChannelPeers(peers fab.CompletePeer) {
+func (s *Service) SetPeersOfChannel(peers fab.CompletePeer) {
 	s.peers = peers
 }
 

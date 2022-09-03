@@ -168,7 +168,7 @@ func New(channelProvider context.ChannelProvider, opts ...ClientOption) (*Client
 		return nil, errors.New("channel service not initialized")
 	}
 
-	cs.SetChannelPeers(channelClient.completeTargets)
+	cs.SetPeersOfChannel(channelClient.completeTargets)
 
 	eventService, err := cs.EventService()
 	if err != nil {

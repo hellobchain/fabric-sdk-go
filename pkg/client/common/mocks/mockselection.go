@@ -26,7 +26,7 @@ func NewMockSelectionService(err error, peers ...fab.Peer) *MockSelectionService
 	return &MockSelectionService{Error: err, Peers: peers}
 }
 
-func (m *MockSelectionService) SetPeers(peers fab.CompletePeer) {
+func (m *MockSelectionService) SetPeersOfChannel(peers fab.CompletePeer) {
 
 }
 

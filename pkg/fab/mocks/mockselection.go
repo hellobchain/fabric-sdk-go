@@ -17,7 +17,7 @@ type MockSelectionService struct {
 	Peers []fab.Peer
 }
 
-func (m *MockSelectionService) SetPeers(peers fab.CompletePeer) {
+func (m *MockSelectionService) SetPeersOfChannel(peers fab.CompletePeer) {
 }
 
 // NewMockSelectionService returns mock selection service

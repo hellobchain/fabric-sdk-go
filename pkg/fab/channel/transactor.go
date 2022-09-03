@@ -116,7 +116,7 @@ func orderersFromChannelCfg(ctx context.Client, cfg fab.ChannelCfg) ([]fab.Order
 func orderersFromChannel(ctx context.Client, channelID string) ([]fab.Orderer, error) {
 
 	chNetworkConfig := ctx.EndpointConfig().ChannelConfig(channelID)
-	orderers := []fab.Orderer{}
+	var orderers []fab.Orderer
 	for _, chOrderer := range chNetworkConfig.Orderers {
 
 		ordererConfig, found, ignoreOrderer := ctx.EndpointConfig().OrdererConfig(chOrderer)

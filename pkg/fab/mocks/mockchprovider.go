@@ -31,7 +31,7 @@ type MockChannelService struct {
 	membership   fab.ChannelMembership
 }
 
-func (cs *MockChannelService) SetChannelPeers(peers fab.CompletePeer) {
+func (cs *MockChannelService) SetPeersOfChannel(peers fab.CompletePeer) {
 	//TODO implement me
 	panic("implement me")
 }

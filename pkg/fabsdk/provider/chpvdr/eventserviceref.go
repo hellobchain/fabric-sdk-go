@@ -34,7 +34,7 @@ type EventClientRef struct {
 	peers       fab.CompletePeer
 }
 
-func (ref *EventClientRef) SetChannelPeers(peers fab.CompletePeer) {
+func (ref *EventClientRef) SetPeersOfChannel(peers fab.CompletePeer) {
 	ref.peers = peers
 }
 

@@ -60,7 +60,7 @@ func (cp *ChannelProvider) CloseContext(ctx fab.ClientContext) {
 		logger.Warnf("Unable to close context: %s", err)
 		return
 	}
-	logger.Warnf("Deleting context cache...")
+	logger.Debug("Deleting context cache...")
 	cp.ctxtCaches.Delete(key)
 }
 
@@ -94,8 +94,8 @@ type ChannelService struct {
 	ctxtCache *contextCache
 }
 
-func (cs *ChannelService) SetChannelPeers(peers fab.CompletePeer) {
-	cs.ctxtCache.SetPeers(peers)
+func (cs *ChannelService) SetPeersOfChannel(peers fab.CompletePeer) {
+	cs.ctxtCache.SetPeersOfChannel(peers)
 }
 
 // Config returns the Config for the named channel

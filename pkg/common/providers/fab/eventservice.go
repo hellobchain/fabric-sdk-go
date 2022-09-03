@@ -69,7 +69,7 @@ type BlockFilter func(block *cb.Block) bool
 // EventService is a service that receives events such as block, filtered block,
 // chaincode, and transaction status events.
 type EventService interface {
-	SetChannelPeers(peers CompletePeer)
+	SetPeersOfChannel(peers CompletePeer)
 	// RegisterBlockEvent registers for block events. If the caller does not have permission
 	// to register for block events then an error is returned.
 	// Note that Unregister must be called when the registration is no longer needed.

@@ -139,7 +139,7 @@ func New(channelID string, options ...Option) (*ChannelConfig, error) {
 	return &ChannelConfig{channelID: channelID, opts: opts}, nil
 }
 
-func (c *ChannelConfig) SetPeers(peers fab.CompletePeer) {
+func (c *ChannelConfig) SetPeersOfChannel(peers fab.CompletePeer) {
 	c.peers = peers
 }
 

@@ -91,7 +91,7 @@ func NewMockChannelConfig(ctx context.Client, channelID string) (*MockChannelCon
 	return &MockChannelConfig{channelID: channelID, ctx: ctx}, nil
 }
 
-func (c *MockChannelConfig) SetPeers(peers fab.CompletePeer) {
+func (c *MockChannelConfig) SetPeersOfChannel(peers fab.CompletePeer) {
 
 }
 
