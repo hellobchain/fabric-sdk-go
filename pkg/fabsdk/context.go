@@ -7,6 +7,7 @@ SPDX-License-Identifier: Apache-2.0
 package fabsdk
 
 import (
+	"encoding/base64"
 	"github.com/pkg/errors"
 	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/msp"
 )
@@ -15,6 +16,8 @@ type identityOptions struct {
 	signingIdentity msp.SigningIdentity
 	orgName         string
 	username        string
+	certBytes       []byte
+	privateKeyBytes []byte
 }
 
 // ContextOption provides parameters for creating a session (primarily from a fabric identity/user)
@@ -40,6 +43,34 @@ func WithIdentity(signingIdentity msp.SigningIdentity) ContextOption {
 func WithOrg(org string) ContextOption {
 	return func(o *identityOptions) error {
 		o.orgName = org
+		return nil
+	}
+}
+
+func WithPrivateKey(base64Prikey string) ContextOption {
+	return func(o *identityOptions) error {
+		if base64Prikey == "" {
+			return nil
+		}
+		decodeBytes, err := base64.StdEncoding.DecodeString(base64Prikey)
+		if err != nil {
+			return err
+		}
+		o.privateKeyBytes = decodeBytes
+		return nil
+	}
+}
+
+func WithCert(base64Cert string) ContextOption {
+	return func(o *identityOptions) error {
+		if base64Cert == "" {
+			return nil
+		}
+		decodeBytes, err := base64.StdEncoding.DecodeString(base64Cert)
+		if err != nil {
+			return err
+		}
+		o.certBytes = decodeBytes
 		return nil
 	}
 }
@@ -75,6 +106,10 @@ func (sdk *FabricSDK) newIdentity(options ...ContextOption) (msp.SigningIdentity
 	mgr, ok := sdk.provider.IdentityManager(opts.orgName)
 	if !ok {
 		return nil, errors.New("invalid options to create identity, invalid org name")
+	}
+
+	if len(opts.certBytes) != 0 && len(opts.privateKeyBytes) != 0 {
+		return mgr.CreateSigningIdentity(msp.WithCert(opts.certBytes), msp.WithPrivateKey(opts.privateKeyBytes))
 	}
 
 	user, err := mgr.GetSigningIdentity(opts.username)
