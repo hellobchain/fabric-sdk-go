@@ -7,9 +7,8 @@ SPDX-License-Identifier: Apache-2.0
 package membership
 
 import (
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/options"
 	"github.com/wsw365904/fabric-sdk-go/pkg/util/algo"
-	"time"
-
 	"github.com/wsw365904/fabric-sdk-go/pkg/util/concurrent/lazycache"
 	"github.com/wsw365904/fabric-sdk-go/pkg/util/concurrent/lazyref"
 
@@ -47,13 +46,13 @@ func NewCacheKey(context Context, chConfigRef *lazyref.Reference, channelID stri
 
 // NewRefCache a cache of membership references that refreshed with the
 // given interval
-func NewRefCache(refresh time.Duration) *lazycache.Cache {
+func NewRefCache(opts ...options.Opt) *lazycache.Cache {
 	initializer := func(key lazycache.Key) (interface{}, error) {
 		ck, ok := key.(CacheKey)
 		if !ok {
 			return nil, errors.New("unexpected cache key")
 		}
-		return NewRef(refresh, ck.Context(), ck.ChConfigRef()), nil
+		return NewRef(ck.Context(), ck.ChConfigRef(), opts...), nil
 	}
 
 	return lazycache.New("Membership_Cache", initializer)

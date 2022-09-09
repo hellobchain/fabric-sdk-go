@@ -136,7 +136,7 @@ func FromError(err error) (s *Status, ok bool) {
 }
 
 func (s *Status) Error() string {
-	return fmt.Sprintf("%s Code: (%d) %s. Description: %s", s.Group.String(), s.Code, s.codeString(), s.Message)
+	return fmt.Sprintf("%s Code: (%d) %s. Description: %s. True Error: %v", s.Group.String(), s.Code, s.codeString(), s.Message, s.Details)
 }
 
 func (s *Status) codeString() string {

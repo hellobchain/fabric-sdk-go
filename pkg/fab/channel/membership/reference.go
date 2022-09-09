@@ -7,9 +7,8 @@ SPDX-License-Identifier: Apache-2.0
 package membership
 
 import (
-	"time"
-
 	"github.com/pkg/errors"
+	"github.com/wsw365904/fabric-sdk-go/pkg/common/options"
 	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
 	"github.com/wsw365904/fabric-sdk-go/pkg/util/concurrent/lazyref"
 )
@@ -25,7 +24,9 @@ type Ref struct {
 }
 
 // NewRef returns a new membership reference
-func NewRef(refresh time.Duration, context Context, chConfigRef *lazyref.Reference) *Ref {
+func NewRef(context Context, chConfigRef *lazyref.Reference, opts ...options.Opt) *Ref {
+	params := newDefaultParams()
+	options.Apply(params, opts)
 	ref := &Ref{
 		chConfigRef: chConfigRef,
 		context:     context,
@@ -33,7 +34,7 @@ func NewRef(refresh time.Duration, context Context, chConfigRef *lazyref.Referen
 
 	ref.Reference = lazyref.New(
 		ref.initializer(),
-		lazyref.WithRefreshInterval(lazyref.InitImmediately, refresh),
+		lazyref.WithRefreshInterval(lazyref.InitImmediately, params.refreshInterval),
 	)
 
 	return ref

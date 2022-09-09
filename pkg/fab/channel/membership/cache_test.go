@@ -8,9 +8,6 @@ package membership
 
 import (
 	"fmt"
-	"testing"
-	"time"
-
 	"github.com/golang/protobuf/proto"
 	mb "github.com/hyperledger/fabric-protos-go/msp"
 	"github.com/stretchr/testify/assert"
@@ -18,6 +15,7 @@ import (
 	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
 	"github.com/wsw365904/fabric-sdk-go/pkg/fab/mocks"
 	"github.com/wsw365904/fabric-sdk-go/pkg/util/concurrent/lazyref"
+	"testing"
 )
 
 type badKey struct {
@@ -39,7 +37,7 @@ func TestMembershipCache(t *testing.T) {
 
 	ctx := mocks.NewMockProviderContext()
 
-	cache := NewRefCache(time.Millisecond * 10)
+	cache := NewRefCache()
 	assert.NotNil(t, cache)
 
 	key, err := NewCacheKey(Context{Providers: ctx, EndpointConfig: mocks.NewMockEndpointConfig()}, lazyref.New(func() (interface{}, error) { return cfg, nil }), testChannelID)
@@ -75,7 +73,7 @@ func TestMembershipCacheBad(t *testing.T) {
 
 	ctx := mocks.NewMockProviderContext()
 
-	cache := NewRefCache(time.Millisecond * 10)
+	cache := NewRefCache()
 	assert.NotNil(t, cache)
 
 	r, err := cache.Get(&badKey{s: "test"})

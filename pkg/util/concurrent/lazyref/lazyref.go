@@ -103,8 +103,7 @@ func NewWithData(initializer InitializerWithData, opts ...options.Opt) *Referenc
 	}
 
 	options.Apply(lazyRef, opts)
-
-	if lazyRef.expirationProvider != nil {
+	if lazyRef.expirationProvider != nil && lazyRef.expirationProvider() > 0 {
 		// This is an expiring reference. After the initializer is
 		// called, set a timer that will call the expiration handler.
 		initializer := lazyRef.initializer

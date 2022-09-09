@@ -52,8 +52,8 @@ func newContextCache(ctx fab.ClientContext, opts []options.Opt) *contextCache {
 		ctx: ctx,
 	}
 
-	c.chCfgCache = cfgCacheProvider(append(opts, chconfig.WithRefreshInterval(chConfigRefresh))...)
-	c.membershipCache = membership.NewRefCache(membershipRefresh)
+	c.chCfgCache = cfgCacheProvider(append([]options.Opt{chconfig.WithRefreshInterval(chConfigRefresh)}, opts...)...)
+	c.membershipCache = membership.NewRefCache(append([]options.Opt{membership.WithRefreshInterval(membershipRefresh)}, opts...)...)
 
 	c.discoveryServiceCache = lazycache.New(
 		"Discovery_Service_Cache",
@@ -78,7 +78,7 @@ func newContextCache(ctx fab.ClientContext, opts []options.Opt) *contextCache {
 			return NewEventClientRef(
 				eventIdleTime,
 				func() (fab.EventClient, error) {
-					return c.createEventClient(ck.channelConfig, ck.opts...)
+					return c.createEventClient(ck.channelConfig, append(ck.opts, opts...)...)
 				},
 			), nil
 		},
