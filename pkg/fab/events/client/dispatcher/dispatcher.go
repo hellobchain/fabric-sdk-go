@@ -263,7 +263,6 @@ func (ed *Dispatcher) monitorPeer(done chan struct{}) {
 // disconnected checks if the currently connected peer should be disconnected
 // Returns true if the client has been disconnected; false otherwise
 func (ed *Dispatcher) disconnected() bool {
-	logger.Info("disconnected wsw")
 	connectedPeer := ed.ConnectedPeer()
 	if connectedPeer == nil {
 		logger.Debugf("Not connected yet")
