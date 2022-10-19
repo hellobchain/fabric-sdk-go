@@ -8,20 +8,20 @@ package membership
 
 import (
 	"encoding/pem"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
-	"github.com/wsw365904/fabric-sdk-go/pkg/util/algo"
-	"github.com/wsw365904/newcryptosm/x509"
-	"github.com/wsw365904/wswlog/wlogging"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
+	"github.com/hellobchain/fabric-sdk-go/pkg/util/algo"
+	"github.com/hellobchain/newcryptosm/x509"
+	"github.com/hellobchain/wswlog/wlogging"
 
 	"strings"
 
 	"github.com/golang/protobuf/proto"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/msp"
+	"github.com/hellobchain/fabric-sdk-go/pkg/client/common/verifier"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/core"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
 	mb "github.com/hyperledger/fabric-protos-go/msp"
 	"github.com/pkg/errors"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/msp"
-	"github.com/wsw365904/fabric-sdk-go/pkg/client/common/verifier"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
 )
 
 var logger = wlogging.MustGetLoggerWithoutName()

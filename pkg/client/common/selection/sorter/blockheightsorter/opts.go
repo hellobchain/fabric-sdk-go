@@ -7,8 +7,8 @@ SPDX-License-Identifier: Apache-2.0
 package blockheightsorter
 
 import (
-	"github.com/wsw365904/fabric-sdk-go/pkg/client/common/selection/balancer"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/options"
+	"github.com/hellobchain/fabric-sdk-go/pkg/client/common/selection/balancer"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/options"
 )
 
 const (

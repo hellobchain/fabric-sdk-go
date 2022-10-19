@@ -8,7 +8,7 @@ package resmgmt
 
 import (
 	"fmt"
-	"github.com/wsw365904/newcryptosm/http"
+	"github.com/hellobchain/newcryptosm/http"
 	"testing"
 
 	"github.com/golang/protobuf/proto"
@@ -16,11 +16,11 @@ import (
 	lb "github.com/hyperledger/fabric-protos-go/peer/lifecycle"
 	"github.com/stretchr/testify/require"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	lifecyclepkg "github.com/wsw365904/fabric-sdk-go/pkg/fab/ccpackager/lifecycle"
-	fcmocks "github.com/wsw365904/fabric-sdk-go/pkg/fab/mocks"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/resource"
-	"github.com/wsw365904/third_party/hyperledger/fabric/common/policydsl"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	lifecyclepkg "github.com/hellobchain/fabric-sdk-go/pkg/fab/ccpackager/lifecycle"
+	fcmocks "github.com/hellobchain/fabric-sdk-go/pkg/fab/mocks"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/resource"
+	"github.com/hellobchain/third_party/hyperledger/fabric/common/policydsl"
 )
 
 func TestClient_LifecycleInstallCC(t *testing.T) {

@@ -11,8 +11,8 @@ Please review third_party pinning scripts and patches for more details.
 package credential
 
 import (
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkinternal/pkg/api"
-	"github.com/wsw365904/newcryptosm/http"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkinternal/pkg/api"
+	"github.com/hellobchain/newcryptosm/http"
 )
 
 // Credential represents an credential of an identity

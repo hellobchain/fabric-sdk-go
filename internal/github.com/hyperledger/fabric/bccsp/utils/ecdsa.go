@@ -11,8 +11,8 @@ import (
 	"encoding/asn1"
 	"errors"
 	"fmt"
-	"github.com/wsw365904/newcryptosm/ecdsa"
-	"github.com/wsw365904/newcryptosm/sm2"
+	"github.com/hellobchain/newcryptosm/ecdsa"
+	"github.com/hellobchain/newcryptosm/sm2"
 	"math/big"
 )
 

@@ -11,9 +11,9 @@ Please review third_party pinning scripts and patches for more details.
 package statsd
 
 import (
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/metrics"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/metrics/internal/namer"
-	"github.com/wsw365904/third_party/go-kit/kit/metrics/statsd"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/metrics"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/metrics/internal/namer"
+	"github.com/hellobchain/third_party/go-kit/kit/metrics/statsd"
 )
 
 const defaultFormat = "%{#fqname}"

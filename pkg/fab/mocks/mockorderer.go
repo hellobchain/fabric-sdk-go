@@ -9,14 +9,14 @@ package mocks
 import (
 	reqContext "context"
 	"fmt"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab/orderer"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab/orderer"
 	"net"
 	"sync"
 
 	"github.com/hyperledger/fabric-protos-go/common"
 	"github.com/pkg/errors"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/util/test"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/util/test"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 )

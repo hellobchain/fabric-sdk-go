@@ -8,14 +8,14 @@ package pgresolver
 
 import (
 	"fmt"
-	"github.com/wsw365904/wswlog/wlogging"
+	"github.com/hellobchain/wswlog/wlogging"
 	"reflect"
 
 	"github.com/golang/protobuf/proto"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
 	"github.com/hyperledger/fabric-protos-go/common"
 	mb "github.com/hyperledger/fabric-protos-go/msp"
 	"github.com/pkg/errors"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
 )
 
 var logger = wlogging.MustGetLoggerWithoutName()

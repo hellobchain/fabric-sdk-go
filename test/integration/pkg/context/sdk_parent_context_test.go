@@ -13,14 +13,14 @@ import (
 	"testing"
 	"time"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/client/channel"
-	"github.com/wsw365904/fabric-sdk-go/pkg/client/ledger"
-	"github.com/wsw365904/fabric-sdk-go/pkg/client/resmgmt"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/errors/retry"
-	contextApi "github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
-	"github.com/wsw365904/fabric-sdk-go/pkg/context"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk"
-	"github.com/wsw365904/fabric-sdk-go/test/integration"
+	"github.com/hellobchain/fabric-sdk-go/pkg/client/channel"
+	"github.com/hellobchain/fabric-sdk-go/pkg/client/ledger"
+	"github.com/hellobchain/fabric-sdk-go/pkg/client/resmgmt"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/errors/retry"
+	contextApi "github.com/hellobchain/fabric-sdk-go/pkg/common/providers/context"
+	"github.com/hellobchain/fabric-sdk-go/pkg/context"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fabsdk"
+	"github.com/hellobchain/fabric-sdk-go/test/integration"
 )
 
 //TestParentContext tests to make sure external grpc context can be passed as a parent context to highlevel functions

@@ -6,8 +6,8 @@ import (
 	"crypto/rand"
 	"errors"
 	"fmt"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
-	"github.com/wsw365904/newcryptosm/sm4"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
+	"github.com/hellobchain/newcryptosm/sm4"
 	"io"
 )
 

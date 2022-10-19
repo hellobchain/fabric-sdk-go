@@ -13,10 +13,10 @@ package channelconfig
 import (
 	"fmt"
 
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/msp"
 	cb "github.com/hyperledger/fabric-protos-go/common"
 	mspprotos "github.com/hyperledger/fabric-protos-go/msp"
 	"github.com/pkg/errors"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/msp"
 )
 
 const (

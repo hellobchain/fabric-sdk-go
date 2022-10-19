@@ -12,9 +12,9 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/config"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/config"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fabsdk"
 )
 
 func Example() {

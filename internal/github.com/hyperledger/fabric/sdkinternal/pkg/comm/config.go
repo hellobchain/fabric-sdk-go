@@ -11,12 +11,12 @@ Please review third_party pinning scripts and patches for more details.
 package comm
 
 import (
-	"github.com/wsw365904/newcryptosm/tls"
-	"github.com/wsw365904/newcryptosm/x509"
+	"github.com/hellobchain/newcryptosm/tls"
+	"github.com/hellobchain/newcryptosm/x509"
 	"time"
 
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/metrics"
-	flogging "github.com/wsw365904/wswlog/wlogging"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/metrics"
+	flogging "github.com/hellobchain/wswlog/wlogging"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/keepalive"
 )

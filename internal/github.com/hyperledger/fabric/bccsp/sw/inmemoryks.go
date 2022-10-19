@@ -14,8 +14,8 @@ import (
 	"encoding/hex"
 	"sync"
 
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
 	"github.com/pkg/errors"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
 )
 
 // NewInMemoryKeyStore instantiates an ephemeral in-memory keystore

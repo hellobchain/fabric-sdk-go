@@ -11,7 +11,7 @@ Please review third_party pinning scripts and patches for more details.
 package middleware
 
 import (
-	"github.com/wsw365904/newcryptosm/http"
+	"github.com/hellobchain/newcryptosm/http"
 )
 
 type Middleware func(http.Handler) http.Handler

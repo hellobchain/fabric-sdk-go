@@ -10,10 +10,10 @@ import (
 	"time"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	sdkCtx "github.com/wsw365904/fabric-sdk-go/pkg/context"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/mocks"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/context"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	sdkCtx "github.com/hellobchain/fabric-sdk-go/pkg/context"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/mocks"
 )
 
 func Example() {

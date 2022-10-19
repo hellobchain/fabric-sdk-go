@@ -9,8 +9,8 @@ package mocks
 import (
 	"fmt"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/options"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/options"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
 )
 
 // MockInfraProvider represents the default implementation of Fabric objects.

@@ -12,12 +12,12 @@ import (
 	"math/rand"
 	"time"
 
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/errors/retry"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/context"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/comm"
 	"github.com/hyperledger/fabric-protos-go/common"
 	"github.com/pkg/errors"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/errors/retry"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/comm"
 )
 
 // WithTargets allows overriding of the target peers for the request.

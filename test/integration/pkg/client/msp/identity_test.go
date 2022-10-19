@@ -8,17 +8,17 @@ package msp
 
 import (
 	"encoding/pem"
-	"github.com/wsw365904/newcryptosm/x509"
+	"github.com/hellobchain/newcryptosm/x509"
 	"testing"
 
 	"fmt"
 
+	"github.com/hellobchain/fabric-sdk-go/pkg/client/msp"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/core"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fabsdk"
+	"github.com/hellobchain/fabric-sdk-go/pkg/gateway"
+	"github.com/hellobchain/fabric-sdk-go/test/integration"
 	"github.com/stretchr/testify/assert"
-	"github.com/wsw365904/fabric-sdk-go/pkg/client/msp"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk"
-	"github.com/wsw365904/fabric-sdk-go/pkg/gateway"
-	"github.com/wsw365904/fabric-sdk-go/test/integration"
 )
 
 func TestIdentity(t *testing.T) {

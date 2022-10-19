@@ -7,10 +7,10 @@ SPDX-License-Identifier: Apache-2.0
 package mocks
 
 import (
-	"github.com/wsw365904/fabric-sdk-go/pkg/util/algo"
+	"github.com/hellobchain/fabric-sdk-go/pkg/util/algo"
 	"hash"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/core"
 )
 
 // MockCryptoSuite implementation

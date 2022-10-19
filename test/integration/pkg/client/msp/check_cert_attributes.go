@@ -8,13 +8,13 @@ package msp
 
 import (
 	"encoding/pem"
-	"github.com/wsw365904/newcryptosm/x509"
+	"github.com/hellobchain/newcryptosm/x509"
 	"testing"
 
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/require"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/lib/attrmgr"
-	"github.com/wsw365904/fabric-sdk-go/pkg/client/msp"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/lib/attrmgr"
+	"github.com/hellobchain/fabric-sdk-go/pkg/client/msp"
 )
 
 // nolint: deadcode

@@ -17,18 +17,18 @@ import (
 	"google.golang.org/grpc/testdata"
 
 	"github.com/stretchr/testify/require"
-	"github.com/wsw365904/fabric-sdk-go/pkg/client/channel"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	contextImpl "github.com/wsw365904/fabric-sdk-go/pkg/context"
-	fcmocks "github.com/wsw365904/fabric-sdk-go/pkg/fab/mocks"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk/provider/chpvdr"
-	"github.com/wsw365904/fabric-sdk-go/pkg/util/pathvar"
+	"github.com/hellobchain/fabric-sdk-go/pkg/client/channel"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/context"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	contextImpl "github.com/hellobchain/fabric-sdk-go/pkg/context"
+	fcmocks "github.com/hellobchain/fabric-sdk-go/pkg/fab/mocks"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fabsdk"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fabsdk/provider/chpvdr"
+	"github.com/hellobchain/fabric-sdk-go/pkg/util/pathvar"
 
 	pb "github.com/hyperledger/fabric-protos-go/peer"
-	"github.com/wsw365904/third_party/hyperledger/fabric/common/policydsl"
-	"github.com/wsw365904/third_party/hyperledger/fabric/core/common/ccprovider"
+	"github.com/hellobchain/third_party/hyperledger/fabric/common/policydsl"
+	"github.com/hellobchain/third_party/hyperledger/fabric/core/common/ccprovider"
 )
 
 const (

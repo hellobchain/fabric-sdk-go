@@ -13,7 +13,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/wsw365904/fabric-sdk-go/test/metadata"
+	"github.com/hellobchain/fabric-sdk-go/test/metadata"
 )
 
 // goPath returns the current GOPATH. If the system

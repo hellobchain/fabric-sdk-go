@@ -7,12 +7,12 @@ SPDX-License-Identifier: Apache-2.0
 package balanced
 
 import (
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/options"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/events/client/peerresolver"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/events/service"
-	"github.com/wsw365904/wswlog/wlogging"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/options"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/context"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/events/client/peerresolver"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/events/service"
+	"github.com/hellobchain/wswlog/wlogging"
 )
 
 var logger = wlogging.MustGetLoggerWithoutName()

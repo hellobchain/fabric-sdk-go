@@ -8,15 +8,15 @@ package config
 
 import (
 	"bytes"
-	"github.com/wsw365904/wswlog/wlogging"
+	"github.com/hellobchain/wswlog/wlogging"
 	"os"
 	"path/filepath"
 	"testing"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/cryptosuite"
-	"github.com/wsw365904/fabric-sdk-go/pkg/util/test"
-	"github.com/wsw365904/fabric-sdk-go/test/metadata"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/core"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/cryptosuite"
+	"github.com/hellobchain/fabric-sdk-go/pkg/util/test"
+	"github.com/hellobchain/fabric-sdk-go/test/metadata"
 
 	"github.com/pkg/errors"
 	"github.com/spf13/viper"

@@ -9,20 +9,20 @@ package mocks
 import (
 	"github.com/golang/protobuf/proto"
 	"github.com/golang/protobuf/ptypes/timestamp"
-	"github.com/wsw365904/fabric-sdk-go/pkg/util/algo"
+	"github.com/hellobchain/fabric-sdk-go/pkg/util/algo"
 
+	cutil "github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/util"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/protoutil"
 	"github.com/hyperledger/fabric-protos-go/common"
 	mb "github.com/hyperledger/fabric-protos-go/msp"
 	ab "github.com/hyperledger/fabric-protos-go/orderer"
 	pp "github.com/hyperledger/fabric-protos-go/peer"
-	cutil "github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/util"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/protoutil"
 
 	"time"
 
+	channelConfig "github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/channelconfig"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkinternal/pkg/txflags"
 	"github.com/pkg/errors"
-	channelConfig "github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/channelconfig"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkinternal/pkg/txflags"
 )
 
 // NewSimpleMockBlock returns a simple mock block

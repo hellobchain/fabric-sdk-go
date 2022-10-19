@@ -7,7 +7,7 @@ SPDX-License-Identifier: Apache-2.0
 package staticdiscovery
 
 import (
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
 )
 
 type localDiscoveryService struct {

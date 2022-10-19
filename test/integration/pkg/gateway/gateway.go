@@ -14,12 +14,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/config"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk"
-	"github.com/wsw365904/fabric-sdk-go/pkg/gateway"
-	"github.com/wsw365904/fabric-sdk-go/test/integration"
-	"github.com/wsw365904/fabric-sdk-go/test/metadata"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/config"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fabsdk"
+	"github.com/hellobchain/fabric-sdk-go/pkg/gateway"
+	"github.com/hellobchain/fabric-sdk-go/test/integration"
+	"github.com/hellobchain/fabric-sdk-go/test/metadata"
 )
 
 const (

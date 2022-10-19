@@ -11,16 +11,16 @@ import (
 	"bytes"
 	"compress/gzip"
 	"fmt"
-	"github.com/wsw365904/wswlog/wlogging"
+	"github.com/hellobchain/wswlog/wlogging"
 	"io"
 	"os"
 	"path/filepath"
 	"strings"
 	"time"
 
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/resource"
 	pb "github.com/hyperledger/fabric-protos-go/peer"
 	"github.com/pkg/errors"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/resource"
 )
 
 // Descriptor ...

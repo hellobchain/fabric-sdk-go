@@ -10,10 +10,10 @@ SPDX-License-Identifier: Apache-2.0
 package fabsdk
 
 import (
-	configImpl "github.com/wsw365904/fabric-sdk-go/pkg/core/config"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/logging/api"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/logging/modlog"
-	"github.com/wsw365904/fabric-sdk-go/test/metadata"
+	configImpl "github.com/hellobchain/fabric-sdk-go/pkg/core/config"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/logging/api"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/logging/modlog"
+	"github.com/hellobchain/fabric-sdk-go/test/metadata"
 	"path/filepath"
 	"testing"
 )

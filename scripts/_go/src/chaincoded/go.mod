@@ -6,4 +6,4 @@ module chaincoded
 
 go 1.14
 
-require github.com/wsw365904/newcryptosm v0.0.0-20220821120244-1d3c5ba2f14a
+require github.com/hellobchain/newcryptosm v0.0.0-20220821120244-1d3c5ba2f14a

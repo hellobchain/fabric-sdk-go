@@ -7,13 +7,13 @@ SPDX-License-Identifier: Apache-2.0
 package keyvaluestore
 
 import (
-	"github.com/wsw365904/wswlog/wlogging"
+	"github.com/hellobchain/wswlog/wlogging"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 
 	"github.com/pkg/errors"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/core"
 )
 
 const (

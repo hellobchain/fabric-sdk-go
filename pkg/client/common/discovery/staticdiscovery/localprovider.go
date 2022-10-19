@@ -7,9 +7,9 @@ SPDX-License-Identifier: Apache-2.0
 package staticdiscovery
 
 import (
-	contextAPI "github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/wswlog/wlogging"
+	contextAPI "github.com/hellobchain/fabric-sdk-go/pkg/common/providers/context"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/wswlog/wlogging"
 
 	"github.com/pkg/errors"
 )

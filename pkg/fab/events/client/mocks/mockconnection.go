@@ -11,11 +11,11 @@ import (
 	"sync/atomic"
 	"time"
 
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/context"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/events/api"
+	servicemocks "github.com/hellobchain/fabric-sdk-go/pkg/fab/events/service/mocks"
 	"github.com/pkg/errors"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/events/api"
-	servicemocks "github.com/wsw365904/fabric-sdk-go/pkg/fab/events/service/mocks"
 )
 
 // Operation is the operation being performed

@@ -13,8 +13,8 @@ package msp
 import (
 	"bytes"
 	"encoding/asn1"
-	x5092 "github.com/wsw365904/newcryptosm/x509"
-	"github.com/wsw365904/newcryptosm/x509/pkix"
+	x5092 "github.com/hellobchain/newcryptosm/x509"
+	"github.com/hellobchain/newcryptosm/x509/pkix"
 	"math/big"
 	"reflect"
 	"time"

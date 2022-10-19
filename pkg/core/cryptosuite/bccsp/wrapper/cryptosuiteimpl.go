@@ -9,8 +9,8 @@ package wrapper
 import (
 	"hash"
 
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/core"
 )
 
 //NewCryptoSuite returns cryptosuite adaptor for given bccsp.BCCSP implementation

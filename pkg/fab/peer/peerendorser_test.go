@@ -9,7 +9,7 @@ package peer
 import (
 	reqContext "context"
 	"fmt"
-	"github.com/wsw365904/newcryptosm/x509"
+	"github.com/hellobchain/newcryptosm/x509"
 	"reflect"
 	"testing"
 	"time"
@@ -21,10 +21,10 @@ import (
 	grpcCodes "google.golang.org/grpc/codes"
 	"google.golang.org/grpc/keepalive"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/errors/status"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/test/mockfab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/mocks"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/errors/status"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/test/mockfab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/mocks"
 )
 
 const (

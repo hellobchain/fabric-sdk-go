@@ -25,7 +25,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
 )
 
 // GetRandomBytes returns len random looking bytes

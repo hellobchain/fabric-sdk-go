@@ -13,17 +13,17 @@ import (
 	"testing"
 
 	"github.com/golang/mock/gomock"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkinternal/pkg/util"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
-	providersFab "github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/msp"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/config"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/cryptosuite"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/cryptosuite/bccsp/sw"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/msp/api"
-	apimocks "github.com/wsw365904/fabric-sdk-go/pkg/msp/test/mockmspapi"
-	"github.com/wsw365904/fabric-sdk-go/test/metadata"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkinternal/pkg/util"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/core"
+	providersFab "github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/msp"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/config"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/cryptosuite"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/cryptosuite/bccsp/sw"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/msp/api"
+	apimocks "github.com/hellobchain/fabric-sdk-go/pkg/msp/test/mockmspapi"
+	"github.com/hellobchain/fabric-sdk-go/test/metadata"
 )
 
 var (

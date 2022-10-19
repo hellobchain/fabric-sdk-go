@@ -13,13 +13,13 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/hellobchain/fabric-sdk-go/pkg/client/channel"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/errors/retry"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/config"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fabsdk"
+	"github.com/hellobchain/fabric-sdk-go/pkg/util/pathvar"
+	"github.com/hellobchain/fabric-sdk-go/test/integration"
 	"github.com/stretchr/testify/require"
-	"github.com/wsw365904/fabric-sdk-go/pkg/client/channel"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/errors/retry"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/config"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk"
-	"github.com/wsw365904/fabric-sdk-go/pkg/util/pathvar"
-	"github.com/wsw365904/fabric-sdk-go/test/integration"
 )
 
 //TestMultiOrgWithSingleOrgConfig uses new sdk instance with new config which only has entries for org1.

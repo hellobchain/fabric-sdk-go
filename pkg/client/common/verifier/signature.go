@@ -8,14 +8,14 @@ SPDX-License-Identifier: Apache-2.0
 package verifier
 
 import (
-	"github.com/wsw365904/newcryptosm/x509"
-	"github.com/wsw365904/wswlog/wlogging"
+	"github.com/hellobchain/newcryptosm/x509"
+	"github.com/hellobchain/wswlog/wlogging"
 	"time"
 
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/errors/status"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
 	"github.com/hyperledger/fabric-protos-go/common"
 	"github.com/pkg/errors"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/errors/status"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
 )
 
 var logger = wlogging.MustGetLoggerWithoutName()

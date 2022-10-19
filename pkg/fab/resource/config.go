@@ -10,10 +10,10 @@ import (
 	"github.com/golang/protobuf/proto"
 	"github.com/pkg/errors"
 
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/crypto"
+	fcutils "github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/util"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/context"
 	"github.com/hyperledger/fabric-protos-go/common"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/crypto"
-	fcutils "github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/util"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
 )
 
 // CreateConfigSignature creates a ConfigSignature for the current context

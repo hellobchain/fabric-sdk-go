@@ -8,15 +8,15 @@ package msp
 
 import (
 	"encoding/hex"
-	"github.com/wsw365904/fabric-sdk-go/pkg/util/algo"
+	"github.com/hellobchain/fabric-sdk-go/pkg/util/algo"
 	"path/filepath"
 	"strings"
 
 	"github.com/pkg/errors"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/msp"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/core"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/msp"
 )
 
 // IdentityManager implements fab/IdentityManager

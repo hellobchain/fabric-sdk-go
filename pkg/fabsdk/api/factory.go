@@ -7,10 +7,10 @@ SPDX-License-Identifier: Apache-2.0
 package api
 
 import (
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/options"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/msp"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/options"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/core"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/msp"
 )
 
 // Providers represents the SDK configured providers context.

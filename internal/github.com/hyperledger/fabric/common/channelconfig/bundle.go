@@ -10,7 +10,7 @@ Please review third_party pinning scripts and patches for more details.
 
 package channelconfig
 
-import "github.com/wsw365904/wswlog/wlogging"
+import "github.com/hellobchain/wswlog/wlogging"
 
 var logger = wlogging.MustGetLoggerWithoutName()
 

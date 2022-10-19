@@ -13,14 +13,14 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/require"
-	"github.com/wsw365904/fabric-sdk-go/pkg/client/common/discovery/dynamicdiscovery"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/options"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	contextImpl "github.com/wsw365904/fabric-sdk-go/pkg/context"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk/factory/defsvc"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk/provider/chpvdr"
-	"github.com/wsw365904/fabric-sdk-go/test/integration"
+	"github.com/hellobchain/fabric-sdk-go/pkg/client/common/discovery/dynamicdiscovery"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/options"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	contextImpl "github.com/hellobchain/fabric-sdk-go/pkg/context"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fabsdk"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fabsdk/factory/defsvc"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fabsdk/provider/chpvdr"
+	"github.com/hellobchain/fabric-sdk-go/test/integration"
 )
 
 func TestDynamicDiscovery(t *testing.T) {

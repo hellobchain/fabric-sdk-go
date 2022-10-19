@@ -8,9 +8,9 @@ package resource
 
 import (
 	"github.com/golang/protobuf/proto"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
 	"github.com/hyperledger/fabric-protos-go/common"
 	"github.com/pkg/errors"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
 )
 
 const (

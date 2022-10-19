@@ -12,11 +12,11 @@ import (
 	"testing"
 	"time"
 
+	"github.com/hellobchain/fabric-sdk-go/pkg/client/common/selection/balancer"
+	fab "github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	emocks "github.com/hellobchain/fabric-sdk-go/pkg/fab/events/client/mocks"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/mocks"
 	"github.com/stretchr/testify/assert"
-	"github.com/wsw365904/fabric-sdk-go/pkg/client/common/selection/balancer"
-	fab "github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	emocks "github.com/wsw365904/fabric-sdk-go/pkg/fab/events/client/mocks"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/mocks"
 )
 
 const (

@@ -14,11 +14,11 @@ import (
 	"fmt"
 
 	"github.com/golang/protobuf/proto"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/msp"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/msp/cache"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/core"
 	mspprotos "github.com/hyperledger/fabric-protos-go/msp"
 	"github.com/pkg/errors"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/msp"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/msp/cache"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
 )
 
 type pendingMSPConfig struct {

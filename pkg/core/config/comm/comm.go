@@ -7,12 +7,12 @@ SPDX-License-Identifier: Apache-2.0
 package comm
 
 import (
-	"github.com/wsw365904/newcryptosm/tls"
-	"github.com/wsw365904/newcryptosm/x509"
+	"github.com/hellobchain/newcryptosm/tls"
+	"github.com/hellobchain/newcryptosm/x509"
 
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/cryptosuite"
 	"github.com/pkg/errors"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/cryptosuite"
 )
 
 // TLSConfig returns the appropriate config for TLS including the root CAs,

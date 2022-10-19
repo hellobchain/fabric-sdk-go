@@ -11,7 +11,7 @@ import (
 
 	cb "github.com/hyperledger/fabric-protos-go/common"
 	pb "github.com/hyperledger/fabric-protos-go/peer"
-	servicemocks "github.com/wsw365904/fabric-sdk-go/pkg/fab/events/service/mocks"
+	servicemocks "github.com/hellobchain/fabric-sdk-go/pkg/fab/events/service/mocks"
 )
 
 func TestHeaderTypeBlockFilter(t *testing.T) {

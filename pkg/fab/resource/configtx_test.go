@@ -11,10 +11,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/wsw365904/fabric-sdk-go/test/metadata"
+	"github.com/hellobchain/fabric-sdk-go/test/metadata"
 
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/resource/genesisconfig"
 	"github.com/stretchr/testify/require"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/resource/genesisconfig"
 )
 
 // Mock profiles are based on https://github.com/hyperledger/fabric/blob/v2.0.0-alpha/sampleconfig/configtx.yaml

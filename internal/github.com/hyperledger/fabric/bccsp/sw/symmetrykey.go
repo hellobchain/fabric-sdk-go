@@ -17,8 +17,8 @@ package sw
 
 import (
 	"errors"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
-	"github.com/wsw365904/newcryptosm"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
+	"github.com/hellobchain/newcryptosm"
 )
 
 type symmetryPrivateKey struct {

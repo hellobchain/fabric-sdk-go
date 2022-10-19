@@ -16,8 +16,8 @@ limitations under the License.
 package sw
 
 import (
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
-	"github.com/wsw365904/wswlog/wlogging"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
+	"github.com/hellobchain/wswlog/wlogging"
 	"hash"
 	"reflect"
 

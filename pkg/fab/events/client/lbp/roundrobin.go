@@ -7,9 +7,9 @@ SPDX-License-Identifier: Apache-2.0
 package lbp
 
 import (
-	"github.com/wsw365904/fabric-sdk-go/pkg/util/concurrent/rollingcounter"
+	"github.com/hellobchain/fabric-sdk-go/pkg/util/concurrent/rollingcounter"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
 )
 
 // RoundRobin implements a round-robin load-balance policy

@@ -14,16 +14,16 @@ import (
 	"strings"
 	"testing"
 
+	fabricCaUtil "github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkinternal/pkg/util"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/core"
+	providersFab "github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/msp"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/config"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/cryptosuite"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/cryptosuite/bccsp/sw"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab"
+	fcmocks "github.com/hellobchain/fabric-sdk-go/pkg/fab/mocks"
 	"github.com/pkg/errors"
-	fabricCaUtil "github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkinternal/pkg/util"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
-	providersFab "github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/msp"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/config"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/cryptosuite"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/cryptosuite/bccsp/sw"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab"
-	fcmocks "github.com/wsw365904/fabric-sdk-go/pkg/fab/mocks"
 )
 
 var (

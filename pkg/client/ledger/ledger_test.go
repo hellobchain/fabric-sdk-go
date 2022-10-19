@@ -9,15 +9,15 @@ import (
 	"strings"
 	"testing"
 
+	txnmocks "github.com/hellobchain/fabric-sdk-go/pkg/client/common/mocks"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/context"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	contextImpl "github.com/hellobchain/fabric-sdk-go/pkg/context"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/mocks"
+	fcmocks "github.com/hellobchain/fabric-sdk-go/pkg/fab/mocks"
+	mspmocks "github.com/hellobchain/fabric-sdk-go/pkg/msp/test/mockmsp"
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/assert"
-	txnmocks "github.com/wsw365904/fabric-sdk-go/pkg/client/common/mocks"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	contextImpl "github.com/wsw365904/fabric-sdk-go/pkg/context"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/mocks"
-	fcmocks "github.com/wsw365904/fabric-sdk-go/pkg/fab/mocks"
-	mspmocks "github.com/wsw365904/fabric-sdk-go/pkg/msp/test/mockmsp"
 )
 
 const (

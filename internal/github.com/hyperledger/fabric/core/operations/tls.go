@@ -11,11 +11,11 @@ Please review third_party pinning scripts and patches for more details.
 package operations
 
 import (
-	"github.com/wsw365904/newcryptosm/tls"
-	"github.com/wsw365904/newcryptosm/x509"
+	"github.com/hellobchain/newcryptosm/tls"
+	"github.com/hellobchain/newcryptosm/x509"
 	"io/ioutil"
 
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkinternal/pkg/comm"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkinternal/pkg/comm"
 )
 
 type TLS struct {

@@ -7,10 +7,10 @@ SPDX-License-Identifier: Apache-2.0
 package signingmgr
 
 import (
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/core"
 
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/cryptosuite"
 	"github.com/pkg/errors"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/cryptosuite"
 )
 
 // SigningManager is used for signing objects with private key

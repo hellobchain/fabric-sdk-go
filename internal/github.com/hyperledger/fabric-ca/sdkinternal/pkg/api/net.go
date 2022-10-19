@@ -21,7 +21,7 @@ Please review third_party pinning scripts and patches for more details.
 package api
 
 import (
-	"github.com/wsw365904/third_party/cloudflare/cfssl/signer"
+	"github.com/hellobchain/third_party/cloudflare/cfssl/signer"
 )
 
 /*

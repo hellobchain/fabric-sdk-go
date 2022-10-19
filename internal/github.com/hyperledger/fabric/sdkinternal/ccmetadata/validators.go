@@ -13,7 +13,7 @@ package ccmetadata
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/wsw365904/wswlog/wlogging"
+	"github.com/hellobchain/wswlog/wlogging"
 	"path/filepath"
 	"reflect"
 	"regexp"

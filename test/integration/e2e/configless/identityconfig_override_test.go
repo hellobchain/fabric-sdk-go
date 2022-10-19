@@ -10,10 +10,10 @@ import (
 	"io/ioutil"
 	"strings"
 
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/msp"
+	"github.com/hellobchain/fabric-sdk-go/pkg/util/pathvar"
 	"github.com/pkg/errors"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/msp"
-	"github.com/wsw365904/fabric-sdk-go/pkg/util/pathvar"
 )
 
 // identityconfig_override_test.go is an example of programmatically configuring the client by injecting instances that implement IdentityConfig's functions (representing the client's msp configs)

@@ -8,10 +8,10 @@ package gateway
 
 import (
 	"github.com/pkg/errors"
-	"github.com/wsw365904/fabric-sdk-go/pkg/client/channel"
-	"github.com/wsw365904/fabric-sdk-go/pkg/client/event"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/client/channel"
+	"github.com/hellobchain/fabric-sdk-go/pkg/client/event"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/context"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
 )
 
 // A Network object represents the set of peers in a Fabric network (channel).

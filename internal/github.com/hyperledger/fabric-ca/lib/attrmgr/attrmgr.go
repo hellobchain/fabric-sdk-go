@@ -19,8 +19,8 @@ import (
 	"encoding/asn1"
 	"encoding/json"
 	"fmt"
-	"github.com/wsw365904/newcryptosm/x509"
-	"github.com/wsw365904/newcryptosm/x509/pkix"
+	"github.com/hellobchain/newcryptosm/x509"
+	"github.com/hellobchain/newcryptosm/x509/pkix"
 
 	"github.com/pkg/errors"
 )

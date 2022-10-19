@@ -11,9 +11,9 @@ import (
 
 	"github.com/hyperledger/fabric-protos-go/common"
 
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/context"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
 	msp "github.com/hyperledger/fabric-protos-go/msp"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
 )
 
 // MockChannelCfg contains mock channel configuration

@@ -7,12 +7,12 @@ SPDX-License-Identifier: Apache-2.0
 package endpoint
 
 import (
+	"github.com/hellobchain/wswlog/wlogging"
 	"github.com/pkg/errors"
-	"github.com/wsw365904/wswlog/wlogging"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/client/common/discovery"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/client/common/discovery"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/context"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
 )
 
 var logger = wlogging.MustGetLoggerWithoutName()

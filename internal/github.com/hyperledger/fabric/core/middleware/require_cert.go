@@ -11,7 +11,7 @@ Please review third_party pinning scripts and patches for more details.
 package middleware
 
 import (
-	http2 "github.com/wsw365904/newcryptosm/http"
+	http2 "github.com/hellobchain/newcryptosm/http"
 )
 
 type requireCert struct {

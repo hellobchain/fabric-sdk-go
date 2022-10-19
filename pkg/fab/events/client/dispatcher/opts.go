@@ -9,14 +9,14 @@ package dispatcher
 import (
 	"time"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/options"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/events/client/lbp"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/events/client/peerresolver"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/events/client/peerresolver/balanced"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/events/client/peerresolver/minblockheight"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/events/client/peerresolver/preferorg"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/options"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/context"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/events/client/lbp"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/events/client/peerresolver"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/events/client/peerresolver/balanced"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/events/client/peerresolver/minblockheight"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/events/client/peerresolver/preferorg"
 )
 
 const (

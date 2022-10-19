@@ -10,7 +10,7 @@ import (
 	"fmt"
 	"regexp"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
 )
 
 // BlockReg contains the data for a block registration

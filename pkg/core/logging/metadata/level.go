@@ -6,7 +6,7 @@ SPDX-License-Identifier: Apache-2.0
 
 package metadata
 
-import "github.com/wsw365904/fabric-sdk-go/pkg/core/logging/api"
+import "github.com/hellobchain/fabric-sdk-go/pkg/core/logging/api"
 
 //ModuleLevels maintains log levels based on module
 type ModuleLevels struct {

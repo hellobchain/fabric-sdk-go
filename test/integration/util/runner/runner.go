@@ -11,9 +11,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk"
-	"github.com/wsw365904/fabric-sdk-go/test/integration"
-	"github.com/wsw365904/fabric-sdk-go/test/metadata"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fabsdk"
+	"github.com/hellobchain/fabric-sdk-go/test/integration"
+	"github.com/hellobchain/fabric-sdk-go/test/metadata"
 )
 
 const (

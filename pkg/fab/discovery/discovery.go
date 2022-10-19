@@ -8,17 +8,17 @@ package discovery
 
 import (
 	"context"
-	"github.com/wsw365904/wswlog/wlogging"
+	"github.com/hellobchain/wswlog/wlogging"
 	"strings"
 	"sync"
 
+	discclient "github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/discovery/client"
+	fabcontext "github.com/hellobchain/fabric-sdk-go/pkg/common/providers/context"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	corecomm "github.com/hellobchain/fabric-sdk-go/pkg/core/config/comm"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/comm"
 	"github.com/hyperledger/fabric-protos-go/discovery"
 	"github.com/pkg/errors"
-	discclient "github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/discovery/client"
-	fabcontext "github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	corecomm "github.com/wsw365904/fabric-sdk-go/pkg/core/config/comm"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/comm"
 	"google.golang.org/grpc"
 )
 

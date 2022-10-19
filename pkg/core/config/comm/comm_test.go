@@ -9,8 +9,8 @@ package comm
 import (
 	"bytes"
 	"encoding/hex"
-	"github.com/wsw365904/newcryptosm/tls"
-	x5092 "github.com/wsw365904/newcryptosm/x509"
+	"github.com/hellobchain/newcryptosm/tls"
+	x5092 "github.com/hellobchain/newcryptosm/x509"
 	"path/filepath"
 	"strconv"
 	"testing"
@@ -20,8 +20,8 @@ import (
 	"reflect"
 
 	"github.com/golang/mock/gomock"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/test/mockfab"
 	"github.com/stretchr/testify/assert"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/test/mockfab"
 )
 
 func TestTLSConfigErrorAddingCertificate(t *testing.T) {

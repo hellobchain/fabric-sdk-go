@@ -7,11 +7,11 @@ SPDX-License-Identifier: Apache-2.0
 package cryptoutil
 
 import (
-	"github.com/wsw365904/newcryptosm/ecdsa"
+	"github.com/hellobchain/newcryptosm/ecdsa"
 	"testing"
 
-	fabricCaUtil "github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkinternal/pkg/util"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/cryptosuite"
+	fabricCaUtil "github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkinternal/pkg/util"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/cryptosuite"
 )
 
 func TestGetPrivateKeyFromCert(t *testing.T) {

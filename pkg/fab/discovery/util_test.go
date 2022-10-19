@@ -9,11 +9,11 @@ package discovery
 import (
 	"testing"
 
+	discclient "github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/discovery/client"
+	gprotoext "github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/gossip/protoext"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/discovery/mocks"
 	"github.com/hyperledger/fabric-protos-go/gossip"
-	discclient "github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/discovery/client"
-	gprotoext "github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/gossip/protoext"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/discovery/mocks"
 	"github.com/stretchr/testify/require"
 )
 

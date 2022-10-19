@@ -8,7 +8,7 @@ package orderer
 
 import (
 	reqContext "context"
-	"github.com/wsw365904/newcryptosm/x509"
+	"github.com/hellobchain/newcryptosm/x509"
 	"os"
 	"path/filepath"
 	"strings"
@@ -19,15 +19,15 @@ import (
 	grpccodes "google.golang.org/grpc/codes"
 
 	"github.com/golang/mock/gomock"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/errors/status"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/test/mockfab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/config/endpoint"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/mocks"
 	"github.com/hyperledger/fabric-protos-go/common"
 	ab "github.com/hyperledger/fabric-protos-go/orderer"
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/assert"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/errors/status"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/test/mockfab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/config/endpoint"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/mocks"
 )
 
 var testOrdererURL = "127.0.0.1:0"

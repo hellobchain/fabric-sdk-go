@@ -10,14 +10,14 @@ import (
 	"archive/tar"
 	"bytes"
 	"compress/gzip"
-	"github.com/wsw365904/wswlog/wlogging"
+	"github.com/hellobchain/wswlog/wlogging"
 	"go/build"
 	"io"
 	"os"
 	"path/filepath"
 	"time"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/resource"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/resource"
 	"github.com/pkg/errors"
 
 	"fmt"

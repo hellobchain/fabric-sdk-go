@@ -7,11 +7,11 @@ SPDX-License-Identifier: Apache-2.0
 package dynamicdiscovery
 
 import (
+	coptions "github.com/hellobchain/fabric-sdk-go/pkg/common/options"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/util/concurrent/lazycache"
+	"github.com/hellobchain/wswlog/wlogging"
 	"github.com/pkg/errors"
-	coptions "github.com/wsw365904/fabric-sdk-go/pkg/common/options"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/util/concurrent/lazycache"
-	"github.com/wsw365904/wswlog/wlogging"
 )
 
 var logger = wlogging.MustGetLoggerWithoutName()

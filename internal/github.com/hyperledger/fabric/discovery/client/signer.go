@@ -12,7 +12,7 @@ package discovery
 
 import (
 	"encoding/hex"
-	"github.com/wsw365904/fabric-sdk-go/pkg/util/algo"
+	"github.com/hellobchain/fabric-sdk-go/pkg/util/algo"
 	"sync"
 )
 

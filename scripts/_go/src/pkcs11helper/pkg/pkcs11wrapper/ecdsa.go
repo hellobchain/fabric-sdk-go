@@ -15,9 +15,9 @@ import (
 	"encoding/hex"
 	"encoding/pem"
 	"fmt"
+	"github.com/hellobchain/third_party/hyperledger/fabric/smalgo/ecdsa"
+	"github.com/hellobchain/third_party/hyperledger/fabric/smalgo/x509"
 	"github.com/pkg/errors"
-	"github.com/wsw365904/third_party/hyperledger/fabric/smalgo/ecdsa"
-	"github.com/wsw365904/third_party/hyperledger/fabric/smalgo/x509"
 	"io/ioutil"
 	"math/big"
 )

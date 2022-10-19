@@ -11,15 +11,15 @@ Please review third_party pinning scripts and patches for more details.
 package pkcs11
 
 import (
-	"github.com/wsw365904/newcryptosm/ecdsa"
-	"github.com/wsw365904/newcryptosm/x509"
-	"github.com/wsw365904/wswlog/wlogging"
+	"github.com/hellobchain/newcryptosm/ecdsa"
+	"github.com/hellobchain/newcryptosm/x509"
+	"github.com/hellobchain/wswlog/wlogging"
 	"os"
 
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp/sw"
+	sdkp11 "github.com/hellobchain/fabric-sdk-go/pkg/core/cryptosuite/common/pkcs11"
 	"github.com/pkg/errors"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp/sw"
-	sdkp11 "github.com/wsw365904/fabric-sdk-go/pkg/core/cryptosuite/common/pkcs11"
 )
 
 var (

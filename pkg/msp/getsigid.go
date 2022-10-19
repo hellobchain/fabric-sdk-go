@@ -10,12 +10,12 @@ import (
 	"fmt"
 	"strings"
 
+	fabricCaUtil "github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkinternal/pkg/util"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/core"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/msp"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/config/cryptoutil"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/comm"
 	"github.com/pkg/errors"
-	fabricCaUtil "github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkinternal/pkg/util"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/msp"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/config/cryptoutil"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/comm"
 )
 
 func newUser(userData *msp.UserData, cryptoSuite core.CryptoSuite) (*User, error) {

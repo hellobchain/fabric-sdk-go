@@ -13,8 +13,8 @@ package discovery
 import (
 	"github.com/hyperledger/fabric-protos-go/discovery"
 	"github.com/pkg/errors"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/gossip/protoext"
-	"github.com/wsw365904/newcryptosm"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/gossip/protoext"
+	"github.com/hellobchain/newcryptosm"
 	"google.golang.org/grpc"
 )
 

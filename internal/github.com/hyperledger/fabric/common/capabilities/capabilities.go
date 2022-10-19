@@ -11,9 +11,9 @@ Please review third_party pinning scripts and patches for more details.
 package capabilities
 
 import (
+	"github.com/hellobchain/wswlog/wlogging"
 	cb "github.com/hyperledger/fabric-protos-go/common"
 	"github.com/pkg/errors"
-	"github.com/wsw365904/wswlog/wlogging"
 )
 
 var logger = wlogging.MustGetLoggerWithoutName()

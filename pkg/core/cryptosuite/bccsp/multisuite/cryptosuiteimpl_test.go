@@ -11,10 +11,10 @@ import (
 	"testing"
 
 	"github.com/golang/mock/gomock"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp/pkcs11"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/test/mockcore"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/cryptosuite/bccsp/wrapper"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp/pkcs11"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/core"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/test/mockcore"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/cryptosuite/bccsp/wrapper"
 )
 
 func TestBadConfig(t *testing.T) {

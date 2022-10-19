@@ -15,13 +15,13 @@ SPDX-License-Identifier: Apache-2.0
 package event
 
 import (
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/options"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/context"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/events/client"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/events/deliverclient"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/events/deliverclient/seek"
 	"github.com/pkg/errors"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/options"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/events/client"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/events/deliverclient"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/events/deliverclient/seek"
 )
 
 // Client enables access to a channel events on a Fabric network.

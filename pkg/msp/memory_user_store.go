@@ -7,7 +7,7 @@ SPDX-License-Identifier: Apache-2.0
 package msp
 
 import (
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/msp"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/msp"
 )
 
 // MemoryUserStore is in-memory implementation of UserStore

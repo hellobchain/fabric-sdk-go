@@ -2,10 +2,10 @@ package algo
 
 import (
 	"encoding/pem"
-	"github.com/wsw365904/newcryptosm"
-	"github.com/wsw365904/newcryptosm/x509"
-	"github.com/wsw365904/third_party/algo"
-	"github.com/wsw365904/wswlog/wlogging"
+	"github.com/hellobchain/newcryptosm"
+	"github.com/hellobchain/newcryptosm/x509"
+	"github.com/hellobchain/third_party/algo"
+	"github.com/hellobchain/wswlog/wlogging"
 	"sync"
 )
 

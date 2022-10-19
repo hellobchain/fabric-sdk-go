@@ -12,20 +12,20 @@ package encoder
 
 import (
 	"github.com/golang/protobuf/proto"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/channelconfig"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/genesis"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/policies"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/policydsl"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/util"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/msp"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/protoutil"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkinternal/configtxgen/genesisconfig"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkinternal/configtxlator/update"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkinternal/pkg/identity"
+	"github.com/hellobchain/wswlog/wlogging"
 	cb "github.com/hyperledger/fabric-protos-go/common"
 	pb "github.com/hyperledger/fabric-protos-go/peer"
 	"github.com/pkg/errors"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/channelconfig"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/genesis"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/policies"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/policydsl"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/util"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/msp"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/protoutil"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkinternal/configtxgen/genesisconfig"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkinternal/configtxlator/update"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkinternal/pkg/identity"
-	"github.com/wsw365904/wswlog/wlogging"
 )
 
 const (

@@ -7,8 +7,8 @@ SPDX-License-Identifier: Apache-2.0
 package msp
 
 import (
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/keyvaluestore"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/core"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/keyvaluestore"
 )
 
 // NewCacheKeyStore loads keys stored in the cryptoconfig directory layout.

@@ -7,8 +7,8 @@ SPDX-License-Identifier: Apache-2.0
 package retry
 
 import (
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/errors/multi"
-	"github.com/wsw365904/wswlog/wlogging"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/errors/multi"
+	"github.com/hellobchain/wswlog/wlogging"
 )
 
 var logger = wlogging.MustGetLoggerWithoutName()

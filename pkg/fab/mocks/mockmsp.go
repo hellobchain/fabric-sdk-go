@@ -7,8 +7,8 @@ SPDX-License-Identifier: Apache-2.0
 package mocks
 
 import (
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/msp"
 	msp_protos "github.com/hyperledger/fabric-protos-go/msp"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/msp"
 )
 
 // MockMSP implements mock msp

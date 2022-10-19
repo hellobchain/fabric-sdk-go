@@ -7,20 +7,20 @@ SPDX-License-Identifier: Apache-2.0
 package mocks
 
 import (
-	"github.com/wsw365904/newcryptosm/tls"
-	"github.com/wsw365904/newcryptosm/x509"
+	"github.com/hellobchain/newcryptosm/tls"
+	"github.com/hellobchain/newcryptosm/x509"
 	"path/filepath"
 	"time"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/config/endpoint"
-	"github.com/wsw365904/fabric-sdk-go/test/metadata"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/core"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/config/endpoint"
+	"github.com/hellobchain/fabric-sdk-go/test/metadata"
 
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/msp"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/test/mockfab"
+	commtls "github.com/hellobchain/fabric-sdk-go/pkg/core/config/comm/tls"
 	"github.com/pkg/errors"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/msp"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/test/mockfab"
-	commtls "github.com/wsw365904/fabric-sdk-go/pkg/core/config/comm/tls"
 )
 
 var _ fab.EndpointConfig = (*MockConfig)(nil)

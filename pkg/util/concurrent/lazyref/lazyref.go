@@ -9,13 +9,13 @@ package lazyref
 import (
 	"errors"
 	"fmt"
-	"github.com/wsw365904/wswlog/wlogging"
+	"github.com/hellobchain/wswlog/wlogging"
 	"sync"
 	"sync/atomic"
 	"time"
 	"unsafe"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/options"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/options"
 )
 
 var logger = wlogging.MustGetLoggerWithoutName()

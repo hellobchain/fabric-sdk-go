@@ -12,20 +12,20 @@ import (
 	"time"
 
 	"github.com/golang/mock/gomock"
-	"github.com/wsw365904/fabric-sdk-go/test/metadata"
+	"github.com/hellobchain/fabric-sdk-go/test/metadata"
 	"github.com/stretchr/testify/assert"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/test/mockfab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/context"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/config"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/config/lookup"
-	mocksConfig "github.com/wsw365904/fabric-sdk-go/pkg/core/mocks"
-	fabImpl "github.com/wsw365904/fabric-sdk-go/pkg/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/mocks"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/txn"
-	mspmocks "github.com/wsw365904/fabric-sdk-go/pkg/msp/test/mockmsp"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/core"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/test/mockfab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/context"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/config"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/config/lookup"
+	mocksConfig "github.com/hellobchain/fabric-sdk-go/pkg/core/mocks"
+	fabImpl "github.com/hellobchain/fabric-sdk-go/pkg/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/mocks"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/txn"
+	mspmocks "github.com/hellobchain/fabric-sdk-go/pkg/msp/test/mockmsp"
 )
 
 func TestCreateTxnID(t *testing.T) {
@@ -360,7 +360,7 @@ func TestExcludedOrdrerer(t *testing.T) {
 
 	// now try with example2.com not found, to be populated from chConfig
 	mockEndpoingCfg.EXPECT().ChannelConfig("mychannel").Return(&fab.ChannelEndpointConfig{
-		Orderers: chConfig.MockOrderers})                                                       // read orderers from channel.Orderers SDK config
+		Orderers: chConfig.MockOrderers}) // read orderers from channel.Orderers SDK config
 	mockEndpoingCfg.EXPECT().OrdererConfig("example.com").Return(&orderersCfgs[0], true, false) // found
 	mockEndpoingCfg.EXPECT().OrdererConfig("example2.com").Return(nil, false, false)            // not found
 	mockEndpoingCfg.EXPECT().OrdererConfig("example3.com").Return(nil, false, true)             // excluded

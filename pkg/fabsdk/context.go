@@ -8,8 +8,8 @@ package fabsdk
 
 import (
 	"encoding/base64"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/msp"
 	"github.com/pkg/errors"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/msp"
 )
 
 type identityOptions struct {

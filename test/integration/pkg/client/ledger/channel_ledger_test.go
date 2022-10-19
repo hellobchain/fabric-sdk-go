@@ -12,20 +12,20 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/errors/retry"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/errors/status"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/msp"
-	"github.com/wsw365904/fabric-sdk-go/test/integration"
-	"github.com/wsw365904/fabric-sdk-go/test/metadata"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/errors/retry"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/errors/status"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/msp"
+	"github.com/hellobchain/fabric-sdk-go/test/integration"
+	"github.com/hellobchain/fabric-sdk-go/test/metadata"
 
+	"github.com/hellobchain/fabric-sdk-go/pkg/client/channel"
+	"github.com/hellobchain/fabric-sdk-go/pkg/client/ledger"
+	mspclient "github.com/hellobchain/fabric-sdk-go/pkg/client/msp"
+	"github.com/hellobchain/fabric-sdk-go/pkg/client/resmgmt"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fabsdk"
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/require"
-	"github.com/wsw365904/fabric-sdk-go/pkg/client/channel"
-	"github.com/wsw365904/fabric-sdk-go/pkg/client/ledger"
-	mspclient "github.com/wsw365904/fabric-sdk-go/pkg/client/msp"
-	"github.com/wsw365904/fabric-sdk-go/pkg/client/resmgmt"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk"
 )
 
 const (

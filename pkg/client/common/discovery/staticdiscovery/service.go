@@ -8,7 +8,7 @@ package staticdiscovery
 
 import (
 	"github.com/pkg/errors"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
 )
 
 // DiscoveryService implements a static discovery service

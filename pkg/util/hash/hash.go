@@ -1,8 +1,8 @@
 package hash
 
 import (
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/protoutil"
 	cb "github.com/hyperledger/fabric-protos-go/common"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/protoutil"
 )
 
 func ComputeCurrentHash(b *cb.BlockHeader) []byte {

@@ -13,17 +13,17 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/errors/retry"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/context"
+	packager "github.com/hellobchain/fabric-sdk-go/pkg/fab/ccpackager/gopackager"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/resource"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fabsdk"
+	"github.com/hellobchain/fabric-sdk-go/test/integration"
 	"github.com/hyperledger/fabric-protos-go/common"
 	"github.com/hyperledger/fabric-protos-go/peer"
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/require"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/errors/retry"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/context"
-	packager "github.com/wsw365904/fabric-sdk-go/pkg/fab/ccpackager/gopackager"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/resource"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk"
-	"github.com/wsw365904/fabric-sdk-go/test/integration"
 )
 
 const (

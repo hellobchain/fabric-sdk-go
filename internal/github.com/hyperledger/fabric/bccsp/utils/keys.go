@@ -24,9 +24,9 @@ import (
 	"encoding/pem"
 	"errors"
 	"fmt"
-	"github.com/wsw365904/newcryptosm/ecdsa"
-	"github.com/wsw365904/newcryptosm/sm2"
-	x5092 "github.com/wsw365904/newcryptosm/x509"
+	"github.com/hellobchain/newcryptosm/ecdsa"
+	"github.com/hellobchain/newcryptosm/sm2"
+	x5092 "github.com/hellobchain/newcryptosm/x509"
 )
 
 // struct to hold info required for PKCS#8

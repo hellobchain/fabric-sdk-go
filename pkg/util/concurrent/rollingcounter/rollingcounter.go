@@ -7,7 +7,7 @@ SPDX-License-Identifier: Apache-2.0
 package rollingcounter
 
 import (
-	"github.com/wsw365904/wswlog/wlogging"
+	"github.com/hellobchain/wswlog/wlogging"
 	"math/rand"
 	"sync/atomic"
 )

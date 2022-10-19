@@ -12,12 +12,12 @@ package signer
 
 import (
 	"crypto"
-	"github.com/wsw365904/newcryptosm/x509"
+	"github.com/hellobchain/newcryptosm/x509"
 	"io"
 
 	"github.com/pkg/errors"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/core"
 )
 
 // bccspCryptoSigner is the BCCSP-based implementation of a crypto.Signer

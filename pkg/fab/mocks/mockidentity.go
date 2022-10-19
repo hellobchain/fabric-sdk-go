@@ -11,8 +11,8 @@ import (
 
 	"time"
 
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/msp"
 	msp_protos "github.com/hyperledger/fabric-protos-go/msp"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/msp"
 )
 
 // MockIdentity implements identity

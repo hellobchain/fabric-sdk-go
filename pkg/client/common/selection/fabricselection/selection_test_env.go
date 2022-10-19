@@ -10,7 +10,7 @@ SPDX-License-Identifier: Apache-2.0
 package fabricselection
 
 import (
-	contextAPI "github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
+	contextAPI "github.com/hellobchain/fabric-sdk-go/pkg/common/providers/context"
 )
 
 // SetClientProvider overrides the discovery client provider for unit tests

@@ -12,13 +12,13 @@ package x509
 
 import (
 	"fmt"
-	"github.com/wsw365904/newcryptosm/x509"
+	"github.com/hellobchain/newcryptosm/x509"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/core"
 
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/lib/attrmgr"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkinternal/pkg/util"
 	"github.com/pkg/errors"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/lib/attrmgr"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkinternal/pkg/util"
 )
 
 // NewSigner is constructor for Signer

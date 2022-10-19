@@ -13,10 +13,10 @@ import (
 	"sync"
 
 	"github.com/golang/protobuf/proto"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/rwsetutil"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
 	"github.com/hyperledger/fabric-protos-go/ledger/rwset/kvrwset"
 	pb "github.com/hyperledger/fabric-protos-go/peer"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/rwsetutil"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
 )
 
 // MockPeer is a mock fabricsdk.Peer.

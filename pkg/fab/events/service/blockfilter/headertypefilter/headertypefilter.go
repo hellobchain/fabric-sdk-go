@@ -7,10 +7,10 @@ SPDX-License-Identifier: Apache-2.0
 package headertypefilter
 
 import (
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/protoutil"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/wswlog/wlogging"
 	cb "github.com/hyperledger/fabric-protos-go/common"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/protoutil"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/wswlog/wlogging"
 )
 
 var logger = wlogging.MustGetLoggerWithoutName()

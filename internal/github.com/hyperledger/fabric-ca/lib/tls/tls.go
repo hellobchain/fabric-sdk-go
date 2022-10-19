@@ -21,16 +21,16 @@ Please review third_party pinning scripts and patches for more details.
 package tls
 
 import (
-	"github.com/wsw365904/newcryptosm/tls"
-	"github.com/wsw365904/newcryptosm/x509"
-	"github.com/wsw365904/wswlog/wlogging"
+	"github.com/hellobchain/newcryptosm/tls"
+	"github.com/hellobchain/newcryptosm/x509"
+	"github.com/hellobchain/wswlog/wlogging"
 	"time"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/core"
 
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkinternal/pkg/util"
+	factory "github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkpatch/cryptosuitebridge"
 	"github.com/pkg/errors"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkinternal/pkg/util"
-	factory "github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkpatch/cryptosuitebridge"
 )
 
 var log = wlogging.MustGetLoggerWithoutName()

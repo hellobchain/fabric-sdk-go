@@ -7,11 +7,11 @@ SPDX-License-Identifier: Apache-2.0
 package balancer
 
 import (
-	"github.com/wsw365904/wswlog/wlogging"
+	"github.com/hellobchain/wswlog/wlogging"
 	"math/rand"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/util/concurrent/rollingcounter"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/util/concurrent/rollingcounter"
 )
 
 var logger = wlogging.MustGetLoggerWithoutName()

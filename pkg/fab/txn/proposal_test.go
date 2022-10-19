@@ -20,12 +20,12 @@ import (
 	"time"
 
 	pb "github.com/hyperledger/fabric-protos-go/peer"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/errors/multi"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	mock_context "github.com/wsw365904/fabric-sdk-go/pkg/common/providers/test/mockfab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/context"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/mocks"
-	mspmocks "github.com/wsw365904/fabric-sdk-go/pkg/msp/test/mockmsp"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/errors/multi"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	mock_context "github.com/hellobchain/fabric-sdk-go/pkg/common/providers/test/mockfab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/context"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/mocks"
+	mspmocks "github.com/hellobchain/fabric-sdk-go/pkg/msp/test/mockmsp"
 )
 
 const (

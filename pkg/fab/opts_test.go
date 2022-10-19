@@ -7,12 +7,12 @@ SPDX-License-Identifier: Apache-2.0
 package fab
 
 import (
-	"github.com/wsw365904/newcryptosm/tls"
+	"github.com/hellobchain/newcryptosm/tls"
 	"testing"
 	"time"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	commtls "github.com/wsw365904/fabric-sdk-go/pkg/core/config/comm/tls"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	commtls "github.com/hellobchain/fabric-sdk-go/pkg/core/config/comm/tls"
 )
 
 var (

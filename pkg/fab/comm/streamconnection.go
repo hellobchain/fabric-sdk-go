@@ -7,15 +7,15 @@ SPDX-License-Identifier: Apache-2.0
 package comm
 
 import (
-	"github.com/wsw365904/newcryptosm/tls/credentials"
+	"github.com/hellobchain/newcryptosm/tls/credentials"
 	"sync"
 
 	"github.com/pkg/errors"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/client/common/verifier"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/options"
-	fabcontext "github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/client/common/verifier"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/options"
+	fabcontext "github.com/hellobchain/fabric-sdk-go/pkg/common/providers/context"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/peer"
 )

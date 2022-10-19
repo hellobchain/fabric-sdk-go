@@ -13,9 +13,9 @@ import (
 	"encoding/asn1"
 	"encoding/pem"
 	"fmt"
-	"github.com/wsw365904/newcryptosm/ecdsa"
-	"github.com/wsw365904/newcryptosm/x509"
-	"github.com/wsw365904/newcryptosm/x509/pkix"
+	"github.com/hellobchain/newcryptosm/ecdsa"
+	"github.com/hellobchain/newcryptosm/x509"
+	"github.com/hellobchain/newcryptosm/x509/pkix"
 	"io/ioutil"
 	"log"
 	"math/big"
@@ -30,10 +30,10 @@ import (
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/assert"
 
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkpatch/keyutil"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/config/comm/tls"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/mocks"
-	"github.com/wsw365904/fabric-sdk-go/test/metadata"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkpatch/keyutil"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/config/comm/tls"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/mocks"
+	"github.com/hellobchain/fabric-sdk-go/test/metadata"
 )
 
 var pathRevokeCaRoot = filepath.Join(metadata.GetProjectPath(), metadata.CryptoConfigPath, "peerOrganizations/org1.example.com/ca/")

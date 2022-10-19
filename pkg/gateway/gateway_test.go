@@ -13,8 +13,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/config"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/config"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fabsdk"
 )
 
 const testPrivKey string = `-----BEGIN PRIVATE KEY-----

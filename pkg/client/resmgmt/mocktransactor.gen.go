@@ -4,7 +4,7 @@ package resmgmt
 import (
 	"sync"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
 )
 
 type MockTransactor struct {

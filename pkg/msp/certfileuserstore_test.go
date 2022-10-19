@@ -14,8 +14,8 @@ import (
 	"path/filepath"
 	"testing"
 
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/msp"
 	"github.com/pkg/errors"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/msp"
 )
 
 var storePathRoot = "/tmp/testcertfileuserstore"

@@ -9,14 +9,14 @@ package pkcs11
 import (
 	"testing"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk"
-	"github.com/wsw365904/fabric-sdk-go/test/integration"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fabsdk"
+	"github.com/hellobchain/fabric-sdk-go/test/integration"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/config"
-	cryptosuite "github.com/wsw365904/fabric-sdk-go/pkg/core/cryptosuite/bccsp/pkcs11"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk/factory/defcore"
-	"github.com/wsw365904/fabric-sdk-go/test/integration/e2e"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/core"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/config"
+	cryptosuite "github.com/hellobchain/fabric-sdk-go/pkg/core/cryptosuite/bccsp/pkcs11"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fabsdk/factory/defcore"
+	"github.com/hellobchain/fabric-sdk-go/test/integration/e2e"
 )
 
 const (

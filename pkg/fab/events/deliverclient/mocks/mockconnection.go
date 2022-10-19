@@ -9,12 +9,12 @@ package mocks
 import (
 	"time"
 
+	clientmocks "github.com/hellobchain/fabric-sdk-go/pkg/fab/events/client/mocks"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/events/deliverclient/connection"
 	cb "github.com/hyperledger/fabric-protos-go/common"
 	ab "github.com/hyperledger/fabric-protos-go/orderer"
 	pb "github.com/hyperledger/fabric-protos-go/peer"
 	"github.com/pkg/errors"
-	clientmocks "github.com/wsw365904/fabric-sdk-go/pkg/fab/events/client/mocks"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/events/deliverclient/connection"
 )
 
 const (

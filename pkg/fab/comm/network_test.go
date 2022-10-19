@@ -10,11 +10,11 @@ import (
 	"path/filepath"
 	"testing"
 
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/core"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/config"
+	fabImpl "github.com/hellobchain/fabric-sdk-go/pkg/fab"
+	"github.com/hellobchain/fabric-sdk-go/test/metadata"
 	"github.com/stretchr/testify/assert"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/config"
-	fabImpl "github.com/wsw365904/fabric-sdk-go/pkg/fab"
-	"github.com/wsw365904/fabric-sdk-go/test/metadata"
 )
 
 const (

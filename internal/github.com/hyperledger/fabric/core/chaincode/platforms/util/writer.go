@@ -14,7 +14,7 @@ import (
 	"archive/tar"
 	"bufio"
 	"fmt"
-	"github.com/wsw365904/wswlog/wlogging"
+	"github.com/hellobchain/wswlog/wlogging"
 	"io"
 	"io/ioutil"
 	"os"
@@ -23,8 +23,8 @@ import (
 	"strings"
 	"time"
 
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkinternal/ccmetadata"
 	"github.com/pkg/errors"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkinternal/ccmetadata"
 )
 
 var logger = wlogging.MustGetLoggerWithoutName()

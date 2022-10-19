@@ -9,8 +9,8 @@ package configless
 import (
 	"testing"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk"
-	"github.com/wsw365904/fabric-sdk-go/test/integration/e2e"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fabsdk"
+	"github.com/hellobchain/fabric-sdk-go/test/integration/e2e"
 )
 
 // this test mimics the original e2e test with the difference of injecting interface functions implementations

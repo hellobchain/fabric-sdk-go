@@ -9,7 +9,7 @@ package msp
 import (
 	"testing"
 
-	"github.com/wsw365904/fabric-sdk-go/test/integration"
+	"github.com/hellobchain/fabric-sdk-go/test/integration"
 )
 
 func TestGetCAInfo(t *testing.T) {

@@ -11,8 +11,8 @@ SPDX-License-Identifier: Apache-2.0
 package fabsdk
 
 import (
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/core/operations"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk/metrics"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/core/operations"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fabsdk/metrics"
 )
 
 func (sdk *FabricSDK) initMetrics(config *configs) {

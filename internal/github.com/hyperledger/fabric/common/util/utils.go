@@ -13,14 +13,14 @@ package util
 import (
 	"crypto/rand"
 
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkpatch/cryptosuitebridge"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkpatch/cryptosuitebridge"
 
 	"fmt"
 	"io"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/timestamp"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/bccsp"
 )
 
 // ComputeSHA256 returns SHA2-256 on data

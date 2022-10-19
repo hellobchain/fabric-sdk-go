@@ -7,20 +7,20 @@ SPDX-License-Identifier: Apache-2.0
 package comm
 
 import (
-	credentials "github.com/wsw365904/newcryptosm/tls/credentials"
-	"github.com/wsw365904/newcryptosm/x509"
-	"github.com/wsw365904/wswlog/wlogging"
+	credentials "github.com/hellobchain/newcryptosm/tls/credentials"
+	"github.com/hellobchain/newcryptosm/x509"
+	"github.com/hellobchain/wswlog/wlogging"
 	"sync/atomic"
 
 	"github.com/pkg/errors"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/client/common/verifier"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/options"
-	fabcontext "github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/context"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/config/comm"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/config/endpoint"
+	"github.com/hellobchain/fabric-sdk-go/pkg/client/common/verifier"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/options"
+	fabcontext "github.com/hellobchain/fabric-sdk-go/pkg/common/providers/context"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/context"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/config/comm"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/config/endpoint"
 	"google.golang.org/grpc"
 )
 

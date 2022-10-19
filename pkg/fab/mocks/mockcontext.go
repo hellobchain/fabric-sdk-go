@@ -8,14 +8,14 @@ package mocks
 
 import (
 	"encoding/hex"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/crypto"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/msp"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/mocks"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk/metrics"
-	mspmocks "github.com/wsw365904/fabric-sdk-go/pkg/msp/test/mockmsp"
-	"github.com/wsw365904/fabric-sdk-go/pkg/util/algo"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/crypto"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/core"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/msp"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/mocks"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fabsdk/metrics"
+	mspmocks "github.com/hellobchain/fabric-sdk-go/pkg/msp/test/mockmsp"
+	"github.com/hellobchain/fabric-sdk-go/pkg/util/algo"
 	"hash"
 
 	"strings"

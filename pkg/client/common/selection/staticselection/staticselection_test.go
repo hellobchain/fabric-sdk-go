@@ -9,10 +9,10 @@ package staticselection
 import (
 	"testing"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/client/common/selection/options"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/client/common/selection/options"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
 
-	fabmocks "github.com/wsw365904/fabric-sdk-go/pkg/fab/mocks"
+	fabmocks "github.com/hellobchain/fabric-sdk-go/pkg/fab/mocks"
 )
 
 func TestStaticSelection(t *testing.T) {

@@ -13,9 +13,9 @@ import (
 	"encoding/pem"
 	"errors"
 	"fmt"
-	"github.com/wsw365904/newcryptosm/ecdsa"
-	"github.com/wsw365904/newcryptosm/sm2"
-	x5092 "github.com/wsw365904/newcryptosm/x509"
+	"github.com/hellobchain/newcryptosm/ecdsa"
+	"github.com/hellobchain/newcryptosm/sm2"
+	x5092 "github.com/hellobchain/newcryptosm/x509"
 )
 
 type pkcs8Info struct {

@@ -9,14 +9,14 @@ package resource
 import (
 	"testing"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	contextImpl "github.com/wsw365904/fabric-sdk-go/pkg/context"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/txn"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	contextImpl "github.com/hellobchain/fabric-sdk-go/pkg/context"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/txn"
 
 	"time"
 
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/mocks"
 	"github.com/stretchr/testify/assert"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/mocks"
 )
 
 func TestCreateChaincodeInstallProposal(t *testing.T) {

@@ -13,17 +13,17 @@ import (
 	"path/filepath"
 	"testing"
 
+	"github.com/hellobchain/fabric-sdk-go/pkg/client/channel"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/core"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/config"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/config/endpoint"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/config/lookup"
+	mockCore "github.com/hellobchain/fabric-sdk-go/pkg/core/mocks"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/mocks"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fabsdk/provider/chpvdr"
+	"github.com/hellobchain/fabric-sdk-go/pkg/msp"
+	"github.com/hellobchain/fabric-sdk-go/test/metadata"
 	"github.com/pkg/errors"
-	"github.com/wsw365904/fabric-sdk-go/pkg/client/channel"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/core"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/config"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/config/endpoint"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/config/lookup"
-	mockCore "github.com/wsw365904/fabric-sdk-go/pkg/core/mocks"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/mocks"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk/provider/chpvdr"
-	"github.com/wsw365904/fabric-sdk-go/pkg/msp"
-	"github.com/wsw365904/fabric-sdk-go/test/metadata"
 )
 
 const (

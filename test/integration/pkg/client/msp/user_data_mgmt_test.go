@@ -13,15 +13,15 @@ import (
 
 	"encoding/hex"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/client/msp"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
-	mspctx "github.com/wsw365904/fabric-sdk-go/pkg/common/providers/msp"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/cryptosuite"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/cryptosuite/bccsp/sw"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk"
-	mspimpl "github.com/wsw365904/fabric-sdk-go/pkg/msp"
-	"github.com/wsw365904/fabric-sdk-go/test/integration"
+	"github.com/hellobchain/fabric-sdk-go/pkg/client/msp"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/context"
+	mspctx "github.com/hellobchain/fabric-sdk-go/pkg/common/providers/msp"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/cryptosuite"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/cryptosuite/bccsp/sw"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fabsdk"
+	mspimpl "github.com/hellobchain/fabric-sdk-go/pkg/msp"
+	"github.com/hellobchain/fabric-sdk-go/test/integration"
 )
 
 // TestWithCustomStores demonstrates the usage of custom key and cert stores

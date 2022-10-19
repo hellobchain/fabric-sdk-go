@@ -11,11 +11,11 @@ Please review third_party pinning scripts and patches for more details.
 package api
 
 import (
-	"github.com/wsw365904/fabric-sdk-go/pkg/util/algo"
+	"github.com/hellobchain/fabric-sdk-go/pkg/util/algo"
 	"time"
 
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkinternal/pkg/util"
-	"github.com/wsw365904/third_party/cloudflare/cfssl/csr"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric-ca/sdkinternal/pkg/util"
+	"github.com/hellobchain/third_party/cloudflare/cfssl/csr"
 )
 
 // RegistrationRequest for a new identity

@@ -7,17 +7,17 @@ SPDX-License-Identifier: Apache-2.0
 package client
 
 import (
-	"github.com/wsw365904/wswlog/wlogging"
+	"github.com/hellobchain/wswlog/wlogging"
 	"sync"
 	"sync/atomic"
 	"time"
 
 	"github.com/pkg/errors"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/options"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/events/client/dispatcher"
-	eventservice "github.com/wsw365904/fabric-sdk-go/pkg/fab/events/service"
-	esdispatcher "github.com/wsw365904/fabric-sdk-go/pkg/fab/events/service/dispatcher"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/options"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/events/client/dispatcher"
+	eventservice "github.com/hellobchain/fabric-sdk-go/pkg/fab/events/service"
+	esdispatcher "github.com/hellobchain/fabric-sdk-go/pkg/fab/events/service/dispatcher"
 )
 
 var logger = wlogging.MustGetLoggerWithoutName()

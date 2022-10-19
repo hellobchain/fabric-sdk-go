@@ -10,8 +10,8 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	fabmocks "github.com/wsw365904/fabric-sdk-go/pkg/fab/mocks"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	fabmocks "github.com/hellobchain/fabric-sdk-go/pkg/fab/mocks"
 )
 
 func TestRandom(t *testing.T) {

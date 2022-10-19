@@ -7,8 +7,8 @@ SPDX-License-Identifier: Apache-2.0
 package tls
 
 import (
-	x5092 "github.com/wsw365904/newcryptosm/x509"
-	"github.com/wsw365904/wswlog/wlogging"
+	x5092 "github.com/hellobchain/newcryptosm/x509"
+	"github.com/hellobchain/wswlog/wlogging"
 	"sync"
 	"sync/atomic"
 )

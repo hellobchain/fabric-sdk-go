@@ -8,9 +8,9 @@ package discovery
 import (
 	"testing"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk"
-	"github.com/wsw365904/fabric-sdk-go/test/integration"
-	"github.com/wsw365904/fabric-sdk-go/test/integration/util/runner"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fabsdk"
+	"github.com/hellobchain/fabric-sdk-go/test/integration"
+	"github.com/hellobchain/fabric-sdk-go/test/integration/util/runner"
 )
 
 const (

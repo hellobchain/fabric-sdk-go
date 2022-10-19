@@ -9,13 +9,13 @@ package preferpeer
 import (
 	"testing"
 
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	clientmocks "github.com/hellobchain/fabric-sdk-go/pkg/fab/events/client/mocks"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/events/client/peerresolver/minblockheight"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/mocks"
+	"github.com/hellobchain/fabric-sdk-go/pkg/msp/test/mockmsp"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	clientmocks "github.com/wsw365904/fabric-sdk-go/pkg/fab/events/client/mocks"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/events/client/peerresolver/minblockheight"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/mocks"
-	"github.com/wsw365904/fabric-sdk-go/pkg/msp/test/mockmsp"
 )
 
 var (

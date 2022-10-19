@@ -7,16 +7,16 @@ SPDX-License-Identifier: Apache-2.0
 package preferpeer
 
 import (
-	"github.com/wsw365904/wswlog/wlogging"
+	"github.com/hellobchain/wswlog/wlogging"
 	"strings"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/options"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/events/client/peerresolver"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/events/client/peerresolver/minblockheight"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/events/client/peerresolver/preferorg"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/events/service"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/options"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/context"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/events/client/peerresolver"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/events/client/peerresolver/minblockheight"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/events/client/peerresolver/preferorg"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/events/service"
 )
 
 var logger = wlogging.MustGetLoggerWithoutName()

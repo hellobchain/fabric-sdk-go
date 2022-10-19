@@ -12,9 +12,9 @@ package msp
 
 import (
 	"github.com/golang/protobuf/proto"
+	"github.com/hellobchain/wswlog/wlogging"
 	"github.com/hyperledger/fabric-protos-go/msp"
 	"github.com/pkg/errors"
-	"github.com/wsw365904/wswlog/wlogging"
 )
 
 var mspLogger = wlogging.MustGetLoggerWithoutName()

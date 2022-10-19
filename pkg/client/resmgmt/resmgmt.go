@@ -21,7 +21,7 @@ package resmgmt
 
 import (
 	reqContext "context"
-	"github.com/wsw365904/wswlog/wlogging"
+	"github.com/hellobchain/wswlog/wlogging"
 	"io"
 	"io/ioutil"
 	"math/rand"
@@ -33,20 +33,20 @@ import (
 	pb "github.com/hyperledger/fabric-protos-go/peer"
 	"github.com/pkg/errors"
 
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkinternal/configtxlator/update"
-	"github.com/wsw365904/fabric-sdk-go/pkg/client/common/verifier"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/errors/multi"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/errors/retry"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/errors/status"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/msp"
-	contextImpl "github.com/wsw365904/fabric-sdk-go/pkg/context"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/channel"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/chconfig"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/peer"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/resource"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/txn"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkinternal/configtxlator/update"
+	"github.com/hellobchain/fabric-sdk-go/pkg/client/common/verifier"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/errors/multi"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/errors/retry"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/errors/status"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/context"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/msp"
+	contextImpl "github.com/hellobchain/fabric-sdk-go/pkg/context"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/channel"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/chconfig"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/peer"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/resource"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/txn"
 )
 
 const bufferSize = 1024

@@ -10,14 +10,14 @@ import (
 	"path/filepath"
 	"testing"
 
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/config"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/cryptosuite"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fabsdk/factory/defcore"
+	"github.com/hellobchain/fabric-sdk-go/pkg/msp"
+	"github.com/hellobchain/fabric-sdk-go/pkg/msp/test/mockmsp"
+	"github.com/hellobchain/fabric-sdk-go/test/metadata"
 	"github.com/stretchr/testify/assert"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/config"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/cryptosuite"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fabsdk/factory/defcore"
-	"github.com/wsw365904/fabric-sdk-go/pkg/msp"
-	"github.com/wsw365904/fabric-sdk-go/pkg/msp/test/mockmsp"
-	"github.com/wsw365904/fabric-sdk-go/test/metadata"
 )
 
 func TestCreateMSPProvider(t *testing.T) {

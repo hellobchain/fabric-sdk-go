@@ -9,10 +9,10 @@ package deliverclient
 import (
 	"time"
 
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/options"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/events/api"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/events/deliverclient/seek"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/options"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/events/api"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/events/deliverclient/seek"
 )
 
 type params struct {

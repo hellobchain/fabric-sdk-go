@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"github.com/wsw365904/wswlog/wlogging"
+	"github.com/hellobchain/wswlog/wlogging"
 	"sync"
 
 	"io"

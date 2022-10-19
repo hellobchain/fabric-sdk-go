@@ -13,11 +13,11 @@ import (
 	"sync"
 
 	"github.com/pkg/errors"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/options"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/chconfig"
-	"github.com/wsw365904/fabric-sdk-go/pkg/util/concurrent/lazycache"
-	"github.com/wsw365904/fabric-sdk-go/pkg/util/concurrent/lazyref"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/options"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/chconfig"
+	"github.com/hellobchain/fabric-sdk-go/pkg/util/concurrent/lazycache"
+	"github.com/hellobchain/fabric-sdk-go/pkg/util/concurrent/lazyref"
 )
 
 // SetChannelConfig allows setting channel configuration.

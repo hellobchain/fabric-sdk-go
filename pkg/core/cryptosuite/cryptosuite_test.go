@@ -12,7 +12,7 @@ import (
 	"sync/atomic"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/wsw365904/fabric-sdk-go/pkg/core/cryptosuite/bccsp/sw"
+	"github.com/hellobchain/fabric-sdk-go/pkg/core/cryptosuite/bccsp/sw"
 )
 
 const (

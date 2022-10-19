@@ -20,11 +20,11 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/util"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/core/chaincode/persistence"
+	"github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkinternal/peer/packaging"
 	pb "github.com/hyperledger/fabric-protos-go/peer"
 	"github.com/pkg/errors"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/util"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/core/chaincode/persistence"
-	"github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/sdkinternal/peer/packaging"
 )
 
 const (

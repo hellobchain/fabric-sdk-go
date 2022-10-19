@@ -8,24 +8,24 @@ package chconfig
 
 import (
 	reqContext "context"
-	"github.com/wsw365904/wswlog/wlogging"
+	"github.com/hellobchain/wswlog/wlogging"
 	"math/rand"
 	"regexp"
 
 	"github.com/golang/protobuf/proto"
+	channelConfig "github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/channelconfig"
+	imsp "github.com/hellobchain/fabric-sdk-go/internal/github.com/hyperledger/fabric/msp"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/errors/retry"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/context"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/fab"
+	"github.com/hellobchain/fabric-sdk-go/pkg/common/providers/msp"
+	contextImpl "github.com/hellobchain/fabric-sdk-go/pkg/context"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/channel"
+	"github.com/hellobchain/fabric-sdk-go/pkg/fab/resource"
 	"github.com/hyperledger/fabric-protos-go/common"
 	mb "github.com/hyperledger/fabric-protos-go/msp"
 	pb "github.com/hyperledger/fabric-protos-go/peer"
 	"github.com/pkg/errors"
-	channelConfig "github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/common/channelconfig"
-	imsp "github.com/wsw365904/fabric-sdk-go/internal/github.com/hyperledger/fabric/msp"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/errors/retry"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/context"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/fab"
-	"github.com/wsw365904/fabric-sdk-go/pkg/common/providers/msp"
-	contextImpl "github.com/wsw365904/fabric-sdk-go/pkg/context"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/channel"
-	"github.com/wsw365904/fabric-sdk-go/pkg/fab/resource"
 )
 
 var logger = wlogging.MustGetLoggerWithoutName()
